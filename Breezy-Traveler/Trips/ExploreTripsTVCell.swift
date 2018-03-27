@@ -10,6 +10,9 @@ import UIKit
 
 class ExploreTripsTVCell: UITableViewCell {
 
+    @IBOutlet weak var tripsCollectionView: UICollectionView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
