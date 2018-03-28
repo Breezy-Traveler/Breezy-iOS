@@ -16,6 +16,7 @@
 		B96529552069A571007FAD4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B96529532069A571007FAD4D /* LaunchScreen.storyboard */; };
 		B965295D2069C96E007FAD4D /* ExploreTripsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */; };
 		B96529602069D17B007FAD4D /* TripsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965295F2069D17B007FAD4D /* TripsTVCell.swift */; };
+		B9B8F912206C52AF009C017F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8F911206C52AF009C017F /* UserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		B96529562069A571007FAD4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTripsTVCell.swift; sourceTree = "<group>"; };
 		B965295F2069D17B007FAD4D /* TripsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTVCell.swift; sourceTree = "<group>"; };
+		B9B8F911206C52AF009C017F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +66,8 @@
 			children = (
 				B965294A2069A571007FAD4D /* AppDelegate.swift */,
 				B965294C2069A571007FAD4D /* ViewController.swift */,
-				B965295E2069C978007FAD4D /* Trips */,
+				B9B8F913206C5317009C017F /* User */,
+				B9B8F90F206C5276009C017F /* Trip */,
 				B96529512069A571007FAD4D /* Assets.xcassets */,
 				B96529532069A571007FAD4D /* LaunchScreen.storyboard */,
 				B96529562069A571007FAD4D /* Info.plist */,
@@ -72,7 +75,7 @@
 			path = "Breezy-Traveler";
 			sourceTree = "<group>";
 		};
-		B965295E2069C978007FAD4D /* Trips */ = {
+		B9B8F90F206C5276009C017F /* Trip */ = {
 			isa = PBXGroup;
 			children = (
 				B965294E2069A571007FAD4D /* Trips.storyboard */,
@@ -81,7 +84,15 @@
 				B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */,
 				B965295F2069D17B007FAD4D /* TripsTVCell.swift */,
 			);
-			path = Trips;
+			name = Trip;
+			sourceTree = "<group>";
+		};
+		B9B8F913206C5317009C017F /* User */ = {
+			isa = PBXGroup;
+			children = (
+				B9B8F911206C52AF009C017F /* UserModel.swift */,
+			);
+			name = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B96529602069D17B007FAD4D /* TripsTVCell.swift in Sources */,
+				B9B8F912206C52AF009C017F /* UserModel.swift in Sources */,
 				B91449432069E54E0074F71B /* MyTripsViewController.swift in Sources */,
 				B965295D2069C96E007FAD4D /* ExploreTripsTVCell.swift in Sources */,
 				B91449452069F9250074F71B /* ExploreTripsCollectionViewCell.swift in Sources */,
