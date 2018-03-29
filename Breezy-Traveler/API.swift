@@ -21,7 +21,7 @@ enum BTAPIEndPoints {
 extension BTAPIEndPoints: TargetType {
     
     // 3: Base URL leads to no end point
-    var baseURL: URL { return URL(string: "https://breezy-traveler-api.herokuapp.com/")! }
+    var baseURL: URL { return URL(string: "https://breezy-traveler-api.herokuapp.com")! }
     
     // 4: get the path to the end point
     var path: String {
@@ -31,7 +31,7 @@ extension BTAPIEndPoints: TargetType {
         case .loginUser:
             return "/login"
         case .createTrip, .loadTrips:
-                return "/user/trips"
+                return "/users/trips"
         }
     }
     
@@ -77,7 +77,7 @@ extension BTAPIEndPoints: TargetType {
 //            let token = user.token
             
             // FIXME: Change token to take in actual user token in future
-            defaultHeader["Authorization"] = "50ccee39f6e8972364f454db5cb589da"
+            defaultHeader["Authorization"] = "Token token=50ccee39f6e8972364f454db5cb589da"
             return defaultHeader
         default:
             return nil
