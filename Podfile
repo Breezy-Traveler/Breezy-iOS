@@ -7,5 +7,9 @@ target 'Breezy-Traveler' do
 
   # Pods for Breezy-Traveler
   pod 'Moya', '~> 11.0'
+  pod 'SwiftyJSON'
+  
+  # Helper func for saving text in keychain securely for iOS
+  pod 'KeychainSwift', '~> 10.0'
 
 end
