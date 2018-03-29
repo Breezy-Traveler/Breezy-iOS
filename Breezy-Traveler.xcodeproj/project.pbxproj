@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2B63A7F9F3715DBE4AA6804 /* Pods_Breezy_Traveler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19E1B1B0C2EC5CF45EE02915 /* Pods_Breezy_Traveler.framework */; };
 		B91449432069E54E0074F71B /* MyTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91449422069E54E0074F71B /* MyTripsViewController.swift */; };
 		B91449452069F9250074F71B /* ExploreTripsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91449442069F9250074F71B /* ExploreTripsCollectionViewCell.swift */; };
 		B965294B2069A571007FAD4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965294A2069A571007FAD4D /* AppDelegate.swift */; };
@@ -16,9 +17,13 @@
 		B96529552069A571007FAD4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B96529532069A571007FAD4D /* LaunchScreen.storyboard */; };
 		B965295D2069C96E007FAD4D /* ExploreTripsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */; };
 		B96529602069D17B007FAD4D /* TripsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965295F2069D17B007FAD4D /* TripsTVCell.swift */; };
+		B9B8F912206C52AF009C017F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8F911206C52AF009C017F /* UserModel.swift */; };
+		B9B8F916206C54A9009C017F /* NetworkingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8F915206C54A9009C017F /* NetworkingLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19E1B1B0C2EC5CF45EE02915 /* Pods_Breezy_Traveler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Breezy_Traveler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D4D1B7FDD5E8D5B55A8B124 /* Pods-Breezy-Traveler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy-Traveler.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.debug.xcconfig"; sourceTree = "<group>"; };
 		B91449422069E54E0074F71B /* MyTripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTripsViewController.swift; sourceTree = "<group>"; };
 		B91449442069F9250074F71B /* ExploreTripsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTripsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B96529472069A571007FAD4D /* Breezy-Traveler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Breezy-Traveler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,6 +35,9 @@
 		B96529562069A571007FAD4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTripsTVCell.swift; sourceTree = "<group>"; };
 		B965295F2069D17B007FAD4D /* TripsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTVCell.swift; sourceTree = "<group>"; };
+		B9B8F911206C52AF009C017F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		B9B8F915206C54A9009C017F /* NetworkingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingLayer.swift; sourceTree = "<group>"; };
+		E61EF07259D1B3C17908FB3F /* Pods-Breezy-Traveler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy-Traveler.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +45,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2B63A7F9F3715DBE4AA6804 /* Pods_Breezy_Traveler.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		129A58429168EA635105C79E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8D4D1B7FDD5E8D5B55A8B124 /* Pods-Breezy-Traveler.debug.xcconfig */,
+				E61EF07259D1B3C17908FB3F /* Pods-Breezy-Traveler.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B965293E2069A571007FAD4D = {
 			isa = PBXGroup;
 			children = (
 				B96529492069A571007FAD4D /* Breezy-Traveler */,
 				B96529482069A571007FAD4D /* Products */,
+				129A58429168EA635105C79E /* Pods */,
+				FC4A1EF4A7ED8D7EA9AF2648 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,7 +84,9 @@
 			children = (
 				B965294A2069A571007FAD4D /* AppDelegate.swift */,
 				B965294C2069A571007FAD4D /* ViewController.swift */,
-				B965295E2069C978007FAD4D /* Trips */,
+				B9B8F913206C5317009C017F /* User */,
+				B9B8F90F206C5276009C017F /* Trip */,
+				B9B8F914206C5493009C017F /* Networking */,
 				B96529512069A571007FAD4D /* Assets.xcassets */,
 				B96529532069A571007FAD4D /* LaunchScreen.storyboard */,
 				B96529562069A571007FAD4D /* Info.plist */,
@@ -72,7 +94,7 @@
 			path = "Breezy-Traveler";
 			sourceTree = "<group>";
 		};
-		B965295E2069C978007FAD4D /* Trips */ = {
+		B9B8F90F206C5276009C017F /* Trip */ = {
 			isa = PBXGroup;
 			children = (
 				B965294E2069A571007FAD4D /* Trips.storyboard */,
@@ -81,7 +103,31 @@
 				B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */,
 				B965295F2069D17B007FAD4D /* TripsTVCell.swift */,
 			);
-			path = Trips;
+			name = Trip;
+			sourceTree = "<group>";
+		};
+		B9B8F913206C5317009C017F /* User */ = {
+			isa = PBXGroup;
+			children = (
+				B9B8F911206C52AF009C017F /* UserModel.swift */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		B9B8F914206C5493009C017F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				B9B8F915206C54A9009C017F /* NetworkingLayer.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		FC4A1EF4A7ED8D7EA9AF2648 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				19E1B1B0C2EC5CF45EE02915 /* Pods_Breezy_Traveler.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -91,9 +137,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B96529592069A571007FAD4D /* Build configuration list for PBXNativeTarget "Breezy-Traveler" */;
 			buildPhases = (
+				7FC3B0B2FF21744319E301EA /* [CP] Check Pods Manifest.lock */,
 				B96529432069A571007FAD4D /* Sources */,
 				B96529442069A571007FAD4D /* Frameworks */,
 				B96529452069A571007FAD4D /* Resources */,
+				176D252490A8A8ED5B4C96E9 /* [CP] Embed Pods Frameworks */,
+				4CAADEA04C8AABD70CC1BB21 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -151,15 +200,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		176D252490A8A8ED5B4C96E9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4CAADEA04C8AABD70CC1BB21 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7FC3B0B2FF21744319E301EA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Breezy-Traveler-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B96529432069A571007FAD4D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B96529602069D17B007FAD4D /* TripsTVCell.swift in Sources */,
+				B9B8F912206C52AF009C017F /* UserModel.swift in Sources */,
 				B91449432069E54E0074F71B /* MyTripsViewController.swift in Sources */,
 				B965295D2069C96E007FAD4D /* ExploreTripsTVCell.swift in Sources */,
 				B91449452069F9250074F71B /* ExploreTripsCollectionViewCell.swift in Sources */,
+				B9B8F916206C54A9009C017F /* NetworkingLayer.swift in Sources */,
 				B965294D2069A571007FAD4D /* ViewController.swift in Sources */,
 				B965294B2069A571007FAD4D /* AppDelegate.swift in Sources */,
 			);
@@ -296,6 +405,7 @@
 		};
 		B965295A2069A571007FAD4D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D4D1B7FDD5E8D5B55A8B124 /* Pods-Breezy-Traveler.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -311,6 +421,7 @@
 		};
 		B965295B2069A571007FAD4D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E61EF07259D1B3C17908FB3F /* Pods-Breezy-Traveler.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
