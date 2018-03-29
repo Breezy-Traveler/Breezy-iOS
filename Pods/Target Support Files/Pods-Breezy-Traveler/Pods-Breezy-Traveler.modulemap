@@ -1,6 +1,0 @@
-framework module Pods_Breezy_Traveler {
-  umbrella header "Pods-Breezy-Traveler-umbrella.h"
-
-  export *
-  module * { export * }
-}
