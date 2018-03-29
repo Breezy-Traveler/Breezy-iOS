@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct User {
+struct BTUser {
     
     let id: Int
     let name: String

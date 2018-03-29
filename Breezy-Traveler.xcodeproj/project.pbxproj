@@ -18,7 +18,8 @@
 		B965295D2069C96E007FAD4D /* ExploreTripsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */; };
 		B96529602069D17B007FAD4D /* TripsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965295F2069D17B007FAD4D /* TripsTVCell.swift */; };
 		B9B8F912206C52AF009C017F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8F911206C52AF009C017F /* UserModel.swift */; };
-		B9B8F916206C54A9009C017F /* NetworkingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8F915206C54A9009C017F /* NetworkingLayer.swift */; };
+		B9B8F916206C54A9009C017F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8F915206C54A9009C017F /* API.swift */; };
+		B9F7620A206D506500821C28 /* NetworkingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F76209206D506500821C28 /* NetworkingLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +37,8 @@
 		B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTripsTVCell.swift; sourceTree = "<group>"; };
 		B965295F2069D17B007FAD4D /* TripsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTVCell.swift; sourceTree = "<group>"; };
 		B9B8F911206C52AF009C017F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		B9B8F915206C54A9009C017F /* NetworkingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingLayer.swift; sourceTree = "<group>"; };
+		B9B8F915206C54A9009C017F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		B9F76209206D506500821C28 /* NetworkingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingLayer.swift; sourceTree = "<group>"; };
 		E61EF07259D1B3C17908FB3F /* Pods-Breezy-Traveler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy-Traveler.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,7 +119,8 @@
 		B9B8F914206C5493009C017F /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				B9B8F915206C54A9009C017F /* NetworkingLayer.swift */,
+				B9B8F915206C54A9009C017F /* API.swift */,
+				B9F76209206D506500821C28 /* NetworkingLayer.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -268,8 +271,9 @@
 				B91449432069E54E0074F71B /* MyTripsViewController.swift in Sources */,
 				B965295D2069C96E007FAD4D /* ExploreTripsTVCell.swift in Sources */,
 				B91449452069F9250074F71B /* ExploreTripsCollectionViewCell.swift in Sources */,
-				B9B8F916206C54A9009C017F /* NetworkingLayer.swift in Sources */,
+				B9B8F916206C54A9009C017F /* API.swift in Sources */,
 				B965294D2069A571007FAD4D /* ViewController.swift in Sources */,
+				B9F7620A206D506500821C28 /* NetworkingLayer.swift in Sources */,
 				B965294B2069A571007FAD4D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
