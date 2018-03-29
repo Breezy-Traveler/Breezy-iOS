@@ -16,13 +16,27 @@ struct NetworkStack {
     
     private let apiService = MoyaProvider<BTAPIEndPoints>()
     
-    struct BTAPIUserError: Error {
+    struct BTAPITripError: Error {
         var errors = [String]()
         
         var localizedDescription: String {
             
             // Combine the list of erros in sentences
             return self.errors.reduce("", { $0 + "\($1)\n"} )
+        }
+    }
+    
+    func loadUserTrips(user: BTUser, callback: @escaping (Result<String, BTAPITripError>) -> ()) {
+        /// handles the response data after the networkService has fired and come back with a result
+        apiService.request(.loadTrips(user)) { (result) in
+            switch result {
+                
+            case .success(let response):
+                break
+            case .failure(let err):
+                let errors = BTAPITripError(errors: [err.localizedDescription])
+                callback(.failure(errors))
+            }
         }
     }
     
@@ -34,10 +48,10 @@ struct NetworkStack {
      - parameter user: user to register using username, email, and password
     */
     
-    func register (a user: BTUser, callback: @escaping (Result<String, BTAPIUserError>) -> ()) {
-        /// handles the response data after the networkService has fired and come back with a result
-        
-    }
+//    func register (a user: BTUser, callback: @escaping (Result<String, BTAPIUserError>) -> ()) {
+//        /// handles the response data after the networkService has fired and come back with a result
+//
+//    }
 }
     
 

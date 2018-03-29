@@ -14,7 +14,7 @@ enum BTAPIEndPoints {
     case registerUser
     case loginUser
     case createTrip
-    case loadTrips
+    case loadTrips(BTUser)
 }
 
 // 2: Conforms and implements Target Type (Moya specific protocol)
@@ -67,12 +67,17 @@ extension BTAPIEndPoints: TargetType {
     
     // 8: Include the header as the last bit of the request
     // Sample token for testing: "token": "50ccee39f6e8972364f454db5cb589da"
+    
     var headers: [String : String]? {
-        let defaultHeader = [
-            "Authorization": "Token token=50ccee39f6e8972364f454db5cb589da"
-        ]
+        var defaultHeader = [String : String]()
+        
         switch self {
-        case .loadTrips:
+        case .loadTrips(let user):
+            // Uncomment when not testing
+//            let token = user.token
+            
+            // FIXME: Change token to take in actual user token in future
+            defaultHeader["Authorization"] = "50ccee39f6e8972364f454db5cb589da"
             return defaultHeader
         default:
             return nil
