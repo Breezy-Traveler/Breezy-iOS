@@ -9,7 +9,7 @@
 import Foundation
 import Moya
 import Result
-//import SwiftyJSON
+import SwiftyJSON
 
 
 struct NetworkStack {
@@ -26,13 +26,28 @@ struct NetworkStack {
         }
     }
     
-    func loadUserTrips(user: BTUser, callback: @escaping (Result<String, BTAPITripError>) -> ()) {
+    func loadUserTrips(user: BTUser, callback: @escaping (Result<[[String: Any]], BTAPITripError>) -> ()) {
         /// handles the response data after the networkService has fired and come back with a result
         apiService.request(.loadTrips(user)) { (result) in
             switch result {
                 
             case .success(let response):
-                break
+                guard
+                    let tripsJSON = JSON(response.data).arrayObject else {
+                        return assertionFailure("response.data was not json")
+                }
+                
+                switch response.statusCode {
+                case 200:
+                    guard
+                    let tripsDictionary = tripsJSON as? [[String: Any]] else {
+                            return assertionFailure("response.data not JSON")
+                    }
+                    callback(.success(tripsDictionary))
+                default:
+                    let errors = BTAPITripError(errors: [String(describing: response)])
+                    callback(.failure(errors))
+                }
             case .failure(let err):
                 let errors = BTAPITripError(errors: [err.localizedDescription])
                 callback(.failure(errors))
