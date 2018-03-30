@@ -2,83 +2,77 @@
 //  NetworkingLayer.swift
 //  Breezy-Traveler
 //
-//  Created by Phyllis Wong on 3/28/18.
-//  Copyright © 2018 Phyllis Wong. All rights reserved.
+//  Created by Phyllis Wong on 3/29/18.
+//  Copyright © 2018 Breezy Traveler. All rights reserved.
 //
 
 import Foundation
 import Moya
+import Result
+import SwiftyJSON
 
-// 1: All the end points for HTTP request
-enum BreezyServerAPI {
-    case registerUser
-    case loginUser
-    case createTrip
-    case loadTrips
-}
 
-// 2: Conforms and implements Target Type (Moya specific protocol)
-extension BreezyServerAPI: TargetType {
+struct NetworkStack {
     
-    // 3: Base URL leads to no end point
-    var baseURL: URL { return URL(string: "https://breezy-traveler-api.herokuapp.com/")! }
+    private let apiService = MoyaProvider<BTAPIEndPoints>()
     
-    // 4: get the path to the end point
-    var path: String {
-        switch self {
-        case .registerUser:
-                return "/register"
-        case .loginUser:
-            return "/login"
-        case .createTrip, .loadTrips:
-                return "/user/trips"
-        }
-    }
-    
-    // 5: HTTP Method
-    var method: Moya.Method {
-        switch self {
+    struct BTAPITripError: Error {
+        var errors = [String]()
+        
+        var localizedDescription: String {
             
-        // FIXME: Change login user to Patch request
-        case .registerUser, .loginUser:
-            return .post
-        case .createTrip:
-            return .post
-        case .loadTrips:
-            return .get
+            // Combine the list of erros in sentences
+            return self.errors.reduce("", { $0 + "\($1)\n"} )
         }
     }
     
-    // 6: Test the data in Swift
-    // MARK: Todo later
-    var sampleData: Data {
-        return Data()
-    }
-    
-    // 7: Body + params and any attachments
-    var task: Task {
-        switch self {
-        case .loadTrips:
-            return .requestPlain
-        default:
-            return .requestPlain
+    func loadUserTrips(user: BTUser, callback: @escaping (Result<[[String: Any]], BTAPITripError>) -> ()) {
+        /// handles the response data after the networkService has fired and come back with a result
+        apiService.request(.loadTrips(user)) { (result) in
+            switch result {
+                
+            case .success(let response):
+                guard
+                    let tripsJSON = JSON(response.data).arrayObject else {
+                        return assertionFailure("response.data was not json")
+                }
+                
+                switch response.statusCode {
+                case 200:
+                    guard
+                    let tripsDictionary = tripsJSON as? [[String: Any]] else {
+                            return assertionFailure("response.data not JSON")
+                    }
+                    callback(.success(tripsDictionary))
+                default:
+                    let errors = BTAPITripError(errors: [String(describing: response)])
+                    callback(.failure(errors))
+                }
+            case .failure(let err):
+                let errors = BTAPITripError(errors: [err.localizedDescription])
+                callback(.failure(errors))
+            }
         }
     }
     
-    // 8: Include the header as the last bit of the request
-    // Sample token for testing: "token": "50ccee39f6e8972364f454db5cb589da"
-    var headers: [String : String]? {
-        let defaultHeader = [
-            "Authorization": "Token token=50ccee39f6e8972364f454db5cb589da"
-        ]
-        switch self {
-        case .loadTrips:
-            return defaultHeader
-        default:
-            return nil
-        }
-    }
+    // MARK: - User Login
+    
+    /*
+    Register a user. User 'callback' to check if registering was successful or something went wrong. Then, check 'Errors' from the associated type of failure (e.g. invalid username/email/password or already taken username/email).
+     
+     - parameter user: user to register using username, email, and password
+    */
+    
+//    func register (a user: BTUser, callback: @escaping (Result<String, BTAPIUserError>) -> ()) {
+//        /// handles the response data after the networkService has fired and come back with a result
+//
+//    }
 }
+    
+
+
+
+
 
 
 
