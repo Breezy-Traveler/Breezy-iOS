@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+struct Trip: Codable {
+    let place: String
+    let start_date: Date?
+    let end_date: Date?
+    
+    // FIXME: Add these type later once we get this working
+//    let hotels: [Hotel]
+//    let sites: [Site]
+    let is_public: Bool
+    
+    
+}

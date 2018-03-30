@@ -26,24 +26,28 @@ struct NetworkStack {
         }
     }
     
-    func loadUserTrips(user: BTUser, callback: @escaping (Result<[[String: Any]], BTAPITripError>) -> ()) {
+    func loadUserTrips(user: BTUser, callback: @escaping (Result<[Trip], BTAPITripError>) -> ()) {
         /// handles the response data after the networkService has fired and come back with a result
         apiService.request(.loadTrips(user)) { (result) in
             switch result {
                 
             case .success(let response):
-                guard
-                    let tripsJSON = JSON(response.data).arrayObject else {
-                        return assertionFailure("response.data was not json")
-                }
+//                guard
+//                    let tripsJSON = JSON(response.data).arrayObject else {
+//                        return assertionFailure("response.data was not json")
+//                }
                 
                 switch response.statusCode {
                 case 200:
-                    guard
-                    let tripsDictionary = tripsJSON as? [[String: Any]] else {
-                            return assertionFailure("response.data not JSON")
+                    guard let trips = try? JSONDecoder().decode([Trip].self, from: response.data) else {
+                        return assertionFailure("JSON data not decodable")
                     }
-                    callback(.success(tripsDictionary))
+//                    guard let tripsDictionary = tripsJSON as? [[String: Any]] else {
+//                            return assertionFailure("response.data not JSON")
+//                    }
+//
+//                    callback(.success(tripsDictionary))
+                    callback(.success(trips))
                 default:
                     let errors = BTAPITripError(errors: [String(describing: response)])
                     callback(.failure(errors))
