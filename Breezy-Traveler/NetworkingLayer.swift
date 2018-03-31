@@ -32,21 +32,13 @@ struct NetworkStack {
             switch result {
                 
             case .success(let response):
-//                guard
-//                    let tripsJSON = JSON(response.data).arrayObject else {
-//                        return assertionFailure("response.data was not json")
-//                }
                 
                 switch response.statusCode {
                 case 200:
                     guard let trips = try? JSONDecoder().decode([Trip].self, from: response.data) else {
                         return assertionFailure("JSON data not decodable")
                     }
-//                    guard let tripsDictionary = tripsJSON as? [[String: Any]] else {
-//                            return assertionFailure("response.data not JSON")
-//                    }
-//
-//                    callback(.success(tripsDictionary))
+
                     callback(.success(trips))
                 default:
                     let errors = BTAPITripError(errors: [String(describing: response)])
@@ -57,6 +49,10 @@ struct NetworkStack {
                 callback(.failure(errors))
             }
         }
+    }
+    
+    func createTrip(user: BTUser) {
+        
     }
     
     // MARK: - User Login
