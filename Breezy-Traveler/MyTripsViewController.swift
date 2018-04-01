@@ -19,18 +19,7 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         tripsTableView.delegate = self
         tripsTableView.dataSource = self
-//        let site = Site(name: "Stay Gold", address: nil, visited: true, notes: nil, rating: nil)
-        let trip = Trip(place: "Oakland", startDate: nil, endDate: nil, hotels: [], sites: [], isPublic: false)
         
-        networkStack.createTrip(trip: trip) { (result) in
-            switch result {
-
-                case .success(let trip):
-                    print(trip)
-                case .failure(let tripsErrors):
-                    print(tripsErrors.errors)
-                }
-        }
         
 //        networkStack.loadUserTrips(user: testUser) { (result) in
 //            switch result {

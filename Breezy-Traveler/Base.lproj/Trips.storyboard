@@ -238,6 +238,13 @@
                         <viewLayoutGuide key="safeArea" id="Zd4-cS-8CM"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="MyTrips" id="lky-TU-Cgw"/>
+                    <navigationItem key="navigationItem" title="My Trips" id="IlL-d1-JcG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="HPV-xW-N4R">
+                            <connections>
+                                <segue destination="HI3-sx-6kj" kind="show" id="UtD-CX-wSc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tripsTableView" destination="z1d-4s-dxh" id="J0X-BU-A9e"/>
                     </connections>
@@ -251,6 +258,68 @@
                 </collectionViewFlowLayout>
             </objects>
             <point key="canvasLocation" x="1780" y="293.70314842578711"/>
+        </scene>
+        <!--Create Trip-->
+        <scene sceneID="dvW-A8-Cq6">
+            <objects>
+                <viewController id="HI3-sx-6kj" customClass="CreateTripVC" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4kK-Y2-4PU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="eAY-VX-zER">
+                                <rect key="frame" x="16" y="64" width="343" height="392.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDY-yB-lEC">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="300"/>
+                                        <state key="normal" title="Button" image="destination_carousel_berlin"/>
+                                        <connections>
+                                            <action selector="coverImage:" destination="HI3-sx-6kj" eventType="touchUpInside" id="eZG-GK-Bc8"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you going?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecC-WY-WRe">
+                                        <rect key="frame" x="88" y="321" width="167" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Place Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wYg-Ek-H6f">
+                                        <rect key="frame" x="0.0" y="362.5" width="343" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="wYg-Ek-H6f" secondAttribute="trailing" id="iaU-C2-N0f"/>
+                                    <constraint firstItem="wYg-Ek-H6f" firstAttribute="leading" secondItem="eAY-VX-zER" secondAttribute="leading" id="wa0-qM-NiW"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eAY-VX-zER" firstAttribute="leading" secondItem="4kK-Y2-4PU" secondAttribute="leadingMargin" id="DU1-Ys-IR4"/>
+                            <constraint firstItem="eAY-VX-zER" firstAttribute="top" secondItem="4kK-Y2-4PU" secondAttribute="topMargin" id="FLB-N7-ufJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eAY-VX-zER" secondAttribute="trailing" id="pKh-Fi-esy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Gp2-fT-run"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Create Trip" id="RO1-58-gTL">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="OMh-Fr-PUu">
+                            <connections>
+                                <action selector="saveTrip:" destination="HI3-sx-6kj" id="SJe-6S-t9D"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="placeTextField" destination="wYg-Ek-H6f" id="uzT-uH-gRN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bRX-to-OBx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2604" y="293.70314842578711"/>
         </scene>
         <!--Profile-->
         <scene sceneID="hge-1U-vX9">

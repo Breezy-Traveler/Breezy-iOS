@@ -11,6 +11,7 @@
 		B91449432069E54E0074F71B /* MyTripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91449422069E54E0074F71B /* MyTripsViewController.swift */; };
 		B91449452069F9250074F71B /* ExploreTripsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91449442069F9250074F71B /* ExploreTripsCollectionViewCell.swift */; };
 		B940C850206EEB3100E7144D /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B940C84F206EEB3100E7144D /* TripModel.swift */; };
+		B940C85220719D0000E7144D /* CreateTripVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B940C85120719D0000E7144D /* CreateTripVC.swift */; };
 		B965294B2069A571007FAD4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965294A2069A571007FAD4D /* AppDelegate.swift */; };
 		B965294D2069A571007FAD4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965294C2069A571007FAD4D /* ViewController.swift */; };
 		B96529502069A571007FAD4D /* Trips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B965294E2069A571007FAD4D /* Trips.storyboard */; };
@@ -29,6 +30,7 @@
 		B91449422069E54E0074F71B /* MyTripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTripsViewController.swift; sourceTree = "<group>"; };
 		B91449442069F9250074F71B /* ExploreTripsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTripsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B940C84F206EEB3100E7144D /* TripModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripModel.swift; sourceTree = "<group>"; };
+		B940C85120719D0000E7144D /* CreateTripVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripVC.swift; sourceTree = "<group>"; };
 		B96529472069A571007FAD4D /* Breezy-Traveler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Breezy-Traveler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B965294A2069A571007FAD4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B965294C2069A571007FAD4D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				B965294E2069A571007FAD4D /* Trips.storyboard */,
 				B91449442069F9250074F71B /* ExploreTripsCollectionViewCell.swift */,
 				B91449422069E54E0074F71B /* MyTripsViewController.swift */,
+				B940C85120719D0000E7144D /* CreateTripVC.swift */,
 				B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */,
 				B965295F2069D17B007FAD4D /* TripsTVCell.swift */,
 				B940C84F206EEB3100E7144D /* TripModel.swift */,
@@ -279,6 +282,7 @@
 				B965295D2069C96E007FAD4D /* ExploreTripsTVCell.swift in Sources */,
 				B91449452069F9250074F71B /* ExploreTripsCollectionViewCell.swift in Sources */,
 				B9B8F916206C54A9009C017F /* API.swift in Sources */,
+				B940C85220719D0000E7144D /* CreateTripVC.swift in Sources */,
 				B965294D2069A571007FAD4D /* ViewController.swift in Sources */,
 				B9F7620A206D506500821C28 /* NetworkingLayer.swift in Sources */,
 				B940C850206EEB3100E7144D /* TripModel.swift in Sources */,
