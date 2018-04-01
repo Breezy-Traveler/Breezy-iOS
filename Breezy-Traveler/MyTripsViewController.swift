@@ -19,16 +19,28 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         tripsTableView.delegate = self
         tripsTableView.dataSource = self
+//        let site = Site(name: "Stay Gold", address: nil, visited: true, notes: nil, rating: nil)
+        let trip = Trip(place: "Oakland", startDate: nil, endDate: nil, hotels: [], sites: [], isPublic: false)
         
-        networkStack.loadUserTrips(user: testUser) { (result) in
+        networkStack.createTrip(trip: trip) { (result) in
             switch result {
-                
-            case .success(let tripsDictionaries):
-                print(tripsDictionaries)
-            case .failure(let tripsErrors):
-                print(tripsErrors.errors)
-            }
+
+                case .success(let trip):
+                    print(trip)
+                case .failure(let tripsErrors):
+                    print(tripsErrors.errors)
+                }
         }
+        
+//        networkStack.loadUserTrips(user: testUser) { (result) in
+//            switch result {
+//
+//            case .success(let tripsDictionaries):
+//                print(tripsDictionaries)
+//            case .failure(let tripsErrors):
+//                print(tripsErrors.errors)
+//            }
+//        }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {

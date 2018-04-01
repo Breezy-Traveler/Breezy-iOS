@@ -13,7 +13,7 @@ import Moya
 enum BTAPIEndPoints {
     case registerUser
     case loginUser
-    case createTrip
+    case createTrip(Trip)
     case loadTrips(BTUser)
 }
 
@@ -60,6 +60,8 @@ extension BTAPIEndPoints: TargetType {
         switch self {
         case .loadTrips:
             return .requestPlain
+        case .createTrip(let trip):
+            return .requestJSONEncodable(trip)
         default:
             return .requestPlain
         }
@@ -70,17 +72,15 @@ extension BTAPIEndPoints: TargetType {
     
     var headers: [String : String]? {
         var defaultHeader = [String : String]()
-        
+        defaultHeader["Authorization"] = "Token token=50ccee39f6e8972364f454db5cb589da"
         switch self {
-        case .loadTrips(let user):
+        case .loadTrips:
             // Uncomment when not testing
 //            let token = user.token
-            
             // FIXME: Change token to take in actual user token in future
-            defaultHeader["Authorization"] = "Token token=50ccee39f6e8972364f454db5cb589da"
             return defaultHeader
         default:
-            return nil
+            return defaultHeader
         }
     }
 }
