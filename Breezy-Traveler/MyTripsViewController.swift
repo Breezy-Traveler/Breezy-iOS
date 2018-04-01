@@ -20,15 +20,16 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
         tripsTableView.delegate = self
         tripsTableView.dataSource = self
         
-        networkStack.loadUserTrips(user: testUser) { (result) in
-            switch result {
-                
-            case .success(let tripsDictionaries):
-                print(tripsDictionaries)
-            case .failure(let tripsErrors):
-                print(tripsErrors.errors)
-            }
-        }
+        
+//        networkStack.loadUserTrips(user: testUser) { (result) in
+//            switch result {
+//
+//            case .success(let tripsDictionaries):
+//                print(tripsDictionaries)
+//            case .failure(let tripsErrors):
+//                print(tripsErrors.errors)
+//            }
+//        }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
