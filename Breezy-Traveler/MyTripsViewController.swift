@@ -11,11 +11,36 @@ import UIKit
 class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tripsTableView: UITableView!
+    
+    let networkStack = NetworkStack()
+    let testUser = BTUser(id: 1, name: "Phyllis", username: "Phyllis", password: "test123", email: "phyllis@gmail.com", token: "a80fe30858c8c519c7a9a509bc14f1e1")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tripsTableView.delegate = self
         tripsTableView.dataSource = self
+//        let site = Site(name: "Stay Gold", address: nil, visited: true, notes: nil, rating: nil)
+        let trip = Trip(place: "Oakland", startDate: nil, endDate: nil, hotels: [], sites: [], isPublic: false)
+        
+        networkStack.createTrip(trip: trip) { (result) in
+            switch result {
+
+                case .success(let trip):
+                    print(trip)
+                case .failure(let tripsErrors):
+                    print(tripsErrors.errors)
+                }
+        }
+        
+//        networkStack.loadUserTrips(user: testUser) { (result) in
+//            switch result {
+//
+//            case .success(let tripsDictionaries):
+//                print(tripsDictionaries)
+//            case .failure(let tripsErrors):
+//                print(tripsErrors.errors)
+//            }
+//        }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
