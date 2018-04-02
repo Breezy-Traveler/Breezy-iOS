@@ -16,6 +16,13 @@ class EnterAppVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        networkStack.getQuoteOfTheDay { (quoteModel) in
+            DispatchQueue.main.async {
+                self.quoteOfTheDayLabel.text = quoteModel.quote
+            }
+//            print(quoteModel.quote)
+        }
 
     }
 }
@@ -35,8 +42,7 @@ extension QODAPIEndPoint: TargetType {
         switch self {
         case .getQuote:
             return ""
-        default:
-            return ""
+
         }
     }
 
@@ -44,8 +50,6 @@ extension QODAPIEndPoint: TargetType {
     var method: Moya.Method {
         switch self {
         case .getQuote:
-            return .get
-        default:
             return .get
         }
     }
@@ -61,8 +65,6 @@ extension QODAPIEndPoint: TargetType {
         switch self {
         case .getQuote:
             return .requestPlain
-        default:
-            return .requestPlain
         }
     }
     
@@ -73,8 +75,6 @@ extension QODAPIEndPoint: TargetType {
         let defaultHeader = [String : String]()
         switch self {
         case .getQuote:
-            return defaultHeader
-        default:
             return defaultHeader
         }
     }
