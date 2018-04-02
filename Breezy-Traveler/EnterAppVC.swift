@@ -18,8 +18,6 @@ class EnterAppVC: UIViewController {
         super.viewDidLoad()
 
     }
-    
-
 }
 
 // 1: All the end points for HTTP request
