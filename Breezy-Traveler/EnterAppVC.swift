@@ -11,8 +11,12 @@ import Moya
 
 class EnterAppVC: UIViewController {
     
+    // Instance of networking stack
     let networkStack = NetworkStack()
+    
     @IBOutlet weak var quoteOfTheDayLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +24,9 @@ class EnterAppVC: UIViewController {
         networkStack.getQuoteOfTheDay { (quoteModel) in
             DispatchQueue.main.async {
                 self.quoteOfTheDayLabel.text = quoteModel.quote
+                self.authorLabel.text = "Author - \(quoteModel.author)"
             }
-//            print(quoteModel.quote)
         }
-
     }
 }
 
@@ -38,15 +41,16 @@ extension QODAPIEndPoint: TargetType {
     // 3: Base URL leads to no end point
     var baseURL: URL { return URL(string: "https://quotes.rest/qod.json")! }
     
+    // 4: Since we have the full route in the baseURL,
+    // no need to concatenate the path
     var path: String {
         switch self {
         case .getQuote:
             return ""
-
         }
     }
 
-    // 5: HTTP Method
+    // 5: HTTP Method, only need a simple get request
     var method: Moya.Method {
         switch self {
         case .getQuote:
@@ -55,7 +59,6 @@ extension QODAPIEndPoint: TargetType {
     }
     
     // 6: Test the data in Swift
-    // MARK: Todo later
     var sampleData: Data {
         return Data()
     }
