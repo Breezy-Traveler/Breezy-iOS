@@ -15,6 +15,7 @@ enum BTAPIEndPoints {
     case loginUser
     case createTrip(Trip)
     case loadTrips(BTUser)
+    case deleteTrip(Trip)
 }
 
 // 2: Conforms and implements Target Type (Moya specific protocol)
@@ -32,6 +33,11 @@ extension BTAPIEndPoints: TargetType {
             return "/login"
         case .createTrip, .loadTrips:
                 return "/users/trips"
+        case .deleteTrip(let trip):
+            guard let id = trip.id else {
+                fatalError("trip did not have an id")
+            }
+            return "/users/trips/\(id)"
         }
     }
     
@@ -46,6 +52,8 @@ extension BTAPIEndPoints: TargetType {
             return .post
         case .loadTrips:
             return .get
+        case .deleteTrip(_):
+            return .delete
         }
     }
     
@@ -62,17 +70,19 @@ extension BTAPIEndPoints: TargetType {
             return .requestPlain
         case .createTrip(let trip):
             return .requestJSONEncodable(trip)
+        case .deleteTrip:
+            return .requestPlain
         default:
             return .requestPlain
         }
     }
     
     // 8: Include the header as the last bit of the request
-    // Sample token for testing: "token": "50ccee39f6e8972364f454db5cb589da"
+    // Sample token for testing: "token": "a0a5304ef3a7ec90deb874a1dd3e4812"
     
     var headers: [String : String]? {
         var defaultHeader = [String : String]()
-        defaultHeader["Authorization"] = "Token token=50ccee39f6e8972364f454db5cb589da"
+        defaultHeader["Authorization"] = "Token token=a0a5304ef3a7ec90deb874a1dd3e4812"
         switch self {
         case .loadTrips:
             // Uncomment when not testing
