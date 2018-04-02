@@ -30,7 +30,7 @@ struct NetworkStack {
         }
     }
     
-    func loadUserTrips(user: BTUser, callback: @escaping (Result<[Trip], BTAPITripError>) -> ()) {
+    func loadUserTrips(user: BTUser, callback: @escaping (Result<[BTTrip], BTAPITripError>) -> ()) {
         /// handles the response data after the networkService has fired and come back with a result
         apiService.request(.loadTrips(user)) { (result) in
             switch result {
@@ -39,7 +39,7 @@ struct NetworkStack {
                 
                 switch response.statusCode {
                 case 200:
-                    guard let trips = try? JSONDecoder().decode([Trip].self, from: response.data) else {
+                    guard let trips = try? JSONDecoder().decode([BTTrip].self, from: response.data) else {
                         return assertionFailure("JSON data not decodable")
                     }
 
@@ -55,14 +55,14 @@ struct NetworkStack {
         }
     }
     
-    func createTrip(trip: Trip, callback: @escaping (Result<Trip, BTAPITripError>) -> ()) {
+    func createTrip(trip: BTTrip, callback: @escaping (Result<BTTrip, BTAPITripError>) -> ()) {
         apiService.request(.createTrip(trip)) { (result) in
             switch result {
             case .success(let response):
                 
                 switch response.statusCode {
                 case 201:
-                    guard let trip = try? JSONDecoder().decode(Trip.self, from: response.data) else {
+                    guard let trip = try? JSONDecoder().decode(BTTrip.self, from: response.data) else {
                         return assertionFailure("JSON data not decodable")
                     }
                     
@@ -77,7 +77,7 @@ struct NetworkStack {
         }
     }
     
-    func deleteTrip(trip: Trip, callback: @escaping (Result<Trip, BTAPITripError>) -> ()) {
+    func deleteTrip(trip: BTTrip, callback: @escaping (Result<BTTrip, BTAPITripError>) -> ()) {
         apiService.request(.deleteTrip(trip)) { (result) in
             switch result {
                 
@@ -132,8 +132,33 @@ struct NetworkStack {
 //
 //    }
 
-    
-
+extension NetworkStack {
+    func create(a hotel: BTHotel, for trip: BTTrip, callback: @escaping (Result<BTHotel, BTAPITripError>) -> ()) {
+        apiService.request(.createHotel(hotel, for: trip)) { (result) in
+            switch result {
+            case .success(let response):
+                switch response.statusCode {
+                    
+                // Created
+                case 201:
+                    guard let returnedHotel = try? JSONDecoder().decode(BTHotel.self, from: response.data) else {
+                        fatalError("could not decode json into hotel model")
+                    }
+                    
+                    callback(.success(returnedHotel))
+                    
+                // Unhandled codes
+                default:
+                    let errors = BTAPITripError(errors: ["Something went wrong."])
+                    callback(.failure(errors))
+                }
+            case .failure(let err):
+                let errors = BTAPITripError(errors: [err.localizedDescription])
+                callback(.failure(errors))
+            }
+        }
+    }
+}
 
 
 

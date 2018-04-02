@@ -21,7 +21,7 @@ struct BTHotel: Codable {
             return id
         }
     }
-    let name: String
+    let title: String
     let address: String?
     let visited: Bool
     let notes: String?
@@ -34,7 +34,7 @@ struct BTHotel: Codable {
     }
     
     enum CodingKeys: String, CodingKey {
-        case name = "title"
+        case title
         case address
         case visited = "is_visited"
         case notes
