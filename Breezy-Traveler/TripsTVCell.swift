@@ -9,7 +9,13 @@
 import UIKit
 
 class TripsTVCell: UITableViewCell {
-
+    
+    
+    @IBOutlet weak var placeName: UILabel!
+    @IBOutlet weak var datesRange: UILabel!
+    @IBOutlet weak var isPublic: UILabel!
+    @IBOutlet weak var coverImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

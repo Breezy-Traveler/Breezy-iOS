@@ -12,6 +12,8 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var tripsTableView: UITableView!
     
+    var trips = [Trip]()
+    
     let networkStack = NetworkStack()
     let testUser = BTUser(id: 1, name: "Phyllis", username: "Phyllis", password: "test123", email: "phyllis@gmail.com", token: "a80fe30858c8c519c7a9a509bc14f1e1")
 
@@ -21,15 +23,24 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
         tripsTableView.dataSource = self
         
         
-//        networkStack.loadUserTrips(user: testUser) { (result) in
-//            switch result {
-//
-//            case .success(let tripsDictionaries):
-//                print(tripsDictionaries)
-//            case .failure(let tripsErrors):
-//                print(tripsErrors.errors)
-//            }
-//        }
+        networkStack.loadUserTrips(user: testUser) { (result) in
+            switch result {
+
+            case .success(let tripsDictionaries):
+                
+                for trip in tripsDictionaries {
+                    self.trips.append(trip)
+                    DispatchQueue.main.async {
+                        self.tripsTableView.reloadData()
+                    }
+                    
+                }
+                
+                print(tripsDictionaries)
+            case .failure(let tripsErrors):
+                print(tripsErrors.errors)
+            }
+        }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,7 +51,7 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
         if section == 0 {
             return 1
         } else {
-            return 5
+            return trips.count
         }
     }
     
@@ -55,6 +66,11 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "tripsCell", for: indexPath) as! TripsTVCell
+            
+            let trip = trips[indexPath.row]
+            cell.placeName.text = trip.place
+            cell.isPublic.text = trip.isPublic.description
+            
             tableView.rowHeight = 80
             return cell
         }

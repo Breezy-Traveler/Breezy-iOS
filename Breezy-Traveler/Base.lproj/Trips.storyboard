@@ -212,6 +212,12 @@
                                                 <constraint firstAttribute="bottom" secondItem="x7w-dC-OHT" secondAttribute="bottom" id="lFE-dd-Arw"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="coverImage" destination="4J0-oQ-4DR" id="Rch-rG-ltN"/>
+                                            <outlet property="datesRange" destination="qQa-an-sFG" id="4r8-bu-Qa1"/>
+                                            <outlet property="isPublic" destination="oRS-4A-UGg" id="Pum-5K-JLj"/>
+                                            <outlet property="placeName" destination="itz-h9-Ap2" id="TMD-gc-pbe"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
