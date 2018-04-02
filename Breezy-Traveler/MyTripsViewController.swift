@@ -20,8 +20,7 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         tripsTableView.delegate = self
-        tripsTableView.dataSource = self
-        
+        tripsTableView.dataSource = self        
     }
     
     override func viewWillAppear(_ animated: Bool) {
