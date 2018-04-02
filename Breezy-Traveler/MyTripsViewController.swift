@@ -12,6 +12,8 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var tripsTableView: UITableView!
     
+    var trips = [Trip]()
+    
     let networkStack = NetworkStack()
     let testUser = BTUser(id: 1, name: "Phyllis", username: "Phyllis", password: "test123", email: "phyllis@gmail.com", token: "a80fe30858c8c519c7a9a509bc14f1e1")
 
@@ -20,16 +22,22 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
         tripsTableView.delegate = self
         tripsTableView.dataSource = self
         
-        
-//        networkStack.loadUserTrips(user: testUser) { (result) in
-//            switch result {
-//
-//            case .success(let tripsDictionaries):
-//                print(tripsDictionaries)
-//            case .failure(let tripsErrors):
-//                print(tripsErrors.errors)
-//            }
-//        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        networkStack.loadUserTrips(user: testUser) { (result) in
+            switch result {
+                
+            case .success(let tripsDictionaries):                                
+                    self.trips = tripsDictionaries
+                    DispatchQueue.main.async {
+                        self.tripsTableView.reloadData()
+                    }
+                
+            case .failure(let tripsErrors):
+                print(tripsErrors.errors)
+            }
+        }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,7 +48,7 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
         if section == 0 {
             return 1
         } else {
-            return 5
+            return trips.count
         }
     }
     
@@ -55,6 +63,16 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "tripsCell", for: indexPath) as! TripsTVCell
+            
+            let trip = trips[indexPath.row]
+            
+            if let startDate = trip.startDate, let endDate = trip.endDate {
+                cell.startDate.text = startDate.description
+                cell.endDate.text = endDate.description
+            }
+            cell.placeName.text = trip.place
+            cell.isPublic.text = trip.isPublic.description
+            
             tableView.rowHeight = 80
             return cell
         }
@@ -79,6 +97,43 @@ extension MyTripsViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         return cell
     }
+    
+    // Swipe left actions: edit and delete
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexpath) in
+            print("Delete Action Tapped")
+            let deleteTrip = self.trips[indexPath.row]
+            // item to delete
+            print(deleteTrip)
+            // delete data from the inventories array
+            self.trips.remove(at: indexPath.row)
+            
+            // delete the row from the tableview
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            // delete trip from the database
+            self.networkStack.deleteTrip(trip: deleteTrip, callback: { (result) in
+                switch result {
+                    
+                case .success(_):
+                    print("\(deleteTrip.place)\n was deleted")
+                    DispatchQueue.main.async {
+                        self.tripsTableView.reloadData()
+                    }
+                    print(deleteTrip)
+                case .failure(let tripsErrors):
+                    print(tripsErrors.errors)
+                }
+            })
+        }
+        
+        deleteAction.backgroundColor = .red
+        
+        return [deleteAction]
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100.0, height: 80.0)
