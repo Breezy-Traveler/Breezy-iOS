@@ -21,9 +21,11 @@ struct NetworkStack {
         
         var localizedDescription: String {
             
-            // Combine the list of erros in sentences
-            // Reduce takes an array and concatenates all the arguments
-            // $0 if the first argument, $1 is the second arg
+            /*
+             Combine the list of erros in sentences
+             Reduce takes an array and concatenates all the arguments
+             $0 if the first argument, $1 is the second arg
+            */
             return self.errors.reduce("", { $0 + "\($1)\n"} )
         }
     }
@@ -68,6 +70,26 @@ struct NetworkStack {
                 default:
                     return assertionFailure("\(response.statusCode)")
                 }
+            case .failure(let err):
+                let errors = BTAPITripError(errors: [err.localizedDescription])
+                callback(.failure(errors))
+            }
+        }
+    }
+    
+    func deleteTrip(trip: Trip, callback: @escaping (Result<Trip, BTAPITripError>) -> ()) {
+        apiService.request(.deleteTrip(trip)) { (result) in
+            switch result {
+                
+            case .success(let response):
+                switch response.statusCode {
+                case 204:
+                    
+                    callback(.success(trip))
+                default:
+                    return assertionFailure("\(response.statusCode)")
+                }
+            
             case .failure(let err):
                 let errors = BTAPITripError(errors: [err.localizedDescription])
                 callback(.failure(errors))

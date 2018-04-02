@@ -9,6 +9,7 @@
 import Foundation
 
 struct Trip: Codable {
+    let id: Int?
     let place: String
     let startDate: Date?
     let endDate: Date?
@@ -17,6 +18,7 @@ struct Trip: Codable {
     let isPublic: Bool
     
     enum CodingKeys: String, CodingKey {
+        case id
         case place
         case startDate = "start_date"
         case endDate = "end_date"
