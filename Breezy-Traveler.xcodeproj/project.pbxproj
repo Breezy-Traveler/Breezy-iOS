@@ -14,7 +14,7 @@
 		B940C85220719D0000E7144D /* CreateTripVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B940C85120719D0000E7144D /* CreateTripVC.swift */; };
 		B965294B2069A571007FAD4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965294A2069A571007FAD4D /* AppDelegate.swift */; };
 		B965294D2069A571007FAD4D /* EnterAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965294C2069A571007FAD4D /* EnterAppVC.swift */; };
-		B96529502069A571007FAD4D /* Trips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B965294E2069A571007FAD4D /* Trips.storyboard */; };
+		B96529502069A571007FAD4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B965294E2069A571007FAD4D /* Main.storyboard */; };
 		B96529522069A571007FAD4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B96529512069A571007FAD4D /* Assets.xcassets */; };
 		B96529552069A571007FAD4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B96529532069A571007FAD4D /* LaunchScreen.storyboard */; };
 		B965295D2069C96E007FAD4D /* ExploreTripsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */; };
@@ -23,6 +23,7 @@
 		B9B8F912206C52AF009C017F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8F911206C52AF009C017F /* UserModel.swift */; };
 		B9B8F916206C54A9009C017F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8F915206C54A9009C017F /* API.swift */; };
 		B9F7620A206D506500821C28 /* NetworkingLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F76209206D506500821C28 /* NetworkingLayer.swift */; };
+		E98F03482072A95A004D4074 /* Trips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E98F03472072A95A004D4074 /* Trips.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +36,7 @@
 		B96529472069A571007FAD4D /* Breezy-Traveler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Breezy-Traveler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B965294A2069A571007FAD4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B965294C2069A571007FAD4D /* EnterAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterAppVC.swift; sourceTree = "<group>"; };
-		B965294F2069A571007FAD4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Trips.storyboard; sourceTree = "<group>"; };
+		B965294F2069A571007FAD4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B96529512069A571007FAD4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B96529542069A571007FAD4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B96529562069A571007FAD4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,6 +47,7 @@
 		B9B8F915206C54A9009C017F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		B9F76209206D506500821C28 /* NetworkingLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingLayer.swift; sourceTree = "<group>"; };
 		E61EF07259D1B3C17908FB3F /* Pods-Breezy-Traveler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy-Traveler.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.release.xcconfig"; sourceTree = "<group>"; };
+		E98F03472072A95A004D4074 /* Trips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Trips.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				B965294A2069A571007FAD4D /* AppDelegate.swift */,
+				B965294E2069A571007FAD4D /* Main.storyboard */,
 				B9A7E97A20729F9A0054DC4F /* Quote */,
 				B9B8F913206C5317009C017F /* User */,
 				B9B8F90F206C5276009C017F /* Trip */,
@@ -113,7 +116,7 @@
 		B9B8F90F206C5276009C017F /* Trip */ = {
 			isa = PBXGroup;
 			children = (
-				B965294E2069A571007FAD4D /* Trips.storyboard */,
+				E98F03472072A95A004D4074 /* Trips.storyboard */,
 				B91449442069F9250074F71B /* ExploreTripsCollectionViewCell.swift */,
 				B91449422069E54E0074F71B /* MyTripsViewController.swift */,
 				B9A7E9762071B4130054DC4F /* TripDetailVC.swift */,
@@ -213,8 +216,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B96529552069A571007FAD4D /* LaunchScreen.storyboard in Resources */,
+				E98F03482072A95A004D4074 /* Trips.storyboard in Resources */,
 				B96529522069A571007FAD4D /* Assets.xcassets in Resources */,
-				B96529502069A571007FAD4D /* Trips.storyboard in Resources */,
+				B96529502069A571007FAD4D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,12 +309,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B965294E2069A571007FAD4D /* Trips.storyboard */ = {
+		B965294E2069A571007FAD4D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B965294F2069A571007FAD4D /* Base */,
 			);
-			name = Trips.storyboard;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		B96529532069A571007FAD4D /* LaunchScreen.storyboard */ = {
@@ -437,7 +441,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S44SNCV32X;
+				DEVELOPMENT_TEAM = 8U3L6K9JA6;
 				INFOPLIST_FILE = "Breezy-Traveler/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.breezyApps.Breezy-Traveler";
@@ -453,7 +457,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S44SNCV32X;
+				DEVELOPMENT_TEAM = 8U3L6K9JA6;
 				INFOPLIST_FILE = "Breezy-Traveler/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.breezyApps.Breezy-Traveler";
