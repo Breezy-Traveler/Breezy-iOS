@@ -113,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				B965294C2069A571007FAD4D /* EnterAppVC.swift */,
+				B98730592072ACE80088AC43 /* QuoteModel.swift */,
 			);
 			name = Quote;
 			sourceTree = "<group>";
@@ -311,6 +312,7 @@
 				B987305F2072E19B0088AC43 /* RegisterVC.swift in Sources */,
 				B940C850206EEB3100E7144D /* TripModel.swift in Sources */,
 				B965294B2069A571007FAD4D /* AppDelegate.swift in Sources */,
+				B987305A2072ACE80088AC43 /* QuoteModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
