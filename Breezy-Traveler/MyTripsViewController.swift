@@ -12,7 +12,7 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var tripsTableView: UITableView!
     
-    var trips = [Trip]()
+    var trips = [BTTrip]()
     
     let networkStack = NetworkStack()
     let testUser = BTUser(id: 1, name: "Phyllis", username: "Phyllis", password: "test123", email: "phyllis@gmail.com", token: "a80fe30858c8c519c7a9a509bc14f1e1")
