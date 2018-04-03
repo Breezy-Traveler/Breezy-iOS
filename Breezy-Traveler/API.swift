@@ -11,9 +11,8 @@ import Moya
 
 // 1: All the end points for HTTP request
 enum BTAPIEndPoints {
-    
     // Users
-    case registerUser
+    case registerUser(UserRegister)
     case loginUser
     
     // Trips
@@ -124,10 +123,12 @@ extension BTAPIEndPoints: TargetType {
     // 7: Body + params and any attachments
     var task: Task {
         switch self {
-            
-            // Users
-            
-            // Trips
+          
+        // Users
+        case .registerUser(let registerUser):
+            return .requestJSONEncodable(registerUser)
+          
+        // Trips
         case .loadTrips:
             return .requestPlain
         case .createTrip(let trip):
