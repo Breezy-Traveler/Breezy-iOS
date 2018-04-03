@@ -3,7 +3,7 @@
 //  Breezy-Traveler
 //
 //  Created by Phyllis Wong on 3/26/18.
-//  Copyright © 2018 Phyllis Wong. All rights reserved.
+//  Copyright © 2018 Breezy Traveler. All rights reserved.
 //
 
 import UIKit
