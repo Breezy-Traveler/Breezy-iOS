@@ -32,7 +32,7 @@ class CreateTripVC: UIViewController {
             return
         }
         
-        let trip = Trip(id: nil, place: place, startDate: nil, endDate: nil, hotels: [], sites: [], isPublic: false)
+        let trip = BTTrip(place: place, isPublic: false)
         
         
         networkStack.createTrip(trip: trip) { (result) in
