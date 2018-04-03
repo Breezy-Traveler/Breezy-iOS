@@ -15,8 +15,7 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.userNameTf.delegate = self
-
+        self.hideKeyboard()
         // Do any additional setup after loading the view.
     }
 
@@ -30,15 +29,3 @@ class LoginVC: UIViewController {
     
 }
 
-extension LoginVC: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    // hide the keyboard when user touches outside the keyboard
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-}

@@ -21,6 +21,7 @@
 		B96529602069D17B007FAD4D /* TripsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965295F2069D17B007FAD4D /* TripsTVCell.swift */; };
 		B987305D2072DD570088AC43 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B987305C2072DD570088AC43 /* LoginVC.swift */; };
 		B987305F2072E19B0088AC43 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B987305E2072E19B0088AC43 /* RegisterVC.swift */; };
+		B98730622072FD570088AC43 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B98730602072FD570088AC43 /* User.storyboard */; };
 		B9A7E9772071B4130054DC4F /* TripDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A7E9762071B4130054DC4F /* TripDetailVC.swift */; };
 		B9B8F912206C52AF009C017F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8F911206C52AF009C017F /* UserModel.swift */; };
 		B9B8F916206C54A9009C017F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8F915206C54A9009C017F /* API.swift */; };
@@ -46,6 +47,7 @@
 		B965295F2069D17B007FAD4D /* TripsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTVCell.swift; sourceTree = "<group>"; };
 		B987305C2072DD570088AC43 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		B987305E2072E19B0088AC43 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		B98730612072FD570088AC43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/User.storyboard; sourceTree = "<group>"; };
 		B9A7E9762071B4130054DC4F /* TripDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailVC.swift; sourceTree = "<group>"; };
 		B9B8F911206C52AF009C017F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B9B8F915206C54A9009C017F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		B9B8F913206C5317009C017F /* User */ = {
 			isa = PBXGroup;
 			children = (
+				B98730602072FD570088AC43 /* User.storyboard */,
 				B9B8F911206C52AF009C017F /* UserModel.swift */,
 				B987305C2072DD570088AC43 /* LoginVC.swift */,
 				B987305E2072E19B0088AC43 /* RegisterVC.swift */,
@@ -223,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B96529552069A571007FAD4D /* LaunchScreen.storyboard in Resources */,
+				B98730622072FD570088AC43 /* User.storyboard in Resources */,
 				E98F03482072A95A004D4074 /* Trips.storyboard in Resources */,
 				B96529522069A571007FAD4D /* Assets.xcassets in Resources */,
 				B96529502069A571007FAD4D /* Main.storyboard in Resources */,
@@ -333,6 +337,14 @@
 				B96529542069A571007FAD4D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B98730602072FD570088AC43 /* User.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B98730612072FD570088AC43 /* Base */,
+			);
+			name = User.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -451,7 +463,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8U3L6K9JA6;
+				DEVELOPMENT_TEAM = S44SNCV32X;
 				INFOPLIST_FILE = "Breezy-Traveler/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.breezyApps.Breezy-Traveler";
@@ -467,7 +479,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8U3L6K9JA6;
+				DEVELOPMENT_TEAM = S44SNCV32X;
 				INFOPLIST_FILE = "Breezy-Traveler/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.breezyApps.Breezy-Traveler";
