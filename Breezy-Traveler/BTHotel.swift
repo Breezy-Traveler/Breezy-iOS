@@ -41,4 +41,20 @@ struct BTHotel: Codable {
         case rating = "ratings"
         case idValue = "id"
     }
+    
+    init(
+        id: Int? = nil,
+        title: String,
+        address: String? = nil,
+        visited: Bool,
+        notes: String? = nil,
+        rating: Like? = nil) {
+        
+        self.idValue = id
+        self.title = title
+        self.address = address
+        self.visited = visited
+        self.notes = notes
+        self.rating = rating
+    }
 }
