@@ -13,7 +13,7 @@ import Moya
 enum BTAPIEndPoints {
     // Users
     case registerUser(UserRegister)
-    case loginUser
+    case loginUser(UserLogin)
     
     // Trips
     case createTrip(BTTrip)
@@ -157,6 +157,8 @@ extension BTAPIEndPoints: TargetType {
             // Users
         case .registerUser(let registerUser):
             return .requestJSONEncodable(registerUser)
+        case .loginUser(let loginUser):
+            return .requestJSONEncodable(loginUser)
           
             // Trips
         case .createTrip(let trip):
@@ -184,18 +186,19 @@ extension BTAPIEndPoints: TargetType {
     
     var headers: [String : String]? {
         var defaultHeaders = [String : String]()
+        let userPersistence = UserPersistence()
         
         // default header pairs
         
         if self.isRegisteringOrLoginging {
             
         } else {
-            
+            guard let token = userPersistence.getUserToken() else {
+                fatalError("no user token")
+            }
             // Authorization
-            // FIXME: Change token to take in actual user token in future
-            defaultHeaders["Authorization"] = "Token token=a0a5304ef3a7ec90deb874a1dd3e4812"
+            defaultHeaders["Authorization"] = "Token token=\(token)"
         }
-        
         return defaultHeaders
     }
 }

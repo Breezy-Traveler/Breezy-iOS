@@ -18,10 +18,14 @@ struct BTUser: Codable {
     let token: String?
 }
 
-struct UserRegister: Codable {
-    
+struct UserRegister: Codable {    
     let name: String
     let username: String
     let password: String
     let email: String
+}
+
+struct UserLogin: Codable {
+    let username: String
+    let password: String
 }
