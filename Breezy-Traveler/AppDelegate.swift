@@ -16,29 +16,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let netStack = NetworkStack()
-        
-        let newTrip = BTTrip(place: "New PLace!!!", isPublic: false)
-        netStack.createTrip(trip: newTrip) { (result) in
-            switch result {
-            case .success(let returnedTrip):
-                print("Successfully created trip: \(returnedTrip.place)")
-                
-                // Add a Hotel for the added trip
-                let newHotel = BTHotel(title: "Days Inn, yo!", visited: false)
-                netStack.create(a: newHotel, for: returnedTrip, callback: { (result) in
-                    switch result {
-                    case .success(let returnedHotel):
-                        print("Successfully created hotel, \(returnedHotel.title), for the \(returnedTrip.place) trip")
-                    case .failure(let errors):
-                        print("Failed! \(errors)")
-                    }
-                })
-                
-            case .failure(let errors):
-                print("Failed! \(errors)")
-            }
-        }
+        // FIXME: Remove when done testing
+//        let netStack = NetworkStack()
+//
+//        let newTrip = BTTrip(place: "New PLace!!!", isPublic: false)
+//        netStack.createTrip(trip: newTrip) { (result) in
+//            switch result {
+//            case .success(let returnedTrip):
+//                print("Successfully created trip: \(returnedTrip.place)")
+//
+//                // Add a Hotel for the added trip
+//                let newHotel = BTHotel(title: "Days Inn, yo!", visited: false)
+//                netStack.create(a: newHotel, for: returnedTrip, callback: { (result) in
+//                    switch result {
+//                    case .success(let returnedHotel):
+//                        print("Successfully created hotel, \(returnedHotel.title), for the \(returnedTrip.place) trip")
+//                    case .failure(let errors):
+//                        print("Failed! \(errors)")
+//                    }
+//                })
+//
+//            case .failure(let errors):
+//                print("Failed! \(errors)")
+//            }
+//        }
         
         return true
     }
