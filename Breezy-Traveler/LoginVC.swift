@@ -45,6 +45,9 @@ class LoginVC: UIViewController {
                 }
                 
             case .failure(let userErrors):
+                DispatchQueue.main.async {
+                    unwrappedSelf.present(AlertViewController.showAlert(), animated: true, completion: nil)
+                }
                 print(userErrors.errors)
             }
         }
