@@ -11,19 +11,38 @@ import KeychainSwift
 
 struct UserPersistence {
     
+    private let usernameKey: String = "username"
+    private let passwordKey: String = "password"
+    private let tokenKey: String = "token"
+    
     func loginUser(username: String, password: String) {
         let keychain = KeychainSwift()
-        keychain.set(username, forKey: "username")
-        keychain.set(password, forKey: "password")
+        keychain.set(username, forKey: usernameKey)
+        keychain.set(password, forKey: passwordKey)
         
     }
     
     func getUserLoginCredentials() -> (username: String, password: String)? {
         let keychain = KeychainSwift()
-        guard let username = keychain.get("username"), let password = keychain.get("password") else {
+        guard let username = keychain.get(usernameKey), let password = keychain.get(passwordKey) else {
             return nil
         }
         return (username, password)
+    }
+    
+    func getUserToken() -> String? {
+        let keychain = KeychainSwift()
+        guard let token = keychain.get(tokenKey) else {
+            return nil
+        }
+        return token
+    }
+    
+    func logoutUser() {
+        let keychain = KeychainSwift()
+        keychain.delete(usernameKey)
+        keychain.delete(passwordKey)
+        keychain.delete(tokenKey)
     }
     
     func checkUserLoggedIn(callback: @escaping (Bool) -> ()) {

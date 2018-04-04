@@ -17,10 +17,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--EnterApp-->
+        <!--QuoteVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="EnterAppVC" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="QuoteVC" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -84,7 +84,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="EnterApp" id="pSt-xF-yW3"/>
+                    <navigationItem key="navigationItem" title="QuoteVC" id="pSt-xF-yW3">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="9EK-vQ-XwK">
+                            <connections>
+                                <action selector="pressedLogout:" destination="BYZ-38-t0r" id="EWJ-Se-NG0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="authorLabel" destination="Swe-rc-nDc" id="WRg-iQ-uqk"/>
                         <outlet property="quoteOfTheDayLabel" destination="MX2-WW-zTv" id="8Za-sE-UFj"/>

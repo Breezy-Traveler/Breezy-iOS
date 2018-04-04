@@ -13,7 +13,7 @@
 		B940C850206EEB3100E7144D /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B940C84F206EEB3100E7144D /* TripModel.swift */; };
 		B940C85220719D0000E7144D /* CreateTripVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B940C85120719D0000E7144D /* CreateTripVC.swift */; };
 		B965294B2069A571007FAD4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965294A2069A571007FAD4D /* AppDelegate.swift */; };
-		B965294D2069A571007FAD4D /* EnterAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965294C2069A571007FAD4D /* EnterAppVC.swift */; };
+		B965294D2069A571007FAD4D /* QuoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965294C2069A571007FAD4D /* QuoteVC.swift */; };
 		B96529502069A571007FAD4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B965294E2069A571007FAD4D /* Main.storyboard */; };
 		B96529522069A571007FAD4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B96529512069A571007FAD4D /* Assets.xcassets */; };
 		B96529552069A571007FAD4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B96529532069A571007FAD4D /* LaunchScreen.storyboard */; };
@@ -45,7 +45,7 @@
 		B940C85120719D0000E7144D /* CreateTripVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripVC.swift; sourceTree = "<group>"; };
 		B96529472069A571007FAD4D /* Breezy-Traveler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Breezy-Traveler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B965294A2069A571007FAD4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B965294C2069A571007FAD4D /* EnterAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterAppVC.swift; sourceTree = "<group>"; };
+		B965294C2069A571007FAD4D /* QuoteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteVC.swift; sourceTree = "<group>"; };
 		B965294F2069A571007FAD4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B96529512069A571007FAD4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B96529542069A571007FAD4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				B9F9F175207305FB00F0D24D /* QuoteModel.swift */,
-				B965294C2069A571007FAD4D /* EnterAppVC.swift */,
+				B965294C2069A571007FAD4D /* QuoteVC.swift */,
 			);
 			name = Quote;
 			sourceTree = "<group>";
@@ -350,7 +350,7 @@
 				B91449452069F9250074F71B /* ExploreTripsCollectionViewCell.swift in Sources */,
 				B9B8F916206C54A9009C017F /* API.swift in Sources */,
 				B940C85220719D0000E7144D /* CreateTripVC.swift in Sources */,
-				B965294D2069A571007FAD4D /* EnterAppVC.swift in Sources */,
+				B965294D2069A571007FAD4D /* QuoteVC.swift in Sources */,
 				B987305D2072DD570088AC43 /* LoginVC.swift in Sources */,
 				B9F7620A206D506500821C28 /* NetworkingLayer+Users.swift in Sources */,
 				B987305F2072E19B0088AC43 /* RegisterVC.swift in Sources */,

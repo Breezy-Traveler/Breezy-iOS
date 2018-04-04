@@ -8,8 +8,9 @@
 
 import UIKit
 import Moya
+import KeychainSwift
 
-class EnterAppVC: UIViewController {
+class QuoteVC: UIViewController {
     
     // Instance of networking stack
     let networkStack = NetworkStack()
@@ -17,6 +18,7 @@ class EnterAppVC: UIViewController {
     
     @IBOutlet weak var quoteOfTheDayLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
+    
     
     
     override func viewDidLoad() {
@@ -37,6 +39,12 @@ class EnterAppVC: UIViewController {
                 self.performSegue(withIdentifier: "loginControllerSegue", sender: nil)
             }
         }
+    }
+    
+    @IBAction func pressedLogout(_ sender: UIBarButtonItem) {
+        let userPersistence = UserPersistence()
+        userPersistence.logoutUser()
+        self.performSegue(withIdentifier: "loginControllerSegue", sender: nil)
     }
 }
 
