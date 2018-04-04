@@ -19,31 +19,20 @@ extension NetworkStack {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let json = try? JSON(data: response.data) else {
-                        fatalError("No json")
-                        
-                    }
-                    
+                    guard let json = try? JSON(data: response.data) else { fatalError("No json") }
                     let jsonContents = json["contents"]
                     let jsonQuote = jsonContents["quotes"][0]
-                    guard let jsonQuoteData = try? jsonQuote.rawData() else {
-                        fatalError("no json data")
-                    }
-                    
-                    guard let quote = try? JSONDecoder().decode(Quote.self, from: jsonQuoteData) else {
-                        fatalError("No quote")
-                    }
-                    //                    print(quote)
+                    guard let jsonQuoteData = try? jsonQuote.rawData() else { fatalError("no json data") }
+                    guard let quote = try? JSONDecoder().decode(Quote.self, from: jsonQuoteData) else { fatalError("No quote") }
                     callback(quote)
+                
                 default:
                     return assertionFailure("\(response.statusCode)")
                 }
                 
             case .failure(let err):
+                print("Error: \(err)")
                 break
-                //TODO: invoke callback(.failure(errors))
-                //                let errors = BTAPITripError(errors: [err.localizedDescription])
-                //                callback(.failure(errors))
             }
         }
     }

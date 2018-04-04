@@ -64,7 +64,8 @@ struct NetworkStack {
                     callback(.success(user))
                 
                 case 401:
-                    
+                    let errors = BTAPIUserError(errors: ["Invalid Credentials"])
+                    callback(.failure(errors))
                 default:
                     return assertionFailure("\(response.statusCode)")
                 }
