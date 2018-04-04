@@ -127,7 +127,7 @@ extension BTAPIEndPoints: TargetType {
         // Users
         case .registerUser(let registerUser):
             return .requestJSONEncodable(registerUser)
-        case .loadTrips(let loginUser):
+        case .loginUser(let loginUser):
             return .requestJSONEncodable(loginUser)
           
         // Trips

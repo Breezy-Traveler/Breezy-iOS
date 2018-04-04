@@ -40,7 +40,7 @@ class RegisterVC: UIViewController {
                 
                 // Go back to Login View Controller
                 DispatchQueue.main.async {
-                    self.navigationController?.popViewController(animated: true)
+                    self.presentingViewController!.dismiss(animated: true, completion: nil)
                 }
                 
             case .failure(let userErrors):

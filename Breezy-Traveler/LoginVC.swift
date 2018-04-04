@@ -11,6 +11,7 @@ import UIKit
 class LoginVC: UIViewController {
 
     let networkStack = NetworkStack()
+    let userPersistence = UserPersistence()
     
     @IBOutlet weak var userNameTf: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
@@ -18,7 +19,7 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboard()
-        // Do any additional setup after loading the view.
+        
     }
 
     @IBAction func pressedLogin(_ sender: UIButton) {
@@ -28,15 +29,19 @@ class LoginVC: UIViewController {
         
         let user = UserLogin(username: username, password: password)
         
-        networkStack.login(a: user) { (result) in
+        networkStack.login(a: user) {[weak self] (result) in
+            guard let unwrappedSelf = self else {
+                return
+            }
             switch result {
                 
-            case .success(let user):
-                print(user)
+            case .success(let returnUser):
+                print(returnUser)
+                unwrappedSelf.userPersistence.loginUser(username: user.username, password: user.password)
                 
                 // Go back to Login View Controller
                 DispatchQueue.main.async {
-                    self.navigationController?.popViewController(animated: true)
+                    unwrappedSelf.presentingViewController!.dismiss(animated: true, completion: nil)
                 }
                 
             case .failure(let userErrors):
