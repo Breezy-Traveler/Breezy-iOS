@@ -16,30 +16,75 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        // FIXME: Remove when done testing
-//        let netStack = NetworkStack()
-//
-//        let newTrip = BTTrip(place: "New PLace!!!", isPublic: false)
-//        netStack.createTrip(trip: newTrip) { (result) in
-//            switch result {
-//            case .success(let returnedTrip):
-//                print("Successfully created trip: \(returnedTrip.place)")
-//
-//                // Add a Hotel for the added trip
-//                let newHotel = BTHotel(title: "Days Inn, yo!", visited: false)
-//                netStack.create(a: newHotel, for: returnedTrip, callback: { (result) in
-//                    switch result {
-//                    case .success(let returnedHotel):
-//                        print("Successfully created hotel, \(returnedHotel.title), for the \(returnedTrip.place) trip")
-//                    case .failure(let errors):
-//                        print("Failed! \(errors)")
-//                    }
-//                })
-//
-//            case .failure(let errors):
-//                print("Failed! \(errors)")
-//            }
-//        }
+        // TODO: Remove when done testing
+        let netStack = NetworkStack()
+
+        let newTrip = BTTrip(place: "New PLace!!!", isPublic: false)
+        netStack.createTrip(trip: newTrip) { (result) in
+            switch result {
+            case .success(let returnedTrip):
+                print("Successfully created trip: \(returnedTrip.place)")
+
+                // Add a Hotel for the added trip
+                let newHotel = BTHotel(title: "Days Inn, yo!", visited: false)
+                let dg = DispatchGroup()
+                dg.enter()
+                var returnedHotel: BTHotel? = nil
+                print("#### creating hotel")
+                netStack.create(a: newHotel, for: returnedTrip, completion: { (result) in
+                    switch result {
+                    case .success(let returnedHotelValue):
+                        returnedHotel = returnedHotelValue
+                        print("Successfully created hotel, \(returnedHotel!.title), for the \(returnedTrip.place) trip")
+                        
+                    case .failure(let errors):
+                        print("Failed! \(errors)")
+                    }
+                    print("#### done (creating hotel)")
+                    dg.leave()
+                })
+                
+                // update added hotel
+                dg.notify(queue: .main, execute: {
+                    let dg = DispatchGroup()
+                    print("#### updating hotel \(returnedHotel!)")
+                    dg.enter()
+                    returnedHotel!.address = "1234 California St"
+                    netStack.update(hotel: returnedHotel!, for: returnedTrip, completion: { (result) in
+                        switch result {
+                        case .success(let returnedHotelValue):
+                            returnedHotel = returnedHotelValue
+                            print("Successfully updated hotel, \(returnedHotel!.title), to \(returnedHotelValue)")
+                            
+                        case .failure(let errors):
+                            print("Failed! \(errors)")
+                        }
+                        print("#### done (updating hotel)")
+                        dg.leave()
+                    })
+                    
+                    dg.notify(queue: .main, execute: {
+                        print("#### delete hotel \(returnedHotel!)")
+                        netStack.delete(hotel: returnedHotel!, for: returnedTrip, completion: { (result) in
+                            switch result {
+                            case .success(let message):
+                                print("Successfully deleted hotel, \(message)")
+                                
+                            case .failure(let errors):
+                                print("Failed! \(errors)")
+                            }
+                            print("#### done (delete hotel)")
+                        })
+                    })
+                })
+                
+                // Remove that added Hotel for the added trip
+                
+
+            case .failure(let errors):
+                print("Failed! \(errors)")
+            }
+        }
         
         return true
     }

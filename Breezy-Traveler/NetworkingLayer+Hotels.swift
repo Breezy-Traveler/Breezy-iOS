@@ -95,7 +95,7 @@ extension NetworkStack {
             switch result {
             case .success(let response):
                 switch response.statusCode {
-                case 200:
+                case 204:
                     completion(.success("\(hotel.title) was deleted"))
                 default:
                     let serverErrors = (try! JSON(data: response.data).dictionaryObject) ?? ["error": "Server Error"]
