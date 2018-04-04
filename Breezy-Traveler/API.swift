@@ -13,7 +13,7 @@ import Moya
 enum BTAPIEndPoints {
     // Users
     case registerUser(UserRegister)
-    case loginUser
+    case loginUser(UserLogin)
     
     // Trips
     case createTrip(BTTrip)
@@ -127,6 +127,8 @@ extension BTAPIEndPoints: TargetType {
         // Users
         case .registerUser(let registerUser):
             return .requestJSONEncodable(registerUser)
+        case .loadTrips(let loginUser):
+            return .requestJSONEncodable(loginUser)
           
         // Trips
         case .loadTrips:

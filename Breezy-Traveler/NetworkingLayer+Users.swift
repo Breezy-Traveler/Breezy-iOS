@@ -68,6 +68,29 @@ struct NetworkStack {
             }
         }
     }
+    
+    func login(a user: UserLogin, callback: @escaping (Result<BTUser, BTAPIUserError>) -> ()) {
+        /// handles the response data after the networkService has fired and come back with a result
+        apiService.request(.loginUser(user)) { (result) in
+            switch result {
+            case .success(let response):
+                
+                switch response.statusCode {
+                case 201:
+                    guard let user = try? JSONDecoder().decode(BTUser.self, from: response.data) else {
+                        return assertionFailure("JSON data not decodable")
+                    }
+                    
+                    callback(.success(user))
+                default:
+                    return assertionFailure("\(response.statusCode)")
+                }
+            case .failure(let err):
+                let errors = BTAPIUserError(errors: [err.localizedDescription])
+                callback(.failure(errors))
+            }
+        }
+    }
 
 }
 

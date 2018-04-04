@@ -10,6 +10,8 @@ import UIKit
 
 class LoginVC: UIViewController {
 
+    let networkStack = NetworkStack()
+    
     @IBOutlet weak var userNameTf: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     
@@ -20,7 +22,27 @@ class LoginVC: UIViewController {
     }
 
     @IBAction func pressedLogin(_ sender: UIButton) {
+        guard let username = userNameTf.text, let password = passwordTF.text else {
+            fatalError("User info missing")
+        }
         
+        let user = UserLogin(username: username, password: password)
+        
+        networkStack.login(a: user) { (result) in
+            switch result {
+                
+            case .success(let user):
+                print(user)
+                
+                // Go back to Login View Controller
+                DispatchQueue.main.async {
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
+            case .failure(let userErrors):
+                print(userErrors.errors)
+            }
+        }
     }
     
     @IBAction func pressedRegister(_ sender: UIButton) {
