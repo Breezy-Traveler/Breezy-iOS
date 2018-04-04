@@ -28,6 +28,11 @@ enum BTAPIEndPoints {
     case deleteHotel(BTHotel, for: BTTrip)
     
     // Sites
+    case createSite(BTSite, for: BTTrip)
+    case loadSites(for: BTTrip)
+    case showSite(forSiteId: Int, for: BTTrip)
+    case updateSite(BTSite, for: BTTrip)
+    case deleteSite(BTSite, for: BTTrip)
     
     /** if the enum is registerUser or loginUser, return true. otherwise return false */
     var isRegisteringOrLoginging: Bool {
@@ -77,39 +82,64 @@ extension BTAPIEndPoints: TargetType {
             let tripId = trip.id, hotelId = id
             
             return "/users/trips/\(tripId)/hotels/\(hotelId)"
-        case .updateHotel(let hotel, for: let trip):
-            let tripId = trip.id, hotelId = hotel.id
-            
-            return "/users/trips/\(tripId)/hotels/\(hotelId)"
-        case .deleteHotel(let hotel, for: let trip):
+        case .updateHotel(let hotel, for: let trip), .deleteHotel(let hotel, for: let trip):
             let tripId = trip.id, hotelId = hotel.id
             
             return "/users/trips/\(tripId)/hotels/\(hotelId)"
             
         // Sites
+        case .createSite(_, for: let trip):
+            let id = trip.id
+            
+            return "/users/trips/\(id)/sites"
+        case .loadSites(for: let trip):
+            let id = trip.id
+            
+            return "/users/trips/\(id)/sites"
+        case .showSite(forSiteId: let id, for: let trip):
+            let tripId = trip.id, siteId = id
+            
+            return "/users/trips/\(tripId)/sites/\(siteId)"
+        case .updateSite(let site, for: let trip), .deleteSite(let site, for: let trip):
+            let tripId = trip.id, siteId = site.id
+            
+            return "/users/trips/\(tripId)/sites/\(siteId)"
         }
     }
     
     // 5: HTTP Method
     var method: Moya.Method {
         switch self {
-        
-        // POST cases
-        case .registerUser, .loginUser, .createTrip, .createHotel:
+            // Users
+        case .registerUser, .loginUser:
             return .post
-            
-        // GET cases
-        case .loadTrips, .loadHotels:
+
+            // Trips
+        case .createTrip:
+            return .post
+        case .loadTrips:
             return .get
-        case .showHotel:
+        case .deleteTrip:
+            return .delete
+
+            // Hotels
+        case .createHotel:
+            return .post
+        case .loadHotels, .showHotel:
             return .get
-            
-        // PATCH cases
         case .updateHotel:
             return .patch
-            
-        // DELETE cases
-        case .deleteTrip, .deleteHotel:
+        case .deleteHotel:
+            return .delete
+
+            // Sites
+        case .createSite:
+            return .post
+        case .loadSites, .showSite:
+            return .get
+        case .updateSite:
+            return .patch
+        case .deleteSite:
             return .delete
         }
     }
@@ -123,32 +153,26 @@ extension BTAPIEndPoints: TargetType {
     // 7: Body + params and any attachments
     var task: Task {
         switch self {
-          
-        // Users
+            
+            // Users
         case .registerUser(let registerUser):
             return .requestJSONEncodable(registerUser)
           
-        // Trips
-        case .loadTrips:
-            return .requestPlain
+            // Trips
         case .createTrip(let trip):
             return .requestJSONEncodable(trip)
-        case .deleteTrip:
-            return .requestPlain
             
             // Hotels
         case .createHotel(let hotel, for: _):
             return .requestJSONEncodable(hotel)
-        case .loadHotels(_):
-            return .requestPlain
-        case .showHotel:
-            return .requestPlain
         case .updateHotel(let hotel, for: _):
             return .requestJSONEncodable(hotel)
-        case .deleteHotel:
-            return .requestPlain
             
         // Sites
+        case .createSite(let site, for: _):
+            return .requestJSONEncodable(site)
+        case .updateSite(let site, for: _):
+            return .requestJSONEncodable(site)
             
         default:
             return .requestPlain

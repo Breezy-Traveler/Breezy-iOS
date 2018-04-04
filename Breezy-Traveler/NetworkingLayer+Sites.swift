@@ -1,8 +1,8 @@
 //
-//  NetworkingLayer+Hotels.swift
+//  NetworkingLayer+Sites.swift
 //  Breezy-Traveler
 //
-//  Created by Erick Sanchez on 4/2/18.
+//  Created by Erick Sanchez on 4/4/18.
 //  Copyright © 2018 Phyllis Wong. All rights reserved.
 //
 
@@ -12,19 +12,19 @@ import Result
 import SwiftyJSON
 
 extension NetworkStack {
-    func create(a hotel: BTHotel, for trip: BTTrip, completion: @escaping (Result<BTHotel, BTAPIErrors>) -> ()) {
-        apiService.request(.createHotel(hotel, for: trip)) { (result) in
+    func create(a site: BTSite, for trip: BTTrip, completion: @escaping (Result<BTSite, BTAPIErrors>) -> ()) {
+        apiService.request(.createSite(site, for: trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
                     
                 // Created
                 case 201:
-                    guard let returnedHotel = try? JSONDecoder().decode(BTHotel.self, from: response.data) else {
-                        fatalError("could not decode json into hotel model")
+                    guard let returnedSite = try? JSONDecoder().decode(BTSite.self, from: response.data) else {
+                        fatalError("could not decode json into site model")
                     }
                     
-                    completion(.success(returnedHotel))
+                    completion(.success(returnedSite))
                     
                 // Unhandled codes
                 default:
@@ -40,17 +40,17 @@ extension NetworkStack {
         }
     }
     
-    func loadHotels(for trip: BTTrip, completion: @escaping (Result<[BTHotel], BTAPIErrors>) -> ()) {
-        apiService.request(.loadHotels(for: trip)) { (result) in
+    func loadSites(for trip: BTTrip, completion: @escaping (Result<[BTSite], BTAPIErrors>) -> ()) {
+        apiService.request(.loadSites(for: trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let hotels = try? JSONDecoder().decode([BTHotel].self, from: response.data) else {
-                        fatalError("could not decode response.data into BTHotel models")
+                    guard let sites = try? JSONDecoder().decode([BTSite].self, from: response.data) else {
+                        fatalError("could not decode response.data into site models")
                     }
                     
-                    completion(.success(hotels))
+                    completion(.success(sites))
                 default:
                     let serverErrors = (try! JSON(data: response.data).dictionaryObject) ?? ["error": "Server Error"]
                     let errors = BTAPIErrors(errors: ["Something went wrong.", serverErrors.description])
@@ -64,17 +64,17 @@ extension NetworkStack {
         }
     }
     
-    func showHotel(for hotelId: Int, for trip: BTTrip, completion: @escaping (Result<BTHotel, BTAPIErrors>) -> ()) {
-        apiService.request(.showHotel(forHotelId: hotelId, for: trip)) { (result) in
+    func showSite(for siteId: Int, for trip: BTTrip, completion: @escaping (Result<BTSite, BTAPIErrors>) -> ()) {
+        apiService.request(.showSite(forSiteId: siteId, for: trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let hotel = try? JSONDecoder().decode(BTHotel.self, from: response.data) else {
-                        fatalError("could not decode response.data into BTHotel model")
+                    guard let site = try? JSONDecoder().decode(BTSite.self, from: response.data) else {
+                        fatalError("could not decode response.data into site model")
                     }
                     
-                    completion(.success(hotel))
+                    completion(.success(site))
                 default:
                     let serverErrors = (try! JSON(data: response.data).dictionaryObject) ?? ["error": "Server Error"]
                     let errors = BTAPIErrors(errors: ["Something went wrong.", serverErrors.description])
@@ -88,17 +88,17 @@ extension NetworkStack {
         }
     }
     
-    func update(hotel: BTHotel, for trip: BTTrip, completion: @escaping (Result<BTHotel, BTAPIErrors>) -> ()) {
-        apiService.request(.updateHotel(hotel, for: trip)) { (result) in
+    func update(site: BTSite, for trip: BTTrip, completion: @escaping (Result<BTSite, BTAPIErrors>) -> ()) {
+        apiService.request(.updateSite(site, for: trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let updatedHotel = try? JSONDecoder().decode(BTHotel.self, from: response.data) else {
-                        fatalError("could not decode response.data to hotel model")
+                    guard let updatedSite = try? JSONDecoder().decode(BTSite.self, from: response.data) else {
+                        fatalError("could not decode response.data to site model")
                     }
                     
-                    completion(.success(updatedHotel))
+                    completion(.success(updatedSite))
                 default:
                     let serverErrors = (try! JSON(data: response.data).dictionaryObject) ?? ["error": "Server Error"]
                     let errors = BTAPIErrors(errors: ["Something went wrong.", serverErrors.description])
@@ -112,13 +112,13 @@ extension NetworkStack {
         }
     }
     
-    func delete(hotel: BTHotel, for trip: BTTrip, completion: @escaping (Result<String, BTAPIErrors>) -> ()) {
-        apiService.request(.deleteHotel(hotel, for: trip)) { (result) in
+    func delete(site: BTSite, for trip: BTTrip, completion: @escaping (Result<String, BTAPIErrors>) -> ()) {
+        apiService.request(.deleteSite(site, for: trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
                 case 204:
-                    completion(.success("\(hotel.title) was deleted"))
+                    completion(.success("\(site.title) was deleted"))
                 default:
                     let serverErrors = (try! JSON(data: response.data).dictionaryObject) ?? ["error": "Server Error"]
                     let errors = BTAPIErrors(errors: ["Something went wrong.", serverErrors.description])

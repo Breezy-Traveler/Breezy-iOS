@@ -29,6 +29,8 @@
 		B9F9F176207305FB00F0D24D /* QuoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F175207305FB00F0D24D /* QuoteModel.swift */; };
 		E95E138020754BE200BF4276 /* NetworkingLayer+QOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */; };
 		E95E138220754C6C00BF4276 /* NetworkingLayer+Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */; };
+		E95E13842075651F00BF4276 /* BTSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E13832075651F00BF4276 /* BTSite.swift */; };
+		E95E13872075879300BF4276 /* NetworkingLayer+Sites.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E13862075879300BF4276 /* NetworkingLayer+Sites.swift */; };
 		E98F03482072A95A004D4074 /* Trips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E98F03472072A95A004D4074 /* Trips.storyboard */; };
 		E98F034A2072AEF2004D4074 /* NetworkingLayer+Hotels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F03492072AEF2004D4074 /* NetworkingLayer+Hotels.swift */; };
 		E98F034C2072B69C004D4074 /* BTHotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F034B2072B69C004D4074 /* BTHotel.swift */; };
@@ -61,6 +63,8 @@
 		E61EF07259D1B3C17908FB3F /* Pods-Breezy-Traveler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy-Traveler.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.release.xcconfig"; sourceTree = "<group>"; };
 		E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+QOD.swift"; sourceTree = "<group>"; };
 		E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Trips.swift"; sourceTree = "<group>"; };
+		E95E13832075651F00BF4276 /* BTSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTSite.swift; sourceTree = "<group>"; };
+		E95E13862075879300BF4276 /* NetworkingLayer+Sites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Sites.swift"; sourceTree = "<group>"; };
 		E98F03472072A95A004D4074 /* Trips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Trips.storyboard; sourceTree = "<group>"; };
 		E98F03492072AEF2004D4074 /* NetworkingLayer+Hotels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Hotels.swift"; sourceTree = "<group>"; };
 		E98F034B2072B69C004D4074 /* BTHotel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTHotel.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 			children = (
 				B965294A2069A571007FAD4D /* AppDelegate.swift */,
 				B965294E2069A571007FAD4D /* Main.storyboard */,
+				E95E13852075652200BF4276 /* Site */,
 				B9F9F177207547F300F0D24D /* Hotel */,
 				B9A7E97A20729F9A0054DC4F /* Quote */,
 				B9B8F913206C5317009C017F /* User */,
@@ -164,6 +169,7 @@
 				B9F76209206D506500821C28 /* NetworkingLayer+Users.swift */,
 				E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */,
 				E98F03492072AEF2004D4074 /* NetworkingLayer+Hotels.swift */,
+				E95E13862075879300BF4276 /* NetworkingLayer+Sites.swift */,
 				E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */,
 			);
 			name = Networking;
@@ -175,6 +181,14 @@
 				E98F034B2072B69C004D4074 /* BTHotel.swift */,
 			);
 			name = Hotel;
+			sourceTree = "<group>";
+		};
+		E95E13852075652200BF4276 /* Site */ = {
+			isa = PBXGroup;
+			children = (
+				E95E13832075651F00BF4276 /* BTSite.swift */,
+			);
+			name = Site;
 			sourceTree = "<group>";
 		};
 		FC4A1EF4A7ED8D7EA9AF2648 /* Frameworks */ = {
@@ -327,6 +341,7 @@
 				E95E138020754BE200BF4276 /* NetworkingLayer+QOD.swift in Sources */,
 				B9F9F176207305FB00F0D24D /* QuoteModel.swift in Sources */,
 				B9A7E9772071B4130054DC4F /* TripDetailVC.swift in Sources */,
+				E95E13872075879300BF4276 /* NetworkingLayer+Sites.swift in Sources */,
 				E98F034A2072AEF2004D4074 /* NetworkingLayer+Hotels.swift in Sources */,
 				E95E138220754C6C00BF4276 /* NetworkingLayer+Trips.swift in Sources */,
 				B96529602069D17B007FAD4D /* TripsTVCell.swift in Sources */,
@@ -342,6 +357,7 @@
 				B987305F2072E19B0088AC43 /* RegisterVC.swift in Sources */,
 				B940C850206EEB3100E7144D /* TripModel.swift in Sources */,
 				E98F034C2072B69C004D4074 /* BTHotel.swift in Sources */,
+				E95E13842075651F00BF4276 /* BTSite.swift in Sources */,
 				B965294B2069A571007FAD4D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
