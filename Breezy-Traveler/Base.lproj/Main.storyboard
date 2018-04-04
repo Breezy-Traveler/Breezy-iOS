@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="484-B6-3wB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -17,10 +17,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--EnterApp-->
+        <!--QuoteVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="EnterAppVC" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="QuoteVC" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -84,10 +84,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="EnterApp" id="pSt-xF-yW3"/>
+                    <navigationItem key="navigationItem" title="QuoteVC" id="pSt-xF-yW3">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="9EK-vQ-XwK">
+                            <connections>
+                                <action selector="pressedLogout:" destination="BYZ-38-t0r" id="EWJ-Se-NG0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="authorLabel" destination="Swe-rc-nDc" id="WRg-iQ-uqk"/>
                         <outlet property="quoteOfTheDayLabel" destination="MX2-WW-zTv" id="8Za-sE-UFj"/>
+                        <segue destination="1mH-Aj-e8D" kind="showDetail" identifier="loginControllerSegue" id="RUJ-U0-qog"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -162,10 +169,10 @@
             </objects>
             <point key="canvasLocation" x="1780" y="-444.82758620689657"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--NavigationController-->
         <scene sceneID="92n-uY-89M">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="484-B6-3wB" sceneMemberID="viewController">
+                <navigationController title="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="484-B6-3wB" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9z5-3c-Xwz">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -179,6 +186,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qq-ti-cED" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="92" y="-113"/>
+        </scene>
+        <!--User-->
+        <scene sceneID="ELs-YN-i42">
+            <objects>
+                <viewControllerPlaceholder storyboardName="User" id="1mH-Aj-e8D" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IrK-D0-ON2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="152" y="374"/>
         </scene>
         <!--Trips-->
         <scene sceneID="i5f-mW-3Mc">
