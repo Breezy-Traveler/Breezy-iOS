@@ -26,7 +26,7 @@ struct BTTrip: Codable {
     let startDate: Date?
     let endDate: Date?
     let hotels: [BTHotel]
-    let sites: [Site]
+    let sites: [BTSite]
     let isPublic: Bool
     
     enum CodingKeys: String, CodingKey {
@@ -45,7 +45,7 @@ struct BTTrip: Codable {
         startDate: Date? = nil,
         endDate: Date? = nil,
         hotels: [BTHotel] = [],
-        sites: [Site] = [],
+        sites: [BTSite] = [],
         isPublic: Bool) {
         
         self.idValue = id
@@ -55,28 +55,6 @@ struct BTTrip: Codable {
         self.hotels = hotels
         self.sites = sites
         self.isPublic = isPublic
-    }
-}
-
-struct Site: Codable {
-    let name: String
-    let address: String?
-    let visited: Bool
-    let notes: String?
-    let rating: Like?
-    //
-    enum Like: Int, Codable {
-        // Zero is dislike, one is like
-        case dislike = 0
-        case like = 1
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case name = "title"
-        case address
-        case visited = "is_visited"
-        case notes
-        case rating = "ratings"
     }
 }
 
