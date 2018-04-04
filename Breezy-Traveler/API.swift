@@ -23,7 +23,7 @@ enum BTAPIEndPoints {
     // Hotels
     case createHotel(BTHotel, for: BTTrip)
     case loadHotels(for: BTTrip)
-    case showHotel(BTHotel, for: BTTrip)
+    case showHotel(forHotelId: Int, for: BTTrip)
     case updateHotel(BTHotel, for: BTTrip)
     case deleteHotel(BTHotel, for: BTTrip)
     
@@ -73,8 +73,8 @@ extension BTAPIEndPoints: TargetType {
             let id = trip.id
             
             return "/users/trips/\(id)/hotels"
-        case .showHotel(let hotel, for: let trip):
-            let tripId = trip.id, hotelId = hotel.id
+        case .showHotel(forHotelId: let id, for: let trip):
+            let tripId = trip.id, hotelId = id
             
             return "/users/trips/\(tripId)/hotels/\(hotelId)"
         case .updateHotel(let hotel, for: let trip):

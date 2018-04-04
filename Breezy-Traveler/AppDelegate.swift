@@ -64,16 +64,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     })
                     
                     dg.notify(queue: .main, execute: {
-                        print("#### delete hotel \(returnedHotel!)")
-                        netStack.delete(hotel: returnedHotel!, for: returnedTrip, completion: { (result) in
+                        print("#### showing hotel with id = \(returnedHotel!.id)")
+                        let dg = DispatchGroup()
+                        dg.enter()
+                        netStack.showHotel(for: returnedHotel!.id, for: returnedTrip, completion: { (result) in
                             switch result {
-                            case .success(let message):
-                                print("Successfully deleted hotel, \(message)")
-                                
+                            case .success(let returnedHotelValue):
+                                print("Successfully fetched hotel: \(returnedHotelValue)")
                             case .failure(let errors):
                                 print("Failed! \(errors)")
                             }
-                            print("#### done (delete hotel)")
+                            print("#### done (showing hotel)")
+                            dg.leave()
+                        })
+                        
+                        // Delete hotel
+                        dg.notify(queue: .main, execute: {
+                            print("#### delete hotel \(returnedHotel!)")
+                            netStack.delete(hotel: returnedHotel!, for: returnedTrip, completion: { (result) in
+                                switch result {
+                                case .success(let message):
+                                    print("Successfully deleted hotel, \(message)")
+                                    
+                                case .failure(let errors):
+                                    print("Failed! \(errors)")
+                                }
+                                print("#### done (delete hotel)")
+                            })
                         })
                     })
                 })

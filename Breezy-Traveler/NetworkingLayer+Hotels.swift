@@ -65,6 +65,29 @@ extension NetworkStack {
     }
     
 //    case showHotel(BTHotel, for: BTTrip)
+    func showHotel(for hotelId: Int, for trip: BTTrip, completion: @escaping (Result<BTHotel, BTAPIErrors>) -> ()) {
+        apiService.request(.showHotel(forHotelId: hotelId, for: trip)) { (result) in
+            switch result {
+            case .success(let response):
+                switch response.statusCode {
+                case 200:
+                    guard let hotel = try? JSONDecoder().decode(BTHotel.self, from: response.data) else {
+                        fatalError("could not decode response.data into BTHotel model")
+                    }
+                    
+                    completion(.success(hotel))
+                default:
+                    let serverErrors = (try! JSON(data: response.data).dictionaryObject) ?? ["error": "Server Error"]
+                    let errors = BTAPIErrors(errors: ["Something went wrong.", serverErrors.description])
+                    
+                    completion(.failure(errors))
+                }
+            case .failure(let err):
+                let errors = BTAPIErrors(errors: [err.localizedDescription])
+                completion(.failure(errors))
+            }
+        }
+    }
     
     func update(hotel: BTHotel, for trip: BTTrip, completion: @escaping (Result<BTHotel, BTAPIErrors>) -> ()) {
         apiService.request(.updateHotel(hotel, for: trip)) { (result) in
