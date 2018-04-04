@@ -21,11 +21,11 @@ struct BTHotel: Codable {
             return id
         }
     }
-    let title: String
-    let address: String?
-    let visited: Bool
-    let notes: String?
-    let rating: Like?
+    var title: String
+    var address: String?
+    var visited: Bool
+    var notes: String?
+    var rating: Like?
 
     enum Like: Int, Codable {
         // Zero is dislike, one is like
