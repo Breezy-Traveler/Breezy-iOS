@@ -231,7 +231,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emailLabel" destination="1U3-vZ-TGe" id="Mf2-43-TQ1"/>
                         <outlet property="tripsTableView" destination="z1d-4s-dxh" id="J0X-BU-A9e"/>
+                        <outlet property="usernameLabel" destination="5ol-Mt-jDi" id="mrn-tR-MPo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="97a-BA-83L" userLabel="First Responder" sceneMemberID="firstResponder"/>

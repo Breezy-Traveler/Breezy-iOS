@@ -11,6 +11,8 @@ import UIKit
 class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tripsTableView: UITableView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
     
     var trips = [BTTrip]()
     var currentUser = BTUser.getStoredUser()
@@ -21,6 +23,8 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         tripsTableView.delegate = self
         tripsTableView.dataSource = self
+        usernameLabel.text = currentUser.username
+        emailLabel.text = currentUser.email
         self.hideKeyboard()
     }
     
