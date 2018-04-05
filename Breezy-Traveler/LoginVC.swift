@@ -35,8 +35,9 @@ class LoginVC: UIViewController {
             }
             switch result {
                 
-            case .success(let returnUser):
-                print(returnUser)
+            case .success(let loggedInUser):
+                print(loggedInUser)
+                unwrappedSelf.userPersistence.setCurrentUser(currentUser: loggedInUser)
                 unwrappedSelf.userPersistence.loginUser(username: user.username, password: user.password)
                 
                 // Go back to Login View Controller

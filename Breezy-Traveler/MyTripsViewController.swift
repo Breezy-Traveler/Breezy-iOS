@@ -13,31 +13,32 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tripsTableView: UITableView!
     
     var trips = [BTTrip]()
+    var currentUser = BTUser.getStoredUser()
     
     let networkStack = NetworkStack()
-//    let testUser = BTUser(id: 1, name: "Phyllis", username: "Phyllis", password: "test123", email: "phyllis@gmail.com", token: "a80fe30858c8c519c7a9a509bc14f1e1")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tripsTableView.delegate = self
-        tripsTableView.dataSource = self        
+        tripsTableView.dataSource = self
+        self.hideKeyboard()
     }
     
     // FIXME: Uncomment this code when I have a user stored in keychain
     override func viewWillAppear(_ animated: Bool) {
-//        networkStack.loadUserTrips(user: testUser) { (result) in
-//            switch result {
-//
-//            case .success(let tripsDictionaries):
-//                    self.trips = tripsDictionaries
-//                    DispatchQueue.main.async {
-//                        self.tripsTableView.reloadData()
-//                    }
-//
-//            case .failure(let tripsErrors):
-//                print(tripsErrors.errors)
-//            }
-//        }
+        networkStack.loadUserTrips(user: currentUser) { (result) in
+            switch result {
+
+            case .success(let tripsDictionaries):
+                    self.trips = tripsDictionaries
+                    DispatchQueue.main.async {
+                        self.tripsTableView.reloadData()
+                    }
+
+            case .failure(let tripsErrors):
+                print(tripsErrors.errors)
+            }
+        }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
