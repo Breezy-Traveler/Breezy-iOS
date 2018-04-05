@@ -2,7 +2,7 @@
 //  PersistenceUser.swift
 //  Breezy-Traveler
 //
-//  Created by Phyllis Wong on 4/4/18.
+//  Created by Breezy Traveler on 4/4/18.
 //  Copyright © 2018 Breezy Traveler. All rights reserved.
 //
 
@@ -83,6 +83,7 @@ struct UserPersistence {
                 self.setUserToken(token: userReturned.token!)
                 callback(true)
             case .failure(let error):
+                // FIXME: breaking here with bad credentials
                 assertionFailure("bad user credentials \(error.localizedDescription)")
                 callback(false)
             }
