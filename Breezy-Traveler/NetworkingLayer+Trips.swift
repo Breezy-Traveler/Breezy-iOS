@@ -9,6 +9,7 @@
 import Foundation
 import Moya
 import Result
+import SwiftyJSON
 
 extension NetworkStack {
     struct BTAPIErrors: Error {

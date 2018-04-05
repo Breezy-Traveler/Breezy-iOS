@@ -14,12 +14,29 @@ struct UserPersistence {
     private let usernameKey: String = "username"
     private let passwordKey: String = "password"
     private let tokenKey: String = "token"
+    private let currentUserKey: String = "currentUser"
+    
+    func setCurrentUser(currentUser: BTUser) {
+        let keychain = KeychainSwift()
+        guard let currentUserData = try? JSONEncoder().encode(currentUser) else {
+            fatalError("no current user")
+        }
+        keychain.set(currentUserData, forKey: currentUserKey)
+        setUserToken(token: currentUser.token!)
+    }
+    
+    func getCurrentUser() -> BTUser? {
+        let keychain = KeychainSwift()
+        guard let currentUserData = keychain.getData(currentUserKey), let currentUser = try? JSONDecoder().decode(BTUser.self, from: currentUserData) else {
+            return nil
+        }
+        return currentUser
+    }
     
     func loginUser(username: String, password: String) {
         let keychain = KeychainSwift()
         keychain.set(username, forKey: usernameKey)
         keychain.set(password, forKey: passwordKey)
-        
     }
     
     func getUserLoginCredentials() -> (username: String, password: String)? {
@@ -28,6 +45,11 @@ struct UserPersistence {
             return nil
         }
         return (username, password)
+    }
+    
+    func setUserToken(token: String) {
+        let keychain = KeychainSwift()
+        keychain.set(token, forKey: tokenKey)
     }
     
     func getUserToken() -> String? {
@@ -57,7 +79,8 @@ struct UserPersistence {
 
         networkStack.login(a: userLogin) { (result) in
             switch result {
-            case .success:
+            case .success(let userReturned):
+                self.setUserToken(token: userReturned.token!)
                 callback(true)
             case .failure(let error):
                 assertionFailure("bad user credentials \(error.localizedDescription)")
