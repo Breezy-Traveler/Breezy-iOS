@@ -11,6 +11,8 @@ import UIKit
 class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tripsTableView: UITableView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
     
     var trips = [BTTrip]()
     
@@ -20,7 +22,11 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         tripsTableView.delegate = self
-        tripsTableView.dataSource = self        
+        tripsTableView.dataSource = self
+        usernameLabel.text = currentUser.username
+        emailLabel.text = currentUser.email
+        
+        self.hideKeyboard()
     }
     
     // FIXME: Uncomment this code when I have a user stored in keychain
