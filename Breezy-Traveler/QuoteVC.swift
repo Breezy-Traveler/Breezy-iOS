@@ -36,7 +36,9 @@ class QuoteVC: UIViewController {
         super.viewDidAppear(animated)
         userPersistence.checkUserLoggedIn { (isLoggedIn) in
             if !isLoggedIn {
-                self.performSegue(withIdentifier: "loginControllerSegue", sender: nil)
+                let loginViewController = LoginController()
+                self.present(loginViewController, animated: false, completion: nil)
+//                self.performSegue(withIdentifier: "loginControllerSegue", sender: nil)
             }
         }
     }
@@ -44,7 +46,8 @@ class QuoteVC: UIViewController {
     @IBAction func pressedLogout(_ sender: UIBarButtonItem) {
         let userPersistence = UserPersistence()
         userPersistence.logoutUser()
-        self.performSegue(withIdentifier: "loginControllerSegue", sender: nil)
+        let loginViewController = LoginController()
+        self.present(loginViewController, animated: false, completion: nil)
     }
 }
 

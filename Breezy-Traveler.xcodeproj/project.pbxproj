@@ -19,9 +19,6 @@
 		B96529552069A571007FAD4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B96529532069A571007FAD4D /* LaunchScreen.storyboard */; };
 		B965295D2069C96E007FAD4D /* ExploreTripsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */; };
 		B96529602069D17B007FAD4D /* TripsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965295F2069D17B007FAD4D /* TripsTVCell.swift */; };
-		B987305D2072DD570088AC43 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B987305C2072DD570088AC43 /* LoginVC.swift */; };
-		B987305F2072E19B0088AC43 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B987305E2072E19B0088AC43 /* RegisterVC.swift */; };
-		B98730622072FD570088AC43 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B98730602072FD570088AC43 /* User.storyboard */; };
 		B9A7E9772071B4130054DC4F /* TripDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A7E9762071B4130054DC4F /* TripDetailVC.swift */; };
 		B9B8F912206C52AF009C017F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8F911206C52AF009C017F /* UserModel.swift */; };
 		B9B8F916206C54A9009C017F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8F915206C54A9009C017F /* API.swift */; };
@@ -30,6 +27,8 @@
 		B9F9F17A2075585500F0D24D /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F1792075585500F0D24D /* UtilityExtensions.swift */; };
 		B9F9F17C20756B0700F0D24D /* PersistenceUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F17B20756B0700F0D24D /* PersistenceUser.swift */; };
 		B9F9F17E20758E5F00F0D24D /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F17D20758E5F00F0D24D /* AlertVC.swift */; };
+		B9F9F1802077EE4B00F0D24D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F17F2077EE4B00F0D24D /* LoginController.swift */; };
+		B9F9F1822077F2FC00F0D24D /* LoginController+Handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */; };
 		E95E138020754BE200BF4276 /* NetworkingLayer+QOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */; };
 		E95E138220754C6C00BF4276 /* NetworkingLayer+Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */; };
 		E95E13842075651F00BF4276 /* BTSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E13832075651F00BF4276 /* BTSite.swift */; };
@@ -60,9 +59,6 @@
 		B96529562069A571007FAD4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTripsTVCell.swift; sourceTree = "<group>"; };
 		B965295F2069D17B007FAD4D /* TripsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTVCell.swift; sourceTree = "<group>"; };
-		B987305C2072DD570088AC43 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		B987305E2072E19B0088AC43 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
-		B98730612072FD570088AC43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/User.storyboard; sourceTree = "<group>"; };
 		B9A7E9762071B4130054DC4F /* TripDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailVC.swift; sourceTree = "<group>"; };
 		B9B8F911206C52AF009C017F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B9B8F915206C54A9009C017F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -71,6 +67,8 @@
 		B9F9F1792075585500F0D24D /* UtilityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityExtensions.swift; sourceTree = "<group>"; };
 		B9F9F17B20756B0700F0D24D /* PersistenceUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceUser.swift; sourceTree = "<group>"; };
 		B9F9F17D20758E5F00F0D24D /* AlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
+		B9F9F17F2077EE4B00F0D24D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginController+Handlers.swift"; sourceTree = "<group>"; };
 		E61EF07259D1B3C17908FB3F /* Pods-Breezy-Traveler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy-Traveler.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.release.xcconfig"; sourceTree = "<group>"; };
 		E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+QOD.swift"; sourceTree = "<group>"; };
 		E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Trips.swift"; sourceTree = "<group>"; };
@@ -174,10 +172,9 @@
 		B9B8F913206C5317009C017F /* User */ = {
 			isa = PBXGroup;
 			children = (
-				B98730602072FD570088AC43 /* User.storyboard */,
+				B9F9F17F2077EE4B00F0D24D /* LoginController.swift */,
+				B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */,
 				B9B8F911206C52AF009C017F /* UserModel.swift */,
-				B987305C2072DD570088AC43 /* LoginVC.swift */,
-				B987305E2072E19B0088AC43 /* RegisterVC.swift */,
 				B9F9F17B20756B0700F0D24D /* PersistenceUser.swift */,
 				B9F9F17D20758E5F00F0D24D /* AlertVC.swift */,
 			);
@@ -304,6 +301,7 @@
 				B96529552069A571007FAD4D /* LaunchScreen.storyboard in Resources */,
 				E97ED75D2077EF190021B651 /* UIButtonCell.xib in Resources */,
 				B98730622072FD570088AC43 /* User.storyboard in Resources */,
+
 				E98F03482072A95A004D4074 /* Trips.storyboard in Resources */,
 				B96529522069A571007FAD4D /* Assets.xcassets in Resources */,
 				B96529502069A571007FAD4D /* Main.storyboard in Resources */,
@@ -386,9 +384,11 @@
 				E98F034A2072AEF2004D4074 /* NetworkingLayer+Hotels.swift in Sources */,
 				E95E138220754C6C00BF4276 /* NetworkingLayer+Trips.swift in Sources */,
 				B96529602069D17B007FAD4D /* TripsTVCell.swift in Sources */,
+				B9F9F1802077EE4B00F0D24D /* LoginController.swift in Sources */,
 				B9B8F912206C52AF009C017F /* UserModel.swift in Sources */,
 				E97ED75F207807FF0021B651 /* TripDetailedViewModel.swift in Sources */,
 				B91449432069E54E0074F71B /* MyTripsViewController.swift in Sources */,
+				B9F9F1822077F2FC00F0D24D /* LoginController+Handlers.swift in Sources */,
 				B9F9F17E20758E5F00F0D24D /* AlertVC.swift in Sources */,
 				B965295D2069C96E007FAD4D /* ExploreTripsTVCell.swift in Sources */,
 				B91449452069F9250074F71B /* ExploreTripsCollectionViewCell.swift in Sources */,
@@ -396,9 +396,7 @@
 				E97ED75B2077EF140021B651 /* UIButtonCell.swift in Sources */,
 				B940C85220719D0000E7144D /* CreateTripVC.swift in Sources */,
 				B965294D2069A571007FAD4D /* QuoteVC.swift in Sources */,
-				B987305D2072DD570088AC43 /* LoginVC.swift in Sources */,
 				B9F7620A206D506500821C28 /* NetworkingLayer+Users.swift in Sources */,
-				B987305F2072E19B0088AC43 /* RegisterVC.swift in Sources */,
 				B940C850206EEB3100E7144D /* TripModel.swift in Sources */,
 				E97ED7582077ED190021B651 /* TripDetailedViewController.swift in Sources */,
 				E98F034C2072B69C004D4074 /* BTHotel.swift in Sources */,
@@ -427,14 +425,6 @@
 				B96529542069A571007FAD4D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		B98730602072FD570088AC43 /* User.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B98730612072FD570088AC43 /* Base */,
-			);
-			name = User.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

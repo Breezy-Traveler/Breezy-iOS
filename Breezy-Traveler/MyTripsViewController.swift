@@ -49,15 +49,13 @@ class MyTripsViewController: UIViewController {
     // MARK: - LIFE CYCLE
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        super.viewDidLoad()        
         usernameLabel.text = currentUser.username
         emailLabel.text = currentUser.email
 //        self.hideKeyboard()
     }
     
-    // FIXME: Uncomment this code when I have a user stored in keychain
-    override func viewWillAppear(_ animated: Bool) {
+    func loadUserTrips() {
         networkStack.loadUserTrips(user: currentUser) { (result) in
             switch result {
                 
