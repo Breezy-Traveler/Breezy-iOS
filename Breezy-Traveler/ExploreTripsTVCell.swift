@@ -11,17 +11,5 @@ import UIKit
 class ExploreTripsTVCell: UITableViewCell {
 
     @IBOutlet weak var tripsCollectionView: UICollectionView!
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }
