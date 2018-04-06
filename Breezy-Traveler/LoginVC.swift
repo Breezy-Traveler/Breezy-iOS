@@ -39,11 +39,7 @@ class LoginVC: UIViewController {
                 print(loggedInUser)
                 unwrappedSelf.userPersistence.setCurrentUser(currentUser: loggedInUser)
                 unwrappedSelf.userPersistence.loginUser(username: user.username, password: user.password)
-                
-                // Go back to Login View Controller
-                DispatchQueue.main.async {
-                    unwrappedSelf.presentingViewController!.dismiss(animated: true, completion: nil)
-                }
+
                 
             case .failure(let userErrors):
                 DispatchQueue.main.async {

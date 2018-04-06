@@ -30,7 +30,6 @@ class LoginController: UIViewController {
     // Button changes based on the segmented controller
     lazy var loginRegisterButton: UIButton = {
         let button = UIButton(type: .system)
-        //        button.backgroundColor = UIColor(r: 210, g: 59, b: 124) // pink color
         button.backgroundColor = UIColor(r: 148, g: 194, b: 61) // lime green color
         button.setTitle("Register", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -53,31 +52,30 @@ class LoginController: UIViewController {
     }
     
     @objc func handleLogin() {
-        
         guard let username = usernameTextField.text, let password = passwordTextField.text else {
             fatalError("Invalid form")
         }
-        let user = UserLogin(username: username, password: password)
         
-        networkStack.login(a: user) {[weak self] (result) in
-            guard let unwrappedSelf = self else {
-                return
-            }
+        
+        let userLogin = UserLogin(username: username, password: password)
+
+        networkStack.login(a: userLogin) {[weak self] (result) in
+            guard let unwrappedSelf = self else { return }
+            
             switch result {
+                case .success(let loggedInUser):
+                    print(loggedInUser)
+                    unwrappedSelf.userPersistence.setCurrentUser(currentUser: loggedInUser)
+                    unwrappedSelf.userPersistence.loginUser(username: userLogin.username, password: userLogin.password)
+                    
+                    // Go back to Trips ViewController
+                    // successfully logged in user
+                    unwrappedSelf.dismiss(animated: true, completion: nil)
                 
-            case .success(let loggedInUser):
-                print(loggedInUser)
-                unwrappedSelf.userPersistence.setCurrentUser(currentUser: loggedInUser)
-                unwrappedSelf.userPersistence.loginUser(username: user.username, password: user.password)
-                
-                // Go back to Trips ViewController
-                // successfully logged in user
-                unwrappedSelf.dismiss(animated: true, completion: nil)
-                
-            case .failure(let userErrors):
-                DispatchQueue.main.async {
-                    unwrappedSelf.present(AlertViewController.showAlert(), animated: true, completion: nil)
-                }
+                case .failure(let userErrors):
+                    DispatchQueue.main.async {
+                        unwrappedSelf.present(AlertViewController.showAlert(), animated: true, completion: nil)
+                    }
                 print(userErrors.errors)
             }
         }
@@ -85,7 +83,7 @@ class LoginController: UIViewController {
     
     let nameTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Full name"
+        tf.placeholder = "Name"
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -113,7 +111,7 @@ class LoginController: UIViewController {
     
     let emailTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Email"
+        tf.placeholder = "Email address"
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -172,38 +170,6 @@ class LoginController: UIViewController {
         passwordTextFieldHeightAnchor = passwordTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 1/2 : 1/4)
         passwordTextFieldHeightAnchor?.isActive = true
     }
-
-//    func pressedLogin(_ sender: UIButton) {
-//        guard let username = userNameTf.text, let password = passwordTF.text else {
-//            fatalError("User info missing")
-//        }
-//
-//        let user = UserLogin(username: username, password: password)
-//
-//        networkStack.login(a: user) {[weak self] (result) in
-//            guard let unwrappedSelf = self else {
-//                return
-//            }
-//            switch result {
-//
-//            case .success(let loggedInUser):
-//                print(loggedInUser)
-//                unwrappedSelf.userPersistence.setCurrentUser(currentUser: loggedInUser)
-//                unwrappedSelf.userPersistence.loginUser(username: user.username, password: user.password)
-//
-//                // Go back to Login View Controller
-//                DispatchQueue.main.async {
-//                    unwrappedSelf.presentingViewController!.dismiss(animated: true, completion: nil)
-//                }
-//
-//            case .failure(let userErrors):
-//                DispatchQueue.main.async {
-//                    unwrappedSelf.present(AlertViewController.showAlert(), animated: true, completion: nil)
-//                }
-//                print(userErrors.errors)
-//            }
-//        }
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
