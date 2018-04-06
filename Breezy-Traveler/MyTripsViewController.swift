@@ -80,11 +80,11 @@ class MyTripsViewController: UIViewController {
 extension MyTripsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 1 {
+        if section == 0 {
             return 1
         } else {
             return trips.count
@@ -92,7 +92,9 @@ extension MyTripsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 1 {
+        
+        // Display a side scrolling collection of users trips
+        if indexPath.section == 0 {
             tableView.rowHeight = 100
             let cell = tableView.dequeueReusableCell(withIdentifier: "exploreCell", for: indexPath) as! ExploreTripsTVCell
             
@@ -109,6 +111,7 @@ extension MyTripsViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.startDate.text = startDate.description
                 cell.endDate.text = endDate.description
             }
+            
             cell.placeName.text = trip.place
             cell.isPublic.text = trip.isPublic.description
             
@@ -171,4 +174,9 @@ extension MyTripsViewController: UICollectionViewDelegate, UICollectionViewDataS
         return CGSize(width: 100.0, height: 80.0)
     }
     
+    // Make the Status Bar Light/Dark Content for this View
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+        //return UIStatusBarStyle.default   // Make dark again
+    }
 }
