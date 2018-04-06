@@ -3,7 +3,7 @@
 //  Breezy-Traveler
 //
 //  Created by Erick Sanchez on 4/6/18.
-//  Copyright © 2018 Phyllis Wong. All rights reserved.
+//  Copyright © 2018 Breezy Traveler. All rights reserved.
 //
 
 import Foundation

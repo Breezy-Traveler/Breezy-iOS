@@ -137,7 +137,7 @@ class LoginController: UIViewController {
         let sc = UISegmentedControl(items: ["Login", "Register"])
         sc.translatesAutoresizingMaskIntoConstraints = false
         sc.tintColor = UIColor.white
-        sc.selectedSegmentIndex = 1
+        sc.selectedSegmentIndex = 0
         sc.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
         return sc
     }()
@@ -145,7 +145,8 @@ class LoginController: UIViewController {
     @objc func handleLoginRegisterChange() {
         let title = loginRegisterSegmentedControl.titleForSegment(at: loginRegisterSegmentedControl.selectedSegmentIndex)
         // When the login active: perform a check if the user data is correct
-        loginRegisterButton.setTitle(title, for: .normal)
+        UIView.performWithoutAnimation { loginRegisterButton.setTitle(title, for: .normal) }
+        
         
         // Change height of input container view
         inputContainerViewHeightAnchor?.constant = loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 100 : 200
@@ -176,15 +177,17 @@ class LoginController: UIViewController {
         self.hideKeyboard()
         
         view.backgroundColor = UIColor(r: 61, g: 91, b: 151)
+        view.addSubview(loginRegisterSegmentedControl)
         view.addSubview(inputsContainerView)
         view.addSubview(loginRegisterButton)
 //        view.addSubview(profileImageView)
-        view.addSubview(loginRegisterSegmentedControl)
-//
+        
+        setupLoginRegisterSegmentedControl()
         setUpContainerView()
+        
         setUpLoginRegisterButton()
 //        setupProfileImageView()
-        setupLoginRegisterSegmentedControl()
+        handleLoginRegisterChange()
     }
     
     
