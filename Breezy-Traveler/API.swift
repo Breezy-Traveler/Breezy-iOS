@@ -3,7 +3,7 @@
 //  Breezy-Traveler
 //
 //  Created by Phyllis Wong on 3/28/18.
-//  Copyright © 2018 Phyllis Wong. All rights reserved.
+//  Copyright © 2018 Breezy Traveler. All rights reserved.
 //
 
 import Foundation
@@ -34,6 +34,9 @@ enum BTAPIEndPoints {
     case updateSite(BTSite, for: BTTrip)
     case deleteSite(BTSite, for: BTTrip)
     
+    // Images
+    case loadTenImages(String)
+    
     /** if the enum is registerUser or loginUser, return true. otherwise return false */
     var isRegisteringOrLoginging: Bool {
         switch self {
@@ -58,63 +61,66 @@ extension BTAPIEndPoints: TargetType {
         // Users
         case .registerUser:
             return "/register"
+            
         case .loginUser:
             return "/login"
             
         // Trips
         case .createTrip, .loadTrips:
             return "/users/trips"
+            
         case .deleteTrip(let trip):
             let id = trip.id
-            
             return "/users/trips/\(id)"
             
         // Hotels
         case .createHotel(_, for: let trip):
             let id = trip.id
-            
             return "/users/trips/\(id)/hotels"
+            
         case .loadHotels(for: let trip):
             let id = trip.id
-            
             return "/users/trips/\(id)/hotels"
+            
         case .showHotel(forHotelId: let id, for: let trip):
             let tripId = trip.id, hotelId = id
-            
             return "/users/trips/\(tripId)/hotels/\(hotelId)"
+            
         case .updateHotel(let hotel, for: let trip), .deleteHotel(let hotel, for: let trip):
             let tripId = trip.id, hotelId = hotel.id
-            
             return "/users/trips/\(tripId)/hotels/\(hotelId)"
             
         // Sites
         case .createSite(_, for: let trip):
             let id = trip.id
-            
             return "/users/trips/\(id)/sites"
+            
         case .loadSites(for: let trip):
             let id = trip.id
-            
             return "/users/trips/\(id)/sites"
+            
         case .showSite(forSiteId: let id, for: let trip):
             let tripId = trip.id, siteId = id
-            
             return "/users/trips/\(tripId)/sites/\(siteId)"
+            
         case .updateSite(let site, for: let trip), .deleteSite(let site, for: let trip):
             let tripId = trip.id, siteId = site.id
-            
             return "/users/trips/\(tripId)/sites/\(siteId)"
+            
+        // Images
+        case .loadTenImages:
+            return "/image_search"
         }
     }
     
     // 5: HTTP Method
     var method: Moya.Method {
         switch self {
-            // Users
+        // Users
         case .registerUser, .loginUser:
             return .post
 
-            // Trips
+        // Trips
         case .createTrip:
             return .post
         case .loadTrips:
@@ -122,7 +128,7 @@ extension BTAPIEndPoints: TargetType {
         case .deleteTrip:
             return .delete
 
-            // Hotels
+        // Hotels
         case .createHotel:
             return .post
         case .loadHotels, .showHotel:
@@ -132,7 +138,7 @@ extension BTAPIEndPoints: TargetType {
         case .deleteHotel:
             return .delete
 
-            // Sites
+        // Sites
         case .createSite:
             return .post
         case .loadSites, .showSite:
@@ -141,6 +147,10 @@ extension BTAPIEndPoints: TargetType {
             return .patch
         case .deleteSite:
             return .delete
+            
+        // Images
+        case .loadTenImages:
+            return .get
         }
     }
     
@@ -154,17 +164,17 @@ extension BTAPIEndPoints: TargetType {
     var task: Task {
         switch self {
             
-            // Users
+        // Users
         case .registerUser(let registerUser):
             return .requestJSONEncodable(registerUser)
         case .loginUser(let loginUser):
             return .requestJSONEncodable(loginUser)
           
-            // Trips
+        // Trips
         case .createTrip(let trip):
             return .requestJSONEncodable(trip)
             
-            // Hotels
+        // Hotels
         case .createHotel(let hotel, for: _):
             return .requestJSONEncodable(hotel)
         case .updateHotel(let hotel, for: _):
@@ -175,6 +185,10 @@ extension BTAPIEndPoints: TargetType {
             return .requestJSONEncodable(site)
         case .updateSite(let site, for: _):
             return .requestJSONEncodable(site)
+            
+        // Images
+        case .loadTenImages("image_search"):
+            return .requestPlain
             
         default:
             return .requestPlain
