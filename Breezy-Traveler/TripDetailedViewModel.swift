@@ -25,7 +25,7 @@ extension TripDetailedViewModel {
             } else {
                 let startDateText = String(date: startDate, dateStyle: .medium)
                 
-                return "Starts on \(startDateText)"
+                return "\(startDateText)"
             }
         } else {
             return "tap to setup a date"

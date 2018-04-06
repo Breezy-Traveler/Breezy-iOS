@@ -22,12 +22,12 @@ struct BTTrip: Codable {
         }
     }
     
-    let place: String
-    let startDate: Date?
-    let endDate: Date?
-    let hotels: [BTHotel]
-    let sites: [BTSite]
-    let isPublic: Bool
+    var place: String
+    var startDate: Date?
+    var endDate: Date?
+    var hotels: [BTHotel]
+    var sites: [BTSite]
+    var isPublic: Bool
     //TODO: add notes to trips
     
     enum CodingKeys: String, CodingKey {
