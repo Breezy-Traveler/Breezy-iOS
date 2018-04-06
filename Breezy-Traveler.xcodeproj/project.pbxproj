@@ -31,6 +31,7 @@
 		B9F9F17C20756B0700F0D24D /* PersistenceUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F17B20756B0700F0D24D /* PersistenceUser.swift */; };
 		B9F9F17E20758E5F00F0D24D /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F17D20758E5F00F0D24D /* AlertVC.swift */; };
 		B9F9F1802077EE4B00F0D24D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F17F2077EE4B00F0D24D /* LoginController.swift */; };
+		B9F9F1822077F2FC00F0D24D /* LoginController+Handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */; };
 		E95E138020754BE200BF4276 /* NetworkingLayer+QOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */; };
 		E95E138220754C6C00BF4276 /* NetworkingLayer+Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */; };
 		E95E13842075651F00BF4276 /* BTSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E13832075651F00BF4276 /* BTSite.swift */; };
@@ -68,6 +69,7 @@
 		B9F9F17B20756B0700F0D24D /* PersistenceUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceUser.swift; sourceTree = "<group>"; };
 		B9F9F17D20758E5F00F0D24D /* AlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
 		B9F9F17F2077EE4B00F0D24D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginController+Handlers.swift"; sourceTree = "<group>"; };
 		E61EF07259D1B3C17908FB3F /* Pods-Breezy-Traveler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy-Traveler.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.release.xcconfig"; sourceTree = "<group>"; };
 		E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+QOD.swift"; sourceTree = "<group>"; };
 		E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Trips.swift"; sourceTree = "<group>"; };
@@ -163,10 +165,11 @@
 		B9B8F913206C5317009C017F /* User */ = {
 			isa = PBXGroup;
 			children = (
+				B9F9F17F2077EE4B00F0D24D /* LoginController.swift */,
+				B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */,
 				B98730602072FD570088AC43 /* User.storyboard */,
 				B9B8F911206C52AF009C017F /* UserModel.swift */,
 				B987305C2072DD570088AC43 /* LoginVC.swift */,
-				B9F9F17F2077EE4B00F0D24D /* LoginController.swift */,
 				B987305E2072E19B0088AC43 /* RegisterVC.swift */,
 				B9F9F17B20756B0700F0D24D /* PersistenceUser.swift */,
 				B9F9F17D20758E5F00F0D24D /* AlertVC.swift */,
@@ -368,6 +371,7 @@
 				B9F9F1802077EE4B00F0D24D /* LoginController.swift in Sources */,
 				B9B8F912206C52AF009C017F /* UserModel.swift in Sources */,
 				B91449432069E54E0074F71B /* MyTripsViewController.swift in Sources */,
+				B9F9F1822077F2FC00F0D24D /* LoginController+Handlers.swift in Sources */,
 				B9F9F17E20758E5F00F0D24D /* AlertVC.swift in Sources */,
 				B965295D2069C96E007FAD4D /* ExploreTripsTVCell.swift in Sources */,
 				B91449452069F9250074F71B /* ExploreTripsCollectionViewCell.swift in Sources */,
