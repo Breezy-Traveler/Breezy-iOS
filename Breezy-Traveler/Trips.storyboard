@@ -327,25 +327,47 @@
                                 </items>
                             </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bl2-Je-Pzs">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="637.5" width="375" height="29.5"/>
                                 <items>
                                     <barButtonItem title="Item" id="egG-8V-baY"/>
                                 </items>
                             </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ka8-pg-RUE">
-                                <rect key="frame" x="0.0" y="64" width="375" height="575"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="557.5"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NEY-Ic-riu">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="281.5"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xVd-pC-7wE">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="287.5"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NEY-Ic-riu">
+                                                <rect key="frame" x="4" y="8" width="367" height="275.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="NEY-Ic-riu" secondAttribute="height" multiplier="4:3" id="9II-ez-32U"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azz-lq-VwB">
+                                                <rect key="frame" x="4" y="128" width="367" height="31.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="NEY-Ic-riu" secondAttribute="height" multiplier="4:3" id="9II-ez-32U"/>
+                                            <constraint firstItem="azz-lq-VwB" firstAttribute="leading" secondItem="xVd-pC-7wE" secondAttribute="leading" constant="4" id="0YK-rk-Pkx"/>
+                                            <constraint firstAttribute="bottom" secondItem="NEY-Ic-riu" secondAttribute="bottom" constant="4" id="4yP-zr-QAo"/>
+                                            <constraint firstItem="NEY-Ic-riu" firstAttribute="leading" secondItem="xVd-pC-7wE" secondAttribute="leading" constant="4" id="A5e-N2-Qap"/>
+                                            <constraint firstItem="NEY-Ic-riu" firstAttribute="top" secondItem="xVd-pC-7wE" secondAttribute="top" constant="8" id="NqT-fM-jBp"/>
+                                            <constraint firstAttribute="trailing" secondItem="NEY-Ic-riu" secondAttribute="trailing" constant="4" id="OYN-LO-Qwn"/>
+                                            <constraint firstItem="azz-lq-VwB" firstAttribute="centerY" secondItem="xVd-pC-7wE" secondAttribute="centerY" id="ZtM-Fj-Yaf"/>
+                                            <constraint firstAttribute="trailing" secondItem="azz-lq-VwB" secondAttribute="trailing" constant="4" id="iVb-lA-6X7"/>
+                                            <constraint firstItem="azz-lq-VwB" firstAttribute="centerX" secondItem="xVd-pC-7wE" secondAttribute="centerX" id="vP8-Zr-O1w"/>
                                         </constraints>
-                                    </imageView>
+                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YeV-ww-To8">
-                                        <rect key="frame" x="0.0" y="297.5" width="375" height="277.5"/>
+                                        <rect key="frame" x="0.0" y="303.5" width="375" height="254"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ODw-1X-nKt" customClass="UIButtonCell" customModule="Breezy_Traveler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Dates"/>
@@ -355,7 +377,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oej-io-fHL" customClass="UIButtonCell" customModule="Breezy_Traveler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="69.5" width="375" height="69.5"/>
+                                                <rect key="frame" x="0.0" y="63.5" width="375" height="63.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Hotels"/>
@@ -365,7 +387,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FKG-ib-5ZQ" customClass="UIButtonCell" customModule="Breezy_Traveler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="139" width="375" height="69"/>
+                                                <rect key="frame" x="0.0" y="127" width="375" height="63.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Sites"/>
@@ -375,7 +397,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TB5-gA-0jh" customClass="UIButtonCell" customModule="Breezy_Traveler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="208" width="375" height="69.5"/>
+                                                <rect key="frame" x="0.0" y="190.5" width="375" height="63.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Notes"/>
@@ -397,7 +419,7 @@
                             <constraint firstItem="ka8-pg-RUE" firstAttribute="leading" secondItem="83t-nM-9bF" secondAttribute="leading" id="U4J-Hs-1dT"/>
                             <constraint firstItem="bl2-Je-Pzs" firstAttribute="leading" secondItem="83t-nM-9bF" secondAttribute="leading" id="UQZ-Hz-aNz"/>
                             <constraint firstItem="fDi-lm-iVe" firstAttribute="trailing" secondItem="83t-nM-9bF" secondAttribute="trailing" id="bmI-vq-hq3"/>
-                            <constraint firstItem="ka8-pg-RUE" firstAttribute="bottom" secondItem="bl2-Je-Pzs" secondAttribute="top" constant="16" id="dnH-aW-qXG"/>
+                            <constraint firstItem="bl2-Je-Pzs" firstAttribute="top" secondItem="ka8-pg-RUE" secondAttribute="bottom" constant="16" id="dnH-aW-qXG"/>
                             <constraint firstItem="fDi-lm-iVe" firstAttribute="top" secondItem="GvJ-TR-tOf" secondAttribute="top" id="jca-Aw-Nps"/>
                             <constraint firstItem="fDi-lm-iVe" firstAttribute="leading" secondItem="83t-nM-9bF" secondAttribute="leading" id="lY9-aI-Ma2"/>
                             <constraint firstItem="ka8-pg-RUE" firstAttribute="trailing" secondItem="83t-nM-9bF" secondAttribute="trailing" id="o3U-6f-5K2"/>
@@ -405,12 +427,23 @@
                         <viewLayoutGuide key="safeArea" id="83t-nM-9bF"/>
                     </view>
                     <navigationItem key="navigationItem" title="Trip" id="Qqg-si-ceg">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="zmH-sN-sZz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="zmH-sN-sZz">
                             <connections>
-                                <segue destination="O3M-Bf-kGx" kind="showDetail" identifier="edit trip" id="rff-C5-lup"/>
+                                <segue destination="2qX-9y-YwE" kind="showDetail" identifier="edit trip" id="rff-C5-lup"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="buttonDates" destination="ODw-1X-nKt" id="LH2-EI-8uw"/>
+                        <outlet property="buttonHotels" destination="oej-io-fHL" id="mZX-El-PUk"/>
+                        <outlet property="buttonNotes" destination="TB5-gA-0jh" id="L0R-b6-Zo9"/>
+                        <outlet property="buttonStites" destination="FKG-ib-5ZQ" id="VAD-ad-Vrh"/>
+                        <outlet property="labelTitle" destination="azz-lq-VwB" id="YrU-Cy-9el"/>
+                        <segue destination="qVs-2s-SHa" kind="show" identifier="show date picker" id="NYY-we-8pf"/>
+                        <segue destination="Rsd-vQ-snA" kind="show" identifier="show hotels" id="Vj6-H4-UGL"/>
+                        <segue destination="Qgb-Ap-1wf" kind="show" identifier="show sites" id="7xo-VB-flZ"/>
+                        <segue destination="gDZ-s6-AJ9" kind="show" identifier="show notes" id="bqM-2S-CFl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wzh-VX-xPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -426,10 +459,61 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="BAl-3y-Rhz"/>
                     </view>
+                    <navigationItem key="navigationItem" id="sqE-u1-88h"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pda-mm-bT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2783" y="1065"/>
+            <point key="canvasLocation" x="3793" y="1064"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Taj-Ca-uXF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2qX-9y-YwE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DTL-mQ-oq7">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="O3M-Bf-kGx" kind="relationship" relationship="rootViewController" id="aLd-RH-RGH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zYM-a1-2NR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3049" y="1064"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="BuC-4s-Pjh">
+            <objects>
+                <viewControllerPlaceholder id="qVs-2s-SHa" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y0R-p0-PrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2362" y="726"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="050-SU-qQ0">
+            <objects>
+                <viewControllerPlaceholder id="Rsd-vQ-snA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c0r-Rq-5Uh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2425" y="776"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="cJa-CE-x3M">
+            <objects>
+                <viewControllerPlaceholder id="Qgb-Ap-1wf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PsA-CC-RUI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2489" y="828"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="p90-nL-u7u">
+            <objects>
+                <viewControllerPlaceholder id="gDZ-s6-AJ9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Xl-ld-y7a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2548" y="885"/>
         </scene>
     </scenes>
     <resources>

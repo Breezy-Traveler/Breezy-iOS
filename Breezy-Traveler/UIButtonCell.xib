@@ -43,12 +43,22 @@
                         </label>
                     </subviews>
                 </stackView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KFs-Bc-IFd">
+                    <rect key="frame" x="32" y="43" width="343" height="1"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="i7Q-Ii-Gde"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="hWh-T9-REf" secondAttribute="bottom" id="0s6-J4-oim"/>
+                <constraint firstItem="KFs-Bc-IFd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="6Zw-hy-aAl"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="VpF-sX-PQj" secondAttribute="trailing" constant="15" id="TYs-k8-q4f"/>
+                <constraint firstAttribute="bottom" secondItem="KFs-Bc-IFd" secondAttribute="bottom" id="g9N-b8-ROe"/>
                 <constraint firstItem="hWh-T9-REf" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="iVz-tQ-NAY"/>
                 <constraint firstItem="VpF-sX-PQj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="kBW-OT-mAb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KFs-Bc-IFd" secondAttribute="trailing" id="pPQ-TZ-HNr"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="hWh-T9-REf" secondAttribute="trailing" id="vDB-Ud-VPy"/>
                 <constraint firstItem="hWh-T9-REf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="vix-0z-jQx"/>
                 <constraint firstItem="VpF-sX-PQj" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="xDE-r3-8qL"/>

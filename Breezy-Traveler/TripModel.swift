@@ -28,6 +28,7 @@ struct BTTrip: Codable {
     let hotels: [BTHotel]
     let sites: [BTSite]
     let isPublic: Bool
+    //TODO: add notes to trips
     
     enum CodingKeys: String, CodingKey {
         case idValue = "id"

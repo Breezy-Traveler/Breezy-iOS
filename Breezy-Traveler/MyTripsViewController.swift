@@ -19,6 +19,27 @@ class MyTripsViewController: UIViewController {
     
     // MARK: - VOID METHODS
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "show trip detailed":
+                guard let vc = segue.destination as? TripDetailedViewController else {
+                    fatalError("segue was not set up correctly in the storyboard")
+                }
+                
+                guard
+                    let cell = sender as? UITableViewCell,
+                    let indexPath = self.tripsTableView.indexPath(for: cell) else {
+                        fatalError("this segue identifer was triggered by something else other than a UITableView Cell")
+                }
+                let selectedTrip = self.trips[indexPath.row]
+                
+                vc.trip = selectedTrip
+            default: break
+            }
+        }
+    }
+    
     // MARK: - IBACTIONS
     
     @IBOutlet weak var tripsTableView: UITableView!
