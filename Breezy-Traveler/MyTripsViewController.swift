@@ -8,29 +8,51 @@
 
 import UIKit
 
-class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    @IBOutlet weak var tripsTableView: UITableView!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
+class MyTripsViewController: UIViewController {
     
     var trips = [BTTrip]()
     var currentUser = BTUser.getStoredUser()
     
     let networkStack = NetworkStack()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.hideKeyboard()
+    
+    // MARK: - RETURN VALUES
+    
+    // MARK: - VOID METHODS
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "show trip detailed":
+                guard let vc = segue.destination as? TripDetailedViewController else {
+                    fatalError("segue was not set up correctly in the storyboard")
+                }
+                
+                guard
+                    let cell = sender as? UITableViewCell,
+                    let indexPath = self.tripsTableView.indexPath(for: cell) else {
+                        fatalError("this segue identifer was triggered by something else other than a UITableView Cell")
+                }
+                let selectedTrip = self.trips[indexPath.row]
+                
+                vc.trip = selectedTrip
+            default: break
+            }
+        }
     }
     
-    // FIXME: Uncomment this code when I have a user stored in keychain
-    override func viewWillAppear(_ animated: Bool) {
-        tripsTableView.delegate = self
-        tripsTableView.dataSource = self
+    // MARK: - IBACTIONS
+    
+    @IBOutlet weak var tripsTableView: UITableView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
+    // MARK: - LIFE CYCLE
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()        
         usernameLabel.text = currentUser.username
         emailLabel.text = currentUser.email
-        loadUserTrips()
+//        self.hideKeyboard()
     }
     
     func loadUserTrips() {
@@ -48,13 +70,16 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
+}
 
+extension MyTripsViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == 1 {
             return 1
         } else {
             return trips.count
@@ -62,7 +87,7 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+        if indexPath.section == 1 {
             tableView.rowHeight = 100
             let cell = tableView.dequeueReusableCell(withIdentifier: "exploreCell", for: indexPath) as! ExploreTripsTVCell
             
@@ -85,33 +110,12 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
             tableView.rowHeight = 80
             return cell
         }
-        
-    }
-
-}
-
-extension MyTripsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exploreTripCell", for: indexPath) as! ExploreTripsCollectionViewCell
-        
-        return cell
     }
     
     // Swipe left actions: edit and delete
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexpath) in
-            print("Delete Action Tapped")
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
             let deleteTrip = self.trips[indexPath.row]
             // item to delete
             print(deleteTrip)
@@ -135,14 +139,28 @@ extension MyTripsViewController: UICollectionViewDelegate, UICollectionViewDataS
                     print(tripsErrors.errors)
                 }
             })
+        default:
+            break
         }
-        
-        deleteAction.backgroundColor = .red
-        
-        return [deleteAction]
+    }
+}
+
+extension MyTripsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exploreTripCell", for: indexPath) as! ExploreTripsCollectionViewCell
+        
+        return cell
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100.0, height: 80.0)
