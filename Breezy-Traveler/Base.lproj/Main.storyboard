@@ -94,7 +94,6 @@
                     <connections>
                         <outlet property="authorLabel" destination="Swe-rc-nDc" id="WRg-iQ-uqk"/>
                         <outlet property="quoteOfTheDayLabel" destination="MX2-WW-zTv" id="8Za-sE-UFj"/>
-                        <segue destination="1mH-Aj-e8D" kind="showDetail" identifier="loginControllerSegue" id="RUJ-U0-qog"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -186,14 +185,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qq-ti-cED" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="92" y="-113"/>
-        </scene>
-        <!--User-->
-        <scene sceneID="ELs-YN-i42">
-            <objects>
-                <viewControllerPlaceholder storyboardName="User" id="1mH-Aj-e8D" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IrK-D0-ON2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="152" y="374"/>
         </scene>
         <!--Trips-->
         <scene sceneID="i5f-mW-3Mc">

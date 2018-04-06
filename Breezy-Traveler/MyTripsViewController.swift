@@ -21,24 +21,28 @@ class MyTripsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tripsTableView.delegate = self
-        tripsTableView.dataSource = self
-        usernameLabel.text = currentUser.username
-        emailLabel.text = currentUser.email
         self.hideKeyboard()
     }
     
     // FIXME: Uncomment this code when I have a user stored in keychain
     override func viewWillAppear(_ animated: Bool) {
+        tripsTableView.delegate = self
+        tripsTableView.dataSource = self
+        usernameLabel.text = currentUser.username
+        emailLabel.text = currentUser.email
+        loadUserTrips()
+    }
+    
+    func loadUserTrips() {
         networkStack.loadUserTrips(user: currentUser) { (result) in
             switch result {
-
+                
             case .success(let tripsDictionaries):
-                    self.trips = tripsDictionaries
-                    DispatchQueue.main.async {
-                        self.tripsTableView.reloadData()
-                    }
-
+                self.trips = tripsDictionaries
+                DispatchQueue.main.async {
+                    self.tripsTableView.reloadData()
+                }
+                
             case .failure(let tripsErrors):
                 print(tripsErrors.errors)
             }
