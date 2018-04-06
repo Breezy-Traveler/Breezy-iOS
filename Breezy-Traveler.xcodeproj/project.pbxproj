@@ -30,6 +30,7 @@
 		B9F9F1802077EE4B00F0D24D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F17F2077EE4B00F0D24D /* LoginController.swift */; };
 		B9F9F1822077F2FC00F0D24D /* LoginController+Handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */; };
 		B9F9F18420782EAA00F0D24D /* NteworkingLayer+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F18320782EAA00F0D24D /* NteworkingLayer+Images.swift */; };
+		B9F9F1872078340300F0D24D /* ImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F1862078340300F0D24D /* ImagesCollectionViewController.swift */; };
 		E95E138020754BE200BF4276 /* NetworkingLayer+QOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */; };
 		E95E138220754C6C00BF4276 /* NetworkingLayer+Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */; };
 		E95E13842075651F00BF4276 /* BTSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E13832075651F00BF4276 /* BTSite.swift */; };
@@ -71,6 +72,7 @@
 		B9F9F17F2077EE4B00F0D24D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginController+Handlers.swift"; sourceTree = "<group>"; };
 		B9F9F18320782EAA00F0D24D /* NteworkingLayer+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NteworkingLayer+Images.swift"; sourceTree = "<group>"; };
+		B9F9F1862078340300F0D24D /* ImagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewController.swift; sourceTree = "<group>"; };
 		E61EF07259D1B3C17908FB3F /* Pods-Breezy-Traveler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy-Traveler.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.release.xcconfig"; sourceTree = "<group>"; };
 		E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+QOD.swift"; sourceTree = "<group>"; };
 		E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Trips.swift"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				E98F03472072A95A004D4074 /* Trips.storyboard */,
+				B9F9F185207833D800F0D24D /* Images */,
 				B91449442069F9250074F71B /* ExploreTripsCollectionViewCell.swift */,
 				B91449422069E54E0074F71B /* MyTripsViewController.swift */,
 				E97ED75E207807FF0021B651 /* TripDetailedViewModel.swift */,
@@ -212,6 +215,14 @@
 				E97ED760207809BF0021B651 /* UtilityExtensions+Date.swift */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		B9F9F185207833D800F0D24D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B9F9F1862078340300F0D24D /* ImagesCollectionViewController.swift */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		E95E13852075652200BF4276 /* Site */ = {
@@ -406,6 +417,7 @@
 				E97ED761207809BF0021B651 /* UtilityExtensions+Date.swift in Sources */,
 				B9F9F17A2075585500F0D24D /* UtilityExtensions.swift in Sources */,
 				B965294B2069A571007FAD4D /* AppDelegate.swift in Sources */,
+				B9F9F1872078340300F0D24D /* ImagesCollectionViewController.swift in Sources */,
 				B9F9F17C20756B0700F0D24D /* PersistenceUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
