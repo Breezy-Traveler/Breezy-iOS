@@ -19,9 +19,6 @@
 		B96529552069A571007FAD4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B96529532069A571007FAD4D /* LaunchScreen.storyboard */; };
 		B965295D2069C96E007FAD4D /* ExploreTripsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */; };
 		B96529602069D17B007FAD4D /* TripsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965295F2069D17B007FAD4D /* TripsTVCell.swift */; };
-		B987305D2072DD570088AC43 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B987305C2072DD570088AC43 /* LoginVC.swift */; };
-		B987305F2072E19B0088AC43 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B987305E2072E19B0088AC43 /* RegisterVC.swift */; };
-		B98730622072FD570088AC43 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B98730602072FD570088AC43 /* User.storyboard */; };
 		B9A7E9772071B4130054DC4F /* TripDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A7E9762071B4130054DC4F /* TripDetailVC.swift */; };
 		B9B8F912206C52AF009C017F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8F911206C52AF009C017F /* UserModel.swift */; };
 		B9B8F916206C54A9009C017F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8F915206C54A9009C017F /* API.swift */; };
@@ -57,9 +54,6 @@
 		B96529562069A571007FAD4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTripsTVCell.swift; sourceTree = "<group>"; };
 		B965295F2069D17B007FAD4D /* TripsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTVCell.swift; sourceTree = "<group>"; };
-		B987305C2072DD570088AC43 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		B987305E2072E19B0088AC43 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
-		B98730612072FD570088AC43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/User.storyboard; sourceTree = "<group>"; };
 		B9A7E9762071B4130054DC4F /* TripDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailVC.swift; sourceTree = "<group>"; };
 		B9B8F911206C52AF009C017F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B9B8F915206C54A9009C017F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -167,10 +161,7 @@
 			children = (
 				B9F9F17F2077EE4B00F0D24D /* LoginController.swift */,
 				B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */,
-				B98730602072FD570088AC43 /* User.storyboard */,
 				B9B8F911206C52AF009C017F /* UserModel.swift */,
-				B987305C2072DD570088AC43 /* LoginVC.swift */,
-				B987305E2072E19B0088AC43 /* RegisterVC.swift */,
 				B9F9F17B20756B0700F0D24D /* PersistenceUser.swift */,
 				B9F9F17D20758E5F00F0D24D /* AlertVC.swift */,
 			);
@@ -285,7 +276,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B96529552069A571007FAD4D /* LaunchScreen.storyboard in Resources */,
-				B98730622072FD570088AC43 /* User.storyboard in Resources */,
 				E98F03482072A95A004D4074 /* Trips.storyboard in Resources */,
 				B96529522069A571007FAD4D /* Assets.xcassets in Resources */,
 				B96529502069A571007FAD4D /* Main.storyboard in Resources */,
@@ -378,9 +368,7 @@
 				B9B8F916206C54A9009C017F /* API.swift in Sources */,
 				B940C85220719D0000E7144D /* CreateTripVC.swift in Sources */,
 				B965294D2069A571007FAD4D /* QuoteVC.swift in Sources */,
-				B987305D2072DD570088AC43 /* LoginVC.swift in Sources */,
 				B9F7620A206D506500821C28 /* NetworkingLayer+Users.swift in Sources */,
-				B987305F2072E19B0088AC43 /* RegisterVC.swift in Sources */,
 				B940C850206EEB3100E7144D /* TripModel.swift in Sources */,
 				E98F034C2072B69C004D4074 /* BTHotel.swift in Sources */,
 				E95E13842075651F00BF4276 /* BTSite.swift in Sources */,
@@ -407,14 +395,6 @@
 				B96529542069A571007FAD4D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		B98730602072FD570088AC43 /* User.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B98730612072FD570088AC43 /* Base */,
-			);
-			name = User.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
