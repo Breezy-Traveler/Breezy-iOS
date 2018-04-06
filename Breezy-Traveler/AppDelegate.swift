@@ -16,96 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-//        let userPersistence = UserPersistence()
-//        userPersistence.logoutUser()
-//        
-//        // Override point for customization after application launch.
-//        // TODO: Remove when done testing
-//        let netStack = NetworkStack()
-//
-//        let newTrip = BTTrip(place: "New PLace!!!", isPublic: false)
-//        netStack.createTrip(trip: newTrip) { (result) in
-//            switch result {
-//            case .success(let returnedTrip):
-//                print("Successfully created trip: \(returnedTrip.place)")
-//
-//                // Add a Hotel for the added trip
-//                let newHotel = BTHotel(title: "Days Inn, yo!", visited: false)
-//                let dg = DispatchGroup()
-//                dg.enter()
-//                var returnedHotel: BTHotel? = nil
-//                print("#### creating hotel")
-//                netStack.create(a: newHotel, for: returnedTrip, completion: { (result) in
-//                    switch result {
-//                    case .success(let returnedHotelValue):
-//                        returnedHotel = returnedHotelValue
-//                        print("Successfully created hotel, \(returnedHotel!.title), for the \(returnedTrip.place) trip")
-//                        
-//                    case .failure(let errors):
-//                        print("Failed! \(errors)")
-//                    }
-//                    print("#### done (creating hotel)")
-//                    dg.leave()
-//                })
-//                
-//                // update added hotel
-//                dg.notify(queue: .main, execute: {
-//                    let dg = DispatchGroup()
-//                    print("#### updating hotel \(returnedHotel!)")
-//                    dg.enter()
-//                    returnedHotel!.address = "1234 California St"
-//                    netStack.update(hotel: returnedHotel!, for: returnedTrip, completion: { (result) in
-//                        switch result {
-//                        case .success(let returnedHotelValue):
-//                            returnedHotel = returnedHotelValue
-//                            print("Successfully updated hotel, \(returnedHotel!.title), to \(returnedHotelValue)")
-//                            
-//                        case .failure(let errors):
-//                            print("Failed! \(errors)")
-//                        }
-//                        print("#### done (updating hotel)")
-//                        dg.leave()
-//                    })
-//                    
-//                    dg.notify(queue: .main, execute: {
-//                        print("#### showing hotel with id = \(returnedHotel!.id)")
-//                        let dg = DispatchGroup()
-//                        dg.enter()
-//                        netStack.showHotel(for: returnedHotel!.id, for: returnedTrip, completion: { (result) in
-//                            switch result {
-//                            case .success(let returnedHotelValue):
-//                                print("Successfully fetched hotel: \(returnedHotelValue)")
-//                            case .failure(let errors):
-//                                print("Failed! \(errors)")
-//                            }
-//                            print("#### done (showing hotel)")
-//                            dg.leave()
-//                        })
-//                        
-//                        // Delete hotel
-//                        dg.notify(queue: .main, execute: {
-//                            print("#### delete hotel \(returnedHotel!)")
-//                            netStack.delete(hotel: returnedHotel!, for: returnedTrip, completion: { (result) in
-//                                switch result {
-//                                case .success(let message):
-//                                    print("Successfully deleted hotel, \(message)")
-//                                    
-//                                case .failure(let errors):
-//                                    print("Failed! \(errors)")
-//                                }
-//                                print("#### done (delete hotel)")
-//                            })
-//                        })
-//                    })
-//                })
-//                
-//                // Remove that added Hotel for the added trip
-//                
-//
-//            case .failure(let errors):
-//                print("Failed! \(errors)")
-//            }
-//        }
+        // FIXME: For testing programmatic Login/Register View only. Delete after testing.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        window?.rootViewController = UINavigationController(rootViewController: LoginController())
         
         return true
     }
