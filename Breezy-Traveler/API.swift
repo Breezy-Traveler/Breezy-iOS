@@ -187,8 +187,8 @@ extension BTAPIEndPoints: TargetType {
             return .requestJSONEncodable(site)
             
         // Images
-        case .loadTenImages("image_search"):
-            return .requestPlain
+        case .loadTenImages(let searchTerm):
+            return .requestParameters(parameters: ["search_term": searchTerm], encoding: URLEncoding.default)
             
         default:
             return .requestPlain
@@ -203,13 +203,13 @@ extension BTAPIEndPoints: TargetType {
         let userPersistence = UserPersistence()
         
         // default header pairs
-        
         if self.isRegisteringOrLoginging {
             
         } else {
             guard let token = userPersistence.getUserToken() else {
                 fatalError("no user token")
             }
+            
             // Authorization
             defaultHeaders["Authorization"] = "Token token=\(token)"
         }
