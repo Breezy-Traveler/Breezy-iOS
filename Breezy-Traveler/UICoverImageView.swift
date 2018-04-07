@@ -30,6 +30,9 @@ class UICoverImageView: UIView {
         self.view.frame = self.bounds
         self.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        self.bottomBar.effect = blurEffect
     }
     
     // MARK: - RETURN VALUES
@@ -39,6 +42,7 @@ class UICoverImageView: UIView {
     // MARK: - IBACTIONS
     
     @IBOutlet weak var leftIconView: UIImageView!
+    @IBOutlet weak var bottomBar: UIVisualEffectView!
     @IBOutlet weak var leftButton: UIButton!
     @IBAction func pressLeftButton(_ sender: Any) {
         self.delegate?.coverImage?(view: self, leftButtonDidPress: self.leftButton)
