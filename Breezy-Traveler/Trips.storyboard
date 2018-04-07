@@ -265,7 +265,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="300"/>
                                         <state key="normal" title="Button" image="destination_carousel_berlin"/>
                                         <connections>
-                                            <segue destination="TZH-F4-oM7" kind="show" id="KEN-PV-iHn"/>
+                                            <segue destination="1hi-wH-nma" kind="show" identifier="show image picker" id="b3y-y9-N8C"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ri-9J-8kt">
@@ -361,49 +361,29 @@
             <point key="canvasLocation" x="2604" y="293.70314842578711"/>
         </scene>
         <!--Images Collection View Controller-->
-        <scene sceneID="7o8-Jj-ub1">
+        <scene sceneID="kD3-Uw-ezD">
             <objects>
-                <collectionViewController id="TZH-F4-oM7" customClass="ImagesCollectionViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="T53-Xh-opV">
+                <collectionViewController id="1hi-wH-nma" customClass="ImagesCollectionViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="VmW-nq-pzZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="12" id="gaW-VB-Jqd">
-                            <size key="itemSize" width="100" height="100"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5be-Fj-R5n">
+                            <size key="itemSize" width="64" height="64"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="16" minY="16" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="16" minY="16" maxX="16" maxY="0.0"/>
                         </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="As1-px-LR3" customClass="ImagesCollectionViewCell" customModule="Breezy_Traveler" customModuleProvider="target">
-                                <rect key="frame" x="16" y="16" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="destination_carousel_berlin" translatesAutoresizingMaskIntoConstraints="NO" id="p0p-4Q-CrZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                        </imageView>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstItem="p0p-4Q-CrZ" firstAttribute="leading" secondItem="As1-px-LR3" secondAttribute="leading" id="Yvl-Kt-lbt"/>
-                                    <constraint firstAttribute="trailing" secondItem="p0p-4Q-CrZ" secondAttribute="trailing" id="Zku-dI-xJu"/>
-                                    <constraint firstAttribute="bottom" secondItem="p0p-4Q-CrZ" secondAttribute="bottom" id="qZ7-Ph-LAH"/>
-                                    <constraint firstItem="p0p-4Q-CrZ" firstAttribute="top" secondItem="As1-px-LR3" secondAttribute="top" id="w35-vQ-BYR"/>
-                                </constraints>
-                            </collectionViewCell>
-                        </cells>
+                        <cells/>
                         <connections>
-                            <outlet property="dataSource" destination="TZH-F4-oM7" id="Wrz-v3-M5Q"/>
-                            <outlet property="delegate" destination="TZH-F4-oM7" id="LFP-PR-FFh"/>
+                            <outlet property="dataSource" destination="1hi-wH-nma" id="PaC-C6-fOk"/>
+                            <outlet property="delegate" destination="1hi-wH-nma" id="DgS-SF-0Kx"/>
                         </connections>
                     </collectionView>
                 </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dd1-mp-bwb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pnb-Io-bQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3567.1999999999998" y="119.1904047976012"/>
+            <point key="canvasLocation" x="3464" y="123"/>
         </scene>
         <!--Trip-->
         <scene sceneID="xfs-h9-Mgv">
