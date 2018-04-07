@@ -41,13 +41,12 @@ class MyTripsViewController: UIViewController {
     }
     
     // MARK: - IBACTIONS
-    
     @IBOutlet weak var tripsTableView: UITableView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
-    // MARK: - LIFE CYCLE
     
+    // MARK: - LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()        
         usernameLabel.text = currentUser.username

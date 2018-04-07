@@ -160,7 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				E98F03472072A95A004D4074 /* Trips.storyboard */,
-				B9F9F185207833D800F0D24D /* Images */,
+				B940C84F206EEB3100E7144D /* TripModel.swift */,
 				B91449442069F9250074F71B /* ExploreTripsCollectionViewCell.swift */,
 				B91449422069E54E0074F71B /* MyTripsViewController.swift */,
 				E97ED75E207807FF0021B651 /* TripDetailedViewModel.swift */,
@@ -169,7 +169,7 @@
 				B940C85120719D0000E7144D /* CreateTripVC.swift */,
 				B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */,
 				B965295F2069D17B007FAD4D /* TripsTVCell.swift */,
-				B940C84F206EEB3100E7144D /* TripModel.swift */,
+				B9F9F185207833D800F0D24D /* Images */,
 			);
 			name = Trip;
 			sourceTree = "<group>";

@@ -261,9 +261,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZq-ZF-XJd">
                                 <rect key="frame" x="16" y="101" width="343" height="300"/>
                                 <subviews>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2y-dy-ZBF">
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2y-dy-ZBF" userLabel="ImageButton">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="300"/>
                                         <state key="normal" title="Button" image="destination_carousel_berlin"/>
+                                        <connections>
+                                            <segue destination="TZH-F4-oM7" kind="show" id="KEN-PV-iHn"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ri-9J-8kt">
                                         <rect key="frame" x="245" y="250" width="90" height="42"/>
@@ -311,12 +314,32 @@
                                     <constraint firstAttribute="trailing" secondItem="f2y-dy-ZBF" secondAttribute="trailing" id="tX9-3f-rSv"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="5nU-1w-XbZ">
+                                <rect key="frame" x="12" y="428" width="351" height="61.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where would you like to go?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgS-4z-kun">
+                                        <rect key="frame" x="0.0" y="0.0" width="351" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a travel destination here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lpo-by-w9F" userLabel="placeTextField">
+                                        <rect key="frame" x="0.0" y="31.5" width="351" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="aZq-ZF-XJd" firstAttribute="leading" secondItem="4kK-Y2-4PU" secondAttribute="leadingMargin" id="5kq-jb-d1H"/>
                             <constraint firstItem="aZq-ZF-XJd" firstAttribute="trailing" secondItem="4kK-Y2-4PU" secondAttribute="trailingMargin" id="F2i-HB-fev"/>
+                            <constraint firstItem="Gp2-fT-run" firstAttribute="trailing" secondItem="5nU-1w-XbZ" secondAttribute="trailing" constant="12" id="L0k-Tv-V9n"/>
                             <constraint firstItem="aZq-ZF-XJd" firstAttribute="top" secondItem="Gp2-fT-run" secondAttribute="top" constant="37" id="WYv-yX-Poa"/>
+                            <constraint firstItem="5nU-1w-XbZ" firstAttribute="leading" secondItem="Gp2-fT-run" secondAttribute="leading" constant="12" id="ajj-Xv-Xa5"/>
+                            <constraint firstItem="5nU-1w-XbZ" firstAttribute="top" secondItem="f2y-dy-ZBF" secondAttribute="bottom" constant="27" id="ayh-Vr-QZl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gp2-fT-run"/>
                     </view>
@@ -329,33 +352,47 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="placeTextField" destination="Lpo-by-w9F" id="eqk-lQ-dg3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRX-to-OBx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2604" y="293.70314842578711"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Images Collection View Controller-->
         <scene sceneID="7o8-Jj-ub1">
             <objects>
-                <collectionViewController id="TZH-F4-oM7" sceneMemberID="viewController">
+                <collectionViewController id="TZH-F4-oM7" customClass="ImagesCollectionViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="T53-Xh-opV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gaW-VB-Jqd">
-                            <size key="itemSize" width="50" height="50"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="12" id="gaW-VB-Jqd">
+                            <size key="itemSize" width="100" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="16" minY="16" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="As1-px-LR3">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageCell" id="As1-px-LR3" customClass="ImagesCollectionViewCell" customModule="Breezy_Traveler" customModuleProvider="target">
+                                <rect key="frame" x="16" y="16" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="destination_carousel_berlin" translatesAutoresizingMaskIntoConstraints="NO" id="p0p-4Q-CrZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        </imageView>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="p0p-4Q-CrZ" firstAttribute="leading" secondItem="As1-px-LR3" secondAttribute="leading" id="Yvl-Kt-lbt"/>
+                                    <constraint firstAttribute="trailing" secondItem="p0p-4Q-CrZ" secondAttribute="trailing" id="Zku-dI-xJu"/>
+                                    <constraint firstAttribute="bottom" secondItem="p0p-4Q-CrZ" secondAttribute="bottom" id="qZ7-Ph-LAH"/>
+                                    <constraint firstItem="p0p-4Q-CrZ" firstAttribute="top" secondItem="As1-px-LR3" secondAttribute="top" id="w35-vQ-BYR"/>
+                                </constraints>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -366,7 +403,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dd1-mp-bwb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3568" y="120"/>
+            <point key="canvasLocation" x="3567.1999999999998" y="119.1904047976012"/>
         </scene>
         <!--Trip-->
         <scene sceneID="xfs-h9-Mgv">
