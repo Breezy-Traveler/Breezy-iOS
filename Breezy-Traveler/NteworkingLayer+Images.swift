@@ -12,7 +12,7 @@ import SwiftyJSON
 
 extension NetworkStack {
     
-    func getTenImages(searchTerm: String, callback: @escaping ([URL]) -> ()) {
+    func fetchImages(searchTerm: String, callback: @escaping ([URL]) -> ()) {
         apiService.request(.loadTenImages(searchTerm)) { (result) in
             switch result {
                 
