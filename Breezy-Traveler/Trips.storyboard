@@ -312,7 +312,7 @@
             </objects>
             <point key="canvasLocation" x="2604" y="293.70314842578711"/>
         </scene>
-        <!--Trip-->
+        <!--Delegate-->
         <scene sceneID="xfs-h9-Mgv">
             <objects>
                 <viewController storyboardIdentifier="UIViewController-0Kn-gG-eX1" id="eqz-PU-wnb" customClass="TripDetailedViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
@@ -327,44 +327,48 @@
                                 </items>
                             </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bl2-Je-Pzs">
-                                <rect key="frame" x="0.0" y="637.5" width="375" height="29.5"/>
+                                <rect key="frame" x="0.0" y="633.5" width="375" height="33.5"/>
                                 <items>
                                     <barButtonItem title="Item" id="egG-8V-baY"/>
                                 </items>
                             </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ka8-pg-RUE">
-                                <rect key="frame" x="0.0" y="64" width="375" height="557.5"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="553.5"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xVd-pC-7wE">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="287.5"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MyW-JB-MLa">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="283.5"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NEY-Ic-riu">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xVd-pC-7wE" customClass="UICoverImageView" customModule="Breezy_Traveler" customModuleProvider="target">
                                                 <rect key="frame" x="4" y="8" width="367" height="275.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azz-lq-VwB">
+                                                        <rect key="frame" x="4" y="122" width="359" height="31.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="NEY-Ic-riu" secondAttribute="height" multiplier="4:3" id="9II-ez-32U"/>
+                                                    <constraint firstItem="azz-lq-VwB" firstAttribute="leading" secondItem="xVd-pC-7wE" secondAttribute="leading" constant="4" id="0YK-rk-Pkx"/>
+                                                    <constraint firstItem="azz-lq-VwB" firstAttribute="centerY" secondItem="xVd-pC-7wE" secondAttribute="centerY" id="ZtM-Fj-Yaf"/>
+                                                    <constraint firstAttribute="width" secondItem="xVd-pC-7wE" secondAttribute="height" multiplier="4:3" id="fcT-ve-209"/>
+                                                    <constraint firstAttribute="trailing" secondItem="azz-lq-VwB" secondAttribute="trailing" constant="4" id="iVb-lA-6X7"/>
+                                                    <constraint firstItem="azz-lq-VwB" firstAttribute="centerX" secondItem="xVd-pC-7wE" secondAttribute="centerX" id="vP8-Zr-O1w"/>
                                                 </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azz-lq-VwB">
-                                                <rect key="frame" x="4" y="128" width="367" height="31.5"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <connections>
+                                                    <outlet property="delegate" destination="eqz-PU-wnb" id="bRl-Ua-oCe"/>
+                                                </connections>
+                                            </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="azz-lq-VwB" firstAttribute="leading" secondItem="xVd-pC-7wE" secondAttribute="leading" constant="4" id="0YK-rk-Pkx"/>
-                                            <constraint firstAttribute="bottom" secondItem="NEY-Ic-riu" secondAttribute="bottom" constant="4" id="4yP-zr-QAo"/>
-                                            <constraint firstItem="NEY-Ic-riu" firstAttribute="leading" secondItem="xVd-pC-7wE" secondAttribute="leading" constant="4" id="A5e-N2-Qap"/>
-                                            <constraint firstItem="NEY-Ic-riu" firstAttribute="top" secondItem="xVd-pC-7wE" secondAttribute="top" constant="8" id="NqT-fM-jBp"/>
-                                            <constraint firstAttribute="trailing" secondItem="NEY-Ic-riu" secondAttribute="trailing" constant="4" id="OYN-LO-Qwn"/>
-                                            <constraint firstItem="azz-lq-VwB" firstAttribute="centerY" secondItem="xVd-pC-7wE" secondAttribute="centerY" id="ZtM-Fj-Yaf"/>
-                                            <constraint firstAttribute="trailing" secondItem="azz-lq-VwB" secondAttribute="trailing" constant="4" id="iVb-lA-6X7"/>
-                                            <constraint firstItem="azz-lq-VwB" firstAttribute="centerX" secondItem="xVd-pC-7wE" secondAttribute="centerX" id="vP8-Zr-O1w"/>
+                                            <constraint firstAttribute="bottom" secondItem="xVd-pC-7wE" secondAttribute="bottom" id="G6r-qD-lZI"/>
+                                            <constraint firstAttribute="trailing" secondItem="xVd-pC-7wE" secondAttribute="trailing" constant="4" id="GQG-Py-5yd"/>
+                                            <constraint firstItem="xVd-pC-7wE" firstAttribute="top" secondItem="MyW-JB-MLa" secondAttribute="top" constant="8" id="haA-yO-r8S"/>
+                                            <constraint firstItem="xVd-pC-7wE" firstAttribute="leading" secondItem="MyW-JB-MLa" secondAttribute="leading" constant="4" id="iP7-UO-WMT"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YeV-ww-To8">
-                                        <rect key="frame" x="0.0" y="303.5" width="375" height="254"/>
+                                        <rect key="frame" x="0.0" y="299.5" width="375" height="254"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ODw-1X-nKt" customClass="UIButtonCell" customModule="Breezy_Traveler" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
@@ -438,6 +442,7 @@
                         <outlet property="buttonHotels" destination="oej-io-fHL" id="mZX-El-PUk"/>
                         <outlet property="buttonNotes" destination="TB5-gA-0jh" id="L0R-b6-Zo9"/>
                         <outlet property="buttonStites" destination="FKG-ib-5ZQ" id="VAD-ad-Vrh"/>
+                        <outlet property="coverImage" destination="xVd-pC-7wE" id="nMP-uI-yTi"/>
                         <outlet property="labelTitle" destination="azz-lq-VwB" id="YrU-Cy-9el"/>
                         <segue destination="qVs-2s-SHa" kind="show" identifier="show date picker" id="NYY-we-8pf"/>
                         <segue destination="Rsd-vQ-snA" kind="show" identifier="show hotels" id="Vj6-H4-UGL"/>
