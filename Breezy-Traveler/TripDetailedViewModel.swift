@@ -15,6 +15,21 @@ struct TripDetailedViewModel {
 }
 
 extension TripDetailedViewModel {
+    
+    var likesText: String {
+        let nLikes = 999 //TODO: fetch the number of likes
+        
+        return "\(nLikes) Likes"
+    }
+    
+    var publishedText: String {
+        if trip.isPublic {
+            return "Published!"
+        } else {
+            return "Ready to Publish?"
+        }
+    }
+    
     var dateRangesSubtitle: String {
         if let startDate = trip.startDate {
             if let endDate = trip.endDate {
