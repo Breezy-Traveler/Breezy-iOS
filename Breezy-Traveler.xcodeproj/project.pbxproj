@@ -50,6 +50,7 @@
 		E9B1B9BB207D3ED000FCBC2E /* UtilityExtensions+Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9BA207D3ED000FCBC2E /* UtilityExtensions+Bool.swift */; };
 		E9B1B9BD207D4B6000FCBC2E /* UtilityExensions+UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9BC207D4B6000FCBC2E /* UtilityExensions+UIAlertController.swift */; };
 		E9B1B9BF207D501B00FCBC2E /* UtilityExtensions+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9BE207D501B00FCBC2E /* UtilityExtensions+UIButton.swift */; };
+		E9B1B9C1207D558900FCBC2E /* UtilityExtension+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9C0207D558900FCBC2E /* UtilityExtension+UITextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		E9B1B9BA207D3ED000FCBC2E /* UtilityExtensions+Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtensions+Bool.swift"; sourceTree = "<group>"; };
 		E9B1B9BC207D4B6000FCBC2E /* UtilityExensions+UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExensions+UIAlertController.swift"; sourceTree = "<group>"; };
 		E9B1B9BE207D501B00FCBC2E /* UtilityExtensions+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtensions+UIButton.swift"; sourceTree = "<group>"; };
+		E9B1B9C0207D558900FCBC2E /* UtilityExtension+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtension+UITextField.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 				E9B1B9BA207D3ED000FCBC2E /* UtilityExtensions+Bool.swift */,
 				E9B1B9BC207D4B6000FCBC2E /* UtilityExensions+UIAlertController.swift */,
 				E9B1B9BE207D501B00FCBC2E /* UtilityExtensions+UIButton.swift */,
+				E9B1B9C0207D558900FCBC2E /* UtilityExtension+UITextField.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				E95E13842075651F00BF4276 /* BTSite.swift in Sources */,
 				E97ED761207809BF0021B651 /* UtilityExtensions+Date.swift in Sources */,
 				B9F9F17A2075585500F0D24D /* UtilityExtensions.swift in Sources */,
+				E9B1B9C1207D558900FCBC2E /* UtilityExtension+UITextField.swift in Sources */,
 				B965294B2069A571007FAD4D /* AppDelegate.swift in Sources */,
 				B9F9F1872078340300F0D24D /* ImagesCollectionViewController.swift in Sources */,
 				B9F9F17C20756B0700F0D24D /* PersistenceUser.swift in Sources */,

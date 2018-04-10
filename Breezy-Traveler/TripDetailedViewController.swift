@@ -23,16 +23,6 @@ class TripDetailedViewController: UIViewController {
     
     // MARK: - LIFE CYCLE
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // shadow
-        labelTitle.layer.shadowColor = UIColor.black.cgColor
-        labelTitle.layer.shadowRadius = 2.0
-        labelTitle.layer.shadowOffset = CGSize(width: 0, height: 0)
-        labelTitle.layer.shadowOpacity = 0.85
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -45,7 +35,7 @@ class TripDetailedViewController: UIViewController {
     
     private func updateUI() {
         
-        labelTitle.text = trip.place
+        self.title = trip.place
         
         // layout cover image
         let likesTitle = viewModel.likesText
@@ -86,7 +76,6 @@ class TripDetailedViewController: UIViewController {
     
     // MARK: - IBACTIONS
     
-    @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var coverImage: UICoverImageView!
     
     @IBOutlet weak var buttonDates: UIButtonCell!
@@ -109,6 +98,21 @@ class TripDetailedViewController: UIViewController {
         self.performSegue(withIdentifier: UIStoryboardSegue.showNotes, sender: nil)
     }
 
+    @IBAction func pressRenamePlace(_ sender: Any) {
+        let tripPlace = viewModel.tripPlace
+        let alertPlace = UIAlertController(title: "Update Place", message: "enter a new place", preferredStyle: .alert)
+        
+        alertPlace
+            .addTextField(defaultText: tripPlace, placeholderText: "trip's place")
+            .addConfirmationButton(title: "Rename") { [unowned self] (action) in
+                guard let newPlace = alertPlace.inputField.text else {
+                    return debugPrint("no text was in the text field")
+                }
+                
+                self.viewModel.updatePlace(with: newPlace)
+            }
+            .present(in: self)
+    }
 }
 
 extension TripDetailedViewController: TripDetailedViewModelDelegate {

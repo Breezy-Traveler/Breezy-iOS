@@ -35,6 +35,21 @@ extension UIAlertController {
     }
     
     /**
+     Add a textfield with the given text and placeholder text
+     
+     - warning: the newly added textfield invokes .setStyleToParagraph(..)
+     
+     - returns: UIAlertController
+     */
+    public func addTextField(defaultText: String? = nil, placeholderText: String? = nil) -> UIAlertController {
+        self.addTextField(configurationHandler: { (textField) in
+            textField.setStyleToParagraph(withPlaceholderText: placeholderText, withInitalText: defaultText)
+        })
+        
+        return self
+    }
+    
+    /**
      Add a button with the style set to .cancel.
      
      the default action is an empty closure body
