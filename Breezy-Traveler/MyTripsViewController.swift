@@ -45,6 +45,9 @@ class MyTripsViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
+    @IBAction func unwindToMyTrips(_ segue: UIStoryboardSegue) {
+        print("welcome back, unwind!")
+    }
     
     // MARK: - LIFE CYCLE
     override func viewDidLoad() {

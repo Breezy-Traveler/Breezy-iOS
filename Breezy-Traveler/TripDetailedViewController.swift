@@ -23,6 +23,17 @@ class TripDetailedViewController: UIViewController {
     
     // MARK: - LIFE CYCLE
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationItem.leftBarButtonItem =
+            UIBarButtonItem(
+                barButtonSystemItem: .done,
+                target: self,
+                action: #selector(TripDetailedViewController.pressDone(_:))
+        )
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -77,6 +88,10 @@ class TripDetailedViewController: UIViewController {
     // MARK: - IBACTIONS
     
     @IBOutlet weak var coverImage: UICoverImageView!
+    
+    @objc func pressDone(_ sender: Any) {
+        self.performSegue(withIdentifier: UIStoryboardSegue.unwindToMyTrips, sender: nil)
+    }
     
     @IBOutlet weak var buttonDates: UIButtonCell!
     @IBAction func pressDates(_ sender: Any) {
@@ -156,5 +171,9 @@ fileprivate extension UIStoryboardSegue {
     
     static var showNotes: String {
         return "show notes"
+    }
+    
+    static var unwindToMyTrips: String {
+        return "unwind to my trips"
     }
 }
