@@ -13,6 +13,7 @@
 		B940C850206EEB3100E7144D /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B940C84F206EEB3100E7144D /* TripModel.swift */; };
 		B940C85220719D0000E7144D /* CreateTripVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B940C85120719D0000E7144D /* CreateTripVC.swift */; };
 		B950975C207D3E6600B4FE9B /* CreateTrip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B950975B207D3E6600B4FE9B /* CreateTrip.storyboard */; };
+		B950975E207D585800B4FE9B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B950975D207D585800B4FE9B /* ProfileViewController.swift */; };
 		B965294B2069A571007FAD4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965294A2069A571007FAD4D /* AppDelegate.swift */; };
 		B965294D2069A571007FAD4D /* QuoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965294C2069A571007FAD4D /* QuoteVC.swift */; };
 		B96529502069A571007FAD4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B965294E2069A571007FAD4D /* Main.storyboard */; };
@@ -58,6 +59,7 @@
 		B940C84F206EEB3100E7144D /* TripModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripModel.swift; sourceTree = "<group>"; };
 		B940C85120719D0000E7144D /* CreateTripVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripVC.swift; sourceTree = "<group>"; };
 		B950975B207D3E6600B4FE9B /* CreateTrip.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateTrip.storyboard; sourceTree = "<group>"; };
+		B950975D207D585800B4FE9B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B96529472069A571007FAD4D /* Breezy-Traveler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Breezy-Traveler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B965294A2069A571007FAD4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B965294C2069A571007FAD4D /* QuoteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteVC.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				B9B8F911206C52AF009C017F /* UserModel.swift */,
 				B9F9F17B20756B0700F0D24D /* PersistenceUser.swift */,
 				B9F9F17D20758E5F00F0D24D /* AlertVC.swift */,
+				B950975D207D585800B4FE9B /* ProfileViewController.swift */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				E95E13872075879300BF4276 /* NetworkingLayer+Sites.swift in Sources */,
 				E98F034A2072AEF2004D4074 /* NetworkingLayer+Hotels.swift in Sources */,
 				E95E138220754C6C00BF4276 /* NetworkingLayer+Trips.swift in Sources */,
+				B950975E207D585800B4FE9B /* ProfileViewController.swift in Sources */,
 				B96529602069D17B007FAD4D /* TripsTVCell.swift in Sources */,
 				B9F9F1802077EE4B00F0D24D /* LoginController.swift in Sources */,
 				B9B8F912206C52AF009C017F /* UserModel.swift in Sources */,

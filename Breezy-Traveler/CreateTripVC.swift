@@ -32,8 +32,7 @@ class CreateTripVC: UIViewController {
             case .success(let trip):
                 print(trip)
                 
-                // FIXME: Navigate to Trip Detail View
-                
+                // Navigate to Trip Detail
                 let tripStoryboard : UIStoryboard = UIStoryboard(name: "Trips", bundle:nil)
                 let vc = tripStoryboard.instantiateViewController(withIdentifier: "TripDetailViewController") as! TripDetailedViewController
                 
