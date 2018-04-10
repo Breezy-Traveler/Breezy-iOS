@@ -16,6 +16,45 @@ struct UserPersistence {
     private let tokenKey: String = "token"
     private let currentUserKey: String = "currentUser"
     
+    var userProfileURL: URL = {
+        // Get the URL for where to save the image
+        guard let libraryDirectory = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first else {
+            fatalError("no access to this directory")
+        }
+        // Create a filepath name for the image store
+        let userProfileURL = libraryDirectory.appendingPathComponent("userProfile.png")
+        return userProfileURL
+    }()
+    
+    func storeUserProfileImage(image: UIImage) {
+        
+        // Convert the UIImage into Data
+        guard let imageData = UIImagePNGRepresentation(image) else {
+            return
+        }
+        // Use file manager to save the data
+        let fileManger = FileManager.default
+        
+        do {
+            try imageData.write(to: userProfileURL)
+        } catch {
+            assertionFailure("\(error)")
+        }
+    }
+    
+    func loadUserProfileImage() -> UIImage? {
+        guard let imageData = try? Data(contentsOf: userProfileURL) else {
+            return nil
+        }
+        
+        if let image = UIImage(data: imageData) {
+            return image
+        } else {
+            print("image not converted from data")
+            return nil
+        }
+    }
+    
     func setCurrentUser(currentUser: BTUser) {
         let keychain = KeychainSwift()
         guard let currentUserData = try? JSONEncoder().encode(currentUser) else {
@@ -83,6 +122,7 @@ struct UserPersistence {
                 self.setUserToken(token: userReturned.token!)
                 callback(true)
             case .failure(let error):
+                
                 // FIXME: breaking here with bad credentials
                 assertionFailure("bad user credentials \(error.localizedDescription)")
                 callback(false)

@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     var currentUser = BTUser.getStoredUser()
     let imagePicker = UIImagePickerController()
+    let userPersistence = UserPersistence()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         emailLabel.text = currentUser.email
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(singleTap)
+        if let storedImage = userPersistence.loadUserProfileImage() {
+            imageView.image = storedImage
+        }
     }
     
     lazy var singleTap: UITapGestureRecognizer = {
@@ -51,6 +55,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             fatalError("problem getting image")
         }
+        userPersistence.storeUserProfileImage(image: pickedImage)
         imageView.contentMode = .scaleAspectFill
         imageView.image = pickedImage
         
