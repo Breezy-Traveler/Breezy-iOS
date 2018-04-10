@@ -8,33 +8,67 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
     var currentUser = BTUser.getStoredUser()
+    let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePicker.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(singleTap)
         usernameLabel.text = currentUser.username
         emailLabel.text = currentUser.email
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(singleTap)
     }
     
-    let singleTap = UITapGestureRecognizer(target: self, action: #selector(tapDetected))
+    lazy var singleTap: UITapGestureRecognizer = {
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(tapDetected))
+        singleTap.numberOfTapsRequired = 1
+        return singleTap
+    }()
     
     
-    //Action
+    // Action
     @objc func tapDetected() {
         print("Imageview Clicked")
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
     }
-
-
+    
+    
+    // MARK: - UIImagePickerControllerDelegate Methods
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            fatalError("problem getting image")
+        }
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = pickedImage
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            fatalError("problem getting image")
+        }
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = pickedImage
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
 
 }
