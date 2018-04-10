@@ -12,6 +12,7 @@
 		B91449452069F9250074F71B /* ExploreTripsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91449442069F9250074F71B /* ExploreTripsCollectionViewCell.swift */; };
 		B940C850206EEB3100E7144D /* TripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B940C84F206EEB3100E7144D /* TripModel.swift */; };
 		B940C85220719D0000E7144D /* CreateTripVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B940C85120719D0000E7144D /* CreateTripVC.swift */; };
+		B950975C207D3E6600B4FE9B /* CreateTrip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B950975B207D3E6600B4FE9B /* CreateTrip.storyboard */; };
 		B965294B2069A571007FAD4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965294A2069A571007FAD4D /* AppDelegate.swift */; };
 		B965294D2069A571007FAD4D /* QuoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965294C2069A571007FAD4D /* QuoteVC.swift */; };
 		B96529502069A571007FAD4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B965294E2069A571007FAD4D /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		B91449442069F9250074F71B /* ExploreTripsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTripsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B940C84F206EEB3100E7144D /* TripModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripModel.swift; sourceTree = "<group>"; };
 		B940C85120719D0000E7144D /* CreateTripVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripVC.swift; sourceTree = "<group>"; };
+		B950975B207D3E6600B4FE9B /* CreateTrip.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreateTrip.storyboard; sourceTree = "<group>"; };
 		B96529472069A571007FAD4D /* Breezy-Traveler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Breezy-Traveler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B965294A2069A571007FAD4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B965294C2069A571007FAD4D /* QuoteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteVC.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				E98F03472072A95A004D4074 /* Trips.storyboard */,
+				B950975B207D3E6600B4FE9B /* CreateTrip.storyboard */,
 				B940C84F206EEB3100E7144D /* TripModel.swift */,
 				B91449442069F9250074F71B /* ExploreTripsCollectionViewCell.swift */,
 				B91449422069E54E0074F71B /* MyTripsViewController.swift */,
@@ -292,7 +295,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Phyllis Wong";
 				TargetAttributes = {
 					B96529462069A571007FAD4D = {
@@ -331,6 +334,7 @@
 				E98F03482072A95A004D4074 /* Trips.storyboard in Resources */,
 				B96529522069A571007FAD4D /* Assets.xcassets in Resources */,
 				B96529502069A571007FAD4D /* Main.storyboard in Resources */,
+				B950975C207D3E6600B4FE9B /* CreateTrip.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +478,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -481,6 +486,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -531,6 +537,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -538,6 +545,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

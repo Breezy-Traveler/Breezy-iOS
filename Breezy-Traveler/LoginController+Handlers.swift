@@ -13,6 +13,7 @@ import KeychainSwift
 
 extension LoginController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    /// When a user registers successfully, they are logged into the app
     @objc func handleRegister() {
         
         guard let name = nameTextField.text, let username = usernameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else {
@@ -29,81 +30,30 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
                 case .success:
                 
                 // Auto login the user and navigate to the MyTripsView
-                    unwrappedSelf.networkStack.login(a: userLogin) { (result) in
-                        switch result {
-                            
-                            case .success(let loggedInUser):
-                                print(loggedInUser)
-                                unwrappedSelf.userPersistence.setCurrentUser(currentUser: loggedInUser)
-                                unwrappedSelf.userPersistence.loginUser(username: userLogin.username, password: userLogin.password)
-                                
-                                // successfully logged in user
-                                unwrappedSelf.dismiss(animated: true, completion: nil)
-                            
-                            case .failure(let userErrors):
-                                DispatchQueue.main.async {
-                                    unwrappedSelf.present(AlertViewController.showAlert(), animated: true, completion: nil)
-                                }
-                            print(userErrors.errors)
+                unwrappedSelf.networkStack.login(a: userLogin) { (result) in
+                    
+                    switch result {
+                    case .success(let loggedInUser):
+                        print(loggedInUser)
+                        unwrappedSelf.userPersistence.setCurrentUser(currentUser: loggedInUser)
+                        unwrappedSelf.userPersistence.loginUser(username: userLogin.username, password: userLogin.password)
+                        
+                        // successfully logged in user
+                        unwrappedSelf.dismiss(animated: true, completion: nil)
+                    
+                    case .failure(let userErrors):
+                        DispatchQueue.main.async {
+                            unwrappedSelf.present(AlertViewController.showAlert(), animated: true, completion: nil)
                         }
-                }
-                case .failure:
-                    DispatchQueue.main.async {
-                        unwrappedSelf.present(AlertViewController.showAlert(), animated: true, completion: nil)
+                        print(userErrors.errors)
                     }
+                }
+                
+                case .failure:
+                DispatchQueue.main.async {
+                    unwrappedSelf.present(AlertViewController.showAlert(), animated: true, completion: nil)
+                }
             }
         }
-            
     }
 }
-    
-    private func registerUserIntoDatabase(uid: String, values: [String: AnyObject]) {
-//        let ref = Database.database().reference(fromURL: "https://unicornchats.firebaseio.com/")
-//        let usersReference = ref.child("users").child(uid)
-//
-//        usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
-//            if err != nil {
-//                print(err!)
-//                return
-//            }
-//            // Dissmiss view controller to view the appication
-//            // Saved user successfully into Firebase db
-//            self.dismiss(animated: true, completion: nil)
-//        })
-
-    
-//    @objc func handleSelectProfileImageView() {
-//        // allow users to select image from their photo library
-//        let picker = UIImagePickerController()
-//
-//        picker.delegate = self
-//        picker.allowsEditing = true
-//
-//        present(picker, animated: true, completion: nil)
-//    }
-
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//
-//        var selectedImageFromPicker: UIImage?
-//
-//        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
-//            selectedImageFromPicker = editedImage
-//
-//        } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-//            selectedImageFromPicker = originalImage
-//
-//        }
-//
-//        if let selectedImage = selectedImageFromPicker {
-//            profileImageView.image = selectedImage
-//        }
-//
-//        dismiss(animated: true, completion: nil)
-//    }
-//
-//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-//        print("\ncanceled picker\n")
-//        dismiss(animated: true, completion: nil)
-    }
-
-
