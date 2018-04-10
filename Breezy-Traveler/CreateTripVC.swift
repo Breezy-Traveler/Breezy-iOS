@@ -25,8 +25,8 @@ class CreateTripVC: UIViewController {
     @IBAction func pressedSave(_ sender: UIBarButtonItem) {
         guard let place = placeTextField.text else { return }
         
-        let trip = BTTrip(place: place, isPublic: false)
-        networkStack.createTrip(trip: trip) { (result) in
+        let newTrip = BTTrip(place: place, isPublic: false)
+        networkStack.createTrip(trip: newTrip) { (result) in
             switch result {
                 
             case .success(let trip):
@@ -39,7 +39,8 @@ class CreateTripVC: UIViewController {
                 
                 // Bring back to the main thread before presenting the Trip Detail View
                 DispatchQueue.main.async {
-                    self.present(vc, animated: true, completion: nil)
+                    vc.trip = trip
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
                 
             case .failure(let tripsErrors):
