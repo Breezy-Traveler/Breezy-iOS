@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="484-B6-3wB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="484-B6-3wB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="AvenirNext.ttc">
-            <string>AvenirNext-DemiBold</string>
-            <string>AvenirNext-Regular</string>
-            <string>AvenirNext-UltraLight</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--QuoteVC-->
         <scene sceneID="tne-QT-ifu">
@@ -43,19 +36,19 @@
                                 </items>
                             </toolbar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inspirations" translatesAutoresizingMaskIntoConstraints="NO" id="1VQ-GC-7hQ">
-                                <rect key="frame" x="16" y="80" width="343" height="181"/>
+                                <rect key="frame" x="16" y="80" width="343" height="157"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="2TK-TN-alL">
-                                <rect key="frame" x="16" y="328" width="343" height="12"/>
+                                <rect key="frame" x="16" y="304" width="343" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote of the day" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MX2-WW-zTv">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="0.0"/>
+                                        <rect key="frame" x="93" y="0.0" width="157.5" height="27.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swe-rc-nDc">
-                                        <rect key="frame" x="0.0" y="12" width="343" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="39.5" width="343" height="20.5"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -103,7 +96,7 @@
         <!--Profile-->
         <scene sceneID="hge-1U-vX9">
             <objects>
-                <viewController title="Profile" id="kQI-mX-XjK" sceneMemberID="viewController">
+                <viewController title="Profile" id="kQI-mX-XjK" customClass="ProfileViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EHM-Kd-F2d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,7 +110,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="gHG-nV-VM6">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="gHG-nV-VM6" userLabel="imageView">
                                         <rect key="frame" x="0.0" y="55.5" width="225" height="225"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="225" id="IiI-RQ-foo"/>
@@ -163,6 +156,11 @@
                         <viewLayoutGuide key="safeArea" id="mvB-QF-wou"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="PD8-mn-5Oc"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="z8l-WS-gou" id="syt-kK-YJh"/>
+                        <outlet property="imageView" destination="gHG-nV-VM6" id="e0X-ZU-9Td"/>
+                        <outlet property="usernameLabel" destination="Uv3-TI-N5d" id="TPD-rS-6sB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJY-J8-mzQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -200,6 +198,6 @@
         <image name="inspirations" width="734" height="478"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="le7-6G-jFW"/>
+        <segue reference="Glr-Oe-sYv"/>
     </inferredMetricsTieBreakers>
 </document>
