@@ -21,6 +21,31 @@ class TripDetailedViewController: UIViewController {
         }
     }
     
+    // MARK: - LIFE CYCLE
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // shadow
+        labelTitle.layer.shadowColor = UIColor.black.cgColor
+        labelTitle.layer.shadowRadius = 2.0
+        labelTitle.layer.shadowOffset = CGSize(width: 0, height: 0)
+        labelTitle.layer.shadowOpacity = 0.85
+        
+        // Cover Image
+        let likesTitle = viewModel.likesText
+        coverImage.leftButton.setTitle(likesTitle, for: .normal)
+        
+        let publishedTitle = viewModel.publishedText
+        coverImage.rightButton.setTitle(publishedTitle, for: .normal)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.updateUI()
+    }
+    
     // MARK: - RETURN VALUES
     
     // MARK: - VOID METHODS
@@ -63,6 +88,8 @@ class TripDetailedViewController: UIViewController {
     // MARK: - IBACTIONS
     
     @IBOutlet weak var labelTitle: UILabel!
+    @IBOutlet weak var coverImage: UICoverImageView!
+    
     @IBOutlet weak var buttonDates: UIButtonCell!
     @IBAction func pressDates(_ sender: Any) {
         self.performSegue(withIdentifier: UIStoryboardSegue.showDatePicker, sender: nil)
@@ -82,25 +109,17 @@ class TripDetailedViewController: UIViewController {
     @IBAction func pressNotes(_ sender: Any) {
         self.performSegue(withIdentifier: UIStoryboardSegue.showNotes, sender: nil)
     }
+
+}
+
+extension TripDetailedViewController: UICoverImageViewDelegate {
     
-    // MARK: - LIFE CYCLE
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // shadow
-        labelTitle.layer.shadowColor = UIColor.black.cgColor
-        labelTitle.layer.shadowRadius = 2.0
-        labelTitle.layer.shadowOffset = CGSize(width: 0, height: 0)
-        labelTitle.layer.shadowOpacity = 0.85
+    func coverImage(view: UICoverImageView, leftButtonDidPress button: UIButton) {
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.updateUI()
+    func coverImage(view: UICoverImageView, rightButtonDidPress button: UIButton) {
     }
-
+    
 }
 
 fileprivate extension UIStoryboardSegue {

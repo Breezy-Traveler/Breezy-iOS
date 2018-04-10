@@ -323,6 +323,7 @@
 				E97ED75D2077EF190021B651 /* UIButtonCell.xib in Resources */,
 				E98F03482072A95A004D4074 /* Trips.storyboard in Resources */,
 				B96529522069A571007FAD4D /* Assets.xcassets in Resources */,
+				E97ED76520783D260021B651 /* UICoverImageView.xib in Resources */,
 				B96529502069A571007FAD4D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +423,7 @@
 				E97ED7582077ED190021B651 /* TripDetailedViewController.swift in Sources */,
 				E98F034C2072B69C004D4074 /* BTHotel.swift in Sources */,
 				E95E13842075651F00BF4276 /* BTSite.swift in Sources */,
+				E97ED76320783D080021B651 /* UICoverImageView.swift in Sources */,
 				E97ED761207809BF0021B651 /* UtilityExtensions+Date.swift in Sources */,
 				B9F9F17A2075585500F0D24D /* UtilityExtensions.swift in Sources */,
 				B965294B2069A571007FAD4D /* AppDelegate.swift in Sources */,
