@@ -9,20 +9,14 @@
 import UIKit
 
 class CreateTripVC: UIViewController {
-    
-    
+
     let networkStack = NetworkStack()
-    
     @IBOutlet weak var placeTextField: UITextField!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboard()
-    }
-
-    @IBAction func coverImage(_ sender: Any) {
-        
     }
     
     
