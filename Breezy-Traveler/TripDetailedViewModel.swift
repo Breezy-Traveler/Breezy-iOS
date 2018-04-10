@@ -8,13 +8,67 @@
 
 import Foundation
 
-struct TripDetailedViewModel {
+protocol TripDetailedViewModelDelegate: class {
+    func viewModel(_ model: TripDetailedViewModel, didUpdate trip: BTTrip)
+    func viewModel(_ model: TripDetailedViewModel, didRecieve errors: [String])
+}
+
+// if changed to a class, refactor closures to avoid retain cycles
+class TripDetailedViewModel {
+    
+    private var network = NetworkStack()
     
     var trip: BTTrip!
     
+    unowned var delegate: TripDetailedViewModelDelegate
+    
+    /**
+     <#Lorem ipsum dolor sit amet.#>
+     
+     - parameter delegate: must assign a delegate to respond to error messages
+     */
+    init(delegate: TripDetailedViewModelDelegate) {
+        self.delegate = delegate
+    }
+    
+    private func pushTrip(completion: @escaping (Bool) -> ()) {
+        network.update(trip: self.trip) { (result) in
+            switch result {
+            case .success:
+                completion(true)
+                
+            case .failure(let err):
+                self.delegate.viewModel(self, didRecieve: err.errors)
+                completion(false)
+            }
+        }
+    }
+    
+    private func pullTrip(completion: @escaping (BTTrip) -> ()) {
+        network.showTrip(for: self.trip.id) { (result) in
+            switch result {
+            case .success(let returnedTrip):
+                completion(returnedTrip)
+            case .failure(let err):
+                debugPrint("failed to pull trip")
+                self.delegate.viewModel(self, didRecieve: err.errors)
+            }
+        }
+    }
 }
 
 extension TripDetailedViewModel {
+    
+    func toggleIsPublished() {
+        self.trip.isPublic.invert()
+        self.pushTrip { (successful) in
+            if successful {
+                self.delegate.viewModel(self, didUpdate: self.trip)
+            } else {
+                debugPrint("failed to push trips")
+            }
+        }
+    }
     
     var likesText: String {
         let nLikes = 999 //TODO: fetch the number of likes

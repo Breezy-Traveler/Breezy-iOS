@@ -10,7 +10,7 @@ import UIKit
 
 class TripDetailedViewController: UIViewController {
     
-    private var viewModel = TripDetailedViewModel()
+    private lazy var viewModel = TripDetailedViewModel(delegate: self)
     
     var trip: BTTrip {
         set {
@@ -31,13 +31,6 @@ class TripDetailedViewController: UIViewController {
         labelTitle.layer.shadowRadius = 2.0
         labelTitle.layer.shadowOffset = CGSize(width: 0, height: 0)
         labelTitle.layer.shadowOpacity = 0.85
-        
-        // Cover Image
-        let likesTitle = viewModel.likesText
-        coverImage.leftButton.setTitle(likesTitle, for: .normal)
-        
-        let publishedTitle = viewModel.publishedText
-        coverImage.rightButton.setTitle(publishedTitle, for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +46,12 @@ class TripDetailedViewController: UIViewController {
     private func updateUI() {
         
         labelTitle.text = trip.place
+        
+        // layout cover image
+        let likesTitle = viewModel.likesText
+        coverImage.leftButton.setTitleWithoutAnimation(likesTitle, for: .normal)
+        let publishedTitle = viewModel.publishedText
+        coverImage.rightButton.setTitleWithoutAnimation(publishedTitle, for: .normal)
         
         // layout dates
         buttonDates.subtitleLabel.text = viewModel.dateRangesSubtitle
@@ -112,12 +111,28 @@ class TripDetailedViewController: UIViewController {
 
 }
 
+extension TripDetailedViewController: TripDetailedViewModelDelegate {
+    func viewModel(_ model: TripDetailedViewModel, didUpdate trip: BTTrip) {
+        self.updateUI()
+    }
+    
+    func viewModel(_ model: TripDetailedViewModel, didRecieve errors: [String]) {
+        let combinedErrorMessages = errors.reduce("errors: ") { "\($0) \($1). " }
+        UIAlertController(title: "Something Went Wrong", message: combinedErrorMessages, preferredStyle: .alert)
+            .addDismissButton()
+            .present(in: self)
+    }
+}
+
 extension TripDetailedViewController: UICoverImageViewDelegate {
     
     func coverImage(view: UICoverImageView, leftButtonDidPress button: UIButton) {
     }
     
     func coverImage(view: UICoverImageView, rightButtonDidPress button: UIButton) {
+        
+        //pressed publish button
+        self.viewModel.toggleIsPublished()
     }
     
 }

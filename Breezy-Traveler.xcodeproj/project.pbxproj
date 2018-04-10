@@ -47,6 +47,9 @@
 		E98F034C2072B69C004D4074 /* BTHotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F034B2072B69C004D4074 /* BTHotel.swift */; };
 		E9B1B9B8207D3AD800FCBC2E /* UICoverImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B1B9B6207D3AD800FCBC2E /* UICoverImageView.xib */; };
 		E9B1B9B9207D3AD800FCBC2E /* UICoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9B7207D3AD800FCBC2E /* UICoverImageView.swift */; };
+		E9B1B9BB207D3ED000FCBC2E /* UtilityExtensions+Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9BA207D3ED000FCBC2E /* UtilityExtensions+Bool.swift */; };
+		E9B1B9BD207D4B6000FCBC2E /* UtilityExensions+UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9BC207D4B6000FCBC2E /* UtilityExensions+UIAlertController.swift */; };
+		E9B1B9BF207D501B00FCBC2E /* UtilityExtensions+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9BE207D501B00FCBC2E /* UtilityExtensions+UIButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +97,9 @@
 		E98F034B2072B69C004D4074 /* BTHotel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTHotel.swift; sourceTree = "<group>"; };
 		E9B1B9B6207D3AD800FCBC2E /* UICoverImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICoverImageView.xib; sourceTree = "<group>"; };
 		E9B1B9B7207D3AD800FCBC2E /* UICoverImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICoverImageView.swift; sourceTree = "<group>"; };
+		E9B1B9BA207D3ED000FCBC2E /* UtilityExtensions+Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtensions+Bool.swift"; sourceTree = "<group>"; };
+		E9B1B9BC207D4B6000FCBC2E /* UtilityExensions+UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExensions+UIAlertController.swift"; sourceTree = "<group>"; };
+		E9B1B9BE207D501B00FCBC2E /* UtilityExtensions+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtensions+UIButton.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +227,9 @@
 			children = (
 				B9F9F1792075585500F0D24D /* UtilityExtensions.swift */,
 				E97ED760207809BF0021B651 /* UtilityExtensions+Date.swift */,
+				E9B1B9BA207D3ED000FCBC2E /* UtilityExtensions+Bool.swift */,
+				E9B1B9BC207D4B6000FCBC2E /* UtilityExensions+UIAlertController.swift */,
+				E9B1B9BE207D501B00FCBC2E /* UtilityExtensions+UIButton.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -423,8 +432,11 @@
 				B9B8F916206C54A9009C017F /* API.swift in Sources */,
 				B9F9F18420782EAA00F0D24D /* NteworkingLayer+Images.swift in Sources */,
 				E97ED75B2077EF140021B651 /* UIButtonCell.swift in Sources */,
+				E9B1B9BF207D501B00FCBC2E /* UtilityExtensions+UIButton.swift in Sources */,
 				B940C85220719D0000E7144D /* CreateTripVC.swift in Sources */,
 				B965294D2069A571007FAD4D /* QuoteVC.swift in Sources */,
+				E9B1B9BD207D4B6000FCBC2E /* UtilityExensions+UIAlertController.swift in Sources */,
+				E9B1B9BB207D3ED000FCBC2E /* UtilityExtensions+Bool.swift in Sources */,
 				B9F7620A206D506500821C28 /* NetworkingLayer+Users.swift in Sources */,
 				B940C850206EEB3100E7144D /* TripModel.swift in Sources */,
 				E97ED7582077ED190021B651 /* TripDetailedViewController.swift in Sources */,
