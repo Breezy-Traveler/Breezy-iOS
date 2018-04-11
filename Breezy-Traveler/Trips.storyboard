@@ -188,7 +188,7 @@
                                             <outlet property="isPublic" destination="oRS-4A-UGg" id="Pum-5K-JLj"/>
                                             <outlet property="placeName" destination="itz-h9-Ap2" id="TMD-gc-pbe"/>
                                             <outlet property="startDate" destination="qQa-an-sFG" id="TR8-le-Sz4"/>
-                                            <segue destination="eqz-PU-wnb" kind="show" identifier="show trip detailed" id="phu-S9-DpG"/>
+                                            <segue destination="VCR-mM-z7r" kind="show" identifier="show trip detailed" id="phu-S9-DpG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -270,217 +270,21 @@
             </objects>
             <point key="canvasLocation" x="3464" y="123"/>
         </scene>
-        <!--Delegate-->
-        <scene sceneID="xfs-h9-Mgv">
-            <objects>
-                <viewController storyboardIdentifier="TripDetailViewController" id="eqz-PU-wnb" customClass="TripDetailedViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="GvJ-TR-tOf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDi-lm-iVe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="UEb-0e-e4K"/>
-                                </items>
-                            </navigationBar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bl2-Je-Pzs">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="208-Tk-j2g"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem systemItem="edit" id="egG-8V-baY">
-                                        <connections>
-                                            <action selector="pressRenamePlace:" destination="eqz-PU-wnb" id="bbP-8l-KaU"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ka8-pg-RUE">
-                                <rect key="frame" x="0.0" y="64" width="375" height="543"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MyW-JB-MLa">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="283.5"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xVd-pC-7wE" customClass="UICoverImageView" customModule="Breezy_Traveler" customModuleProvider="target">
-                                                <rect key="frame" x="4" y="8" width="367" height="275.5"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="xVd-pC-7wE" secondAttribute="height" multiplier="4:3" id="fcT-ve-209"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outlet property="delegate" destination="eqz-PU-wnb" id="bRl-Ua-oCe"/>
-                                                </connections>
-                                            </view>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="xVd-pC-7wE" secondAttribute="bottom" id="G6r-qD-lZI"/>
-                                            <constraint firstAttribute="trailing" secondItem="xVd-pC-7wE" secondAttribute="trailing" constant="4" id="GQG-Py-5yd"/>
-                                            <constraint firstItem="xVd-pC-7wE" firstAttribute="top" secondItem="MyW-JB-MLa" secondAttribute="top" constant="8" id="haA-yO-r8S"/>
-                                            <constraint firstItem="xVd-pC-7wE" firstAttribute="leading" secondItem="MyW-JB-MLa" secondAttribute="leading" constant="4" id="iP7-UO-WMT"/>
-                                        </constraints>
-                                    </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YeV-ww-To8">
-                                        <rect key="frame" x="0.0" y="299.5" width="375" height="243.5"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ODw-1X-nKt" customClass="UIButtonCell" customModule="Breezy_Traveler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Dates"/>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="pressDates:" destination="eqz-PU-wnb" eventType="touchUpInside" id="9We-bI-17b"/>
-                                                </connections>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oej-io-fHL" customClass="UIButtonCell" customModule="Breezy_Traveler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="61" width="375" height="61"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Hotels"/>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="pressHotels:" destination="eqz-PU-wnb" eventType="touchUpInside" id="JT6-up-nl6"/>
-                                                </connections>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FKG-ib-5ZQ" customClass="UIButtonCell" customModule="Breezy_Traveler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="122" width="375" height="60.5"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Sites"/>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="pressSites:" destination="eqz-PU-wnb" eventType="touchUpInside" id="DKS-ev-jqM"/>
-                                                </connections>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TB5-gA-0jh" customClass="UIButtonCell" customModule="Breezy_Traveler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="182.5" width="375" height="61"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Notes"/>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="pressNotes:" destination="eqz-PU-wnb" eventType="touchUpInside" id="o2A-KM-Yk4"/>
-                                                </connections>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="bl2-Je-Pzs" firstAttribute="bottom" secondItem="83t-nM-9bF" secondAttribute="bottom" id="AB3-qd-myy"/>
-                            <constraint firstItem="bl2-Je-Pzs" firstAttribute="trailing" secondItem="83t-nM-9bF" secondAttribute="trailing" id="Bwh-Kn-3Xb"/>
-                            <constraint firstItem="ka8-pg-RUE" firstAttribute="top" secondItem="83t-nM-9bF" secondAttribute="top" id="SL8-I4-IVf"/>
-                            <constraint firstItem="ka8-pg-RUE" firstAttribute="leading" secondItem="83t-nM-9bF" secondAttribute="leading" id="U4J-Hs-1dT"/>
-                            <constraint firstItem="bl2-Je-Pzs" firstAttribute="leading" secondItem="83t-nM-9bF" secondAttribute="leading" id="UQZ-Hz-aNz"/>
-                            <constraint firstItem="fDi-lm-iVe" firstAttribute="trailing" secondItem="83t-nM-9bF" secondAttribute="trailing" id="bmI-vq-hq3"/>
-                            <constraint firstItem="bl2-Je-Pzs" firstAttribute="top" secondItem="ka8-pg-RUE" secondAttribute="bottom" constant="16" id="dnH-aW-qXG"/>
-                            <constraint firstItem="fDi-lm-iVe" firstAttribute="top" secondItem="GvJ-TR-tOf" secondAttribute="top" id="jca-Aw-Nps"/>
-                            <constraint firstItem="fDi-lm-iVe" firstAttribute="leading" secondItem="83t-nM-9bF" secondAttribute="leading" id="lY9-aI-Ma2"/>
-                            <constraint firstItem="ka8-pg-RUE" firstAttribute="trailing" secondItem="83t-nM-9bF" secondAttribute="trailing" id="o3U-6f-5K2"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="83t-nM-9bF"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Trip" id="Qqg-si-ceg">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="zmH-sN-sZz">
-                            <connections>
-                                <segue destination="2qX-9y-YwE" kind="showDetail" identifier="edit trip" id="rff-C5-lup"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="buttonDates" destination="ODw-1X-nKt" id="LH2-EI-8uw"/>
-                        <outlet property="buttonHotels" destination="oej-io-fHL" id="mZX-El-PUk"/>
-                        <outlet property="buttonNotes" destination="TB5-gA-0jh" id="L0R-b6-Zo9"/>
-                        <outlet property="buttonStites" destination="FKG-ib-5ZQ" id="VAD-ad-Vrh"/>
-                        <outlet property="coverImage" destination="xVd-pC-7wE" id="nMP-uI-yTi"/>
-                        <segue destination="qVs-2s-SHa" kind="show" identifier="show date picker" id="NYY-we-8pf"/>
-                        <segue destination="Rsd-vQ-snA" kind="show" identifier="show hotels" id="Vj6-H4-UGL"/>
-                        <segue destination="Qgb-Ap-1wf" kind="show" identifier="show sites" id="7xo-VB-flZ"/>
-                        <segue destination="gDZ-s6-AJ9" kind="show" identifier="show notes" id="bqM-2S-CFl"/>
-                        <segue destination="ThX-hg-EJG" kind="unwind" identifier="unwind to my trips" unwindAction="unwindToMyTrips:" id="rhH-2V-dla"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wzh-VX-xPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="ThX-hg-EJG" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="1780" y="1064.6176911544228"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Oiu-K4-nHT">
-            <objects>
-                <viewController id="O3M-Bf-kGx" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7gX-gb-b3w">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="BAl-3y-Rhz"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="sqE-u1-88h"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pda-mm-bT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3793" y="1064"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Taj-Ca-uXF">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2qX-9y-YwE" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DTL-mQ-oq7">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="O3M-Bf-kGx" kind="relationship" relationship="rootViewController" id="aLd-RH-RGH"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zYM-a1-2NR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3049" y="1064"/>
-        </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="BuC-4s-Pjh">
-            <objects>
-                <viewControllerPlaceholder id="qVs-2s-SHa" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y0R-p0-PrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2362" y="726"/>
-        </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="050-SU-qQ0">
-            <objects>
-                <viewControllerPlaceholder id="Rsd-vQ-snA" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c0r-Rq-5Uh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2425" y="776"/>
-        </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="cJa-CE-x3M">
-            <objects>
-                <viewControllerPlaceholder id="Qgb-Ap-1wf" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PsA-CC-RUI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2489" y="828"/>
-        </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="p90-nL-u7u">
-            <objects>
-                <viewControllerPlaceholder id="gDZ-s6-AJ9" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Xl-ld-y7a" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2548" y="885"/>
-        </scene>
         <!--CreateTrip-->
         <scene sceneID="CzO-t3-ppY">
             <objects>
                 <viewControllerPlaceholder storyboardName="CreateTrip" id="TnC-rq-0Z3" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmY-Xe-JoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2604" y="293.70314842578711"/>
+            <point key="canvasLocation" x="2353" y="78"/>
+        </scene>
+        <!--TripDetailViewController-->
+        <scene sceneID="l7K-mJ-Tdp">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="TripDetailViewController" storyboardName="TripsDetail" referencedIdentifier="TripDetailViewController" id="VCR-mM-z7r" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="asI-uk-bMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2504" y="146"/>
         </scene>
     </scenes>
     <resources>
