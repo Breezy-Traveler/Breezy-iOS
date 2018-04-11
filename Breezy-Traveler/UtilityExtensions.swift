@@ -9,8 +9,12 @@
 import Foundation
 import UIKit
 
-
-
+extension Collection where Index : Comparable {
+    subscript(fromBack i: Int) -> Iterator.Element {
+        let backBy = i
+        return self[self.index(self.endIndex, offsetBy: backBy)]
+    }
+}
 
 extension UIViewController {
     func hideKeyboard() {

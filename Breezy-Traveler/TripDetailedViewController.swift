@@ -23,6 +23,17 @@ class TripDetailedViewController: UIViewController {
     
     // MARK: - LIFE CYCLE
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationItem.leftBarButtonItem =
+            UIBarButtonItem(
+                barButtonSystemItem: .done,
+                target: self,
+                action: #selector(TripDetailedViewController.pressDone(_:))
+        )
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -77,6 +88,20 @@ class TripDetailedViewController: UIViewController {
     // MARK: - IBACTIONS
     
     @IBOutlet weak var coverImage: UICoverImageView!
+    
+    @objc func pressDone(_ sender: Any) {
+        guard let lastViewController = self.navigationController?.childViewControllers[fromBack: -2] else {
+            fatalError("could not find second to last viewController in navigationController.childViewControllers")
+        }
+        
+        // if the controller who presented this Vc, by a push on the navigation controller,
+        // was the Explore Trips Vc, then pop this view. otherwise, unwind to the my trips vc
+        if lastViewController is ExploreTripsVC {
+            self.navigationController!.popViewController(animated: true)
+        } else {
+            self.performSegue(withIdentifier: UIStoryboardSegue.unwindToMyTrips, sender: nil)
+        }
+    }
     
     @IBOutlet weak var buttonDates: UIButtonCell!
     @IBAction func pressDates(_ sender: Any) {
@@ -156,5 +181,9 @@ fileprivate extension UIStoryboardSegue {
     
     static var showNotes: String {
         return "show notes"
+    }
+    
+    static var unwindToMyTrips: String {
+        return "unwind to my trips"
     }
 }

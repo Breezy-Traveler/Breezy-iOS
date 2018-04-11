@@ -399,9 +399,11 @@
                         <segue destination="Rsd-vQ-snA" kind="show" identifier="show hotels" id="Vj6-H4-UGL"/>
                         <segue destination="Qgb-Ap-1wf" kind="show" identifier="show sites" id="7xo-VB-flZ"/>
                         <segue destination="gDZ-s6-AJ9" kind="show" identifier="show notes" id="bqM-2S-CFl"/>
+                        <segue destination="ThX-hg-EJG" kind="unwind" identifier="unwind to my trips" unwindAction="unwindToMyTrips:" id="rhH-2V-dla"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wzh-VX-xPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ThX-hg-EJG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1780" y="1064.6176911544228"/>
         </scene>

@@ -53,6 +53,7 @@
 		E9B1B9BD207D4B6000FCBC2E /* UtilityExensions+UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9BC207D4B6000FCBC2E /* UtilityExensions+UIAlertController.swift */; };
 		E9B1B9BF207D501B00FCBC2E /* UtilityExtensions+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9BE207D501B00FCBC2E /* UtilityExtensions+UIButton.swift */; };
 		E9B1B9C1207D558900FCBC2E /* UtilityExtension+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9C0207D558900FCBC2E /* UtilityExtension+UITextField.swift */; };
+		E9B1B9C3207D604B00FCBC2E /* ExploreTripsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9C2207D604B00FCBC2E /* ExploreTripsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +107,7 @@
 		E9B1B9BC207D4B6000FCBC2E /* UtilityExensions+UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExensions+UIAlertController.swift"; sourceTree = "<group>"; };
 		E9B1B9BE207D501B00FCBC2E /* UtilityExtensions+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtensions+UIButton.swift"; sourceTree = "<group>"; };
 		E9B1B9C0207D558900FCBC2E /* UtilityExtension+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtension+UITextField.swift"; sourceTree = "<group>"; };
+		E9B1B9C2207D604B00FCBC2E /* ExploreTripsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTripsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				B950975B207D3E6600B4FE9B /* CreateTrip.storyboard */,
 				B940C85120719D0000E7144D /* CreateTripVC.swift */,
 				B940C84F206EEB3100E7144D /* TripModel.swift */,
+				E9B1B9C2207D604B00FCBC2E /* ExploreTripsVC.swift */,
 				B91449442069F9250074F71B /* ExploreTripsCollectionViewCell.swift */,
 				B91449422069E54E0074F71B /* MyTripsViewController.swift */,
 				E97ED75E207807FF0021B651 /* TripDetailedViewModel.swift */,
@@ -443,6 +446,7 @@
 				B9B8F916206C54A9009C017F /* API.swift in Sources */,
 				B9F9F18420782EAA00F0D24D /* NteworkingLayer+Images.swift in Sources */,
 				E97ED75B2077EF140021B651 /* UIButtonCell.swift in Sources */,
+				E9B1B9C3207D604B00FCBC2E /* ExploreTripsVC.swift in Sources */,
 				E9B1B9BF207D501B00FCBC2E /* UtilityExtensions+UIButton.swift in Sources */,
 				B940C85220719D0000E7144D /* CreateTripVC.swift in Sources */,
 				B965294D2069A571007FAD4D /* QuoteVC.swift in Sources */,
