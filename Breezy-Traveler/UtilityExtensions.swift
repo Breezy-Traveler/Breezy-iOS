@@ -28,6 +28,22 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+    /**
+     <#Lorem ipsum dolor sit amet.#>
+     
+     - parameter nibName: the name of the nib to load from. use nil to use the
+     class name as the nib name
+     
+     - returns: <#Sed do eiusmod tempor.#>
+     */
+    static func loadFrom(nibName: String?) -> Self {
+        if let nibName = nibName {
+            return self.init(nibName: nibName, bundle: nil)
+        } else {
+            return self.init(nibName: String(describing: self), bundle: nil)
+        }
+    }
 }
 
 extension UIColor {
