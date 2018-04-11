@@ -94,8 +94,8 @@ class TripDetailedViewController: UIViewController {
             fatalError("could not find second to last viewController in navigationController.childViewControllers")
         }
         
-        // if the controller who presented this Vc, by a push on the navigation controller,
-        // was the Explore Trips Vc, then pop this view. otherwise, unwind to the my trips vc
+        // if the controller who presented this VC, by a push on the navigation controller,
+        // was the Explore Trips VC, then pop this view. otherwise, unwind to the my trips VC
         if lastViewController is ExploreTripsVC {
             self.navigationController!.popViewController(animated: true)
         } else {
