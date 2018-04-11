@@ -165,6 +165,10 @@ extension TripDetailedViewController: UICoverImageViewDelegate {
         self.viewModel.toggleIsPublished()
     }
     
+    func coverImage(view: UICoverImageView, coverImageDidPressWith gesture: UITapGestureRecognizer) {
+        print("Cover image pressed")
+    }
+    
 }
 
 fileprivate extension UIStoryboardSegue {

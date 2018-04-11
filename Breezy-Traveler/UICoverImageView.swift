@@ -11,6 +11,7 @@ import UIKit
 @objc protocol UICoverImageViewDelegate: class {
     @objc optional func coverImage(view: UICoverImageView, leftButtonDidPress button: UIButton)
     @objc optional func coverImage(view: UICoverImageView, rightButtonDidPress button: UIButton)
+    @objc optional func coverImage(view: UICoverImageView, coverImageDidPressWith gesture: UITapGestureRecognizer)
 }
 
 class UICoverImageView: UIView {
@@ -33,14 +34,27 @@ class UICoverImageView: UIView {
         self.view.frame = self.bounds
         self.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
+        // Gesture recognizer for the cover image
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(tapDetected))
+        singleTap.numberOfTapsRequired = 1
+        self.coverImageView.addGestureRecognizer(singleTap)
         
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
         self.bottomBar.effect = blurEffect
+   
     }
     
     // MARK: - RETURN VALUES
     
-    // MARK: - VOID METHODS
+    // MARK: - METHODS
+    
+
+    
+    
+    // Actions
+    @objc func tapDetected(_ gesture: UITapGestureRecognizer) {
+        self.delegate?.coverImage?(view: self, coverImageDidPressWith: gesture)
+    }
     
     // MARK: - IBACTIONS
     
