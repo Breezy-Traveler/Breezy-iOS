@@ -26,6 +26,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewWillAppear(_ animated: Bool) {
         usernameLabel.text = currentUser.username
         emailLabel.text = currentUser.email
+        
+        // take imageView with Same Height and Width, and set its layer property :
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = imageView.frame.size.height / 2
+        
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(singleTap)
         
@@ -67,6 +72,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             fatalError("problem getting image")
         }
+        
         imageView.contentMode = .scaleAspectFit
         imageView.image = pickedImage
         
