@@ -7,8 +7,13 @@
 //
 
 import UIKit
+//import kingfisher
 
 class ImagesCollectionViewController: UICollectionViewController {
+    
+    var networkStack = NetworkStack()
+    var searchTerm: String!
+    private var fetchedImagesUrls = [URL]()
     
     private let reuseIdentifier = ImagesCollectionViewCell.reuseIdentifier
 
@@ -28,6 +33,10 @@ class ImagesCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        networkStack.fetchImages(searchTerm: self.searchTerm) { (urls) in
+            fetchedImagesUrls
+        }
         
         collectionView?.reloadData()
     }

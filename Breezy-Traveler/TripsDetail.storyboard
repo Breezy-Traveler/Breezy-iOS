@@ -143,6 +143,7 @@
                         <segue destination="gDZ-s6-AJ9" kind="show" identifier="show notes" id="bqM-2S-CFl"/>
                         <segue destination="ThX-hg-EJG" kind="unwind" identifier="unwind to my trips" unwindAction="unwindToMyTrips:" id="rhH-2V-dla"/>
                         <segue destination="6Pz-Wr-JFH" kind="show" identifier="show date picker" id="Bl1-Dx-ipQ"/>
+                        <segue destination="MJB-g8-93G" kind="show" identifier="showCollectionViewSegue" id="HRp-dR-33w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wzh-VX-xPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -193,6 +194,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pda-mm-bT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4186" y="1013"/>
+        </scene>
+        <!--Images Collection View Controller-->
+        <scene sceneID="Z1L-1j-gJZ">
+            <objects>
+                <collectionViewController id="MJB-g8-93G" customClass="ImagesCollectionViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="fmW-Dk-i9V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="t4V-RI-6nb">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="MJB-g8-93G" id="n4n-qs-1kV"/>
+                            <outlet property="delegate" destination="MJB-g8-93G" id="JUH-gu-OEJ"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ACp-CF-3dO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3470" y="1735"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Taj-Ca-uXF">

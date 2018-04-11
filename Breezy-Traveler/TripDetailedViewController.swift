@@ -80,6 +80,11 @@ class TripDetailedViewController: UIViewController {
             case UIStoryboardSegue.showNotes:
                 //TODO: prepare show notes
                 break
+            case UIStoryboardSegue.showCollectionViewSegue:
+                guard let vc = segue.destination as? ImagesCollectionViewController else {
+                    fatalError("broken storyboard")
+                }
+                vc.searchTerm = trip.place
             default: break
             }
         }
@@ -168,7 +173,7 @@ extension TripDetailedViewController: UICoverImageViewDelegate {
     func coverImage(view: UICoverImageView, coverImageDidPressWith gesture: UITapGestureRecognizer) {
         print("Cover image pressed")
         
-        
+        self.performSegue(withIdentifier: "showCollectionViewSegue", sender: nil)
     }
     
 }
@@ -192,5 +197,9 @@ fileprivate extension UIStoryboardSegue {
     
     static var unwindToMyTrips: String {
         return "unwind to my trips"
+    }
+    
+    static var showCollectionViewSegue: String {
+        return "showCollectionViewSegue"
     }
 }
