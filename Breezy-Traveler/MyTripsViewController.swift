@@ -12,7 +12,7 @@ class MyTripsViewController: UIViewController {
     
     var trips = [BTTrip]()
     var currentUser = BTUser.getStoredUser()
-    
+    var userPersitence = UserPersistence()
     let networkStack = NetworkStack()
     
     // MARK: - RETURN VALUES
@@ -44,9 +44,10 @@ class MyTripsViewController: UIViewController {
     @IBOutlet weak var tripsTableView: UITableView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
-    
+  
+    @IBOutlet weak var profileImage: UIImageView!
     @IBAction func unwindToMyTrips(_ segue: UIStoryboardSegue) {
-        print("welcome back, unwind!")
+        debugPrint("welcome back, unwind!")
     }
     
     // MARK: - LIFE CYCLE
@@ -54,7 +55,9 @@ class MyTripsViewController: UIViewController {
         super.viewDidLoad()        
         usernameLabel.text = currentUser.username
         emailLabel.text = currentUser.email
-//        self.hideKeyboard()
+        if let savedProfileImage = userPersitence.loadUserProfileImage() {
+            profileImage.image = savedProfileImage
+        }
     }
     
     func loadUserTrips() {
