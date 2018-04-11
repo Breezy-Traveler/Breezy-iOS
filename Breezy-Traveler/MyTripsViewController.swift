@@ -99,6 +99,7 @@ extension MyTripsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Display a side scrolling collection of users trips
+        // Explore trips area
         if indexPath.section == 0 {
             tableView.rowHeight = 100
             let cell = tableView.dequeueReusableCell(withIdentifier: "exploreCell", for: indexPath) as! ExploreTripsTVCell
@@ -108,6 +109,9 @@ extension MyTripsViewController: UITableViewDataSource, UITableViewDelegate {
             
             return cell
         } else {
+            
+            // MARK: Display all trips for a user
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "tripsCell", for: indexPath) as! TripsTVCell
             
             let trip = trips[indexPath.row]
@@ -158,6 +162,7 @@ extension MyTripsViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+// MARK: Collection view methods
 extension MyTripsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
