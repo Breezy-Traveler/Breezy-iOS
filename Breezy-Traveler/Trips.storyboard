@@ -61,7 +61,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="exploreCell" rowHeight="107" id="GbM-qk-Wgy" userLabel="ExploreTripCell" customClass="ExploreTripsTVCell" customModule="Breezy_Traveler" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="exploreCell" focusStyle="custom" rowHeight="107" id="GbM-qk-Wgy" userLabel="ExploreTripCell" customClass="ExploreTripsTVCell" customModule="Breezy_Traveler" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GbM-qk-Wgy" id="tg7-KD-fs3">
