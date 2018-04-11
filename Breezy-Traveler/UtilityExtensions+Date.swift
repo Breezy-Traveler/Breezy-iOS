@@ -68,6 +68,38 @@ extension String {
         self = String(date: date as NSDate, dateStyle: dateStyle, timeStyle: timeStyle)
     }
     
+    init(date: Date, formatter dateFormat: String, timeZone: TimeZone = TimeZone.current, locale: Locale = Locale.current) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = dateFormat
+        dateFormatter.timeZone = timeZone
+        dateFormatter.locale = locale
+        
+        self.init(dateFormatter.string(from: date))
+    }
+    
+    /**
+     <#Lorem ipsum dolor sit amet.#>
+     
+     ## Usage
+     
+        ````
+        String(date: Date(), formatterMap: .Day_oftheWeekFullName, ", ", .Month_shorthand, " ", .Day_ofTheMonthSingleDigit, ", ", .Year_noPadding)
+     
+        prints Tuesday Apr 2, 2008
+        ````
+     
+     - returns: the formated date using the complied DateFormatter from `formatterMap`
+     */
+    init(date: Date, formatterMap: DateFormatterToken...) {
+        String(date: Date(), formatterMap: .Day_oftheWeekFullName, ", ", .Month_shorthand, " ", .Day_ofTheMonthSingleDigit, ", ", .Year_noPadding)
+        var compiledFormatterString = ""
+        for aToken in formatterMap {
+            compiledFormatterString.append(aToken.description)
+        }
+        
+        self.init(date: date, formatter: compiledFormatterString)
+    }
+    
     /*
      Formats the number of seconds into units providedas
      3600 seconds is "1h 0m 0s"
@@ -177,6 +209,129 @@ extension String {
             
             self = string
         }
+    }
+}
+
+struct DateFormatterToken: CustomStringConvertible, ExpressibleByStringLiteral {
+    typealias StringLiteralType = String
+    
+    var format: String
+    
+    // Year
+    /** 2008 - Year, no padding */
+    static let Year_noPadding: DateFormatterToken = "y"
+    
+    /** 08 - padding with a zero if necessary */
+    static let Year_twoDigits:DateFormatterToken = "yy"
+    
+    /** 2008 - padding with zeros if necessary) */
+    static let Year_minimumOfFourDigits:DateFormatterToken = "yyyy"
+    
+    
+    // Quarter
+    /** 4 - The quarter of the year. Use QQ if you want zero padding. */
+    static let Quarter_ofTheYear:DateFormatterToken = "Q"
+    
+    /** Q4 - Quarter including "Q" */
+    static let Quarter_includingQ:DateFormatterToken = "QQQ"
+    
+    /** 4th quarter - Quarter spelled out */
+    static let Quarter_spelledOut:DateFormatterToken = "QQQQ"
+    
+    
+    // Month
+    /** 12 - The numeric month of the year. A single M will use '1' for January. */
+    static let Month_numericSingleDigit:DateFormatterToken = "M"
+    
+    /** 12 - The numeric month of the year. A double M will use '01' for January. */
+    static let Month_numericDoubleDigit:DateFormatterToken = "MM"
+    
+    /** Dec - The shorthand name of the month */
+    static let Month_shorthand:DateFormatterToken = "MMM"
+    
+    /** December - Full name of the month */
+    static let Month_fullName:DateFormatterToken = "MMMM"
+    
+    /** D - Narrow name of the month */
+    static let Month_narrowName:DateFormatterToken = "MMMMM"
+    
+    
+    // Day
+    /** 14 - The day of the month. A single d will use 1 for January 1st. */
+    static let Day_ofTheMonthSingleDigit:DateFormatterToken = "d"
+    
+    /** 14 - The day of the month. A double d will use 01 for January 1st. */
+    static let Day_ofTheMonthDoubleDigit:DateFormatterToken = "dd"
+    
+    /** 3rd Tuesday in December - The day of week in the month */
+    static let Day_ofTheWeek:DateFormatterToken = "F"
+    
+    /** Tues - The day of week in the month */
+    static let Day_ofTheWeekInTheMonth:DateFormatterToken = "E"
+    
+    /** Tuesday - The full name of the day */
+    static let Day_oftheWeekFullName:DateFormatterToken = "EEEE"
+    
+    /** T - The narrow day of week */
+    static let Day_ofTheWeekNarrawName:DateFormatterToken = "EEEEE"
+    
+    
+    // Hour
+    /** 4 - The 12-hour hour. */
+    static let Hour_noPaddingDigit12:DateFormatterToken = "h"
+    
+    /** 04 - The 12-hour hour padding with a zero if there is only 1 digit */
+    static let Hour_paddingDigit12:DateFormatterToken = "hh"
+    
+    /** 16 - The 24-hour hour. */
+    static let Hour_noPaddingDigit24:DateFormatterToken = "H"
+    
+    /** 16 - The 24-hour hour padding with a zero if there is only 1 digit. */
+    static let Hour_paddingDigit24:DateFormatterToken = "HH"
+    
+    /** PM - AM / PM for 12-hour time formats */
+    static let Hour_am_pm:DateFormatterToken = "a"
+    
+    
+    // Minute
+    /** 35 - The minute, with no padding for zeroes. */
+    static let Minute_noPaddingDigit:DateFormatterToken = "m"
+    
+    /** 35 - The minute with zero padding. */
+    static let Minute_paddingDigit:DateFormatterToken = "mm"
+    
+    
+    // Second
+    /** 8 - The seconds, with no padding for zeroes. */
+    static let Second_noPaddingDigit:DateFormatterToken = "s"
+    
+    /** 08 - The seconds with zero padding. */
+    static let Second_paddingDigit:DateFormatterToken = "ss"
+    
+    
+    // Time Zone
+    /** CST - The 3 letter name of the time zone. Falls back to GMT-08:00 (hour offset) if the name is not known. */
+    static let TimeZone_3Letter:DateFormatterToken = "zzz"
+    
+    /** Central Standard Time - The expanded time zone name, falls back to GMT-08:00 (hour offset) if name is not known. */
+    static let TimeZone_expanded:DateFormatterToken = "zzzz"
+    
+    /** CST-06:00 - Time zone with abbreviation and offset */
+    static let TimeZone_shorthandWithOffset:DateFormatterToken = "zzzz"
+    
+    /** 0600 - RFC 822 GMT format. Can also match a literal Z for Zulu (UTC) time. */
+    static let TimeZone_RFC_822_GMT_format:DateFormatterToken = "Z"
+    
+    /** 06:00 - ISO 8601 time zone format */
+    static let TimeZone_iso8601:DateFormatterToken = "ZZZZZ"
+    
+    
+    init(stringLiteral value: StringLiteralType) {
+        self.format = value
+    }
+    
+    var description: String {
+        return self.format
     }
 }
 

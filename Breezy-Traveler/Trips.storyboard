@@ -289,7 +289,11 @@
                                     <constraint firstAttribute="height" constant="44" id="208-Tk-j2g"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Item" id="egG-8V-baY"/>
+                                    <barButtonItem systemItem="edit" id="egG-8V-baY">
+                                        <connections>
+                                            <action selector="pressRenamePlace:" destination="eqz-PU-wnb" id="bbP-8l-KaU"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ka8-pg-RUE">
@@ -307,22 +311,12 @@
                                                     <outlet property="delegate" destination="eqz-PU-wnb" id="bRl-Ua-oCe"/>
                                                 </connections>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azz-lq-VwB">
-                                                <rect key="frame" x="8" y="126" width="359" height="31.5"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="xVd-pC-7wE" secondAttribute="bottom" id="G6r-qD-lZI"/>
                                             <constraint firstAttribute="trailing" secondItem="xVd-pC-7wE" secondAttribute="trailing" constant="4" id="GQG-Py-5yd"/>
-                                            <constraint firstItem="azz-lq-VwB" firstAttribute="centerY" secondItem="MyW-JB-MLa" secondAttribute="centerY" id="Nlj-PY-RLn"/>
-                                            <constraint firstItem="azz-lq-VwB" firstAttribute="leading" secondItem="MyW-JB-MLa" secondAttribute="leading" constant="8" id="glb-Qx-gOb"/>
                                             <constraint firstItem="xVd-pC-7wE" firstAttribute="top" secondItem="MyW-JB-MLa" secondAttribute="top" constant="8" id="haA-yO-r8S"/>
                                             <constraint firstItem="xVd-pC-7wE" firstAttribute="leading" secondItem="MyW-JB-MLa" secondAttribute="leading" constant="4" id="iP7-UO-WMT"/>
-                                            <constraint firstAttribute="trailing" secondItem="azz-lq-VwB" secondAttribute="trailing" constant="8" id="k8H-ND-Abe"/>
-                                            <constraint firstItem="azz-lq-VwB" firstAttribute="centerX" secondItem="MyW-JB-MLa" secondAttribute="centerX" id="laf-Hw-z8q"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YeV-ww-To8">
@@ -401,7 +395,6 @@
                         <outlet property="buttonNotes" destination="TB5-gA-0jh" id="L0R-b6-Zo9"/>
                         <outlet property="buttonStites" destination="FKG-ib-5ZQ" id="VAD-ad-Vrh"/>
                         <outlet property="coverImage" destination="xVd-pC-7wE" id="nMP-uI-yTi"/>
-                        <outlet property="labelTitle" destination="azz-lq-VwB" id="YrU-Cy-9el"/>
                         <segue destination="qVs-2s-SHa" kind="show" identifier="show date picker" id="NYY-we-8pf"/>
                         <segue destination="Rsd-vQ-snA" kind="show" identifier="show hotels" id="Vj6-H4-UGL"/>
                         <segue destination="Qgb-Ap-1wf" kind="show" identifier="show sites" id="7xo-VB-flZ"/>

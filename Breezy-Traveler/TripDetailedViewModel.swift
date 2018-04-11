@@ -8,13 +8,79 @@
 
 import Foundation
 
-struct TripDetailedViewModel {
+protocol TripDetailedViewModelDelegate: class {
+    func viewModel(_ model: TripDetailedViewModel, didUpdate trip: BTTrip)
+    func viewModel(_ model: TripDetailedViewModel, didRecieve errors: [String])
+}
+
+// if changed to a class, refactor closures to avoid retain cycles
+class TripDetailedViewModel {
+    
+    private var network = NetworkStack()
     
     var trip: BTTrip!
     
+    unowned var delegate: TripDetailedViewModelDelegate
+    
+    /**
+     <#Lorem ipsum dolor sit amet.#>
+     
+     - parameter delegate: must assign a delegate to respond to error messages
+     */
+    init(delegate: TripDetailedViewModelDelegate) {
+        self.delegate = delegate
+    }
+    
+    private func pushTrip() {
+        network.update(trip: self.trip) { [weak self] (result) in
+            guard let unwrappedSelf = self else {
+                return debugPrint("self was deinit")
+            }
+            
+            switch result {
+            case .success:
+                unwrappedSelf.delegate.viewModel(unwrappedSelf, didUpdate: unwrappedSelf.trip)
+                
+            case .failure(let err):
+                debugPrint("failed to push trip: \(err.localizedDescription)")
+                unwrappedSelf.delegate.viewModel(unwrappedSelf, didRecieve: err.errors)
+            }
+        }
+    }
+    
+    private func pullTrip() {
+        network.showTrip(for: self.trip.id) { [weak self] (result) in
+            guard let unwrappedSelf = self else {
+                return debugPrint("self was deinit")
+            }
+            
+            switch result {
+            case .success(let returnedTrip):
+                unwrappedSelf.delegate.viewModel(unwrappedSelf, didUpdate: returnedTrip)
+            case .failure(let err):
+                debugPrint("failed to pull trip: \(err.localizedDescription)")
+                unwrappedSelf.delegate.viewModel(unwrappedSelf, didRecieve: err.errors)
+            }
+        }
+    }
 }
 
 extension TripDetailedViewModel {
+    
+    func toggleIsPublished() {
+        self.trip.isPublic.invert()
+        self.pushTrip()
+    }
+    
+    var tripPlace: String {
+        return trip.place
+    }
+    
+    func updatePlace(with newTitle: String) {
+        trip.place = newTitle
+        
+        self.pushTrip()
+    }
     
     var likesText: String {
         let nLikes = 999 //TODO: fetch the number of likes
