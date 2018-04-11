@@ -10,7 +10,7 @@ import UIKit
 
 class TripDetailedViewController: UIViewController {
     
-    private var viewModel = TripDetailedViewModel()
+    private lazy var viewModel = TripDetailedViewModel(delegate: self)
     
     var trip: BTTrip {
         set {
@@ -26,18 +26,12 @@ class TripDetailedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // shadow
-        labelTitle.layer.shadowColor = UIColor.black.cgColor
-        labelTitle.layer.shadowRadius = 2.0
-        labelTitle.layer.shadowOffset = CGSize(width: 0, height: 0)
-        labelTitle.layer.shadowOpacity = 0.85
-        
-        // Cover Image
-        let likesTitle = viewModel.likesText
-        coverImage.leftButton.setTitle(likesTitle, for: .normal)
-        
-        let publishedTitle = viewModel.publishedText
-        coverImage.rightButton.setTitle(publishedTitle, for: .normal)
+        self.navigationItem.leftBarButtonItem =
+            UIBarButtonItem(
+                barButtonSystemItem: .done,
+                target: self,
+                action: #selector(TripDetailedViewController.pressDone(_:))
+        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,7 +46,13 @@ class TripDetailedViewController: UIViewController {
     
     private func updateUI() {
         
-        labelTitle.text = trip.place
+        self.title = trip.place
+        
+        // layout cover image
+        let likesTitle = viewModel.likesText
+        coverImage.leftButton.setTitleWithoutAnimation(likesTitle, for: .normal)
+        let publishedTitle = viewModel.publishedText
+        coverImage.rightButton.setTitleWithoutAnimation(publishedTitle, for: .normal)
         
         // layout dates
         buttonDates.subtitleLabel.text = viewModel.dateRangesSubtitle
@@ -87,8 +87,21 @@ class TripDetailedViewController: UIViewController {
     
     // MARK: - IBACTIONS
     
-    @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var coverImage: UICoverImageView!
+    
+    @objc func pressDone(_ sender: Any) {
+        guard let lastViewController = self.navigationController?.childViewControllers[fromBack: -2] else {
+            fatalError("could not find second to last viewController in navigationController.childViewControllers")
+        }
+        
+        // if the controller who presented this Vc, by a push on the navigation controller,
+        // was the Explore Trips Vc, then pop this view. otherwise, unwind to the my trips vc
+        if lastViewController is ExploreTripsVC {
+            self.navigationController!.popViewController(animated: true)
+        } else {
+            self.performSegue(withIdentifier: UIStoryboardSegue.unwindToMyTrips, sender: nil)
+        }
+    }
     
     @IBOutlet weak var buttonDates: UIButtonCell!
     @IBAction func pressDates(_ sender: Any) {
@@ -110,6 +123,34 @@ class TripDetailedViewController: UIViewController {
         self.performSegue(withIdentifier: UIStoryboardSegue.showNotes, sender: nil)
     }
 
+    @IBAction func pressRenamePlace(_ sender: Any) {
+        let tripPlace = viewModel.tripPlace
+        let alertPlace = UIAlertController(title: "Update Place", message: "enter a new place", preferredStyle: .alert)
+        
+        alertPlace
+            .addTextField(defaultText: tripPlace, placeholderText: "trip's place")
+            .addConfirmationButton(title: "Rename") { [unowned self] (action) in
+                guard let newPlace = alertPlace.inputField.text else {
+                    return debugPrint("no text was in the text field")
+                }
+                
+                self.viewModel.updatePlace(with: newPlace)
+            }
+            .present(in: self)
+    }
+}
+
+extension TripDetailedViewController: TripDetailedViewModelDelegate {
+    func viewModel(_ model: TripDetailedViewModel, didUpdate trip: BTTrip) {
+        self.updateUI()
+    }
+    
+    func viewModel(_ model: TripDetailedViewModel, didRecieve errors: [String]) {
+        let combinedErrorMessages = errors.reduce("errors: ") { "\($0) \($1). " }
+        UIAlertController(title: "Something Went Wrong", message: combinedErrorMessages, preferredStyle: .alert)
+            .addDismissButton()
+            .present(in: self)
+    }
 }
 
 extension TripDetailedViewController: UICoverImageViewDelegate {
@@ -118,6 +159,9 @@ extension TripDetailedViewController: UICoverImageViewDelegate {
     }
     
     func coverImage(view: UICoverImageView, rightButtonDidPress button: UIButton) {
+        
+        //pressed publish button
+        self.viewModel.toggleIsPublished()
     }
     
 }
@@ -137,5 +181,9 @@ fileprivate extension UIStoryboardSegue {
     
     static var showNotes: String {
         return "show notes"
+    }
+    
+    static var unwindToMyTrips: String {
+        return "unwind to my trips"
     }
 }

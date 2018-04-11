@@ -44,7 +44,11 @@ class MyTripsViewController: UIViewController {
     @IBOutlet weak var tripsTableView: UITableView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+  
     @IBOutlet weak var profileImage: UIImageView!
+    @IBAction func unwindToMyTrips(_ segue: UIStoryboardSegue) {
+        debugPrint("welcome back, unwind!")
+    }
     
     // MARK: - LIFE CYCLE
     override func viewDidLoad() {
