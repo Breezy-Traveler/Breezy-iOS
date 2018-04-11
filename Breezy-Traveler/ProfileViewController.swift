@@ -10,29 +10,62 @@ import UIKit
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    // Mark: IBOutlets
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var fullnameLabel: UILabel!
     
+    // Variables
     var currentUser = BTUser.getStoredUser()
     let imagePicker = UIImagePickerController()
     let userPersistence = UserPersistence()
     
+    
+    // Views
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(r: 61, g: 91, b: 151)
         imagePicker.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        usernameLabel.text = currentUser.username
-        emailLabel.text = currentUser.email
-        imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(singleTap)
+        updateLabels()
+        setupimageViewProperties()
+        setupTextProperties()
+        setupButtonProperties()
         
         if let storedImage = userPersistence.loadUserProfileImage() {
             imageView.image = storedImage
         }
     }
+    
+    // Button changes based on the segmented controller
+    lazy var continueButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = UIColor(r: 148, g: 194, b: 61) // lime green color
+        button.setTitle("Continue to your trips", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.layer.cornerRadius = 3
+        button.clipsToBounds = true
+        
+        button.addTarget(self, action: #selector(contunueButtonPressed), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    // FIXME: Change this func to navigate to MyTripsController
+    @objc func contunueButtonPressed() {
+        // Initialize the new storyboard in code,
+        let storyboard = UIStoryboard(name: "Trips", bundle: nil)
+        // Initialize the new view controller in code using a storyboard identifier
+        let VC = storyboard.instantiateViewController(withIdentifier: "MyTripsViewController") as! MyTripsViewController
+        // and then use the navigation controller to segue to it.
+        self.navigationController?.pushViewController(VC, animated: true)
+    }
+
     
     lazy var singleTap: UITapGestureRecognizer = {
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(tapDetected))
@@ -41,7 +74,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }()
     
     
-    // Action
+    // Actions
     @objc func tapDetected() {
         print("Imageview Clicked")
         imagePicker.allowsEditing = false
@@ -49,9 +82,36 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         present(imagePicker, animated: true, completion: nil)
     }
     
+    func updateLabels() {
+        usernameLabel.text = currentUser.username
+        emailLabel.text = currentUser.email
+        fullnameLabel.text = currentUser.name
+    }
+    
+    func setupTextProperties() {
+        usernameLabel.textColor = UIColor.white
+        emailLabel.textColor = UIColor.white
+        fullnameLabel.textColor = UIColor.white
+    }
+    
+    func setupimageViewProperties() {
+        /* Set the imageView to a circle
+           Add a stroke around the imageView
+           Set the color to white */
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = imageView.frame.size.height / 2
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(singleTap)
+    }
+    
+    func setupButtonProperties() {
+        continueButton.titleLabel?.textColor = UIColor.white
+    }
+    
     
     // MARK: - UIImagePickerControllerDelegate Methods
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             fatalError("problem getting image")
@@ -67,6 +127,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             fatalError("problem getting image")
         }
+        
         imageView.contentMode = .scaleAspectFit
         imageView.image = pickedImage
         

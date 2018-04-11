@@ -45,6 +45,8 @@ class MyTripsViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
   
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     @IBOutlet weak var profileImage: UIImageView!
     @IBAction func unwindToMyTrips(_ segue: UIStoryboardSegue) {
         debugPrint("welcome back, unwind!")
@@ -55,9 +57,19 @@ class MyTripsViewController: UIViewController {
         super.viewDidLoad()        
         usernameLabel.text = currentUser.username
         emailLabel.text = currentUser.email
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
         if let savedProfileImage = userPersitence.loadUserProfileImage() {
             profileImage.image = savedProfileImage
         }
+        
+        let navigationBar = navigationController!.navigationBar
+        navigationBar.barTintColor = UIColor.white
+        navigationBar.isTranslucent = false
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
     }
     
     func loadUserTrips() {
@@ -82,47 +94,40 @@ class MyTripsViewController: UIViewController {
     }
 }
 
+
 extension MyTripsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+       return "My Trips"
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else {
-            return trips.count
-        }
+        return trips.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+ 
+        // MARK: Display all trips for a user
         
-        // Display a side scrolling collection of users trips
-        if indexPath.section == 0 {
-            tableView.rowHeight = 100
-            let cell = tableView.dequeueReusableCell(withIdentifier: "exploreCell", for: indexPath) as! ExploreTripsTVCell
-            
-            cell.tripsCollectionView.delegate = self
-            cell.tripsCollectionView.dataSource = self
-            
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "tripsCell", for: indexPath) as! TripsTVCell
-            
-            let trip = trips[indexPath.row]
-            
-            if let startDate = trip.startDate, let endDate = trip.endDate {
-                cell.startDate.text = startDate.description
-                cell.endDate.text = endDate.description
-            }
-            
-            cell.placeName.text = trip.place
-            cell.isPublic.text = trip.isPublic.description
-            
-            tableView.rowHeight = 80
-            return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tripsCell", for: indexPath) as! TripsTVCell
+        
+        let trip = trips[indexPath.row]
+        
+        if let startDate = trip.startDate, let endDate = trip.endDate {
+            cell.startDate.text = startDate.description
+            cell.endDate.text = endDate.description
         }
+        
+        cell.placeName.text = trip.place
+        cell.isPublic.text = trip.isPublic.description
+        
+        tableView.rowHeight = 80
+        return cell
     }
     
     // Swipe left actions: edit and delete
@@ -158,6 +163,7 @@ extension MyTripsViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+// MARK: Collection view methods
 extension MyTripsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
