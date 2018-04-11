@@ -174,7 +174,7 @@
 				B9B8F913206C5317009C017F /* User */,
 				B9B8F90F206C5276009C017F /* Trip */,
 				B9B8F914206C5493009C017F /* Networking */,
-				E97ED7592077EF040021B651 /* UICustom */,
+				E97ED7592077EF040021B651 /* UICustomViews */,
 				B9F9F1782075583700F0D24D /* Utility */,
 				B96529512069A571007FAD4D /* Assets.xcassets */,
 				B96529532069A571007FAD4D /* LaunchScreen.storyboard */,
@@ -277,7 +277,7 @@
 			name = Site;
 			sourceTree = "<group>";
 		};
-		E97ED7592077EF040021B651 /* UICustom */ = {
+		E97ED7592077EF040021B651 /* UICustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				E97ED75A2077EF140021B651 /* UIButtonCell.swift */,
@@ -290,7 +290,7 @@
 				E9DC2414207E8A80001691C2 /* UIDatePickerViewController.swift */,
 				E9DC2415207E8A80001691C2 /* UIDatePickerViewController.xib */,
 			);
-			name = UICustom;
+			name = UICustomViews;
 			sourceTree = "<group>";
 		};
 		E9DC2418207E8FC8001691C2 /* TableViewCells */ = {
