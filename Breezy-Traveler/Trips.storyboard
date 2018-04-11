@@ -20,35 +20,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SVE-bJ-vzb" userLabel="ProfileStackView">
-                                <rect key="frame" x="0.0" y="131" width="375" height="113.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJz-5O-Ped" userLabel="ViewProfile">
+                                <rect key="frame" x="0.0" y="64" width="375" height="200"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" placeholderIntrinsicWidth="124" placeholderIntrinsicHeight="129" image="dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="mgi-zG-mTp">
-                                        <rect key="frame" x="150" y="0.0" width="75" height="75"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="75" id="Cu3-yR-Uc4"/>
-                                            <constraint firstAttribute="height" constant="75" id="Ht9-aX-Fx4"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ol-Mt-jDi">
-                                        <rect key="frame" x="147.5" y="75" width="80" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email@mail.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1U3-vZ-TGe">
-                                        <rect key="frame" x="132" y="95.5" width="111.5" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="SVE-bJ-vzb" userLabel="ProfileStackView">
+                                        <rect key="frame" x="0.0" y="39.5" width="375" height="121.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" placeholderIntrinsicWidth="124" placeholderIntrinsicHeight="129" image="dummyProfile" translatesAutoresizingMaskIntoConstraints="NO" id="mgi-zG-mTp">
+                                                <rect key="frame" x="150" y="0.0" width="75" height="75"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="75" id="Cu3-yR-Uc4"/>
+                                                    <constraint firstAttribute="height" constant="75" id="Ht9-aX-Fx4"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ol-Mt-jDi">
+                                                <rect key="frame" x="147.5" y="79" width="80" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email@mail.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1U3-vZ-TGe">
+                                                <rect key="frame" x="132" y="103.5" width="111.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="mgi-zG-mTp" firstAttribute="centerX" secondItem="SVE-bJ-vzb" secondAttribute="centerX" id="9a5-ul-1Yo"/>
+                                    <constraint firstItem="SVE-bJ-vzb" firstAttribute="leading" secondItem="tJz-5O-Ped" secondAttribute="leading" id="9zv-Dh-LEx"/>
+                                    <constraint firstAttribute="height" constant="200" id="IFS-Xo-tnO"/>
+                                    <constraint firstItem="SVE-bJ-vzb" firstAttribute="centerY" secondItem="tJz-5O-Ped" secondAttribute="centerY" id="YQC-ub-RIY"/>
+                                    <constraint firstAttribute="trailing" secondItem="SVE-bJ-vzb" secondAttribute="trailing" id="nzJ-wi-Ih6"/>
                                 </constraints>
-                            </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="4" sectionFooterHeight="4" translatesAutoresizingMaskIntoConstraints="NO" id="z1d-4s-dxh">
-                                <rect key="frame" x="0.0" y="268" width="375" height="355"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="4" sectionFooterHeight="4" translatesAutoresizingMaskIntoConstraints="NO" id="z1d-4s-dxh" userLabel="TripsTableView">
+                                <rect key="frame" x="0.0" y="264" width="375" height="359"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -232,18 +241,17 @@
                         <constraints>
                             <constraint firstItem="5Gk-z3-XHn" firstAttribute="leading" secondItem="Zd4-cS-8CM" secondAttribute="leading" id="3xh-lM-ucg"/>
                             <constraint firstItem="5Gk-z3-XHn" firstAttribute="trailing" secondItem="Zd4-cS-8CM" secondAttribute="trailing" id="4k2-h3-HM7"/>
+                            <constraint firstAttribute="trailing" secondItem="tJz-5O-Ped" secondAttribute="trailing" id="AHS-Di-zRH"/>
+                            <constraint firstItem="tJz-5O-Ped" firstAttribute="leading" secondItem="MDq-6m-8VV" secondAttribute="leading" id="C0s-XF-eJm"/>
                             <constraint firstItem="z1d-4s-dxh" firstAttribute="trailing" secondItem="Zd4-cS-8CM" secondAttribute="trailing" id="WZb-ae-Bif"/>
-                            <constraint firstItem="z1d-4s-dxh" firstAttribute="top" secondItem="SVE-bJ-vzb" secondAttribute="bottom" constant="23.5" id="ctd-bA-adc"/>
+                            <constraint firstItem="tJz-5O-Ped" firstAttribute="top" secondItem="Zd4-cS-8CM" secondAttribute="top" id="aeZ-AO-IEg"/>
+                            <constraint firstItem="z1d-4s-dxh" firstAttribute="top" secondItem="tJz-5O-Ped" secondAttribute="bottom" id="c3m-df-6PA"/>
                             <constraint firstItem="5Gk-z3-XHn" firstAttribute="top" secondItem="z1d-4s-dxh" secondAttribute="bottom" id="cxd-8y-mBt"/>
-                            <constraint firstAttribute="trailing" secondItem="SVE-bJ-vzb" secondAttribute="trailing" id="iZt-Qm-zCw"/>
                             <constraint firstItem="z1d-4s-dxh" firstAttribute="leading" secondItem="Zd4-cS-8CM" secondAttribute="leading" id="jxt-TJ-xpu"/>
-                            <constraint firstItem="SVE-bJ-vzb" firstAttribute="leading" secondItem="Zd4-cS-8CM" secondAttribute="leading" id="mij-FT-iqp"/>
-                            <constraint firstItem="SVE-bJ-vzb" firstAttribute="top" secondItem="Zd4-cS-8CM" secondAttribute="top" constant="67" id="qc8-8r-Eob"/>
                             <constraint firstItem="5Gk-z3-XHn" firstAttribute="bottom" secondItem="Zd4-cS-8CM" secondAttribute="bottom" id="yFe-SC-2Su"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zd4-cS-8CM"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="MyTrips" id="lky-TU-Cgw"/>
                     <navigationItem key="navigationItem" title="My Trips" id="IlL-d1-JcG">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="HPV-xW-N4R">
                             <connections>

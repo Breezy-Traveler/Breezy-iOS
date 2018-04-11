@@ -58,6 +58,12 @@ class MyTripsViewController: UIViewController {
         if let savedProfileImage = userPersitence.loadUserProfileImage() {
             profileImage.image = savedProfileImage
         }
+        
+        let navigationBar = navigationController!.navigationBar
+        navigationBar.barTintColor = UIColor.white
+        navigationBar.isTranslucent = false
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
     }
     
     func loadUserTrips() {
