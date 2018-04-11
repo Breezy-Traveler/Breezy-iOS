@@ -160,6 +160,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" id="PD8-mn-5Oc"/>
                     <connections>
                         <outlet property="emailLabel" destination="z8l-WS-gou" id="syt-kK-YJh"/>
+                        <outlet property="fullnameLabel" destination="9BJ-2D-fBD" id="Xfl-3T-HAh"/>
                         <outlet property="imageView" destination="gHG-nV-VM6" id="e0X-ZU-9Td"/>
                         <outlet property="usernameLabel" destination="Uv3-TI-N5d" id="TPD-rS-6sB"/>
                     </connections>
@@ -200,6 +201,6 @@
         <image name="inspirations" width="734" height="478"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="le7-6G-jFW"/>
+        <segue reference="Glr-Oe-sYv"/>
     </inferredMetricsTieBreakers>
 </document>

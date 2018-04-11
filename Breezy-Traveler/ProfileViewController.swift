@@ -13,6 +13,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var fullnameLabel: UILabel!
     
     var currentUser = BTUser.getStoredUser()
     let imagePicker = UIImagePickerController()
@@ -26,6 +27,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewWillAppear(_ animated: Bool) {
         usernameLabel.text = currentUser.username
         emailLabel.text = currentUser.email
+        fullnameLabel.text = currentUser.name
         
         // take imageView with Same Height and Width, and set its layer property :
         imageView.layer.masksToBounds = true
