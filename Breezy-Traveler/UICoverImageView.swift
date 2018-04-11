@@ -21,6 +21,9 @@ class UICoverImageView: UIView {
     
     @IBOutlet weak var coverImageView: UIImageView!
     
+    // When the user selects a cover image, remove the text
+    @IBOutlet weak var coverImageLabel: UILabel!
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
