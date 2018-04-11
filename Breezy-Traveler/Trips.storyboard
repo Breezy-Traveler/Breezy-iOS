@@ -230,6 +230,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="emailLabel" destination="1U3-vZ-TGe" id="Mf2-43-TQ1"/>
+                        <outlet property="profileImage" destination="mgi-zG-mTp" id="uba-w4-Gcv"/>
                         <outlet property="tripsTableView" destination="z1d-4s-dxh" id="J0X-BU-A9e"/>
                         <outlet property="usernameLabel" destination="5ol-Mt-jDi" id="mrn-tR-MPo"/>
                     </connections>

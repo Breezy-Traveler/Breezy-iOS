@@ -12,7 +12,7 @@ class MyTripsViewController: UIViewController {
     
     var trips = [BTTrip]()
     var currentUser = BTUser.getStoredUser()
-    
+    var userPersitence = UserPersistence()
     let networkStack = NetworkStack()
     
     // MARK: - RETURN VALUES
@@ -44,14 +44,16 @@ class MyTripsViewController: UIViewController {
     @IBOutlet weak var tripsTableView: UITableView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
-    
+    @IBOutlet weak var profileImage: UIImageView!
     
     // MARK: - LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()        
         usernameLabel.text = currentUser.username
         emailLabel.text = currentUser.email
-//        self.hideKeyboard()
+        if let savedProfileImage = userPersitence.loadUserProfileImage() {
+            profileImage.image = savedProfileImage
+        }
     }
     
     func loadUserTrips() {

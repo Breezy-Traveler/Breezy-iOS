@@ -28,6 +28,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         emailLabel.text = currentUser.email
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(singleTap)
+        
         if let storedImage = userPersistence.loadUserProfileImage() {
             imageView.image = storedImage
         }
