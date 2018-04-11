@@ -19,7 +19,9 @@ extension NetworkStack {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let urlArray = try? JSONDecoder().decode([URL].self, from: response.data) else {
+                    guard let imagesArray = try? JSON(data: response.data),
+                        let urlData = try? imagesArray["images"].rawData(),
+                        let urlArray = try? JSONDecoder().decode([URL].self, from: urlData) else {
                         fatalError("not JSON decodable")
                     }
                     callback(urlArray)

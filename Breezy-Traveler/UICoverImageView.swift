@@ -47,9 +47,7 @@ class UICoverImageView: UIView {
     // MARK: - RETURN VALUES
     
     // MARK: - METHODS
-    
 
-    
     
     // Actions
     @objc func tapDetected(_ gesture: UITapGestureRecognizer) {

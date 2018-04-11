@@ -167,6 +167,8 @@ extension TripDetailedViewController: UICoverImageViewDelegate {
     
     func coverImage(view: UICoverImageView, coverImageDidPressWith gesture: UITapGestureRecognizer) {
         print("Cover image pressed")
+        
+        
     }
     
 }
