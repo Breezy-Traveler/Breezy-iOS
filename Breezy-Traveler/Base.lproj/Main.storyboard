@@ -137,21 +137,9 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NG8-E1-YaW">
-                                <rect key="frame" x="0.0" y="597" width="375" height="30"/>
-                                <state key="normal" title="Continue">
-                                    <color key="titleShadowColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="pii-Mh-iuL" kind="show" id="Glr-Oe-sYv"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="NG8-E1-YaW" firstAttribute="trailing" secondItem="mvB-QF-wou" secondAttribute="trailing" id="8hD-T2-XVI"/>
-                            <constraint firstItem="mvB-QF-wou" firstAttribute="bottom" secondItem="NG8-E1-YaW" secondAttribute="bottom" constant="40" id="YuD-u4-1UZ"/>
-                            <constraint firstItem="NG8-E1-YaW" firstAttribute="leading" secondItem="mvB-QF-wou" secondAttribute="leading" id="cy6-pM-8h0"/>
                             <constraint firstItem="T2E-89-QX2" firstAttribute="centerX" secondItem="EHM-Kd-F2d" secondAttribute="centerX" id="roI-uP-4Cf"/>
                             <constraint firstItem="T2E-89-QX2" firstAttribute="top" secondItem="mvB-QF-wou" secondAttribute="top" constant="47" id="ul5-aq-mTh"/>
                         </constraints>
@@ -200,7 +188,4 @@
         <image name="dummyProfile" width="225" height="290"/>
         <image name="inspirations" width="734" height="478"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Glr-Oe-sYv"/>
-    </inferredMetricsTieBreakers>
 </document>

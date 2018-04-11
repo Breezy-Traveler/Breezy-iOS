@@ -15,7 +15,7 @@
         <!--My Trips-->
         <scene sceneID="jzG-Aa-L40">
             <objects>
-                <viewController title="My Trips" id="jre-DN-ZDd" customClass="MyTripsViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyTripsViewController" title="My Trips" id="jre-DN-ZDd" customClass="MyTripsViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MDq-6m-8VV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
