@@ -94,6 +94,14 @@ extension MyTripsViewController: UITableViewDataSource, UITableViewDelegate {
         return 2
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return nil
+        } else {
+            return "Your Trips"
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 1
