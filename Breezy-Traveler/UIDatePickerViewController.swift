@@ -12,13 +12,7 @@ class UIDatePickerViewController: UIViewController {
     
     var startDate: Date? {
         didSet {
-            if let newValue = self.startDate {
-                self.startDatePicker?.setDate(newValue, animated: true)
-                self.endDatePicker.minimumDate = newValue
-            } else {
-                self.endDatePicker.minimumDate = nil
-            }
-            tableView?.reloadRows(at: [UIDatePickerViewController.startDateTitle], with: .fade)
+            self.tableView?.reloadRows(at: [UIDatePickerViewController.startDateTitle], with: .fade)
         }
     }
     
@@ -31,81 +25,36 @@ class UIDatePickerViewController: UIViewController {
             }
         }
         didSet {
-            if let newValue = self.endDate {
-                self.endDatePicker?.setDate(newValue, animated: true)
-                self.startDatePicker.maximumDate = newValue
-            } else {
-                self.startDatePicker.maximumDate = nil
-            }
             tableView?.reloadRows(at: [UIDatePickerViewController.endDateTitle], with: .fade)
         }
     }
     
-    private enum ViewState {
-        case ShowingNoPicker
-        case ShowingStartDatePicker
-        case ShowingEndDatePicker
-    }
+    private weak var startDateCell: UITitleClearButtonTableViewCell!
+    private weak var endDateCell: UITitleClearButtonTableViewCell!
     
-    private var viewState: ViewState = .ShowingNoPicker {
-        didSet {
-            
-            // if the same state was set, toggle to Showing no picker
-            if oldValue == self.viewState {
-                self.viewState = .ShowingNoPicker
-            } else {
-                self.updateUI()
-            }
-        }
+    var tableView: UITableView! {
+        return self.view as! UITableView?
     }
     
     // MARK: - RETURN VALUES
     
     // MARK: - VOID METHODS
     
-    private func updateUI() {
-//        UIView.animate(withDuration: 0.45) { [unowned self] in
-//            switch self.viewState {
-//            case .ShowingNoPicker:
-//                self.startDatePicker.isHidden = true
-//                self.endDatePicker.isHidden = true
-//            case .ShowingStartDatePicker:
-//                self.startDatePicker.isHidden = false
-//                self.endDatePicker.isHidden = true
-//            case .ShowingEndDatePicker:
-//                self.startDatePicker.isHidden = true
-//                self.endDatePicker.isHidden = false
-//            }
-//        }
-    }
-    
     // MARK: - IBACTIONS
-    
-    @IBOutlet var tableView: UITableView!
-    private weak var startDateCell: UITitleClearButtonTableViewCell!
-    private weak var startDatePicker: UIDatePicker!
-    private weak var endDateCell: UITitleClearButtonTableViewCell!
-    private weak var endDatePicker: UIDatePicker!
     
     // MARK: - LIFE CYCLE
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UITitleClearButtonTableViewCell.nib(), forCellReuseIdentifier: UITitleClearButtonTableViewCell.reuseIdentifier)
-        tableView.register(UIDatePickerTableViewCell.nib(), forCellReuseIdentifier: UIDatePickerTableViewCell.reuseIdentifier)
+        self.tableView.register(UITitleClearButtonTableViewCell.nib(), forCellReuseIdentifier: UITitleClearButtonTableViewCell.reuseIdentifier)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
 }
 
 fileprivate extension UIDatePickerViewController {
     static let startDateTitle = IndexPath(row: 0, section: 0)
-    static let startDatePicker = IndexPath(row: 1, section: 0)
-    static let endDateTitle = IndexPath(row: 0, section: 1)
-    static let endDatePicker = IndexPath(row: 1, section: 1)
+    static let endDateTitle = IndexPath(row: 1, section: 0)
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -115,15 +64,11 @@ extension UIDatePickerViewController: UITableViewDataSource, UITableViewDelegate
     // MARK: RETURN VALUES
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Start Date"
-        } else {
-            return "End Date"
-        }
+        return "Select Start and End Dates"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -131,108 +76,54 @@ extension UIDatePickerViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            if indexPath.row == 0 {
-                
-                // Start Date Title
-                let cell = tableView.dequeueReusableCell(withIdentifier: UITitleClearButtonTableViewCell.reuseIdentifier, for: indexPath) as! UITitleClearButtonTableViewCell
-                
-                if let startDate = self.startDate {
-                    let dateText = String(date: startDate, formatterMap: .Month_fullName, " ", .Day_ofTheMonthSingleDigit, ", ", .Year_noPadding)
-                    cell.labelTitle.text = dateText
-                    cell.buttonClear.isHidden = false
-                } else {
-                    cell.labelTitle.text = "Add a Start Date"
-                    cell.buttonClear.isHidden = true
-                }
-                cell.delegate = self
-                
-                self.startDateCell = cell
-                return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: UITitleClearButtonTableViewCell.reuseIdentifier, for: indexPath) as! UITitleClearButtonTableViewCell
+        
+        if indexPath == UIDatePickerViewController.startDateTitle {
+            
+            // Start Date Title
+            if let startDate = self.startDate {
+                let dateText = String(date: startDate, formatterMap: .Month_fullName, " ", .Day_ofTheMonthSingleDigit, ", ", .Year_noPadding)
+                cell.labelTitle.text = dateText
+                cell.buttonClear.isHidden = false
             } else {
-                
-                // Start Date Picker
-                let cell = tableView.dequeueReusableCell(withIdentifier: UIDatePickerTableViewCell.reuseIdentifier, for: indexPath) as! UIDatePickerTableViewCell
-                
-                cell.datePicker.datePickerMode = .date
-                cell.datePicker.date = self.startDate ?? Date()
-                cell.delegate = self
-                
-                self.startDatePicker = cell.datePicker
-                return cell
+                cell.labelTitle.text = "Add a Start Date"
+                cell.buttonClear.isHidden = true
             }
+            cell.delegate = self
+            
+            self.startDateCell = cell
         } else {
-            if indexPath.row == 0 {
-                
-                // End Date Title
-                let cell = tableView.dequeueReusableCell(withIdentifier: UITitleClearButtonTableViewCell.reuseIdentifier, for: indexPath) as! UITitleClearButtonTableViewCell
-                
-                if let endDate = self.endDate {
-                    let dateText = String(date: endDate, formatterMap: .Month_fullName, " ", .Day_ofTheMonthSingleDigit, ", ", .Year_noPadding)
-                    cell.labelTitle.text = dateText
-                    cell.buttonClear.isHidden = false
-                } else {
-                    cell.labelTitle.text = "Add an End Date"
-                    cell.buttonClear.isHidden = true
-                }
-                cell.delegate = self
-                
-                self.endDateCell = cell
-                return cell
+            
+            // End Date Title
+            if let endDate = self.endDate {
+                let dateText = String(date: endDate, formatterMap: .Month_fullName, " ", .Day_ofTheMonthSingleDigit, ", ", .Year_noPadding)
+                cell.labelTitle.text = dateText
+                cell.buttonClear.isHidden = false
             } else {
-                
-                // End Date Picker
-                let cell = tableView.dequeueReusableCell(withIdentifier: UIDatePickerTableViewCell.reuseIdentifier, for: indexPath) as! UIDatePickerTableViewCell
-                
-                cell.datePicker.datePickerMode = .date
-                cell.datePicker.date = self.endDate ?? Date()
-                cell.delegate = self
-                
-                self.endDatePicker = cell.datePicker
-                return cell
+                cell.labelTitle.text = "Add an End Date"
+                cell.buttonClear.isHidden = true
             }
+            cell.delegate = self
+            
+            self.endDateCell = cell
         }
+        cell.delegate = self
+        
+        return cell
     }
     
     // MARK: VOID METHODS
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard indexPath.row == 0 else { return }
         
-        if indexPath.section == 0 {
-            if self.startDate == nil {
-                
-                // set start date to default: tomorrow
-                self.startDate = Date(timeIntervalSinceNow: CTDateComponentDay)
-            } else {
-                tableView.reloadRows(at: [indexPath], with: .fade)
-            }
-            self.viewState = .ShowingStartDatePicker
-        } else {
-            if self.startDate != nil {
-                
-                if self.endDate == nil {
-                    
-                    // set start date to default: a week from the start date
-                    self.endDate = self.startDate?.addingTimeInterval(CTDateComponentWeek)
-                } else {
-                    tableView.reloadRows(at: [indexPath], with: .fade)
-                }
-            } else {
-                
-                // set start date to default: a week from now
-                if self.endDate == nil {
-                    self.endDate = Date(timeIntervalSinceNow: CTDateComponentWeek)
-                }
-            }
-            self.viewState = .ShowingEndDatePicker
-        }
     }
     
     // MARK: IBACTIONS
     
     // MARK: LIFE CYCLE
 }
+
+// MARK: - UITitleClearButtonTableViewCellDelegate
 
 extension UIDatePickerViewController: UITitleClearButtonTableViewCellDelegate {
     func titleClear(cell: UITitleClearButtonTableViewCell, clearButtonDidTap: UIButton) {
@@ -251,14 +142,3 @@ extension UIDatePickerViewController: UITitleClearButtonTableViewCellDelegate {
     }
 }
 
-// MARK: - UIDatePickerTableViewCellDelegate
-
-extension UIDatePickerViewController: UIDatePickerTableViewCellDelegate {
-    func datePicker(cell: UIDatePickerTableViewCell, datePicker: UIDatePicker, didChangeTo newDate: Date) {
-        if startDatePicker === datePicker {
-            startDate = newDate
-        } else if endDatePicker === datePicker {
-            endDate = newDate
-        }
-    }
-}

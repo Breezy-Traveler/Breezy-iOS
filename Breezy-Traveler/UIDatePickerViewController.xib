@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIDatePickerViewController" customModule="Breezy_Traveler" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="MKt-jH-EGu" id="tAw-2u-xAj"/>
                 <outlet property="view" destination="MKt-jH-EGu" id="R3d-tt-upr"/>
             </connections>
         </placeholder>
