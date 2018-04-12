@@ -105,8 +105,7 @@ class TripDetailedViewController: UIViewController {
     
     @IBOutlet weak var buttonDates: UIButtonCell!
     @IBAction func pressDates(_ sender: Any) {
-        let datePickerVc = UIDatePickerViewController.loadFrom(nibName: nil)
-        self.navigationController!.pushViewController(datePickerVc, animated: true)
+        self.performSegue(withIdentifier: UIStoryboardSegue.showDatePicker, sender: nil)
     }
     
     @IBOutlet weak var buttonHotels: UIButtonCell!

@@ -6,24 +6,67 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIDatePickerViewController" customModule="Breezy_Traveler" customModuleProvider="target">
             <connections>
-                <outlet property="view" destination="MKt-jH-EGu" id="R3d-tt-upr"/>
+                <outlet property="constraintBottom" destination="DoD-xL-q7Q" id="aDt-ag-OhV"/>
+                <outlet property="datePicker" destination="rho-yy-imc" id="beq-Gc-XWO"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="MKt-jH-EGu">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-            <connections>
-                <outlet property="dataSource" destination="-1" id="q6c-n9-aTM"/>
-                <outlet property="delegate" destination="-1" id="khz-je-Zdj"/>
-            </connections>
-            <point key="canvasLocation" x="196" y="-26"/>
-        </tableView>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z2l-Z2-dpG">
+                    <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6oI-Ne-hx6">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
+                            <subviews>
+                                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WEQ-7Y-KjN">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <items>
+                                        <barButtonItem style="plain" systemItem="flexibleSpace" id="0qB-dg-757"/>
+                                        <barButtonItem title="Done" id="oOv-nI-885">
+                                            <connections>
+                                                <action selector="pressDone:" destination="-1" id="AQm-cf-ygS"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </items>
+                                </toolbar>
+                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rho-yy-imc">
+                                    <rect key="frame" x="0.0" y="44" width="375" height="216"/>
+                                    <date key="date" timeIntervalSinceReferenceDate="545255268.74748802">
+                                        <!--2018-04-12 19:47:48 +0000-->
+                                    </date>
+                                    <connections>
+                                        <action selector="didChangeDate:" destination="-1" eventType="valueChanged" id="jV0-7z-nCT"/>
+                                    </connections>
+                                </datePicker>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="6oI-Ne-hx6" secondAttribute="bottom" constant="-260" id="DoD-xL-q7Q"/>
+                        <constraint firstItem="6oI-Ne-hx6" firstAttribute="leading" secondItem="Z2l-Z2-dpG" secondAttribute="leading" id="NQ0-gw-dH1"/>
+                        <constraint firstItem="6oI-Ne-hx6" firstAttribute="top" secondItem="Z2l-Z2-dpG" secondAttribute="top" id="ejn-c9-Nem"/>
+                        <constraint firstAttribute="trailing" secondItem="6oI-Ne-hx6" secondAttribute="trailing" id="mTz-3H-EWp"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Z2l-Z2-dpG" secondAttribute="trailing" id="OPK-1w-FxL"/>
+                <constraint firstItem="Z2l-Z2-dpG" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ZsY-7J-oPn"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Z2l-Z2-dpG" secondAttribute="bottom" id="pBU-Z5-BFY"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
     </objects>
 </document>
