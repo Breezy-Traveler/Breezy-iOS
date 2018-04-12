@@ -23,7 +23,7 @@ class TripDetailedViewModel {
     unowned var delegate: TripDetailedViewModelDelegate
     
     /**
-     <#Lorem ipsum dolor sit amet.#>
+     
      
      - parameter delegate: must assign a delegate to respond to error messages
      */
@@ -34,7 +34,7 @@ class TripDetailedViewModel {
     private func pushTrip() {
         network.update(trip: self.trip) { [weak self] (result) in
             guard let unwrappedSelf = self else {
-                return debugPrint("self was deinit")
+                return debugPrint("self was de-inititalized")
             }
             
             switch result {
@@ -51,7 +51,7 @@ class TripDetailedViewModel {
     private func pullTrip() {
         network.showTrip(for: self.trip.id) { [weak self] (result) in
             guard let unwrappedSelf = self else {
-                return debugPrint("self was deinit")
+                return debugPrint("self was de-inititalized")
             }
             
             switch result {

@@ -8,9 +8,11 @@
 
 import UIKit
 
-class TripDetailedViewController: UIViewController {
+class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
     
     private lazy var viewModel = TripDetailedViewModel(delegate: self)
+    
+    var coverImageUrl: URL!
     
     var trip: BTTrip {
         set {
@@ -80,9 +82,19 @@ class TripDetailedViewController: UIViewController {
             case UIStoryboardSegue.showNotes:
                 //TODO: prepare show notes
                 break
+            case UIStoryboardSegue.showCollectionViewSegue:
+                guard let vc = segue.destination as? ImagesViewController else {
+                    fatalError("broken storyboard")
+                }
+                vc.coverImagePickerDelegate = self
+                vc.searchTerm = trip.place
             default: break
             }
         }
+    }
+    
+    func setCoverImage(imageUrl: URL) {
+        coverImageUrl = imageUrl
     }
     
     // MARK: - IBACTIONS
@@ -94,8 +106,8 @@ class TripDetailedViewController: UIViewController {
             fatalError("could not find second to last viewController in navigationController.childViewControllers")
         }
         
-        // if the controller who presented this Vc, by a push on the navigation controller,
-        // was the Explore Trips Vc, then pop this view. otherwise, unwind to the my trips vc
+        // if the controller who presented this VC, by a push on the navigation controller,
+        // was the Explore Trips VC, then pop this view. otherwise, unwind to the my trips VC
         if lastViewController is ExploreTripsVC {
             self.navigationController!.popViewController(animated: true)
         } else {
@@ -165,6 +177,12 @@ extension TripDetailedViewController: UICoverImageViewDelegate {
         self.viewModel.toggleIsPublished()
     }
     
+    func coverImage(view: UICoverImageView, coverImageDidPressWith gesture: UITapGestureRecognizer) {
+        print("Cover image pressed")
+        
+        self.performSegue(withIdentifier: "showCollectionViewSegue", sender: nil)
+    }
+    
 }
 
 fileprivate extension UIStoryboardSegue {
@@ -186,5 +204,9 @@ fileprivate extension UIStoryboardSegue {
     
     static var unwindToMyTrips: String {
         return "unwind to my trips"
+    }
+    
+    static var showCollectionViewSegue: String {
+        return "showCollectionViewSegue"
     }
 }
