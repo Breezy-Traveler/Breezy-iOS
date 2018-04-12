@@ -65,13 +65,5 @@
             </objects>
             <point key="canvasLocation" x="2604" y="293.70314842578711"/>
         </scene>
-        <!--UICollectionViewController-1hi-wH-nma-->
-        <scene sceneID="kr8-Eg-maB">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Trips" referencedIdentifier="UICollectionViewController-1hi-wH-nma" id="F3B-pc-Glz" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nSr-cr-pMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3464" y="123"/>
-        </scene>
     </scenes>
 </document>

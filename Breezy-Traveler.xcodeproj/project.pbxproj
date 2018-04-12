@@ -21,7 +21,6 @@
 		B96529552069A571007FAD4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B96529532069A571007FAD4D /* LaunchScreen.storyboard */; };
 		B965295D2069C96E007FAD4D /* ExploreTripsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */; };
 		B96529602069D17B007FAD4D /* TripsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965295F2069D17B007FAD4D /* TripsTVCell.swift */; };
-		B9A7E9772071B4130054DC4F /* TripDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A7E9762071B4130054DC4F /* TripDetailVC.swift */; };
 		B9B8F912206C52AF009C017F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8F911206C52AF009C017F /* UserModel.swift */; };
 		B9B8F916206C54A9009C017F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8F915206C54A9009C017F /* API.swift */; };
 		B9F7620A206D506500821C28 /* NetworkingLayer+Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F76209206D506500821C28 /* NetworkingLayer+Users.swift */; };
@@ -32,7 +31,7 @@
 		B9F9F1802077EE4B00F0D24D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F17F2077EE4B00F0D24D /* LoginController.swift */; };
 		B9F9F1822077F2FC00F0D24D /* LoginController+Handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */; };
 		B9F9F18420782EAA00F0D24D /* NteworkingLayer+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F18320782EAA00F0D24D /* NteworkingLayer+Images.swift */; };
-		B9F9F1872078340300F0D24D /* ImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F1862078340300F0D24D /* ImagesCollectionViewController.swift */; };
+		B9F9F1872078340300F0D24D /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F1862078340300F0D24D /* ImagesViewController.swift */; };
 		E95E138020754BE200BF4276 /* NetworkingLayer+QOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */; };
 		E95E138220754C6C00BF4276 /* NetworkingLayer+Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */; };
 		E95E13842075651F00BF4276 /* BTSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E13832075651F00BF4276 /* BTSite.swift */; };
@@ -81,7 +80,6 @@
 		B96529562069A571007FAD4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTripsTVCell.swift; sourceTree = "<group>"; };
 		B965295F2069D17B007FAD4D /* TripsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTVCell.swift; sourceTree = "<group>"; };
-		B9A7E9762071B4130054DC4F /* TripDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailVC.swift; sourceTree = "<group>"; };
 		B9B8F911206C52AF009C017F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B9B8F915206C54A9009C017F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		B9F76209206D506500821C28 /* NetworkingLayer+Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Users.swift"; sourceTree = "<group>"; };
@@ -92,7 +90,7 @@
 		B9F9F17F2077EE4B00F0D24D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginController+Handlers.swift"; sourceTree = "<group>"; };
 		B9F9F18320782EAA00F0D24D /* NteworkingLayer+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NteworkingLayer+Images.swift"; sourceTree = "<group>"; };
-		B9F9F1862078340300F0D24D /* ImagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewController.swift; sourceTree = "<group>"; };
+		B9F9F1862078340300F0D24D /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		E61EF07259D1B3C17908FB3F /* Pods-Breezy-Traveler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy-Traveler.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.release.xcconfig"; sourceTree = "<group>"; };
 		E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+QOD.swift"; sourceTree = "<group>"; };
 		E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Trips.swift"; sourceTree = "<group>"; };
@@ -205,7 +203,6 @@
 				B91449422069E54E0074F71B /* MyTripsViewController.swift */,
 				E97ED75E207807FF0021B651 /* TripDetailedViewModel.swift */,
 				E97ED7572077ED190021B651 /* TripDetailedViewController.swift */,
-				B9A7E9762071B4130054DC4F /* TripDetailVC.swift */,
 				B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */,
 				B965295F2069D17B007FAD4D /* TripsTVCell.swift */,
 				B9F9F185207833D800F0D24D /* Images */,
@@ -264,7 +261,7 @@
 		B9F9F185207833D800F0D24D /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				B9F9F1862078340300F0D24D /* ImagesCollectionViewController.swift */,
+				B9F9F1862078340300F0D24D /* ImagesViewController.swift */,
 				E97ED76620784B600021B651 /* ImagesCollectionViewCell.swift */,
 				E97ED76720784B600021B651 /* ImagesCollectionViewCell.xib */,
 				E9B1B9B7207D3AD800FCBC2E /* UICoverImageView.swift */,
@@ -401,6 +398,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -409,6 +407,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -460,7 +459,6 @@
 			files = (
 				E95E138020754BE200BF4276 /* NetworkingLayer+QOD.swift in Sources */,
 				B9F9F176207305FB00F0D24D /* QuoteModel.swift in Sources */,
-				B9A7E9772071B4130054DC4F /* TripDetailVC.swift in Sources */,
 				E95E13872075879300BF4276 /* NetworkingLayer+Sites.swift in Sources */,
 				E98F034A2072AEF2004D4074 /* NetworkingLayer+Hotels.swift in Sources */,
 				E95E138220754C6C00BF4276 /* NetworkingLayer+Trips.swift in Sources */,
@@ -497,7 +495,7 @@
 				B9F9F17A2075585500F0D24D /* UtilityExtensions.swift in Sources */,
 				E9B1B9C1207D558900FCBC2E /* UtilityExtensions+UITextField.swift in Sources */,
 				B965294B2069A571007FAD4D /* AppDelegate.swift in Sources */,
-				B9F9F1872078340300F0D24D /* ImagesCollectionViewController.swift in Sources */,
+				B9F9F1872078340300F0D24D /* ImagesViewController.swift in Sources */,
 				B9F9F17C20756B0700F0D24D /* PersistenceUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

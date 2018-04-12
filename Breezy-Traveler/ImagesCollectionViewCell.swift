@@ -11,9 +11,10 @@ import UIKit
 class ImagesCollectionViewCell: UICollectionViewCell {
     
     static var reuseIdentifier: String {
-        return "image cell"
+        return "imageCell"
     }
     
     @IBOutlet weak var imageView: UIImageView!
-
+    
+   
 }
