@@ -14,11 +14,23 @@
         <!--QuoteVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="QuoteVC" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="QuoteViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inspirations" translatesAutoresizingMaskIntoConstraints="NO" id="1VQ-GC-7hQ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Quote of the day" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MX2-WW-zTv">
+                                <rect key="frame" x="16" y="112" width="343" height="27.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="2Og-My-SD9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dq2-kJ-DCu">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
@@ -36,45 +48,30 @@
                                     <barButtonItem title="Favorites" id="bUf-C3-NlR"/>
                                 </items>
                             </toolbar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inspirations" translatesAutoresizingMaskIntoConstraints="NO" id="1VQ-GC-7hQ">
-                                <rect key="frame" x="16" y="80" width="343" height="157"/>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="2TK-TN-alL">
-                                <rect key="frame" x="16" y="304" width="343" height="60"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quote of the day" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MX2-WW-zTv">
-                                        <rect key="frame" x="93" y="0.0" width="157.5" height="27.5"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swe-rc-nDc">
-                                        <rect key="frame" x="0.0" y="39.5" width="343" height="20.5"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Swe-rc-nDc" secondAttribute="trailing" id="Gos-Ki-bFn"/>
-                                    <constraint firstItem="Swe-rc-nDc" firstAttribute="leading" secondItem="2TK-TN-alL" secondAttribute="leading" id="LfG-qg-k3r"/>
-                                </constraints>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="752" text="Author" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swe-rc-nDc">
+                                <rect key="frame" x="16" y="155.5" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="1VQ-GC-7hQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="B7y-Lc-Lxd"/>
+                            <constraint firstItem="Dq2-kJ-DCu" firstAttribute="bottom" secondItem="1VQ-GC-7hQ" secondAttribute="bottom" id="186-Qm-13N"/>
+                            <constraint firstItem="Swe-rc-nDc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="2Tr-6I-BRU"/>
+                            <constraint firstItem="Swe-rc-nDc" firstAttribute="top" secondItem="MX2-WW-zTv" secondAttribute="bottom" constant="16" id="2do-sC-gUQ"/>
+                            <constraint firstItem="MX2-WW-zTv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Cje-Ws-KwY"/>
+                            <constraint firstItem="MX2-WW-zTv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="MeD-rx-OcD"/>
+                            <constraint firstItem="MX2-WW-zTv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="QfT-xe-VHJ"/>
                             <constraint firstItem="Dq2-kJ-DCu" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="UGI-Bx-cWa"/>
                             <constraint firstItem="Dq2-kJ-DCu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ZHQ-p0-UwT"/>
-                            <constraint firstItem="2TK-TN-alL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="a1x-Tq-bk7"/>
-                            <constraint firstItem="2TK-TN-alL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dAA-Xd-PWJ"/>
+                            <constraint firstItem="1VQ-GC-7hQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="c1i-tC-INo"/>
+                            <constraint firstAttribute="trailing" secondItem="1VQ-GC-7hQ" secondAttribute="trailing" id="cbH-pl-wog"/>
                             <constraint firstItem="Dq2-kJ-DCu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fGC-gY-wN8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2TK-TN-alL" secondAttribute="trailing" constant="16" id="g8g-Xt-ueI"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1VQ-GC-7hQ" secondAttribute="trailing" constant="16" id="ivL-iB-2VF"/>
-                            <constraint firstItem="1VQ-GC-7hQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="laP-wL-3ev"/>
-                            <constraint firstItem="1VQ-GC-7hQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sYG-V2-9Y3"/>
-                            <constraint firstItem="2TK-TN-alL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="tqW-A2-ZOH"/>
-                            <constraint firstItem="2TK-TN-alL" firstAttribute="top" secondItem="1VQ-GC-7hQ" secondAttribute="bottom" constant="67" id="ugj-ir-fhI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Swe-rc-nDc" secondAttribute="trailing" constant="16" id="kii-ck-sLP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MX2-WW-zTv" secondAttribute="trailing" constant="16" id="lhc-WM-YvH"/>
+                            <constraint firstItem="1VQ-GC-7hQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xlu-Xe-KK7"/>
+                            <constraint firstItem="Swe-rc-nDc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yjh-Hh-eKg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

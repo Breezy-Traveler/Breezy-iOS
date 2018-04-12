@@ -15,7 +15,7 @@
 		B950975C207D3E6600B4FE9B /* CreateTrip.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B950975B207D3E6600B4FE9B /* CreateTrip.storyboard */; };
 		B950975E207D585800B4FE9B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B950975D207D585800B4FE9B /* ProfileViewController.swift */; };
 		B965294B2069A571007FAD4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965294A2069A571007FAD4D /* AppDelegate.swift */; };
-		B965294D2069A571007FAD4D /* QuoteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965294C2069A571007FAD4D /* QuoteVC.swift */; };
+		B965294D2069A571007FAD4D /* QuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965294C2069A571007FAD4D /* QuoteViewController.swift */; };
 		B96529502069A571007FAD4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B965294E2069A571007FAD4D /* Main.storyboard */; };
 		B96529522069A571007FAD4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B96529512069A571007FAD4D /* Assets.xcassets */; };
 		B96529552069A571007FAD4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B96529532069A571007FAD4D /* LaunchScreen.storyboard */; };
@@ -73,7 +73,7 @@
 		B950975D207D585800B4FE9B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B96529472069A571007FAD4D /* Breezy-Traveler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Breezy-Traveler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B965294A2069A571007FAD4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B965294C2069A571007FAD4D /* QuoteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteVC.swift; sourceTree = "<group>"; };
+		B965294C2069A571007FAD4D /* QuoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteViewController.swift; sourceTree = "<group>"; };
 		B965294F2069A571007FAD4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B96529512069A571007FAD4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B96529542069A571007FAD4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -185,7 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				B9F9F175207305FB00F0D24D /* QuoteModel.swift */,
-				B965294C2069A571007FAD4D /* QuoteVC.swift */,
+				B965294C2069A571007FAD4D /* QuoteViewController.swift */,
 			);
 			name = Quote;
 			sourceTree = "<group>";
@@ -481,7 +481,7 @@
 				E9B1B9BF207D501B00FCBC2E /* UtilityExtensions+UIButton.swift in Sources */,
 				E9DC241B207E8FE4001691C2 /* UIDatePickerTableViewCell.swift in Sources */,
 				B940C85220719D0000E7144D /* CreateTripVC.swift in Sources */,
-				B965294D2069A571007FAD4D /* QuoteVC.swift in Sources */,
+				B965294D2069A571007FAD4D /* QuoteViewController.swift in Sources */,
 				E9DC2416207E8A80001691C2 /* UIDatePickerViewController.swift in Sources */,
 				E9DC241F207E92BD001691C2 /* UITitleClearButtonTableViewCell.swift in Sources */,
 				E9B1B9BD207D4B6000FCBC2E /* UtilityExtensions+UIAlertController.swift in Sources */,
