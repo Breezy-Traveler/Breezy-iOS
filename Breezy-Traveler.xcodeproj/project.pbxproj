@@ -31,7 +31,7 @@
 		B9F9F1802077EE4B00F0D24D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F17F2077EE4B00F0D24D /* LoginController.swift */; };
 		B9F9F1822077F2FC00F0D24D /* LoginController+Handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */; };
 		B9F9F18420782EAA00F0D24D /* NteworkingLayer+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F18320782EAA00F0D24D /* NteworkingLayer+Images.swift */; };
-		B9F9F1872078340300F0D24D /* ImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F1862078340300F0D24D /* ImagesCollectionViewController.swift */; };
+		B9F9F1872078340300F0D24D /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F1862078340300F0D24D /* ImagesViewController.swift */; };
 		E95E138020754BE200BF4276 /* NetworkingLayer+QOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */; };
 		E95E138220754C6C00BF4276 /* NetworkingLayer+Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */; };
 		E95E13842075651F00BF4276 /* BTSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E13832075651F00BF4276 /* BTSite.swift */; };
@@ -90,7 +90,7 @@
 		B9F9F17F2077EE4B00F0D24D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginController+Handlers.swift"; sourceTree = "<group>"; };
 		B9F9F18320782EAA00F0D24D /* NteworkingLayer+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NteworkingLayer+Images.swift"; sourceTree = "<group>"; };
-		B9F9F1862078340300F0D24D /* ImagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewController.swift; sourceTree = "<group>"; };
+		B9F9F1862078340300F0D24D /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		E61EF07259D1B3C17908FB3F /* Pods-Breezy-Traveler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy-Traveler.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.release.xcconfig"; sourceTree = "<group>"; };
 		E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+QOD.swift"; sourceTree = "<group>"; };
 		E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Trips.swift"; sourceTree = "<group>"; };
@@ -261,7 +261,11 @@
 		B9F9F185207833D800F0D24D /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				B9F9F1862078340300F0D24D /* ImagesCollectionViewController.swift */,
+				B9F9F1862078340300F0D24D /* ImagesViewController.swift */,
+				E97ED76620784B600021B651 /* ImagesCollectionViewCell.swift */,
+				E97ED76720784B600021B651 /* ImagesCollectionViewCell.xib */,
+				E9B1B9B7207D3AD800FCBC2E /* UICoverImageView.swift */,
+				E9B1B9B6207D3AD800FCBC2E /* UICoverImageView.xib */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -279,10 +283,6 @@
 			children = (
 				E97ED75A2077EF140021B651 /* UIButtonCell.swift */,
 				E97ED75C2077EF190021B651 /* UIButtonCell.xib */,
-				E97ED76620784B600021B651 /* ImagesCollectionViewCell.swift */,
-				E97ED76720784B600021B651 /* ImagesCollectionViewCell.xib */,
-				E9B1B9B7207D3AD800FCBC2E /* UICoverImageView.swift */,
-				E9B1B9B6207D3AD800FCBC2E /* UICoverImageView.xib */,
 				E9DC2418207E8FC8001691C2 /* TableViewCells */,
 				E9DC2414207E8A80001691C2 /* UIDatePickerViewController.swift */,
 				E9DC2415207E8A80001691C2 /* UIDatePickerViewController.xib */,
@@ -495,7 +495,7 @@
 				B9F9F17A2075585500F0D24D /* UtilityExtensions.swift in Sources */,
 				E9B1B9C1207D558900FCBC2E /* UtilityExtensions+UITextField.swift in Sources */,
 				B965294B2069A571007FAD4D /* AppDelegate.swift in Sources */,
-				B9F9F1872078340300F0D24D /* ImagesCollectionViewController.swift in Sources */,
+				B9F9F1872078340300F0D24D /* ImagesViewController.swift in Sources */,
 				B9F9F17C20756B0700F0D24D /* PersistenceUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

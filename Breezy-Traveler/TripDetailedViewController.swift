@@ -81,7 +81,7 @@ class TripDetailedViewController: UIViewController {
                 //TODO: prepare show notes
                 break
             case UIStoryboardSegue.showCollectionViewSegue:
-                guard let vc = segue.destination as? ImagesCollectionViewController else {
+                guard let vc = segue.destination as? ImagesViewController else {
                     fatalError("broken storyboard")
                 }
                 vc.searchTerm = trip.place
