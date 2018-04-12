@@ -203,33 +203,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gd9-md-WdB">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hoF-gG-c1S">
                                 <rect key="frame" x="8" y="28" width="359" height="631"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="f3b-Ob-9S3">
-                                    <size key="itemSize" width="50" height="50"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wz7-JM-h9Y">
+                                    <size key="itemSize" width="300" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
-                                <connections>
-                                    <outlet property="dataSource" destination="D9H-Hp-9r2" id="q8S-aV-cO0"/>
-                                    <outlet property="delegate" destination="D9H-Hp-9r2" id="Zs0-EU-iQv"/>
-                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="edc-F8-apc" firstAttribute="trailing" secondItem="Gd9-md-WdB" secondAttribute="trailing" constant="8" id="Hab-ef-6ir"/>
-                            <constraint firstItem="Gd9-md-WdB" firstAttribute="leading" secondItem="edc-F8-apc" secondAttribute="leading" constant="8" id="XxY-Ss-F75"/>
-                            <constraint firstItem="edc-F8-apc" firstAttribute="bottom" secondItem="Gd9-md-WdB" secondAttribute="bottom" constant="8" id="vQ4-dY-D7n"/>
-                            <constraint firstItem="Gd9-md-WdB" firstAttribute="top" secondItem="edc-F8-apc" secondAttribute="top" constant="8" id="wdu-C2-6U9"/>
+                            <constraint firstItem="edc-F8-apc" firstAttribute="trailing" secondItem="hoF-gG-c1S" secondAttribute="trailing" constant="8" id="I4G-Em-HB7"/>
+                            <constraint firstItem="edc-F8-apc" firstAttribute="bottom" secondItem="hoF-gG-c1S" secondAttribute="bottom" constant="8" id="NJi-Va-VXD"/>
+                            <constraint firstItem="hoF-gG-c1S" firstAttribute="leading" secondItem="edc-F8-apc" secondAttribute="leading" constant="8" id="RmS-K2-Vm5"/>
+                            <constraint firstItem="hoF-gG-c1S" firstAttribute="top" secondItem="edc-F8-apc" secondAttribute="top" constant="8" id="bNl-sX-3ta"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="edc-F8-apc"/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="Gd9-md-WdB" id="xep-UD-n0G"/>
+                        <outlet property="collectionView" destination="hoF-gG-c1S" id="eax-SX-Dce"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LfS-4a-nIb" userLabel="First Responder" sceneMemberID="firstResponder"/>

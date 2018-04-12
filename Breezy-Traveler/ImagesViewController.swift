@@ -47,24 +47,19 @@ class ImagesViewController: UIViewController {
         networkStack.fetchImages(searchTerm: self.searchTerm) { (urls) in
             self.fetchedImagesUrls = urls
         }
-        
     }
-
-
-
-    
 }
 
 extension ImagesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    
-    
+
     // MARK: UICollectionViewDataSource
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return fetchedImagesUrls.count
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -83,19 +78,17 @@ extension ImagesViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     // MARK: UICollectionViewDelegate
     
-    /*
+
      // Uncomment this method to specify if the specified item should be highlighted during tracking
-     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-     return true
-     }
-     */
-    
-    /*
+//     func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+//     return true
+//     }
+
      // Uncomment this method to specify if the specified item should be selected
-     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-     return true
-     }
-     */
+//     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+//     return true
+//     }
+
     
     /*
      // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
