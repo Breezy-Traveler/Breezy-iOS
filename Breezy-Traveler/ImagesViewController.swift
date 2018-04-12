@@ -9,6 +9,9 @@
 import UIKit
 import Kingfisher
 
+protocol CoverImagePickerDelegate: class {
+    func setCoverImage(imageUrl: URL)
+}
 
 class ImagesViewController: UIViewController {
     
@@ -16,6 +19,10 @@ class ImagesViewController: UIViewController {
     
     var networkStack = NetworkStack()
     var searchTerm: String!
+    private let padding = UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)
+    
+    // Create an instance of CoverImagePickerDelegate
+    weak var coverImagePickerDelegate: CoverImagePickerDelegate?
     
     private var fetchedImagesUrls = [URL]() {
         didSet {
@@ -50,6 +57,23 @@ class ImagesViewController: UIViewController {
     }
 }
 
+extension ImagesViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (view.frame.width) - (padding.left + padding.right)
+        let height = (view.frame.height) / 3
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        return padding
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 8
+    }
+}
+
 extension ImagesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     // MARK: UICollectionViewDataSource
@@ -72,12 +96,17 @@ extension ImagesViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100.0, height: 100.0)
-    }
-    
     // MARK: UICollectionViewDelegate
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("tapped image")
+        
+        let pickedImageUrl = fetchedImagesUrls[indexPath.row]
+        
+        // pass the image back to TripDetailView
+        coverImagePickerDelegate?.setCoverImage(imageUrl: pickedImageUrl)
+        
+        navigationController?.popViewController(animated: true)
+    }
 
      // Uncomment this method to specify if the specified item should be highlighted during tracking
 //     func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {

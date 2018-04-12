@@ -8,9 +8,11 @@
 
 import UIKit
 
-class TripDetailedViewController: UIViewController {
+class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
     
     private lazy var viewModel = TripDetailedViewModel(delegate: self)
+    
+    var coverImageUrl: URL!
     
     var trip: BTTrip {
         set {
@@ -84,10 +86,15 @@ class TripDetailedViewController: UIViewController {
                 guard let vc = segue.destination as? ImagesViewController else {
                     fatalError("broken storyboard")
                 }
+                vc.coverImagePickerDelegate = self
                 vc.searchTerm = trip.place
             default: break
             }
         }
+    }
+    
+    func setCoverImage(imageUrl: URL) {
+        coverImageUrl = imageUrl
     }
     
     // MARK: - IBACTIONS
