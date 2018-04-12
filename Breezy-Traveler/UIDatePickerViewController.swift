@@ -32,7 +32,7 @@ class UIDatePickerViewController: UIViewController {
     
     // MARK: - RETURN VALUES
     
-    // MARK: - VOID METHODS
+    // MARK: - METHODS
     
     // MARK: - IBACTIONS
     
@@ -129,7 +129,7 @@ extension UIDatePickerViewController: UITableViewDataSource, UITableViewDelegate
         }
     }
     
-    // MARK: VOID METHODS
+    // MARK: METHODS
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.row == 0 else { return }

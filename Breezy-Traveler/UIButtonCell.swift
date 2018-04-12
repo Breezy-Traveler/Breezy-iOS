@@ -26,7 +26,7 @@ class UIButtonCell: UIControl {
     
     // MARK: - RETURN VALUES
     
-    // MARK: - VOID METHODS
+    // MARK: - METHODS
     
     @objc private func pressedCell(button: UIButton) {
         self.sendActions(for: .touchUpInside)
