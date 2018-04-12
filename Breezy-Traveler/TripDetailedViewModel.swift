@@ -82,6 +82,12 @@ extension TripDetailedViewModel {
         self.pushTrip()
     }
     
+    func updateCoverImageUrl(with newCoverImageUrl: URL) {
+        trip.coverImageUrl = newCoverImageUrl
+        
+        self.pushTrip()
+    }
+    
     var likesText: String {
         let nLikes = 999 //TODO: fetch the number of likes
         

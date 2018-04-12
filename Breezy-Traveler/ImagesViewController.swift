@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 
 protocol CoverImagePickerDelegate: class {
-    func setCoverImage(imageUrl: URL)
+    func imageView(_ imageViewController: ImagesViewController, didSetImage imageUrl: URL)
 }
 
 class ImagesViewController: UIViewController {
@@ -103,7 +103,7 @@ extension ImagesViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let pickedImageUrl = fetchedImagesUrls[indexPath.row]
         
         // pass the image back to TripDetailView
-        coverImagePickerDelegate?.setCoverImage(imageUrl: pickedImageUrl)
+        coverImagePickerDelegate?.imageView(self, didSetImage: pickedImageUrl)
         
         navigationController?.popViewController(animated: true)
     }

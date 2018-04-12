@@ -33,7 +33,6 @@ struct UserPersistence {
             return
         }
         // Use file manager to save the data
-        let fileManger = FileManager.default
         
         do {
             try imageData.write(to: userProfileURL)
