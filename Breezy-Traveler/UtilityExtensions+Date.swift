@@ -91,7 +91,6 @@ extension String {
      - returns: the formated date using the complied DateFormatter from `formatterMap`
      */
     init(date: Date, formatterMap: DateFormatterToken...) {
-        String(date: Date(), formatterMap: .Day_oftheWeekFullName, ", ", .Month_shorthand, " ", .Day_ofTheMonthSingleDigit, ", ", .Year_noPadding)
         var compiledFormatterString = ""
         for aToken in formatterMap {
             compiledFormatterString.append(aToken.description)
