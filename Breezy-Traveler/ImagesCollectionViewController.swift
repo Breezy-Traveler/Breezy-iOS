@@ -7,13 +7,19 @@
 //
 
 import UIKit
-//import kingfisher
+import Kingfisher
+
 
 class ImagesCollectionViewController: UICollectionViewController {
     
     var networkStack = NetworkStack()
     var searchTerm: String!
-    private var fetchedImagesUrls = [URL]()
+    
+    private var fetchedImagesUrls = [URL]() {
+        didSet {
+            collectionView!.reloadData()
+        }
+    }
     
     private let reuseIdentifier = ImagesCollectionViewCell.reuseIdentifier
 
@@ -35,10 +41,9 @@ class ImagesCollectionViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         
         networkStack.fetchImages(searchTerm: self.searchTerm) { (urls) in
-            fetchedImagesUrls
+            self.fetchedImagesUrls = urls
         }
         
-        collectionView?.reloadData()
     }
 
 
@@ -47,15 +52,16 @@ class ImagesCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 100
+        return fetchedImagesUrls.count
         
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.reuseIdentifier, for: indexPath) as! ImagesCollectionViewCell
     
+        let url = fetchedImagesUrls[indexPath.row]
         // Configure the cell
-        cell.imageView.image = #imageLiteral(resourceName: "destination_carousel_berlin")
+        cell.imageView.kf.setImage(with: url)
     
         return cell
     }

@@ -11,5 +11,8 @@ target 'Breezy-Traveler' do
   
   # Helper func for saving text in keychain securely for iOS
   pod 'KeychainSwift', '~> 10.0'
+  
+  ## Downloads images and caches them
+  pod 'Kingfisher', '~> 4.0'
 
 end
