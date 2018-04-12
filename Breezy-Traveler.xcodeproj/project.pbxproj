@@ -265,6 +265,10 @@
 			isa = PBXGroup;
 			children = (
 				B9F9F1862078340300F0D24D /* ImagesCollectionViewController.swift */,
+				E97ED76620784B600021B651 /* ImagesCollectionViewCell.swift */,
+				E97ED76720784B600021B651 /* ImagesCollectionViewCell.xib */,
+				E9B1B9B7207D3AD800FCBC2E /* UICoverImageView.swift */,
+				E9B1B9B6207D3AD800FCBC2E /* UICoverImageView.xib */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -282,10 +286,6 @@
 			children = (
 				E97ED75A2077EF140021B651 /* UIButtonCell.swift */,
 				E97ED75C2077EF190021B651 /* UIButtonCell.xib */,
-				E97ED76620784B600021B651 /* ImagesCollectionViewCell.swift */,
-				E97ED76720784B600021B651 /* ImagesCollectionViewCell.xib */,
-				E9B1B9B7207D3AD800FCBC2E /* UICoverImageView.swift */,
-				E9B1B9B6207D3AD800FCBC2E /* UICoverImageView.xib */,
 				E9DC2418207E8FC8001691C2 /* TableViewCells */,
 				E9DC2414207E8A80001691C2 /* UIDatePickerViewController.swift */,
 				E9DC2415207E8A80001691C2 /* UIDatePickerViewController.xib */,
