@@ -14,19 +14,28 @@ class UIDatePickerViewController: UIViewController {
         didSet {
             if let newValue = self.startDate {
                 self.startDatePicker?.setDate(newValue, animated: true)
+                self.endDatePicker.minimumDate = newValue
             } else {
-                // hide the picker cell
+                self.endDatePicker.minimumDate = nil
             }
             tableView?.reloadRows(at: [UIDatePickerViewController.startDateTitle], with: .fade)
         }
     }
     
     var endDate: Date? {
+        willSet {
+            
+            // can't have a end date without setting a start date
+            if newValue != nil, self.startDate == nil {
+                self.startDate = Date()
+            }
+        }
         didSet {
             if let newValue = self.endDate {
                 self.endDatePicker?.setDate(newValue, animated: true)
+                self.startDatePicker.maximumDate = newValue
             } else {
-                // hide the picker cell
+                self.startDatePicker.maximumDate = nil
             }
             tableView?.reloadRows(at: [UIDatePickerViewController.endDateTitle], with: .fade)
         }
@@ -55,19 +64,19 @@ class UIDatePickerViewController: UIViewController {
     // MARK: - VOID METHODS
     
     private func updateUI() {
-        UIView.animate(withDuration: 0.45) { [unowned self] in
-            switch self.viewState {
-            case .ShowingNoPicker:
-                self.startDatePicker.isHidden = true
-                self.endDatePicker.isHidden = true
-            case .ShowingStartDatePicker:
-                self.startDatePicker.isHidden = false
-                self.endDatePicker.isHidden = true
-            case .ShowingEndDatePicker:
-                self.startDatePicker.isHidden = true
-                self.endDatePicker.isHidden = false
-            }
-        }
+//        UIView.animate(withDuration: 0.45) { [unowned self] in
+//            switch self.viewState {
+//            case .ShowingNoPicker:
+//                self.startDatePicker.isHidden = true
+//                self.endDatePicker.isHidden = true
+//            case .ShowingStartDatePicker:
+//                self.startDatePicker.isHidden = false
+//                self.endDatePicker.isHidden = true
+//            case .ShowingEndDatePicker:
+//                self.startDatePicker.isHidden = true
+//                self.endDatePicker.isHidden = false
+//            }
+//        }
     }
     
     // MARK: - IBACTIONS
@@ -147,6 +156,7 @@ extension UIDatePickerViewController: UITableViewDataSource, UITableViewDelegate
                 
                 cell.datePicker.datePickerMode = .date
                 cell.datePicker.date = self.startDate ?? Date()
+                cell.delegate = self
                 
                 self.startDatePicker = cell.datePicker
                 return cell
@@ -176,6 +186,7 @@ extension UIDatePickerViewController: UITableViewDataSource, UITableViewDelegate
                 
                 cell.datePicker.datePickerMode = .date
                 cell.datePicker.date = self.endDate ?? Date()
+                cell.delegate = self
                 
                 self.endDatePicker = cell.datePicker
                 return cell
@@ -202,8 +213,8 @@ extension UIDatePickerViewController: UITableViewDataSource, UITableViewDelegate
                 
                 if self.endDate == nil {
                     
-                    // set start date to default: a week from now
-                    self.endDate = Date(timeIntervalSinceNow: CTDateComponentWeek)
+                    // set start date to default: a week from the start date
+                    self.endDate = self.startDate?.addingTimeInterval(CTDateComponentWeek)
                 } else {
                     tableView.reloadRows(at: [indexPath], with: .fade)
                 }
