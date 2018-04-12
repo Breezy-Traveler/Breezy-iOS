@@ -26,7 +26,7 @@ class UITitleClearButtonTableViewCell: UITableViewCell {
     
     // MARK: - RETURN VALUES
     
-    // MARK: - VOID METHODS
+    // MARK: - METHODS
     
     // MARK: - IBACTIONS
     

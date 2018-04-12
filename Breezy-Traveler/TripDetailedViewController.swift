@@ -12,8 +12,6 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
     
     private lazy var viewModel = TripDetailedViewModel(delegate: self)
     
-    var coverImageUrl: URL!
-    
     var trip: BTTrip {
         set {
             self.viewModel.trip = newValue
@@ -44,7 +42,7 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
     
     // MARK: - RETURN VALUES
     
-    // MARK: - VOID METHODS
+    // MARK: - METHODS
     
     private func updateUI() {
         
@@ -93,8 +91,9 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         }
     }
     
+    // MARK: - Cover image method conforms to protocol
     func setCoverImage(imageUrl: URL) {
-        coverImageUrl = imageUrl
+        
     }
     
     // MARK: - IBACTIONS
