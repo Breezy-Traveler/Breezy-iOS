@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Kingfisher
+
 
 @objc protocol UICoverImageViewDelegate: class {
     @objc optional func coverImage(view: UICoverImageView, leftButtonDidPress button: UIButton)
@@ -48,6 +50,13 @@ class UICoverImageView: UIView {
     
     // MARK: - METHODS
 
+    func setCoverImage(with url: URL?) {
+        if let url = url {
+            coverImageView.kf.setImage(with: url)
+        } else {
+            coverImageView.image = UIImage(named: "travelImage")
+        }
+    }
     
     // Actions
     @objc func tapDetected(_ gesture: UITapGestureRecognizer) {

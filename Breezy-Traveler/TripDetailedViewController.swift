@@ -53,6 +53,7 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         coverImage.leftButton.setTitleWithoutAnimation(likesTitle, for: .normal)
         let publishedTitle = viewModel.publishedText
         coverImage.rightButton.setTitleWithoutAnimation(publishedTitle, for: .normal)
+        coverImage.setCoverImage(with: trip.coverImageUrl)
         
         // layout dates
         buttonDates.subtitleLabel.text = viewModel.dateRangesSubtitle
@@ -92,8 +93,9 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
     }
     
     // MARK: - Cover image method conforms to protocol
-    func setCoverImage(imageUrl: URL) {
-        
+    func imageView(_ imageViewController: ImagesViewController, didSetImage imageUrl: URL) {
+//        trip.coverImageUrl = imageUrl
+        viewModel.updateCoverImageUrl(with: imageUrl)
     }
     
     // MARK: - IBACTIONS
