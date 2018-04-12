@@ -56,7 +56,6 @@
 		E9B1B9C3207D604B00FCBC2E /* ExploreTripsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9C2207D604B00FCBC2E /* ExploreTripsVC.swift */; };
 		E9DC2413207E88EC001691C2 /* TripsDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9DC2412207E88EC001691C2 /* TripsDetail.storyboard */; };
 		E9DC2416207E8A80001691C2 /* TripDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DC2414207E8A80001691C2 /* TripDatePickerViewController.swift */; };
-		E9DC2417207E8A80001691C2 /* TripDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DC2415207E8A80001691C2 /* TripDatePickerViewController.xib */; };
 		E9DC241B207E8FE4001691C2 /* UIDatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DC2419207E8FE4001691C2 /* UIDatePickerTableViewCell.swift */; };
 		E9DC241C207E8FE4001691C2 /* UIDatePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DC241A207E8FE4001691C2 /* UIDatePickerTableViewCell.xib */; };
 		E9DC241F207E92BD001691C2 /* UITitleClearButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DC241D207E92BD001691C2 /* UITitleClearButtonTableViewCell.swift */; };
@@ -119,7 +118,6 @@
 		E9B1B9C2207D604B00FCBC2E /* ExploreTripsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTripsVC.swift; sourceTree = "<group>"; };
 		E9DC2412207E88EC001691C2 /* TripsDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TripsDetail.storyboard; sourceTree = "<group>"; };
 		E9DC2414207E8A80001691C2 /* TripDatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDatePickerViewController.swift; sourceTree = "<group>"; };
-		E9DC2415207E8A80001691C2 /* TripDatePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripDatePickerViewController.xib; sourceTree = "<group>"; };
 		E9DC2419207E8FE4001691C2 /* UIDatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		E9DC241A207E8FE4001691C2 /* UIDatePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIDatePickerTableViewCell.xib; sourceTree = "<group>"; };
 		E9DC241D207E92BD001691C2 /* UITitleClearButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITitleClearButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 				E97ED75E207807FF0021B651 /* TripDetailedViewModel.swift */,
 				E97ED7572077ED190021B651 /* TripDetailedViewController.swift */,
 				E9DC2414207E8A80001691C2 /* TripDatePickerViewController.swift */,
-				E9DC2415207E8A80001691C2 /* TripDatePickerViewController.xib */,
 				B9A7E9762071B4130054DC4F /* TripDetailVC.swift */,
 				B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */,
 				B965295F2069D17B007FAD4D /* TripsTVCell.swift */,
@@ -385,7 +382,6 @@
 				E9DC241C207E8FE4001691C2 /* UIDatePickerTableViewCell.xib in Resources */,
 				E9B1B9B8207D3AD800FCBC2E /* UICoverImageView.xib in Resources */,
 				E9DC2413207E88EC001691C2 /* TripsDetail.storyboard in Resources */,
-				E9DC2417207E8A80001691C2 /* TripDatePickerViewController.xib in Resources */,
 				E97ED75D2077EF190021B651 /* UIButtonCell.xib in Resources */,
 				E98F03482072A95A004D4074 /* Trips.storyboard in Resources */,
 				B96529522069A571007FAD4D /* Assets.xcassets in Resources */,

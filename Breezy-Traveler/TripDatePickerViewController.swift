@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol TripDatePickerViewControllerDelegate: class {
+    func tripDatePicker(_ tripViewController: TripDatePickerViewController, didFinishSelecting startDate: Date?, endDate: Date?)
+    func tripDatePicker(_ tripViewController: TripDatePickerViewController, didCancel startDate: Date?, endDate: Date?)
+}
+
 class TripDatePickerViewController: UITableViewController {
     
     var startDate: Date? {
@@ -31,6 +36,8 @@ class TripDatePickerViewController: UITableViewController {
         }
     }
     
+    weak var delegate: TripDatePickerViewControllerDelegate?
+    
     private weak var startDateCell: UITitleClearButtonTableViewCell!
     private weak var endDateCell: UITitleClearButtonTableViewCell!
     
@@ -46,6 +53,10 @@ class TripDatePickerViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44.0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -115,6 +126,13 @@ class TripDatePickerViewController: UITableViewController {
     
     // MARK: - IBACTIONS
     
+    @IBAction func pressDone(_ sender: Any) {
+        self.delegate?.tripDatePicker(self, didFinishSelecting: self.startDate, endDate: self.endDate)
+    }
+    
+    @IBAction func pressCancel(_ sender: Any) {
+        self.delegate?.tripDatePicker(self, didCancel: self.startDate, endDate: self.endDate)
+    }
     // MARK: - LIFE CYCLE
     
     override func viewDidLoad() {

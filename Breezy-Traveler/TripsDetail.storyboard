@@ -150,7 +150,7 @@
             </objects>
             <point key="canvasLocation" x="1780" y="1064.6176911544228"/>
         </scene>
-        <!--Trip Date Picker View Controller-->
+        <!--Title-->
         <scene sceneID="uVj-md-1f1">
             <objects>
                 <tableViewController id="6Pz-Wr-JFH" customClass="TripDatePickerViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
@@ -163,6 +163,18 @@
                             <outlet property="delegate" destination="6Pz-Wr-JFH" id="fjf-QT-Wrx"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="SDa-DV-7MD">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="5Hn-G2-VIJ">
+                            <connections>
+                                <action selector="pressCancel:" destination="6Pz-Wr-JFH" id="Abt-sQ-vts"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="RBU-Ys-cjH">
+                            <connections>
+                                <action selector="pressDone:" destination="6Pz-Wr-JFH" id="UZr-9j-Spo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m6z-HY-MnN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
