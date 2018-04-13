@@ -19,24 +19,9 @@ class QuoteViewController: UIViewController {
     @IBOutlet weak var quoteOfTheDayLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        networkStack.getQuoteOfTheDay { (quoteModel) in
-            DispatchQueue.main.async {
-                
-                // FIXME: Just for testing how the text looks on the screen
-                let dummyText = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
-                
-                self.quoteOfTheDayLabel.text = dummyText
-                
-                // Uncomment this line after testing
-                // self.quoteOfTheDayLabel.text = quoteModel.quote
-                self.authorLabel.text = "Author - \(quoteModel.author)"
-            }
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -45,7 +30,20 @@ class QuoteViewController: UIViewController {
             if !isLoggedIn {
                 let loginViewController = LoginController()
                 self.present(loginViewController, animated: false, completion: nil)
-//                self.performSegue(withIdentifier: "loginControllerSegue", sender: nil)
+            } else {
+                self.networkStack.getQuoteOfTheDay { (quoteModel) in
+                    DispatchQueue.main.async {
+                        
+                        // FIXME: Just for testing how the text looks on the screen
+                        let dummyText = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                        
+                                        self.quoteOfTheDayLabel.text = dummyText
+                        
+                        // Uncomment this line after testing
+//                        self.quoteOfTheDayLabel.text = quoteModel.quote
+                        self.authorLabel.text = "Author - \(quoteModel.author)"
+                    }
+                }
             }
         }
     }

@@ -20,7 +20,7 @@ enum QODAPIEndPoint {
 extension QODAPIEndPoint: TargetType {
     
     // 3: Base URL leads to no end point
-    var baseURL: URL { return URL(string: "https://quotes.rest/qod.json")! }
+    var baseURL: URL { return URL(string: "https://breezy-traveler-api.herokuapp.com/quote_of_the_day")! }
     
     // 4: Since we have the full route in the baseURL,
     // no need to concatenate the path
@@ -56,11 +56,18 @@ extension QODAPIEndPoint: TargetType {
     // Sample token for testing: "token": "a0a5304ef3a7ec90deb874a1dd3e4812"
     
     var headers: [String : String]? {
-        let defaultHeader = [String : String]()
-        switch self {
-        case .getQuote:
-            return defaultHeader
-        }
+        var defaultHeaders = [String : String]()
+        let userPersistence = UserPersistence()
+        
+      
+            guard let token = userPersistence.getUserToken() else {
+                fatalError("no user token")
+            }
+            
+            // Authorization
+            defaultHeaders["Authorization"] = "Token token=\(token)"
+        
+        return defaultHeaders
     }
 }
 
@@ -74,8 +81,8 @@ extension NetworkStack {
                 switch response.statusCode {
                 case 200:
                     guard let json = try? JSON(data: response.data) else { fatalError("No json") }
-                    let jsonContents = json["contents"]
-                    let jsonQuote = jsonContents["quotes"][0]
+                    let jsonQuote = json["quote"]
+                    
                     guard let jsonQuoteData = try? jsonQuote.rawData() else { fatalError("no json data") }
                     guard let quote = try? JSONDecoder().decode(Quote.self, from: jsonQuoteData) else { fatalError("No quote") }
                     callback(quote)
