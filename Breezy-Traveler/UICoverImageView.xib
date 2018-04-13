@@ -14,7 +14,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UICoverImageView" customModule="Breezy_Traveler" customModuleProvider="target">
             <connections>
                 <outlet property="bottomBar" destination="zoN-1R-nZ2" id="lNj-R8-4oT"/>
-                <outlet property="coverImageLabel" destination="N1E-MG-0Kc" id="eZa-Qh-u1u"/>
                 <outlet property="coverImageView" destination="7i5-Ni-N5H" id="vmA-Vf-Kif"/>
                 <outlet property="leftButton" destination="wQu-vy-Tu7" id="ePD-N9-QYr"/>
                 <outlet property="leftIconView" destination="naR-0P-3ef" id="ofX-hD-WGP"/>
@@ -28,7 +27,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="281"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="travelImage" translatesAutoresizingMaskIntoConstraints="NO" id="7i5-Ni-N5H">
+                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MountainsDefault" translatesAutoresizingMaskIntoConstraints="NO" id="7i5-Ni-N5H">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="281"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zoN-1R-nZ2" customClass="UIVisualEffectView">
@@ -96,12 +95,6 @@
                         <constraint firstAttribute="bottom" secondItem="Vbx-2O-DCn" secondAttribute="bottom" constant="8" id="r2E-dT-23e"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click to add cover photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1E-MG-0Kc">
-                    <rect key="frame" x="74" y="195.5" width="227.5" height="27.5"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                    <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -115,8 +108,6 @@
                 <constraint firstAttribute="bottom" secondItem="zoN-1R-nZ2" secondAttribute="bottom" id="crL-Ff-3Ec"/>
                 <constraint firstItem="zoN-1R-nZ2" firstAttribute="height" secondItem="p3Q-6e-aGV" secondAttribute="height" id="o61-yO-u9S"/>
                 <constraint firstItem="7i5-Ni-N5H" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="p8k-mB-aIr"/>
-                <constraint firstItem="p3Q-6e-aGV" firstAttribute="top" secondItem="N1E-MG-0Kc" secondAttribute="bottom" constant="16" id="qVu-Il-CGi"/>
-                <constraint firstItem="N1E-MG-0Kc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="sUk-r1-0dY"/>
                 <constraint firstItem="7i5-Ni-N5H" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yBU-RV-MAj"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -130,6 +121,6 @@
         </view>
     </objects>
     <resources>
-        <image name="travelImage" width="304" height="285"/>
+        <image name="MountainsDefault" width="400" height="300"/>
     </resources>
 </document>

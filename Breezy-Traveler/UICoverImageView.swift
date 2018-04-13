@@ -54,7 +54,7 @@ class UICoverImageView: UIView {
         if let url = url {
             coverImageView.kf.setImage(with: url)
         } else {
-            coverImageView.image = UIImage(named: "travelImage")
+            coverImageView.image = UIImage(named: "MountainsDefault")
         }
     }
     
