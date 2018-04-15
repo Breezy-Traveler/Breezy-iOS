@@ -70,8 +70,13 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         if let identifier = segue.identifier {
             switch identifier {
             case UIStoryboardSegue.showDatePicker:
-                //TODO: prepare show date picker
-                break
+                guard let vc = segue.destination as? TripDatePickerViewController else {
+                    fatalError("TripDatePickerViewController was not set up in storyboard")
+                }
+                
+                vc.delegate = self
+                vc.startDate = trip.startDate
+                vc.endDate = trip.endDate
             case UIStoryboardSegue.showHotels:
                 //TODO: prepare show hotels
                 break
@@ -118,8 +123,7 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
     
     @IBOutlet weak var buttonDates: UIButtonCell!
     @IBAction func pressDates(_ sender: Any) {
-        let datePickerVc = UIDatePickerViewController.loadFrom(nibName: nil)
-        self.navigationController!.pushViewController(datePickerVc, animated: true)
+        self.performSegue(withIdentifier: UIStoryboardSegue.showDatePicker, sender: nil)
     }
     
     @IBOutlet weak var buttonHotels: UIButtonCell!
@@ -154,6 +158,8 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
     }
 }
 
+// MARK: - TripDetailedViewModelDelegate
+
 extension TripDetailedViewController: TripDetailedViewModelDelegate {
     func viewModel(_ model: TripDetailedViewModel, didUpdate trip: BTTrip) {
         self.updateUI()
@@ -166,6 +172,8 @@ extension TripDetailedViewController: TripDetailedViewModelDelegate {
             .present(in: self)
     }
 }
+
+// MARK: - UICoverImageViewDelegate
 
 extension TripDetailedViewController: UICoverImageViewDelegate {
     
@@ -185,6 +193,22 @@ extension TripDetailedViewController: UICoverImageViewDelegate {
     }
     
 }
+
+extension TripDetailedViewController: TripDatePickerViewControllerDelegate {
+    func tripDatePicker(_ tripViewController: TripDatePickerViewController, didFinishSelecting startDate: Date?, endDate: Date?) {
+        self.trip.startDate = startDate
+        self.trip.endDate = endDate
+        self.updateUI()
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func tripDatePicker(_ tripViewController: TripDatePickerViewController, didCancel startDate: Date?, endDate: Date?) {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: - UIStoryboardSegue
 
 fileprivate extension UIStoryboardSegue {
     static var showDatePicker: String {
