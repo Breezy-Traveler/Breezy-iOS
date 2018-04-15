@@ -25,7 +25,7 @@ class UIDatePickerTableViewCell: UITableViewCell {
 
     // MARK: - RETURN VALUES
     
-    // MARK: - VOID METHODS
+    // MARK: - METHODS
     
     // MARK: - IBACTIONS
     

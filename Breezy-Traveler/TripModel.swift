@@ -17,7 +17,6 @@ struct BTTrip: Codable {
             guard let id = self.idValue else {
                 fatalError("trip did not have an id")
             }
-            
             return id
         }
     }
@@ -27,6 +26,7 @@ struct BTTrip: Codable {
     var endDate: Date?
     var hotels: [BTHotel]
     var sites: [BTSite]
+    var coverImageUrl: URL?
     var isPublic: Bool
     //TODO: add notes to trips
     
@@ -37,6 +37,7 @@ struct BTTrip: Codable {
         case endDate = "end_date"
         case hotels
         case sites
+        case coverImageUrl = "cover_image_url"
         case isPublic = "is_public"
     }
     
@@ -47,6 +48,7 @@ struct BTTrip: Codable {
         endDate: Date? = nil,
         hotels: [BTHotel] = [],
         sites: [BTSite] = [],
+        coverImageUrl: URL? = nil,
         isPublic: Bool) {
         
         self.idValue = id
@@ -55,6 +57,7 @@ struct BTTrip: Codable {
         self.endDate = endDate
         self.hotels = hotels
         self.sites = sites
+        self.coverImageUrl = coverImageUrl
         self.isPublic = isPublic
     }
 }

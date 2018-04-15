@@ -17,7 +17,7 @@ class MyTripsViewController: UIViewController {
     
     // MARK: - RETURN VALUES
     
-    // MARK: - VOID METHODS
+    // MARK: - METHODS
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
@@ -44,9 +44,7 @@ class MyTripsViewController: UIViewController {
     @IBOutlet weak var tripsTableView: UITableView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
-  
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var profileImage: UIImageView!
     @IBAction func unwindToMyTrips(_ segue: UIStoryboardSegue) {
         debugPrint("welcome back, unwind!")
@@ -54,22 +52,36 @@ class MyTripsViewController: UIViewController {
     
     // MARK: - LIFE CYCLE
     override func viewDidLoad() {
-        super.viewDidLoad()        
-        usernameLabel.text = currentUser.username
-        emailLabel.text = currentUser.email
-        
+        super.viewDidLoad()
+        setupNavigationBar()
+        setupUserDataDisplay()
+        setupProfileImage()
         collectionView.dataSource = self
         collectionView.delegate = self
-        
-        if let savedProfileImage = userPersitence.loadUserProfileImage() {
-            profileImage.image = savedProfileImage
-        }
-        
+    }
+    
+    func setupNavigationBar() {
         let navigationBar = navigationController!.navigationBar
         navigationBar.barTintColor = UIColor.white
         navigationBar.isTranslucent = false
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
+    }
+    
+    func setupProfileImage() {
+        profileImage.layer.masksToBounds = true
+        profileImage.layer.cornerRadius = profileImage.frame.size.height / 2
+        profileImage.layer.borderWidth = 2
+        profileImage.layer.borderColor = UIColor.white.cgColor
+        
+        if let savedProfileImage = userPersitence.loadUserProfileImage() {
+            profileImage.image = savedProfileImage
+        }
+    }
+    
+    func setupUserDataDisplay() {
+        usernameLabel.text = currentUser.username
+        emailLabel.text = currentUser.email
     }
     
     func loadUserTrips() {

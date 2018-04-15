@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TripDetailedViewController: UIViewController {
+class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
     
     private lazy var viewModel = TripDetailedViewModel(delegate: self)
     
@@ -42,7 +42,7 @@ class TripDetailedViewController: UIViewController {
     
     // MARK: - RETURN VALUES
     
-    // MARK: - VOID METHODS
+    // MARK: - METHODS
     
     private func updateUI() {
         
@@ -53,6 +53,7 @@ class TripDetailedViewController: UIViewController {
         coverImage.leftButton.setTitleWithoutAnimation(likesTitle, for: .normal)
         let publishedTitle = viewModel.publishedText
         coverImage.rightButton.setTitleWithoutAnimation(publishedTitle, for: .normal)
+        coverImage.setCoverImage(with: trip.coverImageUrl)
         
         // layout dates
         buttonDates.subtitleLabel.text = viewModel.dateRangesSubtitle
@@ -85,9 +86,21 @@ class TripDetailedViewController: UIViewController {
             case UIStoryboardSegue.showNotes:
                 //TODO: prepare show notes
                 break
+            case UIStoryboardSegue.showCollectionViewSegue:
+                guard let vc = segue.destination as? ImagesViewController else {
+                    fatalError("broken storyboard")
+                }
+                vc.coverImagePickerDelegate = self
+                vc.searchTerm = trip.place
             default: break
             }
         }
+    }
+    
+    // MARK: - Cover image method conforms to protocol
+    func imageView(_ imageViewController: ImagesViewController, didSetImage imageUrl: URL) {
+//        trip.coverImageUrl = imageUrl
+        viewModel.updateCoverImageUrl(with: imageUrl)
     }
     
     // MARK: - IBACTIONS
@@ -99,8 +112,8 @@ class TripDetailedViewController: UIViewController {
             fatalError("could not find second to last viewController in navigationController.childViewControllers")
         }
         
-        // if the controller who presented this Vc, by a push on the navigation controller,
-        // was the Explore Trips Vc, then pop this view. otherwise, unwind to the my trips vc
+        // if the controller who presented this VC, by a push on the navigation controller,
+        // was the Explore Trips VC, then pop this view. otherwise, unwind to the my trips VC
         if lastViewController is ExploreTripsVC {
             self.navigationController!.popViewController(animated: true)
         } else {
@@ -173,6 +186,12 @@ extension TripDetailedViewController: UICoverImageViewDelegate {
         self.viewModel.toggleIsPublished()
     }
     
+    func coverImage(view: UICoverImageView, coverImageDidPressWith gesture: UITapGestureRecognizer) {
+        print("Cover image pressed")
+        
+        self.performSegue(withIdentifier: "showCollectionViewSegue", sender: nil)
+    }
+    
 }
 
 extension TripDetailedViewController: TripDatePickerViewControllerDelegate {
@@ -210,5 +229,9 @@ fileprivate extension UIStoryboardSegue {
     
     static var unwindToMyTrips: String {
         return "unwind to my trips"
+    }
+    
+    static var showCollectionViewSegue: String {
+        return "showCollectionViewSegue"
     }
 }

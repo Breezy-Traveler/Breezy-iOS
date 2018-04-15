@@ -15,15 +15,15 @@ import UIKit
 class UIDatePickerViewController: UIViewController {
 
     weak var delegate: UIDatePickerViewControllerDelegate?
-    
+
     var date: Date = Date()
-    
+
     var datePickerMode: UIDatePickerMode = .dateAndTime
-    
+
     var datePickerMinDate: Date?
-    
+
     var datePickerMaxDate: Date?
-    
+
     private var isShowingDatePicker: Bool {
         set {
             UIView.animate(withDuration: 0.15, delay: 0.0, options: .curveLinear, animations: { [unowned self] in
@@ -39,42 +39,42 @@ class UIDatePickerViewController: UIViewController {
             return self.constraintBottom.constant == 0
         }
     }
-    
+
     // MARK: - RETURN VALUES
-    
-    // MARK: - VOID METHODS
-    
+
+    // MARK: - METHODS
+
     // MARK: - IBACTIONS
     @IBOutlet private weak var constraintBottom: NSLayoutConstraint!
     @IBOutlet private weak var datePicker: UIDatePicker!
     @IBAction func didChangeDate(_ sender: Any) {
-        
+
     }
-    
+
     @IBAction func pressDone(_ sender: Any) {
         self.delegate?.datePicker?(self, didFinishPicking: datePicker.date)
         self.isShowingDatePicker = false
-        
+
         self.presentingViewController?.dismiss(animated: true)
     }
-    
+
     // MARK: - LIFE CYCLE
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         self.datePicker.date = self.date
         self.datePicker.datePickerMode = self.datePickerMode
         self.datePicker.minimumDate = self.datePickerMinDate
         self.datePicker.maximumDate = self.datePickerMaxDate
-        
+
         self.isShowingDatePicker = true
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
