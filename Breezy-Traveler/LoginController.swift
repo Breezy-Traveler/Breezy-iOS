@@ -74,7 +74,7 @@ class LoginController: UIViewController {
                 
                 case .failure(let userErrors):
                     DispatchQueue.main.async {
-                        unwrappedSelf.present(AlertViewController.showAlert(), animated: true, completion: nil)
+                        unwrappedSelf.present(AlertViewController.showWrongUsernameOrPAsswordAlert(), animated: true, completion: nil)
                     }
                 print(userErrors.errors)
             }
