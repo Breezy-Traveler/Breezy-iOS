@@ -30,6 +30,7 @@ struct NetworkStack {
     func register(a user: UserRegister, callback: @escaping (Result<BTUser, BTAPIUserError>) -> ()) {
         /// handles the response data after the networkService has fired and come back with a result
         apiService.request(.registerUser(user)) { (result) in
+            
             switch result {
             case .success(let response):
                 
@@ -40,9 +41,15 @@ struct NetworkStack {
                     }
                     
                     callback(.success(user))
+                case 422:
+                    let errors = BTAPIUserError(errors: ["Unprocessable entity"])
+                    callback(.failure(errors))
+                    
                 default:
-                    return assertionFailure("\(response.statusCode)")
+                    let errors = BTAPIUserError(errors: ["Server Error"])
+                    callback(.failure(errors))
                 }
+                
             case .failure(let err):
                 let errors = BTAPIUserError(errors: [err.localizedDescription])
                 callback(.failure(errors))
