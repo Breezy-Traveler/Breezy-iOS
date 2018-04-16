@@ -11,7 +11,7 @@ import Foundation
 struct BTHotel: Codable {
     let idValue: Int?
     
-    /** A helper var to return the unwrapped idValue of trip */
+    /** A helper var to return the unwrapped idValue of hotel */
     var id: Int {
         get {
             guard let id = self.idValue else {
@@ -21,11 +21,11 @@ struct BTHotel: Codable {
             return id
         }
     }
-    let title: String
-    let address: String?
-    let visited: Bool
-    let notes: String?
-    let rating: Like?
+    var title: String
+    var address: String?
+    var visited: Bool
+    var notes: String?
+    var rating: Like?
 
     enum Like: Int, Codable {
         // Zero is dislike, one is like

@@ -9,9 +9,10 @@
 import Foundation
 import Moya
 import Result
+import SwiftyJSON
 
 extension NetworkStack {
-    struct BTAPITripError: Error {
+    struct BTAPIErrors: Error {
         var errors = [String]()
         
         var localizedDescription: String {
@@ -25,7 +26,7 @@ extension NetworkStack {
         }
     }
     
-    func loadUserTrips(user: BTUser, callback: @escaping (Result<[BTTrip], BTAPITripError>) -> ()) {
+    func loadUserTrips(user: BTUser, callback: @escaping (Result<[BTTrip], BTAPIErrors>) -> ()) {
         /// handles the response data after the networkService has fired and come back with a result
         apiService.request(.loadTrips(user)) { (result) in
             switch result {
@@ -40,17 +41,17 @@ extension NetworkStack {
                     
                     callback(.success(trips))
                 default:
-                    let errors = BTAPITripError(errors: [String(describing: response)])
+                    let errors = BTAPIErrors(errors: [String(describing: response)])
                     callback(.failure(errors))
                 }
             case .failure(let err):
-                let errors = BTAPITripError(errors: [err.localizedDescription])
+                let errors = BTAPIErrors(errors: [err.localizedDescription])
                 callback(.failure(errors))
             }
         }
     }
     
-    func createTrip(trip: BTTrip, callback: @escaping (Result<BTTrip, BTAPITripError>) -> ()) {
+    func createTrip(trip: BTTrip, callback: @escaping (Result<BTTrip, BTAPIErrors>) -> ()) {
         apiService.request(.createTrip(trip)) { (result) in
             switch result {
             case .success(let response):
@@ -66,13 +67,62 @@ extension NetworkStack {
                     return assertionFailure("\(response.statusCode)")
                 }
             case .failure(let err):
-                let errors = BTAPITripError(errors: [err.localizedDescription])
+                let errors = BTAPIErrors(errors: [err.localizedDescription])
                 callback(.failure(errors))
             }
         }
     }
     
-    func deleteTrip(trip: BTTrip, callback: @escaping (Result<BTTrip, BTAPITripError>) -> ()) {
+    func showTrip(for id: Int, completion: @escaping (Result<BTTrip, BTAPIErrors>) -> ()) {
+        apiService.request(.showTrip(forTripID: id)) { (result) in
+            switch result {
+            case .success(let response):
+                switch response.statusCode {
+                case 200:
+                    guard let trip = try? JSONDecoder().decode(BTTrip.self, from: response.data) else {
+                        fatalError("could not decode response.data into trip model")
+                    }
+                    
+                    completion(.success(trip))
+                default:
+                    let serverErrors = (try! JSON(data: response.data).dictionaryObject) ?? ["error": "Server Error"]
+                    let errors = BTAPIErrors(errors: ["Something went wrong.", serverErrors.description])
+                    
+                    completion(.failure(errors))
+                }
+            case .failure(let err):
+                let errors = BTAPIErrors(errors: [err.localizedDescription])
+                completion(.failure(errors))
+            }
+        }
+    }
+    
+    func update(trip: BTTrip, completion: @escaping (Result<BTTrip, BTAPIErrors>) -> ()) {
+        apiService.request(.updateTrip(trip)) { (result) in
+            switch result {
+            case .success(let response):
+                switch response.statusCode {
+                case 200:
+                    guard let updatedTrip = try? JSONDecoder().decode(BTTrip.self, from: response.data) else {
+                        fatalError("could not decode response.data to trip model")
+                    }
+                    
+                    completion(.success(updatedTrip))
+                default:
+                    let serverErrors = (try! JSON(data: response.data).dictionaryObject) ?? ["error": "Server Error"]
+                    let errors = BTAPIErrors(errors: ["Something went wrong.", serverErrors.description])
+                    
+                    completion(.failure(errors))
+                }
+            case .failure(let err):
+                let errors = BTAPIErrors(errors: [err.localizedDescription])
+                completion(.failure(errors))
+            }
+        }
+    }
+    
+    
+    func deleteTrip(trip: BTTrip, callback: @escaping (Result<BTTrip, BTAPIErrors>) -> ()) {
         apiService.request(.deleteTrip(trip)) { (result) in
             switch result {
                 
@@ -86,7 +136,7 @@ extension NetworkStack {
                 }
                 
             case .failure(let err):
-                let errors = BTAPITripError(errors: [err.localizedDescription])
+                let errors = BTAPIErrors(errors: [err.localizedDescription])
                 callback(.failure(errors))
             }
         }

@@ -17,17 +17,18 @@ struct BTTrip: Codable {
             guard let id = self.idValue else {
                 fatalError("trip did not have an id")
             }
-            
             return id
         }
     }
     
-    let place: String
-    let startDate: Date?
-    let endDate: Date?
-    let hotels: [BTHotel]
-    let sites: [Site]
-    let isPublic: Bool
+    var place: String
+    var startDate: Date?
+    var endDate: Date?
+    var hotels: [BTHotel]
+    var sites: [BTSite]
+    var coverImageUrl: URL?
+    var isPublic: Bool
+    //TODO: add notes to trips
     
     enum CodingKeys: String, CodingKey {
         case idValue = "id"
@@ -36,6 +37,7 @@ struct BTTrip: Codable {
         case endDate = "end_date"
         case hotels
         case sites
+        case coverImageUrl = "cover_image_url"
         case isPublic = "is_public"
     }
     
@@ -45,7 +47,8 @@ struct BTTrip: Codable {
         startDate: Date? = nil,
         endDate: Date? = nil,
         hotels: [BTHotel] = [],
-        sites: [Site] = [],
+        sites: [BTSite] = [],
+        coverImageUrl: URL? = nil,
         isPublic: Bool) {
         
         self.idValue = id
@@ -54,29 +57,8 @@ struct BTTrip: Codable {
         self.endDate = endDate
         self.hotels = hotels
         self.sites = sites
+        self.coverImageUrl = coverImageUrl
         self.isPublic = isPublic
-    }
-}
-
-struct Site: Codable {
-    let name: String
-    let address: String?
-    let visited: Bool
-    let notes: String?
-    let rating: Like?
-    //
-    enum Like: Int, Codable {
-        // Zero is dislike, one is like
-        case dislike = 0
-        case like = 1
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case name = "title"
-        case address
-        case visited = "is_visited"
-        case notes
-        case rating = "ratings"
     }
 }
 

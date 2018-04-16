@@ -13,6 +13,6 @@ import Foundation
 //}
 
 struct Quote: Decodable {
-    let quote: String
-    let author: String
+    var quote: String?
+    var author: String?
 }
