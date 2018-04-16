@@ -17,6 +17,7 @@ class ExploreTripsCollectionViewCell: UICollectionViewCell {
     func configure(_ trip: BTTrip) {
         
         self.placeLabel.text = trip.place
+//        self.placeLabel.minimumScaleFactor = 0.2
         
         if let coverImageUrl = trip.coverImageUrl {
             self.coverImage.kf.setImage(with: coverImageUrl)
