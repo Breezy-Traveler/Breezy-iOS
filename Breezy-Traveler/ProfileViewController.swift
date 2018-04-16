@@ -27,6 +27,15 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         super.viewDidLoad()
         view.backgroundColor = UIColor(r: 61, g: 91, b: 151)
         imagePicker.delegate = self
+        
+        // Set the navigation bar appearence for the entire app
+        let navigationBarAppearace = UINavigationBar.appearance()
+
+        // change navigation item title color
+        navigationBarAppearace.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+
+        navigationBarAppearace.tintColor = UIColor.white
+        navigationBarAppearace.barTintColor = UIColor(r: 61, g: 91, b: 151)
     }
     
     override func viewWillAppear(_ animated: Bool) {
