@@ -103,6 +103,14 @@ class MyTripsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadUserTrips()
+        // Set the navigation bar appearence for the entire app
+        let navigationBarAppearace = UINavigationBar.appearance()
+        
+        // change navigation item title color
+        navigationBarAppearace.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        
+        navigationBarAppearace.tintColor = UIColor.white
+        navigationBarAppearace.barTintColor = UIColor(r: 61, g: 91, b: 151)
     }
 }
 
