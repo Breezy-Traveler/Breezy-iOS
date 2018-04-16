@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+extension UIImage {
+    static var defaultCoverImage: UIImage {
+        return #imageLiteral(resourceName: "MountainsDefault")
+    }
+}
+
 extension Collection where Index : Comparable {
     subscript(fromBack i: Int) -> Iterator.Element {
         let backBy = i

@@ -128,17 +128,17 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
     
     @IBOutlet weak var buttonHotels: UIButtonCell!
     @IBAction func pressHotels(_ sender: Any) {
-        self.performSegue(withIdentifier: UIStoryboardSegue.showHotels, sender: nil)
+//        self.performSegue(withIdentifier: UIStoryboardSegue.showHotels, sender: nil)
     }
     
     @IBOutlet weak var buttonStites: UIButtonCell!
     @IBAction func pressSites(_ sender: Any) {
-        self.performSegue(withIdentifier: UIStoryboardSegue.showSites, sender: nil)
+//        self.performSegue(withIdentifier: UIStoryboardSegue.showSites, sender: nil)
     }
     
     @IBOutlet weak var buttonNotes: UIButtonCell!
     @IBAction func pressNotes(_ sender: Any) {
-        self.performSegue(withIdentifier: UIStoryboardSegue.showNotes, sender: nil)
+//        self.performSegue(withIdentifier: UIStoryboardSegue.showNotes, sender: nil)
     }
 
     @IBAction func pressRenamePlace(_ sender: Any) {
@@ -194,10 +194,11 @@ extension TripDetailedViewController: UICoverImageViewDelegate {
     
 }
 
+// MARK: - TripDatePickerViewControllerDelegate
+
 extension TripDetailedViewController: TripDatePickerViewControllerDelegate {
     func tripDatePicker(_ tripViewController: TripDatePickerViewController, didFinishSelecting startDate: Date?, endDate: Date?) {
-        self.trip.startDate = startDate
-        self.trip.endDate = endDate
+        self.viewModel.updateDates(start: startDate, end: endDate)
         self.updateUI()
         
         self.navigationController?.popViewController(animated: true)

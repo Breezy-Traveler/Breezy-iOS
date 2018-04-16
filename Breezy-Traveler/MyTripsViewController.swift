@@ -19,6 +19,46 @@ class MyTripsViewController: UIViewController {
     
     // MARK: - METHODS
     
+    func setupNavigationBar() {
+        let navigationBar = navigationController!.navigationBar
+        navigationBar.barTintColor = UIColor.white
+        navigationBar.isTranslucent = false
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
+    }
+    
+    func setupProfileImage() {
+        profileImage.layer.masksToBounds = true
+        profileImage.layer.cornerRadius = profileImage.frame.size.height / 2
+        profileImage.layer.borderWidth = 2
+        profileImage.layer.borderColor = UIColor.white.cgColor
+        
+        if let savedProfileImage = userPersitence.loadUserProfileImage() {
+            profileImage.image = savedProfileImage
+        }
+    }
+    
+    func setupUserDataDisplay() {
+        usernameLabel.text = currentUser.username
+        emailLabel.text = currentUser.email
+    }
+    
+    func loadUserTrips() {
+        networkStack.loadUserTrips(user: currentUser) { (result) in
+            switch result {
+                
+            case .success(let tripsDictionaries):
+                self.trips = tripsDictionaries
+                DispatchQueue.main.async {
+                    self.tripsTableView.reloadData()
+                }
+                
+            case .failure(let tripsErrors):
+                print(tripsErrors.errors)
+            }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             switch identifier {
@@ -60,46 +100,6 @@ class MyTripsViewController: UIViewController {
         collectionView.delegate = self
     }
     
-    func setupNavigationBar() {
-        let navigationBar = navigationController!.navigationBar
-        navigationBar.barTintColor = UIColor.white
-        navigationBar.isTranslucent = false
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationBar.shadowImage = UIImage()
-    }
-    
-    func setupProfileImage() {
-        profileImage.layer.masksToBounds = true
-        profileImage.layer.cornerRadius = profileImage.frame.size.height / 2
-        profileImage.layer.borderWidth = 2
-        profileImage.layer.borderColor = UIColor.white.cgColor
-        
-        if let savedProfileImage = userPersitence.loadUserProfileImage() {
-            profileImage.image = savedProfileImage
-        }
-    }
-    
-    func setupUserDataDisplay() {
-        usernameLabel.text = currentUser.username
-        emailLabel.text = currentUser.email
-    }
-    
-    func loadUserTrips() {
-        networkStack.loadUserTrips(user: currentUser) { (result) in
-            switch result {
-                
-            case .success(let tripsDictionaries):
-                self.trips = tripsDictionaries
-                DispatchQueue.main.async {
-                    self.tripsTableView.reloadData()
-                }
-                
-            case .failure(let tripsErrors):
-                print(tripsErrors.errors)
-            }
-        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadUserTrips()
@@ -129,14 +129,7 @@ extension MyTripsViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tripsCell", for: indexPath) as! TripsTVCell
         
         let trip = trips[indexPath.row]
-        
-        if let startDate = trip.startDate, let endDate = trip.endDate {
-            cell.startDate.text = startDate.description
-            cell.endDate.text = endDate.description
-        }
-        
-        cell.placeName.text = trip.place
-        cell.isPublic.text = trip.isPublic.description
+        cell.configure(trip)
         
         tableView.rowHeight = 80
         return cell

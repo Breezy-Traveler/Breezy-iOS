@@ -88,6 +88,12 @@ extension TripDetailedViewModel {
         self.pushTrip()
     }
     
+    func updateDates(start: Date?, end: Date?) {
+        self.trip.startDate = start
+        self.trip.endDate = end
+        self.pushTrip()
+    }
+    
     var likesText: String {
         let nLikes = 999 //TODO: fetch the number of likes
         
