@@ -58,6 +58,9 @@ class QuoteViewController: UIViewController {
         userPersistence.logoutUser()
         let loginViewController = LoginController()
         self.present(loginViewController, animated: false, completion: nil)
+        
+        // clear the image from the device storage
+        userPersistence.removeUserProfileImage()
     }
 }
 

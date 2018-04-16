@@ -41,6 +41,15 @@ struct UserPersistence {
         }
     }
     
+    func removeUserProfileImage() {
+        let filemanager = FileManager.default
+        guard let libraryDirectory = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first else {
+            fatalError("no access to this directory")
+        }
+        let userProfileImageURL = libraryDirectory.appendingPathComponent("userProfile.png")
+        try! filemanager.removeItem(at: userProfileImageURL)
+    }
+    
     func loadUserProfileImage() -> UIImage? {
         guard let imageData = try? Data(contentsOf: userProfileURL) else {
             return nil
