@@ -22,6 +22,7 @@
 		B96529602069D17B007FAD4D /* TripsTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B965295F2069D17B007FAD4D /* TripsTVCell.swift */; };
 		B9B8F912206C52AF009C017F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8F911206C52AF009C017F /* UserModel.swift */; };
 		B9B8F916206C54A9009C017F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B8F915206C54A9009C017F /* API.swift */; };
+		B9BF275E2085356A00265140 /* Absolute-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9BF275D2085344900265140 /* Absolute-Regular.otf */; };
 		B9F7620A206D506500821C28 /* NetworkingLayer+Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F76209206D506500821C28 /* NetworkingLayer+Users.swift */; };
 		B9F9F176207305FB00F0D24D /* QuoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F175207305FB00F0D24D /* QuoteModel.swift */; };
 		B9F9F17A2075585500F0D24D /* UtilityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F1792075585500F0D24D /* UtilityExtensions.swift */; };
@@ -82,6 +83,7 @@
 		B965295F2069D17B007FAD4D /* TripsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTVCell.swift; sourceTree = "<group>"; };
 		B9B8F911206C52AF009C017F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B9B8F915206C54A9009C017F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		B9BF275D2085344900265140 /* Absolute-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Absolute-Regular.otf"; sourceTree = "<group>"; };
 		B9F76209206D506500821C28 /* NetworkingLayer+Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Users.swift"; sourceTree = "<group>"; };
 		B9F9F175207305FB00F0D24D /* QuoteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteModel.swift; sourceTree = "<group>"; };
 		B9F9F1792075585500F0D24D /* UtilityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityExtensions.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				B9F9F1782075583700F0D24D /* Utility */,
 				B96529512069A571007FAD4D /* Assets.xcassets */,
 				B96529532069A571007FAD4D /* LaunchScreen.storyboard */,
+				B9BF275D2085344900265140 /* Absolute-Regular.otf */,
 				B96529562069A571007FAD4D /* Info.plist */,
 			);
 			path = "Breezy-Traveler";
@@ -382,6 +385,7 @@
 				E97ED75D2077EF190021B651 /* UIButtonCell.xib in Resources */,
 				E98F03482072A95A004D4074 /* Trips.storyboard in Resources */,
 				B96529522069A571007FAD4D /* Assets.xcassets in Resources */,
+				B9BF275E2085356A00265140 /* Absolute-Regular.otf in Resources */,
 				E9DC2420207E92BD001691C2 /* UITitleClearButtonTableViewCell.xib in Resources */,
 				B96529502069A571007FAD4D /* Main.storyboard in Resources */,
 				B950975C207D3E6600B4FE9B /* CreateTrip.storyboard in Resources */,

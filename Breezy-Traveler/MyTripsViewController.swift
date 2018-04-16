@@ -19,13 +19,6 @@ class MyTripsViewController: UIViewController {
     
     // MARK: - METHODS
     
-    func setupNavigationBar() {
-        let navigationBar = navigationController!.navigationBar
-        navigationBar.barTintColor = UIColor.white
-        navigationBar.isTranslucent = false
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationBar.shadowImage = UIImage()
-    }
     
     func setupProfileImage() {
         profileImage.layer.masksToBounds = true
@@ -93,7 +86,6 @@ class MyTripsViewController: UIViewController {
     // MARK: - LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBar()
         setupUserDataDisplay()
         setupProfileImage()
         collectionView.dataSource = self
@@ -103,14 +95,42 @@ class MyTripsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadUserTrips()
-        // Set the navigation bar appearence for the entire app
-        let navigationBarAppearace = UINavigationBar.appearance()
         
-        // change navigation item title color
-        navigationBarAppearace.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // Set the navigation bar appearence for this viewController
+//        let nav = self.navigationController?.navigationBar
+//
+//
+//        title = "Breezy Traveler"
+//        self.navigationController?.navigationBar.titleTextAttributes = [
+//            NSAttributedStringKey.font: UIFont(name: "Absolute-Regular", size: 20)!
+//        ]
+//
+//        // 2 Set the style for the bar
+//        nav?.barStyle = UIBarStyle.black
+//        nav?.tintColor = UIColor.white
+//        nav?.barTintColor = UIColor(r: 61, g: 91, b: 151)
         
-        navigationBarAppearace.tintColor = UIColor.white
-        navigationBarAppearace.barTintColor = UIColor(r: 61, g: 91, b: 151)
+        
+        // 3 Add our logo in text in the Nav Bar for this screen
+//        let labelView = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+//        labelView.textColor = UIColor.white
+////        let font = UIFont(name: "Avenir-Next", size: 20)
+//        labelView.font = UIFont(name: "Absolute-Regular", size: 20)
+//        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+//        imageView.contentMode = .scaleAspectFit
+        
+        // 4 Set the text in the label
+//        let text = "Breezy Traveler"
+//        let image = UIImage(named: "BreezyTravelerLogo")
+//        labelView.text = text
+//        imageView.image = image
+        
+        // 5
+//        navigationItem.titleView = labelView
+        
     }
 }
 
