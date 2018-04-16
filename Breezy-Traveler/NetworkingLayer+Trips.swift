@@ -141,5 +141,29 @@ extension NetworkStack {
             }
         }
     }
+    
+    func loadPublishedTrips(fetchAllTrips: Bool, completion: @escaping (Result<[BTTrip], BTAPIErrors>) -> ()) {
+        apiService.request(.loadPublishedTrips(fetchAll: fetchAllTrips)) { (result) in
+            switch result {
+                
+            case .success(let response):
+                switch response.statusCode {
+                case 200:
+                    guard let trips = try? JSONDecoder().decode([BTTrip].self, from: response.data) else {
+                        fatalError("could not convert into trips models")
+                    }
+                    
+                    completion(.success(trips))
+                default:
+                    let errors = BTAPIErrors(errors: ["Something went wrong: \(response.statusCode)"])
+                    completion(.failure(errors))
+                }
+                
+            case .failure(let err):
+                let errors = BTAPIErrors(errors: [err.localizedDescription])
+                completion(.failure(errors))
+            }
+        }
+    }
 }
 
