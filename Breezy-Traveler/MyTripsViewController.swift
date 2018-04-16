@@ -10,7 +10,8 @@ import UIKit
 
 class MyTripsViewController: UIViewController {
     
-    var trips = [BTTrip]()
+    private var trips = [BTTrip]()
+    private var publishedTrips: [BTTrip]?
     var currentUser = BTUser.getStoredUser()
     var userPersitence = UserPersistence()
     let networkStack = NetworkStack()
@@ -59,6 +60,25 @@ class MyTripsViewController: UIViewController {
         }
     }
     
+    func loadPublishedTrips() {
+        networkStack.loadPublishedTrips(fetchAllTrips: false) { (result) in
+            switch result {
+            case .success(let publishedTrips):
+                self.publishedTrips = publishedTrips
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            case .failure(let err):
+                
+                //TODO: present errors differently, perhaps
+                // prompt user of error
+                UIAlertController(title: "Fetching Published Trips", message: err.localizedDescription, preferredStyle: .alert)
+                    .addDismissButton()
+                    .present(in: self)
+            }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             switch identifier {
@@ -96,13 +116,12 @@ class MyTripsViewController: UIViewController {
         setupNavigationBar()
         setupUserDataDisplay()
         setupProfileImage()
-        collectionView.dataSource = self
-        collectionView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadUserTrips()
+        loadPublishedTrips()
     }
 }
 
@@ -176,14 +195,15 @@ extension MyTripsViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.publishedTrips?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exploreTripCell", for: indexPath) as! ExploreTripsCollectionViewCell
         
-//        let trip  =
+        let trip = self.publishedTrips![indexPath.row]
+        cell.configure(trip)
         
         return cell
     }
