@@ -183,6 +183,8 @@ extension MyTripsViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exploreTripCell", for: indexPath) as! ExploreTripsCollectionViewCell
         
+//        let trip  =
+        
         return cell
     }
     

@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -109,7 +108,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Berlin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqR-aP-VqF">
-                                                                    <rect key="frame" x="22.5" y="34.5" width="55" height="24"/>
+                                                                    <rect key="frame" x="0.0" y="34.5" width="100" height="24"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -117,15 +116,18 @@
                                                             </subviews>
                                                         </view>
                                                         <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="kqR-aP-VqF" secondAttribute="trailing" id="40q-1d-1Jc"/>
                                                             <constraint firstItem="vE3-cw-8mP" firstAttribute="top" secondItem="Qaz-Hr-2Ns" secondAttribute="top" constant="8" id="ILL-zc-aSB"/>
                                                             <constraint firstAttribute="bottom" secondItem="vE3-cw-8mP" secondAttribute="bottom" constant="8" id="MGY-qS-GDa"/>
                                                             <constraint firstItem="vE3-cw-8mP" firstAttribute="leading" secondItem="Qaz-Hr-2Ns" secondAttribute="leading" constant="8" id="OiU-sK-7vz"/>
-                                                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="kqR-aP-VqF" secondAttribute="trailing" id="aYo-pH-5gW"/>
-                                                            <constraint firstItem="kqR-aP-VqF" firstAttribute="centerX" secondItem="Qaz-Hr-2Ns" secondAttribute="centerX" id="atq-QU-72w"/>
-                                                            <constraint firstItem="kqR-aP-VqF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qaz-Hr-2Ns" secondAttribute="leadingMargin" id="f8o-v1-hEp"/>
                                                             <constraint firstAttribute="trailing" secondItem="vE3-cw-8mP" secondAttribute="trailing" constant="8" id="fEN-rN-bHk"/>
-                                                            <constraint firstItem="kqR-aP-VqF" firstAttribute="centerY" secondItem="Qaz-Hr-2Ns" secondAttribute="centerY" id="k3F-Lk-sf9"/>
+                                                            <constraint firstItem="kqR-aP-VqF" firstAttribute="leading" secondItem="Qaz-Hr-2Ns" secondAttribute="leading" id="wxM-EL-7I8"/>
+                                                            <constraint firstItem="kqR-aP-VqF" firstAttribute="centerY" secondItem="Qaz-Hr-2Ns" secondAttribute="centerY" id="wzt-oS-VsC"/>
                                                         </constraints>
+                                                        <connections>
+                                                            <outlet property="coverImage" destination="vE3-cw-8mP" id="ZgN-RK-fP1"/>
+                                                            <outlet property="placeLabel" destination="kqR-aP-VqF" id="Qaa-mA-ySu"/>
+                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
                                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Dod-EH-jIG">

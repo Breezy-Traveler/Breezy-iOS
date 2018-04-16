@@ -123,7 +123,7 @@ struct UserPersistence {
             case .failure(let error):
                 
                 // FIXME: breaking here with bad credentials
-                assertionFailure("bad user credentials \(error.localizedDescription)")
+//                assertionFailure("bad user credentials \(error.localizedDescription)")
                 callback(false)
             }
         }
