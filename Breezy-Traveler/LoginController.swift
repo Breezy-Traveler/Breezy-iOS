@@ -43,6 +43,22 @@ class LoginController: UIViewController {
         return button
     }()
     
+    lazy var logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "BreezyTravelerLogo")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+        
+    }()
+    func setupLogoImageView() {
+        // Need x, y, width, and height contraints
+        logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        logoImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -12).isActive = true
+        logoImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        logoImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+    }
+    
     @objc func handleLoginRegister() {
         if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
             handleLogin()
@@ -74,7 +90,7 @@ class LoginController: UIViewController {
                 
                 case .failure(let userErrors):
                     DispatchQueue.main.async {
-                        unwrappedSelf.present(AlertViewController.showAlert(), animated: true, completion: nil)
+                        unwrappedSelf.present(AlertViewController.showWrongUsernameOrPAsswordAlert(), animated: true, completion: nil)
                     }
                 print(userErrors.errors)
             }
@@ -180,13 +196,13 @@ class LoginController: UIViewController {
         view.addSubview(loginRegisterSegmentedControl)
         view.addSubview(inputsContainerView)
         view.addSubview(loginRegisterButton)
-//        view.addSubview(profileImageView)
+        view.addSubview(logoImageView)
         
         setupLoginRegisterSegmentedControl()
         setUpContainerView()
         
         setUpLoginRegisterButton()
-//        setupProfileImageView()
+        setupLogoImageView()
         handleLoginRegisterChange()
     }
     
