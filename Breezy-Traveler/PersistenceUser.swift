@@ -47,7 +47,8 @@ struct UserPersistence {
             fatalError("no access to this directory")
         }
         let userProfileImageURL = libraryDirectory.appendingPathComponent("userProfile.png")
-        try! filemanager.removeItem(at: userProfileImageURL)
+        
+        try? filemanager.removeItem(at: userProfileImageURL)
     }
     
     func loadUserProfileImage() -> UIImage? {
