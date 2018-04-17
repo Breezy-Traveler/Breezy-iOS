@@ -19,10 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set the navigation bar appearence for the entire app
         let navigationBarAppearance = UINavigationBar.appearance()
 
-        // change navigation item title color
+        // Change navigation item title color for the whole app
         navigationBarAppearance.titleTextAttributes = [
             NSAttributedStringKey.foregroundColor: UIColor.white,
-            NSAttributedStringKey.font: UIFont(name: "Absolute-Regular", size: 35)!
         ]
 
         navigationBarAppearance.tintColor = UIColor.white
