@@ -32,7 +32,7 @@ class TripsTVCell: UITableViewCell {
         
         // text
         self.placeName.text = trip.place
-        self.isPublic.text = trip.isPublic ? "Published!" : ""
+        self.isPublic.text = trip.isPublic ? "Shared" : "Private"
     }
     
     // MARK: - IBACTIONS
