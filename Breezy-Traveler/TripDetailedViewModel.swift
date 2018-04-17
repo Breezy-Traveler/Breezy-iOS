@@ -102,9 +102,9 @@ extension TripDetailedViewModel {
     
     var publishedText: String {
         if trip.isPublic {
-            return "Published"
+            return "Shared"
         } else {
-            return "Ready to Publish?"
+            return "Private"
         }
     }
     

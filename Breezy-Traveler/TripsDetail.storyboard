@@ -125,7 +125,11 @@
                         <viewLayoutGuide key="safeArea" id="83t-nM-9bF"/>
                     </view>
                     <navigationItem key="navigationItem" title="Trip" id="Qqg-si-ceg">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="zmH-sN-sZz"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="zmH-sN-sZz">
+                            <connections>
+                                <action selector="pressShare:" destination="eqz-PU-wnb" id="zGy-E1-1pN"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>

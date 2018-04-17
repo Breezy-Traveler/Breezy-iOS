@@ -24,9 +24,6 @@ class UICoverImageView: UIView {
     
     @IBOutlet weak var coverImageView: UIImageView!
     
-    // When the user selects a cover image, remove the text
-    @IBOutlet weak var coverImageLabel: UILabel!
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -72,11 +69,7 @@ class UICoverImageView: UIView {
         self.delegate?.coverImage?(view: self, leftButtonDidPress: self.leftButton)
     }
     
-    @IBOutlet weak var rightIconView: UIImageView!
-    @IBOutlet weak var rightButton: UIButton!
-    @IBAction func rightLeftButton(_ sender: Any) {
-        self.delegate?.coverImage?(view: self, rightButtonDidPress: self.rightButton)
-    }
+    @IBOutlet weak var rightLabel: UILabel!
     
     // MARK: - LIFE CYCLE
 
