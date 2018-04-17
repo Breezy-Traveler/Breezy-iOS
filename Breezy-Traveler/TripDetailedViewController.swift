@@ -50,9 +50,9 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         
         // layout cover image
         let likesTitle = viewModel.likesText
-        coverImage.leftButton.setTitleWithoutAnimation(likesTitle, for: .normal)
+        coverImage.leftLebel.text = String(likesTitle)
         let publishedTitle = viewModel.publishedText
-        coverImage.rightLabel.text = viewModel.publishedTitle
+        coverImage.rightLabel.text = publishedTitle
         coverImage.setCoverImage(with: trip.coverImageUrl)
         
         // layout dates
@@ -210,7 +210,7 @@ extension TripDetailedViewController: TripDetailedViewModelDelegate {
 
 extension TripDetailedViewController: UICoverImageViewDelegate {
     
-    func coverImage(view: UICoverImageView, leftButtonDidPress button: UIButton) {
+    func coverImage(view: UICoverImageView, leftButtonIconDidPress button: UIButton) {
         
         // press like button
     }

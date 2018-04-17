@@ -97,7 +97,7 @@ extension TripDetailedViewModel {
     var likesText: String {
         let nLikes = 999 //TODO: fetch the number of likes
         
-        return "\(nLikes) 💙"
+        return "\(nLikes)"
     }
     
     var publishedText: String {
