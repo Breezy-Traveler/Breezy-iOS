@@ -58,6 +58,30 @@ extension UIColor {
     }
 }
 
+extension UIViewController {
+    func setupNavigationBarAppearence() {
+        // Set the navigation bar appearence for this viewController
+        let nav = self.navigationController?.navigationBar
+        
+        // 2 Set the style for the bar
+        nav?.barStyle = UIBarStyle.black
+        nav?.tintColor = UIColor.white
+        nav?.barTintColor = UIColor(r: 61, g: 91, b: 151)
+        
+        // 3 Add our logo in text in the Nav Bar for this screen
+        let labelView = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
+        labelView.textColor = UIColor.white
+        labelView.font = UIFont(name: "Absolute-Regular", size: 30)
+        
+        // 4 Set the text in the label
+        let text = "Breezy Traveler"
+        labelView.text = text
+        
+        // 5 Set the label on the navigation bar
+        navigationItem.titleView = labelView
+    }
+}
+
 // Extension on String to check for valid email
 extension String {
     func isValidEmail() -> Bool {
