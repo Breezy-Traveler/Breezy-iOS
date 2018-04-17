@@ -35,7 +35,10 @@ extension NetworkStack {
                 
                 switch response.statusCode {
                 case 200:
-                    guard let trips = try? JSONDecoder().decode([BTTrip].self, from: response.data) else {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+                    
+                    guard let trips = try? decoder.decode([BTTrip].self, from: response.data) else {
                         return assertionFailure("JSON data not decodable")
                     }
                     
@@ -58,7 +61,10 @@ extension NetworkStack {
                 
                 switch response.statusCode {
                 case 201:
-                    guard let trip = try? JSONDecoder().decode(BTTrip.self, from: response.data) else {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+                    
+                    guard let trip = try? decoder.decode(BTTrip.self, from: response.data) else {
                         return assertionFailure("JSON data not decodable")
                     }
                     
@@ -79,7 +85,10 @@ extension NetworkStack {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let trip = try? JSONDecoder().decode(BTTrip.self, from: response.data) else {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+                    
+                    guard let trip = try? decoder.decode(BTTrip.self, from: response.data) else {
                         fatalError("could not decode response.data into trip model")
                     }
                     
@@ -103,7 +112,10 @@ extension NetworkStack {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let updatedTrip = try? JSONDecoder().decode(BTTrip.self, from: response.data) else {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+                    
+                    guard let updatedTrip = try? decoder.decode(BTTrip.self, from: response.data) else {
                         fatalError("could not decode response.data to trip model")
                     }
                     
@@ -149,7 +161,10 @@ extension NetworkStack {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let trips = try? JSONDecoder().decode([BTTrip].self, from: response.data) else {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .iso8601
+                    
+                    guard let trips = try? decoder.decode([BTTrip].self, from: response.data) else {
                         fatalError("could not convert into trips models")
                     }
                     

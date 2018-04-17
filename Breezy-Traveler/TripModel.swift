@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BTTrip: Codable {
+struct BTTrip {
     let idValue: Int?
     
     /** A helper var to return the unwrapped idValue of trip */
@@ -62,4 +62,58 @@ struct BTTrip: Codable {
     }
 }
 
+extension BTTrip: Encodable {
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.place, forKey: .place)
+        
+        let formatter = ISO8601DateFormatter()
+        
+        if let startDate = self.startDate {
+            let startIso = formatter.string(from: startDate)
+            try container.encode(startIso, forKey: .startDate)
+        }
+        
+        if let endDate = self.endDate {
+            let endIso = formatter.string(from: endDate)
+            try container.encode(endIso, forKey: .endDate)
+        }
+        
+        try container.encode(self.hotels, forKey: .hotels)
+        try container.encode(self.sites, forKey: .sites)
+        try container.encode(self.coverImageUrl, forKey: .coverImageUrl)
+        try container.encode(self.isPublic, forKey: .isPublic)
+    }
+}
+
+extension BTTrip: Decodable {
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.idValue = try container.decode(Int.self, forKey: .idValue)
+        self.place = try container.decode(String.self, forKey: .place)
+        let dateFormatter = ISO8601DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
+        
+        if let startDateISO = try container.decode(String?.self, forKey: .startDate), startDateISO != "" {
+            guard let date = dateFormatter.date(from: startDateISO) else {
+                fatalError("Failed to convert ios string into a date")
+            }
+            
+            self.startDate = date
+        }
+        
+        if let endDateISO = try container.decode(String?.self, forKey: .endDate), endDateISO != "" {
+            guard let date = dateFormatter.date(from: endDateISO) else {
+                fatalError("Failed to convert ios string into a date")
+            }
+            
+            self.endDate = date
+        }
+        
+        self.hotels = try container.decode([BTHotel].self, forKey: .hotels)
+        self.sites = try container.decode([BTSite].self, forKey: .sites)
+        self.coverImageUrl = try container.decode(URL.self, forKey: .coverImageUrl)
+        self.isPublic = try container.decode(Bool.self, forKey: .isPublic)
+    }
+}
 
