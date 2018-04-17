@@ -107,8 +107,8 @@
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Berlin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqR-aP-VqF">
-                                                                    <rect key="frame" x="0.0" y="34.5" width="100" height="24"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Berlin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kqR-aP-VqF">
+                                                                    <rect key="frame" x="8" y="34.5" width="84" height="24"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -116,17 +116,18 @@
                                                             </subviews>
                                                         </view>
                                                         <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="kqR-aP-VqF" secondAttribute="trailing" id="40q-1d-1Jc"/>
+                                                            <constraint firstItem="vE3-cw-8mP" firstAttribute="trailing" secondItem="kqR-aP-VqF" secondAttribute="trailing" id="40q-1d-1Jc"/>
                                                             <constraint firstItem="vE3-cw-8mP" firstAttribute="top" secondItem="Qaz-Hr-2Ns" secondAttribute="top" constant="8" id="ILL-zc-aSB"/>
                                                             <constraint firstAttribute="bottom" secondItem="vE3-cw-8mP" secondAttribute="bottom" constant="8" id="MGY-qS-GDa"/>
                                                             <constraint firstItem="vE3-cw-8mP" firstAttribute="leading" secondItem="Qaz-Hr-2Ns" secondAttribute="leading" constant="8" id="OiU-sK-7vz"/>
                                                             <constraint firstAttribute="trailing" secondItem="vE3-cw-8mP" secondAttribute="trailing" constant="8" id="fEN-rN-bHk"/>
-                                                            <constraint firstItem="kqR-aP-VqF" firstAttribute="leading" secondItem="Qaz-Hr-2Ns" secondAttribute="leading" id="wxM-EL-7I8"/>
+                                                            <constraint firstItem="kqR-aP-VqF" firstAttribute="leading" secondItem="vE3-cw-8mP" secondAttribute="leading" id="wxM-EL-7I8"/>
                                                             <constraint firstItem="kqR-aP-VqF" firstAttribute="centerY" secondItem="Qaz-Hr-2Ns" secondAttribute="centerY" id="wzt-oS-VsC"/>
                                                         </constraints>
                                                         <connections>
                                                             <outlet property="coverImage" destination="vE3-cw-8mP" id="ZgN-RK-fP1"/>
                                                             <outlet property="placeLabel" destination="kqR-aP-VqF" id="Qaa-mA-ySu"/>
+                                                            <segue destination="VCR-mM-z7r" kind="show" identifier="show published trip detailed" id="FJF-ca-pDQ"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
@@ -166,7 +167,7 @@
                                                     <rect key="frame" x="8" y="4" width="359" height="122.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="x7w-dC-OHT" userLabel="TripStackView">
-                                                            <rect key="frame" x="8" y="4" width="347" height="114.5"/>
+                                                            <rect key="frame" x="8" y="4" width="343" height="114.5"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="destination_carousel_berlin" translatesAutoresizingMaskIntoConstraints="NO" id="4J0-oQ-4DR">
                                                                     <rect key="frame" x="0.0" y="0.0" width="153" height="114.5"/>
@@ -180,30 +181,25 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </imageView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="viI-IR-WGf" userLabel="LabelsStack View">
-                                                                    <rect key="frame" x="161" y="30" width="186" height="55"/>
+                                                                    <rect key="frame" x="161" y="30" width="182" height="55"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itz-h9-Ap2" userLabel="PlaceName">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="186" height="27.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="182" height="27.5"/>
                                                                             <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="UDG-wz-uiz">
-                                                                            <rect key="frame" x="0.0" y="27.5" width="186" height="27.5"/>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UDG-wz-uiz">
+                                                                            <rect key="frame" x="0.0" y="27.5" width="182" height="27.5"/>
                                                                             <subviews>
-                                                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOa-BI-Rvv">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="100.5" height="27.5"/>
-                                                                                    <subviews>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Apr 23, 1802" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQa-an-sFG">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="100.5" height="27.5"/>
-                                                                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                                                            <nil key="textColor"/>
-                                                                                            <nil key="highlightedColor"/>
-                                                                                        </label>
-                                                                                    </subviews>
-                                                                                </stackView>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Shared" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRS-4A-UGg">
-                                                                                    <rect key="frame" x="140.5" y="0.0" width="45.5" height="27.5"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Apr 23, 1802" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQa-an-sFG">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="136.5" height="27.5"/>
+                                                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                                                    <nil key="textColor"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Shared" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRS-4A-UGg">
+                                                                                    <rect key="frame" x="136.5" y="0.0" width="45.5" height="27.5"/>
                                                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
@@ -218,7 +214,7 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="x7w-dC-OHT" firstAttribute="leading" secondItem="hgb-rB-1da" secondAttribute="leading" constant="8" id="2sc-UJ-hN7"/>
-                                                        <constraint firstAttribute="trailing" secondItem="x7w-dC-OHT" secondAttribute="trailing" constant="4" id="93N-Zj-b98"/>
+                                                        <constraint firstAttribute="trailing" secondItem="x7w-dC-OHT" secondAttribute="trailing" constant="8" id="93N-Zj-b98"/>
                                                         <constraint firstAttribute="bottom" secondItem="x7w-dC-OHT" secondAttribute="bottom" constant="4" id="cnA-ZJ-9go"/>
                                                         <constraint firstItem="x7w-dC-OHT" firstAttribute="top" secondItem="hgb-rB-1da" secondAttribute="top" constant="4" id="qdc-oA-y82"/>
                                                     </constraints>
@@ -323,4 +319,7 @@
         <image name="defaultProfileImage" width="300" height="300"/>
         <image name="destination_carousel_berlin" width="750" height="300"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="FJF-ca-pDQ"/>
+    </inferredMetricsTieBreakers>
 </document>

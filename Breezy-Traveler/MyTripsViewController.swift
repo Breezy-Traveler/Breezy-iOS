@@ -88,6 +88,19 @@ class MyTripsViewController: UIViewController {
                 let selectedTrip = self.trips[indexPath.row]
                 
                 vc.trip = selectedTrip
+            case "show published trip detailed":
+                guard let vc = segue.destination as? TripDetailedViewController else {
+                    fatalError("segue was not set up correctly in the storyboard")
+                }
+                
+                guard
+                    let cell = sender as? UICollectionViewCell,
+                    let indexPath = self.collectionView.indexPath(for: cell) else {
+                        fatalError("this segue identifer was triggered by something else other than a UICollectionViewCell Cell")
+                }
+                let selectedTrip = self.publishedTrips![indexPath.row]
+                
+                vc.trip = selectedTrip
             default: break
             }
         }

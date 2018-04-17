@@ -183,7 +183,13 @@ extension TripDetailedViewController: UICoverImageViewDelegate {
     func coverImage(view: UICoverImageView, rightButtonDidPress button: UIButton) {
         
         //pressed publish button
-        self.viewModel.toggleIsPublished()
+        if self.trip.coverImageUrl == nil {
+            UIAlertController(title: "Sharing", message: "you must select a cover image before you publish this trip", preferredStyle: .alert)
+                .addDismissButton()
+                .present(in: self)
+        } else {
+            self.viewModel.toggleIsPublished()
+        }
     }
     
     func coverImage(view: UICoverImageView, coverImageDidPressWith gesture: UITapGestureRecognizer) {
