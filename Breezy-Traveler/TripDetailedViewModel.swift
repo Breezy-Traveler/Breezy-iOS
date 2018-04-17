@@ -97,14 +97,14 @@ extension TripDetailedViewModel {
     var likesText: String {
         let nLikes = 999 //TODO: fetch the number of likes
         
-        return "\(nLikes) 💙"
+        return "\(nLikes)"
     }
     
     var publishedText: String {
         if trip.isPublic {
-            return "Published"
+            return "Shared"
         } else {
-            return "Ready to Publish?"
+            return "Private"
         }
     }
     

@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,10 +14,9 @@
             <connections>
                 <outlet property="bottomBar" destination="zoN-1R-nZ2" id="lNj-R8-4oT"/>
                 <outlet property="coverImageView" destination="7i5-Ni-N5H" id="vmA-Vf-Kif"/>
-                <outlet property="leftButton" destination="wQu-vy-Tu7" id="ePD-N9-QYr"/>
-                <outlet property="leftIconView" destination="naR-0P-3ef" id="ofX-hD-WGP"/>
-                <outlet property="rightButton" destination="CoH-Bp-P7u" id="PkZ-LG-O8P"/>
-                <outlet property="rightIconView" destination="GlY-zb-paJ" id="abA-U8-9NL"/>
+                <outlet property="leftButtonIcon" destination="wQu-vy-Tu7" id="Gy5-hZ-ie8"/>
+                <outlet property="leftLebel" destination="omU-2j-2bP" id="Eh0-aZ-Fi3"/>
+                <outlet property="rightLabel" destination="x4T-qo-bNo" id="jwY-CG-6WF"/>
                 <outlet property="view" destination="iN0-l3-epB" id="YUh-pr-55f"/>
             </connections>
         </placeholder>
@@ -37,52 +35,36 @@
                     <rect key="frame" x="0.0" y="239" width="375" height="42"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Tat-1x-WUy">
-                            <rect key="frame" x="8" y="8" width="87" height="26"/>
+                            <rect key="frame" x="8" y="8" width="73.5" height="26"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="naR-0P-3ef">
-                                    <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="naR-0P-3ef" secondAttribute="height" multiplier="1:1" id="g56-s2-bfA"/>
-                                    </constraints>
-                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQu-vy-Tu7">
-                                    <rect key="frame" x="34" y="0.0" width="53" height="26"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="34" height="26"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                                    <state key="normal" title="Button">
+                                    <state key="normal" title="icon">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
                                         <action selector="pressLeftButton:" destination="-1" eventType="touchUpInside" id="UjL-Jg-Wxe"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omU-2j-2bP">
+                                    <rect key="frame" x="42" y="0.0" width="31.5" height="26"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
-                            <constraints>
-                                <constraint firstItem="naR-0P-3ef" firstAttribute="height" secondItem="wQu-vy-Tu7" secondAttribute="height" id="4Gh-gU-fFv"/>
-                            </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Vbx-2O-DCn">
-                            <rect key="frame" x="280" y="8" width="87" height="26"/>
+                            <rect key="frame" x="325" y="8" width="42" height="26"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CoH-Bp-P7u">
-                                    <rect key="frame" x="0.0" y="0.0" width="53" height="26"/>
-                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                                    <state key="normal" title="Button">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="rightLeftButton:" destination="-1" eventType="touchUpInside" id="AeG-9X-S2t"/>
-                                    </connections>
-                                </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GlY-zb-paJ">
-                                    <rect key="frame" x="61" y="0.0" width="26" height="26"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="GlY-zb-paJ" secondAttribute="height" multiplier="1:1" id="hlx-hl-gNi"/>
-                                    </constraints>
-                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4T-qo-bNo">
+                                    <rect key="frame" x="0.0" y="0.0" width="42" height="26"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
-                            <constraints>
-                                <constraint firstItem="GlY-zb-paJ" firstAttribute="height" secondItem="CoH-Bp-P7u" secondAttribute="height" id="q4u-PA-SWy"/>
-                            </constraints>
                         </stackView>
                     </subviews>
                     <constraints>

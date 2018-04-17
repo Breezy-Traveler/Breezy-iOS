@@ -50,9 +50,9 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         
         // layout cover image
         let likesTitle = viewModel.likesText
-        coverImage.leftButton.setTitleWithoutAnimation(likesTitle, for: .normal)
+        coverImage.leftLebel.text = String(likesTitle)
         let publishedTitle = viewModel.publishedText
-        coverImage.rightButton.setTitleWithoutAnimation(publishedTitle, for: .normal)
+        coverImage.rightLabel.text = publishedTitle
         coverImage.setCoverImage(with: trip.coverImageUrl)
         
         // layout dates
@@ -156,6 +156,39 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
             }
             .present(in: self)
     }
+    
+    @IBAction func pressShare(_ sender: Any) {
+        if self.trip.isPublic {
+            // would you like to unpublish this trip?
+            UIAlertController(title: nil, message: "This trip is already published.\nWould you like to make private?", preferredStyle: .actionSheet)
+                .addButton(title: "Make Private") { [unowned self] (action) in
+                    
+                    //pressed unpublish button
+                    self.viewModel.toggleIsPublished()
+                }
+                .addCancelButton()
+                .present(in: self)
+            
+        } else {
+            
+            // would you like to publish
+            UIAlertController(title: nil, message: "Would you like to share this trip?", preferredStyle: .actionSheet)
+                .addButton(title: "Share") { [unowned self] (action) in
+                    
+                    //pressed publish button
+                    if self.trip.coverImageUrl == nil {
+                        UIAlertController(title: "Sharing", message: "You must select a cover image before sharing.", preferredStyle: .alert)
+                            .addDismissButton()
+                            .present(in: self)
+                    } else {
+                        self.viewModel.toggleIsPublished()
+                    }
+                }
+                .addCancelButton()
+                .present(in: self)
+            
+        }
+    }
 }
 
 // MARK: - TripDetailedViewModelDelegate
@@ -177,19 +210,9 @@ extension TripDetailedViewController: TripDetailedViewModelDelegate {
 
 extension TripDetailedViewController: UICoverImageViewDelegate {
     
-    func coverImage(view: UICoverImageView, leftButtonDidPress button: UIButton) {
-    }
-    
-    func coverImage(view: UICoverImageView, rightButtonDidPress button: UIButton) {
+    func coverImage(view: UICoverImageView, leftButtonIconDidPress button: UIButton) {
         
-        //pressed publish button
-        if self.trip.coverImageUrl == nil {
-            UIAlertController(title: "Sharing", message: "you must select a cover image before you publish this trip", preferredStyle: .alert)
-                .addDismissButton()
-                .present(in: self)
-        } else {
-            self.viewModel.toggleIsPublished()
-        }
+        // press like button
     }
     
     func coverImage(view: UICoverImageView, coverImageDidPressWith gesture: UITapGestureRecognizer) {
