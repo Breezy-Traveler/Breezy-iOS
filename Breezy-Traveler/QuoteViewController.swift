@@ -23,7 +23,7 @@ class QuoteViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Breezy Traveler"
+//        self.title = "Breezy Traveler"
         setupNavigationBarAppearence()
     }
     
