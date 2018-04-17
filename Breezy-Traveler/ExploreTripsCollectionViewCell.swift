@@ -17,7 +17,10 @@ class ExploreTripsCollectionViewCell: UICollectionViewCell {
     func configure(_ trip: BTTrip) {
         
         self.placeLabel.text = trip.place
-//        self.placeLabel.minimumScaleFactor = 0.2
+        self.placeLabel.layer.shadowColor = UIColor.black.cgColor
+        self.placeLabel.layer.shadowRadius = 1.25
+        self.placeLabel.layer.shadowOpacity = 1.0
+        self.placeLabel.layer.shadowOffset = CGSize(width: 0, height: 0)
         
         if let coverImageUrl = trip.coverImageUrl {
             self.coverImage.kf.setImage(with: coverImageUrl)

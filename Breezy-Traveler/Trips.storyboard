@@ -107,8 +107,8 @@
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Berlin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqR-aP-VqF">
-                                                                    <rect key="frame" x="0.0" y="34.5" width="100" height="24"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Berlin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kqR-aP-VqF">
+                                                                    <rect key="frame" x="8" y="34.5" width="84" height="24"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -116,12 +116,12 @@
                                                             </subviews>
                                                         </view>
                                                         <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="kqR-aP-VqF" secondAttribute="trailing" id="40q-1d-1Jc"/>
+                                                            <constraint firstItem="vE3-cw-8mP" firstAttribute="trailing" secondItem="kqR-aP-VqF" secondAttribute="trailing" id="40q-1d-1Jc"/>
                                                             <constraint firstItem="vE3-cw-8mP" firstAttribute="top" secondItem="Qaz-Hr-2Ns" secondAttribute="top" constant="8" id="ILL-zc-aSB"/>
                                                             <constraint firstAttribute="bottom" secondItem="vE3-cw-8mP" secondAttribute="bottom" constant="8" id="MGY-qS-GDa"/>
                                                             <constraint firstItem="vE3-cw-8mP" firstAttribute="leading" secondItem="Qaz-Hr-2Ns" secondAttribute="leading" constant="8" id="OiU-sK-7vz"/>
                                                             <constraint firstAttribute="trailing" secondItem="vE3-cw-8mP" secondAttribute="trailing" constant="8" id="fEN-rN-bHk"/>
-                                                            <constraint firstItem="kqR-aP-VqF" firstAttribute="leading" secondItem="Qaz-Hr-2Ns" secondAttribute="leading" id="wxM-EL-7I8"/>
+                                                            <constraint firstItem="kqR-aP-VqF" firstAttribute="leading" secondItem="vE3-cw-8mP" secondAttribute="leading" id="wxM-EL-7I8"/>
                                                             <constraint firstItem="kqR-aP-VqF" firstAttribute="centerY" secondItem="Qaz-Hr-2Ns" secondAttribute="centerY" id="wzt-oS-VsC"/>
                                                         </constraints>
                                                         <connections>
