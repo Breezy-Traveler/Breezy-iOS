@@ -119,13 +119,40 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         continueButton.titleLabel?.textColor = UIColor.white
     }
     
+    /**
+     A UIImage has a property imageOrientation, which instructs the UIImageView
+     and other UIImage consumers to rotate the raw image data.
+     There's a good chance that this flag is being saved to the exif data in the
+     uploaded jpeg image, but the program you use to view it is not honoring that flag.
+     
+     https://stackoverflow.com/questions/5427656/ios-uiimagepickercontroller-result-image-orientation-after-upload
+     */
+    private func fixOrientation(img: UIImage) -> UIImage {
+        
+        if (img.imageOrientation == UIImageOrientation.up) {
+            return img
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale)
+        let rect = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
+        img.draw(in: rect)
+        
+        let normalizedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return normalizedImage
+    }
+    
     
     // MARK: - UIImagePickerControllerDelegate Methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             fatalError("problem getting image")
         }
-        userPersistence.storeUserProfileImage(image: pickedImage)
+        
+        let rotated = fixOrientation(img: pickedImage)
+        
+        userPersistence.storeUserProfileImage(image: rotated)
         imageView.contentMode = .scaleAspectFill
         imageView.image = pickedImage
         
@@ -146,5 +173,4 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-
 }
