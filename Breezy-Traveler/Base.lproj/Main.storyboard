@@ -32,20 +32,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dq2-kJ-DCu">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <items>
-                                    <barButtonItem title="Profile" id="3uI-9G-O54">
+                                    <barButtonItem title="Profile" image="profile" id="3uI-9G-O54">
                                         <connections>
                                             <segue destination="kQI-mX-XjK" kind="show" id="3IH-h5-PYs"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="MyTrips" id="ShM-5L-yvT">
+                                    <barButtonItem title="MyTrips" image="plane" id="ShM-5L-yvT">
                                         <connections>
                                             <segue destination="pii-Mh-iuL" kind="show" id="le7-6G-jFW"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Hotels" id="dKv-Gs-rlV"/>
-                                    <barButtonItem title="Favorites" id="bUf-C3-NlR"/>
+                                    <barButtonItem title="Hotels" image="hotelOutline" id="dKv-Gs-rlV"/>
+                                    <barButtonItem title="Favorites" image="favorite" id="bUf-C3-NlR"/>
                                 </items>
                             </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="752" text="Author" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swe-rc-nDc">
@@ -183,6 +183,10 @@
     </scenes>
     <resources>
         <image name="defaultProfileImage" width="300" height="300"/>
+        <image name="favorite" width="50" height="50"/>
+        <image name="hotelOutline" width="50" height="50"/>
         <image name="inspirations" width="734" height="478"/>
+        <image name="plane" width="50" height="50"/>
+        <image name="profile" width="50" height="50"/>
     </resources>
 </document>
