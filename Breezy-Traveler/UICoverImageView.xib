@@ -34,13 +34,12 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p3Q-6e-aGV">
                     <rect key="frame" x="0.0" y="239" width="375" height="42"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Tat-1x-WUy">
-                            <rect key="frame" x="8" y="8" width="73.5" height="26"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Tat-1x-WUy">
+                            <rect key="frame" x="8" y="8" width="89.5" height="26"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQu-vy-Tu7">
-                                    <rect key="frame" x="0.0" y="0.0" width="34" height="26"/>
-                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                                    <state key="normal" title="icon">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQu-vy-Tu7">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="26"/>
+                                    <state key="normal" image="heartRed">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
@@ -48,7 +47,7 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omU-2j-2bP">
-                                    <rect key="frame" x="42" y="0.0" width="31.5" height="26"/>
+                                    <rect key="frame" x="58" y="3" width="31.5" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -104,5 +103,6 @@
     </objects>
     <resources>
         <image name="MountainsDefault" width="400" height="300"/>
+        <image name="heartRed" width="50" height="50"/>
     </resources>
 </document>

@@ -32,6 +32,8 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
                 target: self,
                 action: #selector(TripDetailedViewController.pressDone(_:))
         )
+        
+        self.updateButtonImages()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,12 +60,21 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         // layout dates
         buttonDates.subtitleLabel.text = viewModel.dateRangesSubtitle
         
+        
         // layout hotels and sites
         buttonHotels.subtitleLabel.text = viewModel.hotelSubtitle
+        
         buttonStites.subtitleLabel.text = viewModel.siteSubtitle
         
         // layout notes
         buttonNotes.subtitleLabel.text = viewModel.notesSubtitle
+    }
+    
+    func updateButtonImages() {
+        buttonDates.imageView.image = UIImage(named: "calendar")
+        buttonHotels.imageView.image = UIImage(named: "hotel")
+        buttonStites.imageView.image = UIImage(named: "site")
+        buttonNotes.imageView.image = UIImage(named: "note")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
