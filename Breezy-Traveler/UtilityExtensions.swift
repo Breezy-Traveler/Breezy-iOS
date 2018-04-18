@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+extension UIImage {
+    static var defaultCoverImage: UIImage {
+        return #imageLiteral(resourceName: "MountainsDefault")
+    }
+}
+
 extension Collection where Index : Comparable {
     subscript(fromBack i: Int) -> Iterator.Element {
         let backBy = i
@@ -49,6 +55,30 @@ extension UIViewController {
 extension UIColor {
     convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
         self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
+    }
+}
+
+extension UIViewController {
+    func setupNavigationBarAppearence() {
+        // Set the navigation bar appearence for this viewController
+        let nav = self.navigationController?.navigationBar
+        
+        // 2 Set the style for the bar
+        nav?.barStyle = UIBarStyle.black
+        nav?.tintColor = UIColor.white
+        nav?.barTintColor = UIColor(r: 61, g: 91, b: 151)
+        
+        // 3 Add our logo in text in the Nav Bar for this screen
+        let labelView = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
+        labelView.textColor = UIColor.white
+        labelView.font = UIFont(name: "Absolute-Regular", size: 30)
+        
+        // 4 Set the text in the label
+        let text = "Breezy Traveler"
+        labelView.text = text
+        
+        // 5 Set the label on the navigation bar
+        navigationItem.titleView = labelView
     }
 }
 

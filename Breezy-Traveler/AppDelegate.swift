@@ -16,6 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        // Set the navigation bar appearence for the entire app
+        let navigationBarAppearance = UINavigationBar.appearance()
+
+        // Change navigation item title color for the whole app
+        navigationBarAppearance.titleTextAttributes = [
+            NSAttributedStringKey.foregroundColor: UIColor.white,
+        ]
+
+        navigationBarAppearance.tintColor = UIColor.white
+        navigationBarAppearance.barTintColor = UIColor(r: 61, g: 91, b: 151)
+        
+        // Set the status bar to white
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+        
         return true
     }
 

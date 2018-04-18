@@ -88,17 +88,23 @@ extension TripDetailedViewModel {
         self.pushTrip()
     }
     
+    func updateDates(start: Date?, end: Date?) {
+        self.trip.startDate = start
+        self.trip.endDate = end
+        self.pushTrip()
+    }
+    
     var likesText: String {
         let nLikes = 999 //TODO: fetch the number of likes
         
-        return "\(nLikes) Likes"
+        return "\(nLikes)"
     }
     
     var publishedText: String {
         if trip.isPublic {
-            return "Published!"
+            return "Shared"
         } else {
-            return "Ready to Publish?"
+            return "Private"
         }
     }
     

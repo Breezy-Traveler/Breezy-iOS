@@ -35,6 +35,13 @@
 				<key>NSIncludesSubdomains</key>
 				<true/>
 			</dict>
+			<key>localhost</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
 		</dict>
 	</dict>
 	<key>UILaunchStoryboardName</key>
@@ -55,6 +62,12 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Absolute-Regular.otf</string>
 	</array>
 </dict>
 </plist>

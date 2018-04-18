@@ -127,7 +127,7 @@
                     <navigationItem key="navigationItem" title="Trip" id="Qqg-si-ceg">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="zmH-sN-sZz">
                             <connections>
-                                <segue destination="2qX-9y-YwE" kind="showDetail" identifier="edit trip" id="rff-C5-lup"/>
+                                <action selector="pressShare:" destination="eqz-PU-wnb" id="zGy-E1-1pN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -151,7 +151,7 @@
             </objects>
             <point key="canvasLocation" x="1676" y="1013"/>
         </scene>
-        <!--Title-->
+        <!--Select Your Dates-->
         <scene sceneID="uVj-md-1f1">
             <objects>
                 <tableViewController id="6Pz-Wr-JFH" customClass="TripDatePickerViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
@@ -164,7 +164,7 @@
                             <outlet property="delegate" destination="6Pz-Wr-JFH" id="fjf-QT-Wrx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="SDa-DV-7MD">
+                    <navigationItem key="navigationItem" title="Select Your Dates" id="SDa-DV-7MD">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="5Hn-G2-VIJ">
                             <connections>
                                 <action selector="pressCancel:" destination="6Pz-Wr-JFH" id="Abt-sQ-vts"/>
@@ -181,22 +181,6 @@
             </objects>
             <point key="canvasLocation" x="2593" y="1605"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Oiu-K4-nHT">
-            <objects>
-                <viewController id="O3M-Bf-kGx" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7gX-gb-b3w">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="BAl-3y-Rhz"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="sqE-u1-88h"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pda-mm-bT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4186" y="1013"/>
-        </scene>
         <!--Images View Controller-->
         <scene sceneID="qpX-a1-A6K">
             <objects>
@@ -206,7 +190,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hoF-gG-c1S">
-                                <rect key="frame" x="8" y="28" width="359" height="631"/>
+                                <rect key="frame" x="8" y="72" width="359" height="587"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wz7-JM-h9Y">
                                     <size key="itemSize" width="0.0" height="0.0"/>
@@ -233,24 +217,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LfS-4a-nIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1780" y="1938"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Taj-Ca-uXF">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2qX-9y-YwE" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DTL-mQ-oq7">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="O3M-Bf-kGx" kind="relationship" relationship="rootViewController" id="aLd-RH-RGH"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zYM-a1-2NR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3442" y="1013"/>
         </scene>
         <!--Storyboard Reference-->
         <scene sceneID="050-SU-qQ0">

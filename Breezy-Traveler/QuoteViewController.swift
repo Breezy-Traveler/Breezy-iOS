@@ -23,6 +23,8 @@ class QuoteViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.title = "Breezy Traveler"
+        setupNavigationBarAppearence()
     }
     
     override func awakeFromNib() {

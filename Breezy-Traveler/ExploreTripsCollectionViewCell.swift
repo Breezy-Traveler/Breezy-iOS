@@ -9,16 +9,30 @@
 import UIKit
 
 class ExploreTripsCollectionViewCell: UICollectionViewCell {
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    
+    // MARK: - RETURN VALUES
+    
+    // MARK: - VOID METHODS
+    
+    func configure(_ trip: BTTrip) {
         
+        self.placeLabel.text = trip.place
+        self.placeLabel.layer.shadowColor = UIColor.black.cgColor
+        self.placeLabel.layer.shadowRadius = 1.25
+        self.placeLabel.layer.shadowOpacity = 1.0
+        self.placeLabel.layer.shadowOffset = CGSize(width: 0, height: 0)
+        
+        if let coverImageUrl = trip.coverImageUrl {
+            self.coverImage.kf.setImage(with: coverImageUrl)
+        } else {
+            self.coverImage.image = UIImage.defaultCoverImage
+        }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        
-        // Register Nib with CollectionView and its reuse identifier
-        
-    }
+    // MARK: - IBACTIONS
+    
+    @IBOutlet weak var coverImage: UIImageView!
+    @IBOutlet weak var placeLabel: UILabel!
+    
+    // MARK: - LIFE CYCLE
 }

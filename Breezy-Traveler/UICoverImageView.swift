@@ -11,8 +11,7 @@ import Kingfisher
 
 
 @objc protocol UICoverImageViewDelegate: class {
-    @objc optional func coverImage(view: UICoverImageView, leftButtonDidPress button: UIButton)
-    @objc optional func coverImage(view: UICoverImageView, rightButtonDidPress button: UIButton)
+    @objc optional func coverImage(view: UICoverImageView, leftButtonIconDidPress button: UIButton)
     @objc optional func coverImage(view: UICoverImageView, coverImageDidPressWith gesture: UITapGestureRecognizer)
 }
 
@@ -23,9 +22,6 @@ class UICoverImageView: UIView {
     @IBOutlet weak var delegate: UICoverImageViewDelegate?
     
     @IBOutlet weak var coverImageView: UIImageView!
-    
-    // When the user selects a cover image, remove the text
-    @IBOutlet weak var coverImageLabel: UILabel!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -65,18 +61,14 @@ class UICoverImageView: UIView {
     
     // MARK: - IBACTIONS
     
-    @IBOutlet weak var leftIconView: UIImageView!
     @IBOutlet weak var bottomBar: UIVisualEffectView!
-    @IBOutlet weak var leftButton: UIButton!
+    @IBOutlet weak var leftButtonIcon: UIButton!
     @IBAction func pressLeftButton(_ sender: Any) {
-        self.delegate?.coverImage?(view: self, leftButtonDidPress: self.leftButton)
+        self.delegate?.coverImage?(view: self, leftButtonIconDidPress: self.leftButtonIcon)
     }
+    @IBOutlet weak var leftLebel: UILabel!
     
-    @IBOutlet weak var rightIconView: UIImageView!
-    @IBOutlet weak var rightButton: UIButton!
-    @IBAction func rightLeftButton(_ sender: Any) {
-        self.delegate?.coverImage?(view: self, rightButtonDidPress: self.rightButton)
-    }
+    @IBOutlet weak var rightLabel: UILabel!
     
     // MARK: - LIFE CYCLE
 
