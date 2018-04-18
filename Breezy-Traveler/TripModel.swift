@@ -91,24 +91,10 @@ extension BTTrip: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.idValue = try container.decode(Int.self, forKey: .idValue)
         self.place = try container.decode(String.self, forKey: .place)
-        let dateFormatter = ISO8601DateFormatter()
-        dateFormatter.timeZone = TimeZone.current
         
-        if let startDateISO = try container.decode(String?.self, forKey: .startDate), startDateISO != "" {
-            guard let date = dateFormatter.date(from: startDateISO) else {
-                fatalError("Failed to convert ios string into a date")
-            }
-            
-            self.startDate = date
-        }
         
-        if let endDateISO = try container.decode(String?.self, forKey: .endDate), endDateISO != "" {
-            guard let date = dateFormatter.date(from: endDateISO) else {
-                fatalError("Failed to convert ios string into a date")
-            }
-            
-            self.endDate = date
-        }
+        
+        self.startDate = try container.decodeIfPresent(Date.self, forKey: .startDate)
         
         self.hotels = try container.decode([BTHotel].self, forKey: .hotels)
         self.sites = try container.decode([BTSite].self, forKey: .sites)
