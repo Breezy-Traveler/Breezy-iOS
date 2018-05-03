@@ -152,7 +152,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="z1d-4s-dxh" userLabel="TripsTableView">
-                                <rect key="frame" x="0.0" y="416" width="375" height="207"/>
+                                <rect key="frame" x="0.0" y="416" width="375" height="251"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -247,28 +247,19 @@
                                     <outlet property="delegate" destination="jre-DN-ZDd" id="FKO-Fg-Vxu"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Gk-z3-XHn">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem title="Item" id="AZt-nl-L0s"/>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="5Gk-z3-XHn" firstAttribute="leading" secondItem="Zd4-cS-8CM" secondAttribute="leading" id="3xh-lM-ucg"/>
-                            <constraint firstItem="5Gk-z3-XHn" firstAttribute="trailing" secondItem="Zd4-cS-8CM" secondAttribute="trailing" id="4k2-h3-HM7"/>
                             <constraint firstItem="hXS-MT-b0i" firstAttribute="leading" secondItem="MDq-6m-8VV" secondAttribute="leading" id="9sG-Fd-eSC"/>
                             <constraint firstAttribute="trailing" secondItem="tJz-5O-Ped" secondAttribute="trailing" id="AHS-Di-zRH"/>
                             <constraint firstItem="z1d-4s-dxh" firstAttribute="top" secondItem="hXS-MT-b0i" secondAttribute="bottom" id="Ayv-yn-TFQ"/>
                             <constraint firstItem="tJz-5O-Ped" firstAttribute="leading" secondItem="MDq-6m-8VV" secondAttribute="leading" id="C0s-XF-eJm"/>
                             <constraint firstItem="z1d-4s-dxh" firstAttribute="trailing" secondItem="Zd4-cS-8CM" secondAttribute="trailing" id="WZb-ae-Bif"/>
                             <constraint firstItem="tJz-5O-Ped" firstAttribute="top" secondItem="Zd4-cS-8CM" secondAttribute="top" id="aeZ-AO-IEg"/>
-                            <constraint firstItem="5Gk-z3-XHn" firstAttribute="top" secondItem="z1d-4s-dxh" secondAttribute="bottom" id="cxd-8y-mBt"/>
+                            <constraint firstItem="Zd4-cS-8CM" firstAttribute="bottom" secondItem="z1d-4s-dxh" secondAttribute="bottom" id="fRQ-Th-xiz"/>
                             <constraint firstAttribute="trailing" secondItem="hXS-MT-b0i" secondAttribute="trailing" id="feU-gf-qV9"/>
                             <constraint firstItem="z1d-4s-dxh" firstAttribute="leading" secondItem="Zd4-cS-8CM" secondAttribute="leading" id="jxt-TJ-xpu"/>
                             <constraint firstItem="hXS-MT-b0i" firstAttribute="top" secondItem="tJz-5O-Ped" secondAttribute="bottom" constant="24" id="xBT-GL-zRP"/>
-                            <constraint firstItem="5Gk-z3-XHn" firstAttribute="bottom" secondItem="Zd4-cS-8CM" secondAttribute="bottom" id="yFe-SC-2Su"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zd4-cS-8CM"/>
                     </view>
