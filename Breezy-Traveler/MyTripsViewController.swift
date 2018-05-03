@@ -13,7 +13,7 @@ class MyTripsViewController: UIViewController {
     private var trips = [BTTrip]()
     private var publishedTrips: [BTTrip]?
     var currentUser = BTUser.getStoredUser()
-    var userPersitence = UserPersistence()
+    let userPersistence = UserPersistence()
     let networkStack = NetworkStack()
     
     // MARK: - RETURN VALUES
@@ -27,7 +27,7 @@ class MyTripsViewController: UIViewController {
         profileImage.layer.borderWidth = 2
         profileImage.layer.borderColor = UIColor.white.cgColor
         
-        if let savedProfileImage = userPersitence.loadUserProfileImage() {
+        if let savedProfileImage = userPersistence.loadUserProfileImage() {
             profileImage.image = savedProfileImage
         }
     }
@@ -128,12 +128,24 @@ class MyTripsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadUserTrips()  
-        loadPublishedTrips()
 
     }
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        userPersistence.checkUserLoggedIn { [unowned self] (isLoggedIn) in
+            if !isLoggedIn {
+                let loginViewController = LoginController()
+                self.present(loginViewController, animated: false, completion: nil)
+            } else {
+                self.loadUserTrips()
+                self.loadPublishedTrips()
+                
+                //TODO: show loading indicator
+            }
+        }
+    }
 }
 
 
