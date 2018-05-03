@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="484-B6-3wB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,90 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Quote View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="QuoteViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inspirations" translatesAutoresizingMaskIntoConstraints="NO" id="1VQ-GC-7hQ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Quote of the day" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MX2-WW-zTv">
-                                <rect key="frame" x="16" y="112" width="343" height="27.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="2Og-My-SD9"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dq2-kJ-DCu">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                                <items>
-                                    <barButtonItem title="Profile" image="profile" id="3uI-9G-O54">
-                                        <connections>
-                                            <segue destination="kQI-mX-XjK" kind="show" id="3IH-h5-PYs"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="MyTrips" image="plane" id="ShM-5L-yvT">
-                                        <connections>
-                                            <segue destination="pii-Mh-iuL" kind="show" id="le7-6G-jFW"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Hotels" image="hotelOutline" id="dKv-Gs-rlV"/>
-                                    <barButtonItem title="Favorites" image="favorite" id="bUf-C3-NlR"/>
-                                </items>
-                            </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="752" text="Author" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swe-rc-nDc">
-                                <rect key="frame" x="16" y="155.5" width="343" height="20.5"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Dq2-kJ-DCu" firstAttribute="bottom" secondItem="1VQ-GC-7hQ" secondAttribute="bottom" id="186-Qm-13N"/>
-                            <constraint firstItem="Swe-rc-nDc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="2Tr-6I-BRU"/>
-                            <constraint firstItem="Swe-rc-nDc" firstAttribute="top" secondItem="MX2-WW-zTv" secondAttribute="bottom" constant="16" id="2do-sC-gUQ"/>
-                            <constraint firstItem="MX2-WW-zTv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Cje-Ws-KwY"/>
-                            <constraint firstItem="MX2-WW-zTv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="MeD-rx-OcD"/>
-                            <constraint firstItem="MX2-WW-zTv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="48" id="QfT-xe-VHJ"/>
-                            <constraint firstItem="Dq2-kJ-DCu" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="UGI-Bx-cWa"/>
-                            <constraint firstItem="Dq2-kJ-DCu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ZHQ-p0-UwT"/>
-                            <constraint firstItem="1VQ-GC-7hQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="c1i-tC-INo"/>
-                            <constraint firstAttribute="trailing" secondItem="1VQ-GC-7hQ" secondAttribute="trailing" id="cbH-pl-wog"/>
-                            <constraint firstItem="Dq2-kJ-DCu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fGC-gY-wN8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Swe-rc-nDc" secondAttribute="trailing" constant="16" id="kii-ck-sLP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MX2-WW-zTv" secondAttribute="trailing" constant="16" id="lhc-WM-YvH"/>
-                            <constraint firstItem="1VQ-GC-7hQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xlu-Xe-KK7"/>
-                            <constraint firstItem="Swe-rc-nDc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yjh-Hh-eKg"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="pSt-xF-yW3">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="9EK-vQ-XwK">
-                            <connections>
-                                <action selector="pressedLogout:" destination="BYZ-38-t0r" id="EWJ-Se-NG0"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="authorLabel" destination="Swe-rc-nDc" id="WRg-iQ-uqk"/>
-                        <outlet property="quoteOfTheDayLabel" destination="MX2-WW-zTv" id="8Za-sE-UFj"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="872.79999999999995" y="-112.89355322338831"/>
-        </scene>
         <!--Profile-->
         <scene sceneID="hge-1U-vX9">
             <objects>
-                <viewController title="Profile" id="kQI-mX-XjK" customClass="ProfileViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ProfileViewController" storyboardIdentifier="ProfileViewController" title="Profile" id="kQI-mX-XjK" customClass="ProfileViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EHM-Kd-F2d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -142,7 +62,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mvB-QF-wou"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="PD8-mn-5Oc"/>
+                    <navigationItem key="navigationItem" id="agP-Qx-Syp"/>
                     <connections>
                         <outlet property="emailLabel" destination="z8l-WS-gou" id="syt-kK-YJh"/>
                         <outlet property="fullnameLabel" destination="9BJ-2D-fBD" id="Xfl-3T-HAh"/>
@@ -152,41 +72,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJY-J8-mzQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1780" y="-444.82758620689657"/>
+            <point key="canvasLocation" x="2719.1999999999998" y="-444.82758620689657"/>
         </scene>
-        <!--NavigationController-->
-        <scene sceneID="92n-uY-89M">
+        <!--Profile-->
+        <scene sceneID="U9F-gX-Zkc">
             <objects>
-                <navigationController title="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="484-B6-3wB" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dyh-A9-s9r" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" id="PD8-mn-5Oc"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9z5-3c-Xwz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8nm-0e-6Jq">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="DX1-bM-Pe7"/>
+                        <segue destination="kQI-mX-XjK" kind="relationship" relationship="rootViewController" id="yqW-is-jnU"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7qq-ti-cED" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nFd-EQ-kAg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="92" y="-113"/>
-        </scene>
-        <!--Trips-->
-        <scene sceneID="i5f-mW-3Mc">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Trips" id="pii-Mh-iuL" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G95-7A-1of" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1780" y="293.70314842578711"/>
+            <point key="canvasLocation" x="1780" y="-444.82758620689657"/>
         </scene>
     </scenes>
     <resources>
         <image name="defaultProfileImage" width="300" height="300"/>
-        <image name="favorite" width="50" height="50"/>
-        <image name="hotelOutline" width="50" height="50"/>
-        <image name="inspirations" width="734" height="478"/>
-        <image name="plane" width="50" height="50"/>
-        <image name="profile" width="50" height="50"/>
     </resources>
 </document>

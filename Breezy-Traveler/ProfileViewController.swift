@@ -36,10 +36,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 
         navigationBarAppearace.tintColor = UIColor.white
         navigationBarAppearace.barTintColor = UIColor(r: 61, g: 91, b: 151)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        updateLabels()
+       
         setupimageViewProperties()
         setupTextProperties()
         setupButtonProperties()
@@ -47,6 +48,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         if let storedImage = userPersistence.loadUserProfileImage() {
             imageView.image = storedImage
         }
+        updateLabels()
     }
     
     // Button changes based on the segmented controller
