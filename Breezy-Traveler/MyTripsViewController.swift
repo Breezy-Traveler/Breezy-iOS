@@ -160,8 +160,9 @@ extension MyTripsViewController: UITableViewDataSource, UITableViewDelegate {
         
         let trip = trips[indexPath.row]
         cell.configure(trip)
-        
-        tableView.rowHeight = 80
+    
+      
+        tableView.rowHeight = screenSize.height / 6.0
         return cell
     }
     
@@ -220,7 +221,9 @@ extension MyTripsViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100.0, height: 80.0)
+        let rowHeight = screenSize.height / 6.0
+        
+        return CGSize(width: 100.0, height: rowHeight)
     }
     
     // Make the Status Bar Light/Dark Content for this View
