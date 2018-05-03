@@ -7,20 +7,24 @@
 //
 
 import UIKit
+import Moya
+import KeychainSwift
+
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    // Variables
+    let networkStack = NetworkStack()
+    let userPersistence = UserPersistence()
+    var currentUser = BTUser.getStoredUser()
+    let imagePicker = UIImagePickerController()
 
     // Mark: IBOutlets
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var fullnameLabel: UILabel!
-    
-    // Variables
-    var currentUser = BTUser.getStoredUser()
-    let imagePicker = UIImagePickerController()
-    let userPersistence = UserPersistence()
-    
+
     
     // Views
     override func viewDidLoad() {
@@ -33,64 +37,44 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 
         // change navigation item title color
         navigationBarAppearace.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-
         navigationBarAppearace.tintColor = UIColor.white
         navigationBarAppearace.barTintColor = UIColor(r: 61, g: 91, b: 151)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-       
+        super.viewDidDisappear(animated)
+        updateLabels()
         setupimageViewProperties()
         setupTextProperties()
-        setupButtonProperties()
         
         if let storedImage = userPersistence.loadUserProfileImage() {
             imageView.image = storedImage
         }
-        updateLabels()
-    }
-    
-    // Button changes based on the segmented controller
-    lazy var continueButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(r: 148, g: 194, b: 61) // lime green color
-        button.setTitle("Continue to your trips", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        button.layer.cornerRadius = 3
-        button.clipsToBounds = true
-        
-        button.addTarget(self, action: #selector(contunueButtonPressed), for: .touchUpInside)
-        
-        return button
-    }()
-    
-    // FIXME: Change this func to navigate to MyTripsController
-    @objc func contunueButtonPressed() {
-        // Initialize the new storyboard in code,
-        let storyboard = UIStoryboard(name: "Trips", bundle: nil)
-        // Initialize the new view controller in code using a storyboard identifier
-        let VC = storyboard.instantiateViewController(withIdentifier: "MyTripsViewController") as! MyTripsViewController
-        // and then use the navigation controller to segue to it.
-        self.navigationController?.pushViewController(VC, animated: true)
     }
 
-    
     lazy var singleTap: UITapGestureRecognizer = {
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(tapDetected))
         singleTap.numberOfTapsRequired = 1
         return singleTap
     }()
     
-    
+
     // Actions
     @objc func tapDetected() {
         print("Imageview Clicked")
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func pressedLogout(_ sender: UIBarButtonItem) {
+        let userPersistence = UserPersistence()
+        userPersistence.logoutUser()
+        let loginViewController = LoginController()
+        self.present(loginViewController, animated: false, completion: nil)
+        
+        // clear the image from the device storage
+        userPersistence.removeUserProfileImage()
     }
     
     func updateLabels() {
@@ -116,24 +100,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(singleTap)
     }
-    
-    func setupButtonProperties() {
-        continueButton.titleLabel?.textColor = UIColor.white
-    }
-    
-    /**
-     A UIImage has a property imageOrientation, which instructs the UIImageView
-     and other UIImage consumers to rotate the raw image data.
-     There's a good chance that this flag is being saved to the exif data in the
-     uploaded jpeg image, but the program you use to view it is not honoring that flag.
-     
-     https://stackoverflow.com/questions/5427656/ios-uiimagepickercontroller-result-image-orientation-after-upload
-     */
+
+    // Fixes the orientation of the profile image
     private func fixOrientation(img: UIImage) -> UIImage {
-        
-        if (img.imageOrientation == UIImageOrientation.up) {
-            return img
-        }
+        if (img.imageOrientation == UIImageOrientation.up) { return img }
         
         UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale)
         let rect = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
@@ -163,12 +133,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func imagePickerController(didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            // FIXME: add a default image instead of throwing an error
             fatalError("problem getting image")
         }
-        
         imageView.contentMode = .scaleAspectFit
         imageView.image = pickedImage
-        
         dismiss(animated: true, completion: nil)
     }
     
