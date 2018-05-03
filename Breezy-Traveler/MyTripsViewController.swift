@@ -12,6 +12,8 @@ class MyTripsViewController: UIViewController {
     
     private var trips = [BTTrip]()
     private var publishedTrips: [BTTrip]?
+    
+    // FIXME: This is crashing the app
     var currentUser = BTUser.getStoredUser()
     let userPersistence = UserPersistence()
     let networkStack = NetworkStack()
