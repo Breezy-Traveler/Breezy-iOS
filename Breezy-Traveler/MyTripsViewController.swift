@@ -108,14 +108,25 @@ class MyTripsViewController: UIViewController {
         }
     }
     
-    // MARK: - IBACTIONS
+    // MARK: - OUTLETS
     @IBOutlet weak var tripsTableView: UITableView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet var singleTap: UITapGestureRecognizer!
+    
+    
+    
+    // MARK: - ACTIONS
     @IBAction func unwindToMyTrips(_ segue: UIStoryboardSegue) {
         debugPrint("welcome back, unwind!")
+    }
+    
+    @IBAction func tapDetected() {
+        print("Imageview Clicked")
+        let profileViewController = ProfileViewController()
+        self.present(profileViewController, animated: false, completion: nil)
     }
     
     // MARK: - LIFE CYCLE
@@ -124,6 +135,7 @@ class MyTripsViewController: UIViewController {
         setupUserDataDisplay()
         setupProfileImage()
         setupNavigationBarAppearence()
+        profileImage.addGestureRecognizer(singleTap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
