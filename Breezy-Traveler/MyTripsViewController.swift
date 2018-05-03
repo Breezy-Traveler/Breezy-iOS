@@ -125,8 +125,12 @@ class MyTripsViewController: UIViewController {
     
     @IBAction func tapDetected() {
         print("Imageview Clicked")
-        let profileViewController = ProfileViewController()
-        self.present(profileViewController, animated: false, completion: nil)
+        // Initialize the new storyboard in code,
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        // Initialize the new view controller in code using a storyboard identifier
+        let VC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        // and then use the navigation controller to segue to it.
+        self.navigationController?.pushViewController(VC, animated: true)
     }
     
     // MARK: - LIFE CYCLE

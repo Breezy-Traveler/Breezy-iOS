@@ -94,7 +94,7 @@
         <!--Profile-->
         <scene sceneID="hge-1U-vX9">
             <objects>
-                <viewController title="Profile" id="kQI-mX-XjK" customClass="ProfileViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ProfileViewController" storyboardIdentifier="ProfileViewController" title="Profile" id="kQI-mX-XjK" customClass="ProfileViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EHM-Kd-F2d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
