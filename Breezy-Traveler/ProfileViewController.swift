@@ -61,7 +61,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 
     // Actions
     @objc func tapDetected() {
-        print("Imageview Clicked")
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
