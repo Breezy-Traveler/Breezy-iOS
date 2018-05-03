@@ -62,7 +62,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mvB-QF-wou"/>
                     </view>
-                    <navigationItem key="navigationItem" id="agP-Qx-Syp"/>
+                    <navigationItem key="navigationItem" id="agP-Qx-Syp">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="bn0-cG-AMK">
+                            <connections>
+                                <action selector="pressedLogout:" destination="kQI-mX-XjK" id="dQS-C9-DoG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="emailLabel" destination="z8l-WS-gou" id="syt-kK-YJh"/>
                         <outlet property="fullnameLabel" destination="9BJ-2D-fBD" id="Xfl-3T-HAh"/>
