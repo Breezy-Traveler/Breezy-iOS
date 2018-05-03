@@ -15,6 +15,17 @@ class LoginController: UIViewController {
     let networkStack = NetworkStack()
     let userPersistence = UserPersistence()
     
+    // Get the initial width and height
+    lazy var width: CGFloat = 0.0
+    lazy var height: CGFloat = 0.0
+    var inputContainerHeight: CGFloat?
+    
+    func getScreenSizes() {
+        // Get the initial width and height
+        self.width = self.view.frame.width
+        self.height = self.view.frame.height
+    }
+    
     // Create the container for user input
     let inputsContainerView: UIView = {
         let view = UIView()
@@ -52,11 +63,14 @@ class LoginController: UIViewController {
         
     }()
     func setupLogoImageView() {
+        guard let height = inputContainerHeight else {
+            fatalError("No inputs container height")
+        }
         // Need x, y, width, and height contraints
         logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logoImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -12).isActive = true
-        logoImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        logoImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        logoImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -16).isActive = true
+        logoImageView.widthAnchor.constraint(equalToConstant: height * 0.60).isActive = true
+        logoImageView.heightAnchor.constraint(equalToConstant: height * 0.60).isActive = true
     }
     
     @objc func handleLoginRegister() {
@@ -165,7 +179,10 @@ class LoginController: UIViewController {
         
         
         // Change height of input container view
-        inputContainerViewHeightAnchor?.constant = loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 100 : 200
+        guard let height = inputContainerHeight else {
+            fatalError("No input containter height")
+        }
+        inputContainerViewHeightAnchor?.constant = loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? height / 2 : height
         
         // Change height of nameTextField
         nameTextFieldHeightAnchor?.isActive = false
@@ -223,11 +240,16 @@ class LoginController: UIViewController {
     var passwordTextFieldHeightAnchor: NSLayoutConstraint?
     
     func setUpContainerView() {
+        getScreenSizes()
+        self.inputContainerHeight = self.height / 3
+        guard let height = self.inputContainerHeight else {
+            fatalError("No input container height")
+        }
         // Constraints for the containerView x, y, width, and height
         inputsContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         inputsContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         inputsContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
-        inputContainerViewHeightAnchor = inputsContainerView.heightAnchor.constraint(equalToConstant: 200)
+        inputContainerViewHeightAnchor = inputsContainerView.heightAnchor.constraint(equalToConstant: height)
         inputContainerViewHeightAnchor?.isActive = true
         
         // All the subviews within the login Container View
@@ -288,11 +310,14 @@ class LoginController: UIViewController {
     }
     
     func setUpLoginRegisterButton() {
+        guard let height = inputContainerHeight else {
+            fatalError("No inputs container height")
+        }
         // Need x, y, width, and height contraints
         loginRegisterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         loginRegisterButton.topAnchor.constraint(equalTo: inputsContainerView.bottomAnchor, constant: 12).isActive = true
         loginRegisterButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
-        loginRegisterButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        loginRegisterButton.heightAnchor.constraint(equalToConstant: height / 4).isActive = true
         
         // testing git
         loginRegisterButton.tintColor = UIColor.black

@@ -183,7 +183,7 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         } else {
             
             // would you like to publish
-            UIAlertController(title: nil, message: "Would you like to share this trip?", preferredStyle: .actionSheet)
+            UIAlertController(title: nil, message: "Would you like to publish this trip?", preferredStyle: .actionSheet)
                 .addButton(title: "Share") { [unowned self] (action) in
                     
                     //pressed publish button
