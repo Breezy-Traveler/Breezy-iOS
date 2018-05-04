@@ -90,7 +90,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func setupimageViewProperties() {
         /* Set the imageView to a circle
-           Add a stroke around the imageView
+           Add a border around the imageView
            Set the color to white */
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = imageView.frame.size.height / 2

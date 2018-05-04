@@ -14,7 +14,7 @@ class MyTripsViewController: UIViewController {
     private var publishedTrips: [BTTrip]?
     
     // FIXME: This is crashing the app
-    var currentUser = BTUser.getStoredUser()
+    lazy var currentUser: BTUser = BTUser.getStoredUser()
     let userPersistence = UserPersistence()
     let networkStack = NetworkStack()
     
@@ -138,7 +138,7 @@ class MyTripsViewController: UIViewController {
     // MARK: - LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUserDataDisplay()
+        
         setupProfileImage()
         setupNavigationBarAppearence()
         profileImage.addGestureRecognizer(singleTap)
@@ -159,7 +159,7 @@ class MyTripsViewController: UIViewController {
             } else {
                 self.loadUserTrips()
                 self.loadPublishedTrips()
-                
+                self.setupUserDataDisplay()
                 //TODO: show loading indicator
             }
         }
