@@ -47,18 +47,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         updateLabels()
         setupimageViewProperties()
         setupTextProperties()
-
-        // TODO: Refactor to something else
-        if let imageUrl = currentUser.imageUrl  {
-            
-            // Serve up a default image from the bundle
-            imageView.kf.setImage(with: imageUrl)
-            
-        } else {
-            // Set the default image in the imageView
-            imageView.image = UIImage(named: "defaultProfileImage")
-        }        
+        imageView.setUserProfileImage(currentUser: currentUser)
     }
+    
 
     lazy var singleTap: UITapGestureRecognizer = {
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(tapDetected))
@@ -129,11 +120,25 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             fatalError("problem getting image")
         }
         
-        let rotated = fixOrientation(img: pickedImage)
+        let rotatedImage = fixOrientation(img: pickedImage)
         
-        userPersistence.storeUserProfileImage(image: rotated)
-        imageView.contentMode = .scaleAspectFill
-        imageView.image = pickedImage
+        networkStack.update(a: currentUser) { (result) in
+            switch result {
+            case .success(let user):
+                self.imageView.contentMode = .scaleAspectFill
+                self.imageView.image = pickedImage
+                
+                // Updating the user with the url of their profile image
+                self.userPersistence.setCurrentUser(currentUser: user)
+                
+            case .failure:
+                // display an alert view letting user know it failed
+                let av = AlertViewController.showNoImageAlert()
+                self.present(av, animated: true, completion: nil)
+            }
+        }
+        userPersistence.storeUserProfileImage(image: rotatedImage)
+        
         
         dismiss(animated: true, completion: nil)
     }

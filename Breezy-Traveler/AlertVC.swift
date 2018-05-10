@@ -46,4 +46,10 @@ struct AlertViewController {
         alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         return alertController
     }
+    
+    static func showNoImageAlert() -> UIAlertController {
+        let alertController = UIAlertController(title: "Error", message: "could not save image", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        return alertController
+    }
 }

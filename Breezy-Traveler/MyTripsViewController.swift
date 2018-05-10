@@ -29,9 +29,7 @@ class MyTripsViewController: UIViewController {
         profileImage.layer.borderWidth = 2
         profileImage.layer.borderColor = UIColor.white.cgColor
         
-        if let savedProfileImage = userPersistence.loadUserProfileImage() {
-            profileImage.image = savedProfileImage
-        }
+        profileImage.setUserProfileImage(currentUser: currentUser)
     }
     
     func setupUserDataDisplay() {

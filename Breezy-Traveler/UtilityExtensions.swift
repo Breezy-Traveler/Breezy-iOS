@@ -100,5 +100,20 @@ extension String {
     }
 }
 
-
+// Add ability to update the imageViews from any view controller
+extension UIImageView {
+    
+    func setUserProfileImage(currentUser: BTUser) {
+        // TODO: Refactor to something else
+        if let imageUrl = currentUser.imageUrl  {
+            
+            // Serve up a default image from the bundle
+            self.kf.setImage(with: imageUrl)
+            
+        } else {
+            // Set the default image in the imageView
+            self.image = UIImage(named: "defaultProfileImage")
+        }
+    }
+}
 
