@@ -8,6 +8,7 @@
 
 import UIKit
 import Moya
+import Kingfisher
 import KeychainSwift
 
 
@@ -46,10 +47,17 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         updateLabels()
         setupimageViewProperties()
         setupTextProperties()
-        
-        if let storedImage = userPersistence.loadUserProfileImage() {
-            imageView.image = storedImage
-        }
+
+        // TODO: Refactor to something else
+        if let imageUrl = currentUser.imageUrl  {
+            
+            // Serve up a default image from the bundle
+            imageView.kf.setImage(with: imageUrl)
+            
+        } else {
+            // Set the default image in the imageView
+            imageView.image = UIImage(named: "defaultProfileImage")
+        }        
     }
 
     lazy var singleTap: UITapGestureRecognizer = {

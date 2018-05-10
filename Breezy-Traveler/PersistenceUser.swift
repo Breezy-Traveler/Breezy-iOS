@@ -16,7 +16,9 @@ struct UserPersistence {
     private let tokenKey: String = "token"
     private let currentUserKey: String = "currentUser"
     
+    
     var userProfileURL: URL = {
+        
         // Get the URL for where to save the image
         guard let libraryDirectory = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first else {
             fatalError("no access to this directory")
@@ -52,15 +54,24 @@ struct UserPersistence {
     }
     
     func loadUserProfileImage() -> UIImage? {
-        guard let imageData = try? Data(contentsOf: userProfileURL) else {
+        let currentUser = getCurrentUser()
+        
+        guard let imageUrl = currentUser?.imageUrl else {
+            
+            // Serve up a default image from the bundle
+            return nil
+        }
+        
+        guard let imageData = try? Data(contentsOf: imageUrl) else {
             return nil
         }
         
         if let image = UIImage(data: imageData) {
             return image
+            
         } else {
-            print("image not converted from data")
-            return nil
+            
+            fatalError("image did not convert from data")
         }
     }
     
