@@ -70,6 +70,9 @@ struct UserPersistence {
             fatalError("no current user")
         }
         keychain.set(currentUserData, forKey: currentUserKey)
+        
+        // FIXME: Refactor this, function not really needed
+        // CurrentUserData includes token property
         setUserToken(token: currentUser.token!)
     }
     
