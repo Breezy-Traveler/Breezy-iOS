@@ -83,6 +83,31 @@ struct NetworkStack {
             }
         }
     }
+    
+    func update(a user: BTUser, callback: @escaping (Result<BTUser, BTAPIUserError>) -> ()) {
+        apiService.request(.updateUser(user)) { (result) in
+            switch result {
+            case .success(let response):
+                do {
+                    let statusCode = try response.filterSuccessfulStatusCodes()
+                    print(statusCode)
+                    let user = try JSONDecoder().decode(BTUser.self, from: response.data)
+                    callback(.success(user))
+                } catch {
+                    
+                    // FIXME: do some thing useful with the error
+                    let errors = BTAPIUserError(errors: ["Something went wrong"])
+                    callback(.failure(errors))
+                }
+                
+                // do some shit
+            case .failure(let err):
+                // FIXME: do some thing useful with the error
+                let errors = BTAPIUserError(errors: [err.localizedDescription])
+                callback(.failure(errors))
+            }
+        }
+    }
 
 }
 

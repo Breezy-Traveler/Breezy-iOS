@@ -14,6 +14,7 @@ enum BTAPIEndPoints {
     // Users
     case registerUser(UserRegister)
     case loginUser(UserLogin)
+    case updateUser(BTUser) // Used when uploading an image
     
     // Trips
     case createTrip(BTTrip)
@@ -69,6 +70,10 @@ extension BTAPIEndPoints: TargetType {
             
         case .loginUser:
             return "/login"
+            
+        case .updateUser:
+            return "/users" // MARK: maybe
+            
             
         // Trips
         case .createTrip, .loadTrips:
@@ -136,6 +141,8 @@ extension BTAPIEndPoints: TargetType {
         // Users
         case .registerUser, .loginUser:
             return .post
+        case .updateUser:
+            return .patch
 
         // Trips
         case .createTrip:
@@ -192,6 +199,8 @@ extension BTAPIEndPoints: TargetType {
             return .requestJSONEncodable(registerUser)
         case .loginUser(let loginUser):
             return .requestJSONEncodable(loginUser)
+        case .updateUser(let updateUser):
+            return .requestJSONEncodable(updateUser)
           
         // Trips
         case .createTrip(let trip):
