@@ -22,8 +22,58 @@ struct BTTrip: Codable {
     }
     
     var place: String
-    var startDate: Date?
-    var endDate: Date?
+    private var _startDate: String?
+    var startDate: Date? {
+        set {
+            if let newDate = newValue {
+                let formatter = ISO8601DateFormatter()
+                self._startDate = formatter.string(from: newDate)
+            } else {
+                self._startDate = nil
+            }
+        }
+        get {
+            if let dateValue = self._startDate {
+                let formatter = ISO8601DateFormatter()
+                guard let date = formatter.date(from: dateValue) else {
+                    assertionFailure("failed to convert date from iso86601")
+                    
+                    return nil
+                }
+                
+                return date
+            }
+            
+            return nil
+        }
+    }
+    
+    private var _endDate: String?
+    var endDate: Date? {
+        set {
+            if let newDate = newValue {
+                let formatter = ISO8601DateFormatter()
+                self._endDate = formatter.string(from: newDate)
+            } else {
+                self._endDate = nil
+            }
+        }
+        get {
+            if let dateValue = self._endDate {
+                let formatter = ISO8601DateFormatter()
+                guard let date = formatter.date(from: dateValue) else {
+                    assertionFailure("failed to convert date from iso86601")
+                    
+                    return nil
+                }
+                
+                return date
+            }
+            
+            return nil
+        }
+    }
+    
     var hotels: [BTHotel]
     var sites: [BTSite]
     var coverImageUrl: URL?
@@ -33,8 +83,8 @@ struct BTTrip: Codable {
     enum CodingKeys: String, CodingKey {
         case idValue = "id"
         case place
-        case startDate = "start_date"
-        case endDate = "end_date"
+        case _startDate = "start_date"
+        case _endDate = "end_date"
         case hotels
         case sites
         case coverImageUrl = "cover_image_url"
@@ -51,14 +101,17 @@ struct BTTrip: Codable {
         coverImageUrl: URL? = nil,
         isPublic: Bool) {
         
+        //properties
         self.idValue = id
         self.place = place
-        self.startDate = startDate
-        self.endDate = endDate
         self.hotels = hotels
         self.sites = sites
         self.coverImageUrl = coverImageUrl
         self.isPublic = isPublic
+        
+        //computed vars
+        self.startDate = startDate
+        self.endDate = endDate
     }
 }
 
