@@ -80,6 +80,9 @@
                                                         <state key="normal" title="See All &gt;">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <segue destination="PaE-02-MRX" kind="show" identifier="show published trips" id="Wyt-Xs-6F3"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -304,7 +307,7 @@
                 <viewControllerPlaceholder storyboardName="CreateTrip" id="TnC-rq-0Z3" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmY-Xe-JoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3292" y="77.361319340329842"/>
+            <point key="canvasLocation" x="3340" y="76"/>
         </scene>
         <!--TripDetailViewController-->
         <scene sceneID="l7K-mJ-Tdp">
@@ -313,6 +316,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="asI-uk-bMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3443.1999999999998" y="145.72713643178412"/>
+        </scene>
+        <!--Published Trips Vc-->
+        <scene sceneID="54y-pR-Mqc">
+            <objects>
+                <viewController id="PaE-02-MRX" customClass="PublishedTripsVc" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6eO-fG-mUM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6zu-E9-9VH">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="8b9-1P-cWB">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="PaE-02-MRX" id="rSz-k7-jJx"/>
+                                        </connections>
+                                    </searchBar>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iOh-FJ-Oos">
+                                        <rect key="frame" x="0.0" y="56" width="375" height="547"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="PaE-02-MRX" id="8VD-Ne-NNv"/>
+                                            <outlet property="delegate" destination="PaE-02-MRX" id="m4Q-zf-r4s"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6zu-E9-9VH" firstAttribute="top" secondItem="ruq-l7-ZdA" secondAttribute="top" id="3iA-7a-KsJ"/>
+                            <constraint firstItem="6zu-E9-9VH" firstAttribute="trailing" secondItem="ruq-l7-ZdA" secondAttribute="trailing" id="SKR-v1-HR8"/>
+                            <constraint firstItem="6zu-E9-9VH" firstAttribute="bottom" secondItem="ruq-l7-ZdA" secondAttribute="bottom" id="l1g-ac-hfQ"/>
+                            <constraint firstItem="6zu-E9-9VH" firstAttribute="leading" secondItem="ruq-l7-ZdA" secondAttribute="leading" id="qYV-hA-DNU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ruq-l7-ZdA"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="8b9-1P-cWB" id="uSI-aQ-Tw2"/>
+                        <outlet property="table" destination="iOh-FJ-Oos" id="Kw3-Dw-FD0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yuC-1O-Lh5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3952.8000000000002" y="293.70314842578711"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FcL-ii-bK6">

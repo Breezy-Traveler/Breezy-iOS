@@ -39,6 +39,7 @@
 		E95E138220754C6C00BF4276 /* NetworkingLayer+Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */; };
 		E95E13842075651F00BF4276 /* BTSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E13832075651F00BF4276 /* BTSite.swift */; };
 		E95E13872075879300BF4276 /* NetworkingLayer+Sites.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E13862075879300BF4276 /* NetworkingLayer+Sites.swift */; };
+		E97B4E8520CB24AD0018036D /* PublishedTripsVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B4E8420CB24AD0018036D /* PublishedTripsVc.swift */; };
 		E97ED75B2077EF140021B651 /* UIButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97ED75A2077EF140021B651 /* UIButtonCell.swift */; };
 		E97ED75D2077EF190021B651 /* UIButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E97ED75C2077EF190021B651 /* UIButtonCell.xib */; };
 		E97ED75F207807FF0021B651 /* TripDetailedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97ED75E207807FF0021B651 /* TripDetailedViewModel.swift */; };
@@ -102,6 +103,7 @@
 		E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Trips.swift"; sourceTree = "<group>"; };
 		E95E13832075651F00BF4276 /* BTSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTSite.swift; sourceTree = "<group>"; };
 		E95E13862075879300BF4276 /* NetworkingLayer+Sites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Sites.swift"; sourceTree = "<group>"; };
+		E97B4E8420CB24AD0018036D /* PublishedTripsVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishedTripsVc.swift; sourceTree = "<group>"; };
 		E97ED75A2077EF140021B651 /* UIButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonCell.swift; sourceTree = "<group>"; };
 		E97ED75C2077EF190021B651 /* UIButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIButtonCell.xib; sourceTree = "<group>"; };
 		E97ED75E207807FF0021B651 /* TripDetailedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailedViewModel.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				E91A196420840D0C00CEE74A /* TripDatePickerViewController.swift */,
 				B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */,
 				B965295F2069D17B007FAD4D /* TripsTVCell.swift */,
+				E97B4E8420CB24AD0018036D /* PublishedTripsVc.swift */,
 				B9F9F185207833D800F0D24D /* Images */,
 			);
 			name = Trip;
@@ -489,6 +492,7 @@
 				B91449452069F9250074F71B /* ExploreTripsCollectionViewCell.swift in Sources */,
 				B9B8F916206C54A9009C017F /* API.swift in Sources */,
 				B9F9F18420782EAA00F0D24D /* NteworkingLayer+Images.swift in Sources */,
+				E97B4E8520CB24AD0018036D /* PublishedTripsVc.swift in Sources */,
 				E97ED75B2077EF140021B651 /* UIButtonCell.swift in Sources */,
 				E9B1B9C3207D604B00FCBC2E /* ExploreTripsVC.swift in Sources */,
 				E91A196720840D0C00CEE74A /* TripDetailedViewController.swift in Sources */,
