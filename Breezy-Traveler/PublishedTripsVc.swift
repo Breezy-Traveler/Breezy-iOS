@@ -22,17 +22,26 @@ class PublishedTripsVc: UIViewController {
     
     // MARK: - METHODS
     
-    /*
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     if let identifier = segue.identifier {
-     switch identifier {
-     case <#pattern#>:
-     <#code#>
-     default:
-     break
-     }
-     }
-     }*/
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "show detailed published trip":
+                guard let vc = segue.destination as? TripDetailedViewController else {
+                    fatalError("segue was not set up correctly in the storyboard")
+                }
+                
+                guard
+                    let cell = sender as? UITableViewCell,
+                    let indexPath = self.table.indexPath(for: cell) else {
+                        fatalError("this segue identifer was triggered by something else other than a UITableView Cell")
+                }
+                let selectedTrip = self.publishedTrips[indexPath.row]
+                
+                vc.trip = selectedTrip
+            default: break
+            }
+        }
+    }
     
     // MARK: - IBACTIONS
     

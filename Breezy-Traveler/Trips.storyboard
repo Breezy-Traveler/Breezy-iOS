@@ -307,7 +307,7 @@
                 <viewControllerPlaceholder storyboardName="CreateTrip" id="TnC-rq-0Z3" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hmY-Xe-JoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3340" y="76"/>
+            <point key="canvasLocation" x="3340" y="210"/>
         </scene>
         <!--TripDetailViewController-->
         <scene sceneID="l7K-mJ-Tdp">
@@ -315,7 +315,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="TripDetailViewController" storyboardName="TripsDetail" referencedIdentifier="TripDetailViewController" id="VCR-mM-z7r" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="asI-uk-bMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3443.1999999999998" y="145.72713643178412"/>
+            <point key="canvasLocation" x="3339" y="792"/>
         </scene>
         <!--Published Trips Vc-->
         <scene sceneID="54y-pR-Mqc">
@@ -393,6 +393,7 @@
                                                 <connections>
                                                     <outlet property="lastDatePublished" destination="amy-i6-wR8" id="iSt-8z-Bhb"/>
                                                     <outlet property="placeName" destination="qRK-Oj-WVo" id="Nkh-Be-1AI"/>
+                                                    <segue destination="VCR-mM-z7r" kind="show" identifier="show detailed published trip" id="foZ-po-X7i"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -446,6 +447,6 @@
         <image name="destination_carousel_berlin" width="750" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FJF-ca-pDQ"/>
+        <segue reference="foZ-po-X7i"/>
     </inferredMetricsTieBreakers>
 </document>
