@@ -165,5 +165,9 @@ extension NetworkStack {
             }
         }
     }
+    
+    func loadPublishedTrips(for searchTerm: String, completion: @escaping (Result<[BTTrip], BTAPIErrors>) -> ()) {
+        //TODO: implement
+    }
 }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Result //TODO: remove after writing implementation of networkStack.loadTrips(for searchTerm: .., ...)
 
 class PublishedTripsVc: UIViewController {
     
@@ -43,6 +44,32 @@ class PublishedTripsVc: UIViewController {
         }
     }
     
+    private func reloadTable(for trips: [BTTrip]? = nil) {
+        if let newTrips = trips {
+            self.publishedTrips = newTrips
+        }
+        
+        table.reloadData()
+    }
+    
+    private func loadTrips(for searchTerm: String) {
+        networkStack.loadPublishedTrips(for: searchTerm) { [weak self] result in
+            guard let unwrappedSelf = self else { return }
+            
+            switch result {
+            case .success(let trips):
+                unwrappedSelf.reloadTable(for: trips)
+            case .failure(let err):
+                UIAlertController(
+                    title: "Published Trips",
+                    message: "Failed to load published trips. Error: \(err.localizedDescription)",
+                    preferredStyle: .alert)
+                    .addDismissButton()
+                    .present(in: unwrappedSelf)
+            }
+        }
+    }
+    
     // MARK: - IBACTIONS
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -58,21 +85,25 @@ class PublishedTripsVc: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        networkStack.loadPublishedTrips(fetchAllTrips: true) { (result) in
+        networkStack.loadPublishedTrips(fetchAllTrips: true) { [weak self] (result) in
+            guard let unwrappedSelf = self else { return }
+            
             switch result {
             case .success(let trips):
-                self.publishedTrips = trips
+                unwrappedSelf.reloadTable(for: trips)
             case .failure(let err):
                 UIAlertController(
                     title: "Published Trips",
                     message: "Failed to load published trips. Error: \(err.localizedDescription)",
                     preferredStyle: .alert)
                     .addDismissButton()
-                    .present(in: self)
+                    .present(in: unwrappedSelf)
             }
         }
     }
 }
+
+// MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension PublishedTripsVc: UITableViewDataSource, UITableViewDelegate {
     
@@ -96,5 +127,16 @@ extension PublishedTripsVc: UITableViewDataSource, UITableViewDelegate {
     // MARK: IBACTIONS
     
     // MARK: LIFE CYCLE
+}
+
+// MARK: - UITableViewDataSource, UITableViewDelegate
+
+extension PublishedTripsVc: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let searchTerm = searchBar.text {
+            loadTrips(for: searchTerm)
+        }
+    }
 }
 
