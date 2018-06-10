@@ -95,8 +95,12 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
                 //TODO: prepare show sites
                 break
             case UIStoryboardSegue.showNotes:
-                //TODO: prepare show notes
-                break
+                guard let vc = segue.destination as? TripDetailedNotesViewController else {
+                    fatalError("broken storyboard")
+                }
+                vc.notes = "no notes"
+                vc.delegate = self
+                
             case UIStoryboardSegue.showCollectionViewSegue:
                 guard let vc = segue.destination as? ImagesViewController else {
                     fatalError("broken storyboard")
@@ -248,6 +252,15 @@ extension TripDetailedViewController: TripDatePickerViewControllerDelegate {
     func tripDatePicker(_ tripViewController: TripDatePickerViewController, didCancel startDate: Date?, endDate: Date?) {
         self.navigationController?.popViewController(animated: true)
     }
+}
+
+// MARK: - TripDetailedNotesDelegate
+
+extension TripDetailedViewController: TripDetailedNotesDelegate {
+    func tripDetailedNotes(_ tripsDetailedNotesViewController: TripDetailedNotesViewController, didFinishWith notes: String) {
+        viewModel.updateNotes(with: notes)
+    }
+    
 }
 
 // MARK: - UIStoryboardSegue

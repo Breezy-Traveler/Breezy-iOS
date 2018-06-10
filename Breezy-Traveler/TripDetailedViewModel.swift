@@ -94,6 +94,12 @@ extension TripDetailedViewModel {
         self.pushTrip()
     }
     
+    func updateNotes(with newNotes: String) {
+//        trip.notes = newNotes
+        
+        self.pushTrip()
+    }
+    
     var likesText: String {
         let nLikes = 999 //TODO: fetch the number of likes
         
