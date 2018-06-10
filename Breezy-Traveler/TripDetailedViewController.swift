@@ -98,7 +98,7 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
                 guard let vc = segue.destination as? TripDetailedNotesViewController else {
                     fatalError("broken storyboard")
                 }
-                vc.notes = "no notes"
+                vc.notes = trip.notes
                 vc.delegate = self
                 
             case UIStoryboardSegue.showCollectionViewSegue:
@@ -260,7 +260,6 @@ extension TripDetailedViewController: TripDetailedNotesDelegate {
     func tripDetailedNotes(_ tripsDetailedNotesViewController: TripDetailedNotesViewController, didFinishWith notes: String) {
         viewModel.updateNotes(with: notes)
     }
-    
 }
 
 // MARK: - UIStoryboardSegue

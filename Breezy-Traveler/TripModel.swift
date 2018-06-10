@@ -78,7 +78,7 @@ struct BTTrip: Codable {
     var sites: [BTSite]
     var coverImageUrl: URL?
     var isPublic: Bool
-    //TODO: add notes to trips
+    var notes: String
     
     enum CodingKeys: String, CodingKey {
         case idValue = "id"
@@ -89,6 +89,7 @@ struct BTTrip: Codable {
         case sites
         case coverImageUrl = "cover_image_url"
         case isPublic = "is_public"
+        case notes
     }
     
     init(
@@ -99,6 +100,7 @@ struct BTTrip: Codable {
         hotels: [BTHotel] = [],
         sites: [BTSite] = [],
         coverImageUrl: URL? = nil,
+        notes: String = "",
         isPublic: Bool) {
         
         //properties
@@ -108,6 +110,7 @@ struct BTTrip: Codable {
         self.sites = sites
         self.coverImageUrl = coverImageUrl
         self.isPublic = isPublic
+        self.notes = notes
         
         //computed vars
         self.startDate = startDate

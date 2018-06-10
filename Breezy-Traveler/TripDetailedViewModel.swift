@@ -95,7 +95,7 @@ extension TripDetailedViewModel {
     }
     
     func updateNotes(with newNotes: String) {
-//        trip.notes = newNotes
+        trip.notes = newNotes
         
         self.pushTrip()
     }
