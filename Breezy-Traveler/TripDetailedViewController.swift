@@ -149,7 +149,7 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
     
     @IBOutlet weak var buttonNotes: UIButtonCell!
     @IBAction func pressNotes(_ sender: Any) {
-//        self.performSegue(withIdentifier: UIStoryboardSegue.showNotes, sender: nil)
+        self.performSegue(withIdentifier: UIStoryboardSegue.showNotes, sender: nil)
     }
 
     @IBAction func pressRenamePlace(_ sender: Any) {
