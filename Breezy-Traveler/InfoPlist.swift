@@ -17,17 +17,17 @@ struct InfoPlist {
         return nil
     }
     
-    subscript(string key: String) -> String? {
+    subscript(string key: String) -> String {
         if let plist = Bundle.main.infoDictionary {
-            return plist[key] as! String?
+            return plist[key] as! String? ?? ""
         }
         
-        return nil
+        return ""
     }
     
     static var baseUrlString: String {
         let plist = InfoPlist()
         
-        return plist[string: "Base Url"]
+        return plist[string: "Base Url"].replacingOccurrences(of: "\\", with: "")
     }
 }

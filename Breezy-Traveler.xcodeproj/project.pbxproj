@@ -68,7 +68,8 @@
 
 /* Begin PBXFileReference section */
 		19E1B1B0C2EC5CF45EE02915 /* Pods_Breezy_Traveler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Breezy_Traveler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D4D1B7FDD5E8D5B55A8B124 /* Pods-Breezy-Traveler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy-Traveler.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.debug.xcconfig"; sourceTree = "<group>"; };
+		425CE5635462CACB3731FA25 /* Pods-Breezy-Traveler.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy-Traveler.development.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.development.xcconfig"; sourceTree = "<group>"; };
+		B8C6EFD52BD50B64973ED8D3 /* Pods-Breezy-Traveler.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy-Traveler.production.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.production.xcconfig"; sourceTree = "<group>"; };
 		B91449422069E54E0074F71B /* MyTripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTripsViewController.swift; sourceTree = "<group>"; };
 		B91449442069F9250074F71B /* ExploreTripsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTripsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B940C84F206EEB3100E7144D /* TripModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripModel.swift; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 		B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginController+Handlers.swift"; sourceTree = "<group>"; };
 		B9F9F18320782EAA00F0D24D /* NteworkingLayer+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NteworkingLayer+Images.swift"; sourceTree = "<group>"; };
 		B9F9F1862078340300F0D24D /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
-		E61EF07259D1B3C17908FB3F /* Pods-Breezy-Traveler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy-Traveler.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.release.xcconfig"; sourceTree = "<group>"; };
 		E91A196420840D0C00CEE74A /* TripDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDatePickerViewController.swift; sourceTree = "<group>"; };
 		E91A196520840D0C00CEE74A /* TripDetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailedViewController.swift; sourceTree = "<group>"; };
 		E91A196820840D6900CEE74A /* QuoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteViewController.swift; sourceTree = "<group>"; };
@@ -147,8 +147,8 @@
 		129A58429168EA635105C79E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8D4D1B7FDD5E8D5B55A8B124 /* Pods-Breezy-Traveler.debug.xcconfig */,
-				E61EF07259D1B3C17908FB3F /* Pods-Breezy-Traveler.release.xcconfig */,
+				425CE5635462CACB3731FA25 /* Pods-Breezy-Traveler.development.xcconfig */,
+				B8C6EFD52BD50B64973ED8D3 /* Pods-Breezy-Traveler.production.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -528,6 +528,7 @@
 /* Begin XCBuildConfiguration section */
 		B96529572069A571007FAD4D /* Development */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E96BEF8220CCB80200295ECD /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -587,6 +588,7 @@
 		};
 		B96529582069A571007FAD4D /* Production */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E96BEF8320CCB80E00295ECD /* Production.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -639,7 +641,7 @@
 		};
 		B965295A2069A571007FAD4D /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D4D1B7FDD5E8D5B55A8B124 /* Pods-Breezy-Traveler.debug.xcconfig */;
+			baseConfigurationReference = E96BEF8220CCB80200295ECD /* Development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -655,7 +657,7 @@
 		};
 		B965295B2069A571007FAD4D /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E61EF07259D1B3C17908FB3F /* Pods-Breezy-Traveler.release.xcconfig */;
+			baseConfigurationReference = E96BEF8320CCB80E00295ECD /* Production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
