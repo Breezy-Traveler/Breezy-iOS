@@ -57,7 +57,7 @@ enum BTAPIEndPoints {
 extension BTAPIEndPoints: TargetType {
     
     // 3: Base URL leads to no end point
-    var baseURL: URL { return URL(string: "https://breezy-traveler-api.herokuapp.com")! }
+    var baseURL: URL { return URL(string: InfoPlist.baseUrlString)! }
     
     // 4: get the path to the end point
     var path: String {

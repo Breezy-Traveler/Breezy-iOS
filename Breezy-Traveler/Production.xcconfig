@@ -5,3 +5,7 @@
 //  Created by Erick Sanchez on 6/9/18.
 //  Copyright © 2018 Phyllis Wong. All rights reserved.
 //
+
+#include "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.release.xcconfig"
+
+BASE_URL=https://breezy-traveler-api.herokuapp.com

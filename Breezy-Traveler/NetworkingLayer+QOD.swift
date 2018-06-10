@@ -20,7 +20,7 @@ enum QODAPIEndPoint {
 extension QODAPIEndPoint: TargetType {
     
     // 3: Base URL leads to no end point
-    var baseURL: URL { return URL(string: "https://breezy-traveler-api.herokuapp.com/quote_of_the_day")! }
+    var baseURL: URL { return URL(string: "\(InfoPlist.baseUrlString)/quote_of_the_day")! }
     
     // 4: Since we have the full route in the baseURL,
     // no need to concatenate the path

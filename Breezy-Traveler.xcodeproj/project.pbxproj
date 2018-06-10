@@ -35,10 +35,11 @@
 		E91A196620840D0C00CEE74A /* TripDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A196420840D0C00CEE74A /* TripDatePickerViewController.swift */; };
 		E91A196720840D0C00CEE74A /* TripDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A196520840D0C00CEE74A /* TripDetailedViewController.swift */; };
 		E91A196920840D6900CEE74A /* QuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A196820840D6900CEE74A /* QuoteViewController.swift */; };
-		E95E138020754BE200BF4276 /* NetworkingLayer+QOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */; };
 		E95E138220754C6C00BF4276 /* NetworkingLayer+Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */; };
 		E95E13842075651F00BF4276 /* BTSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E13832075651F00BF4276 /* BTSite.swift */; };
 		E95E13872075879300BF4276 /* NetworkingLayer+Sites.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E13862075879300BF4276 /* NetworkingLayer+Sites.swift */; };
+		E96BEF8520CCBAC200295ECD /* InfoPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96BEF8420CCBAC200295ECD /* InfoPlist.swift */; };
+		E96BEF8620CCBC9600295ECD /* NetworkingLayer+QOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */; };
 		E97ED75B2077EF140021B651 /* UIButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97ED75A2077EF140021B651 /* UIButtonCell.swift */; };
 		E97ED75D2077EF190021B651 /* UIButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E97ED75C2077EF190021B651 /* UIButtonCell.xib */; };
 		E97ED75F207807FF0021B651 /* TripDetailedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97ED75E207807FF0021B651 /* TripDetailedViewModel.swift */; };
@@ -102,6 +103,9 @@
 		E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Trips.swift"; sourceTree = "<group>"; };
 		E95E13832075651F00BF4276 /* BTSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTSite.swift; sourceTree = "<group>"; };
 		E95E13862075879300BF4276 /* NetworkingLayer+Sites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Sites.swift"; sourceTree = "<group>"; };
+		E96BEF8220CCB80200295ECD /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		E96BEF8320CCB80E00295ECD /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
+		E96BEF8420CCBAC200295ECD /* InfoPlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlist.swift; sourceTree = "<group>"; };
 		E97ED75A2077EF140021B651 /* UIButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonCell.swift; sourceTree = "<group>"; };
 		E97ED75C2077EF190021B651 /* UIButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIButtonCell.xib; sourceTree = "<group>"; };
 		E97ED75E207807FF0021B651 /* TripDetailedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailedViewModel.swift; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 				B96529532069A571007FAD4D /* LaunchScreen.storyboard */,
 				B9BF275D2085344900265140 /* Absolute-Regular.otf */,
 				B96529562069A571007FAD4D /* Info.plist */,
+				E96BEF8220CCB80200295ECD /* Development.xcconfig */,
+				E96BEF8320CCB80E00295ECD /* Production.xcconfig */,
 			);
 			path = "Breezy-Traveler";
 			sourceTree = "<group>";
@@ -256,6 +262,7 @@
 		B9F9F1782075583700F0D24D /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				E96BEF8420CCBAC200295ECD /* InfoPlist.swift */,
 				B9F9F1792075585500F0D24D /* UtilityExtensions.swift */,
 				E97ED760207809BF0021B651 /* UtilityExtensions+Date.swift */,
 				E9B1B9BA207D3ED000FCBC2E /* UtilityExtensions+Bool.swift */,
@@ -330,7 +337,6 @@
 				B96529442069A571007FAD4D /* Frameworks */,
 				B96529452069A571007FAD4D /* Resources */,
 				176D252490A8A8ED5B4C96E9 /* [CP] Embed Pods Frameworks */,
-				4CAADEA04C8AABD70CC1BB21 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -427,21 +433,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4CAADEA04C8AABD70CC1BB21 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7FC3B0B2FF21744319E301EA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -467,7 +458,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E95E138020754BE200BF4276 /* NetworkingLayer+QOD.swift in Sources */,
 				E9B34744209AA13700A7B313 /* UtilityExtensions+UIViewController.swift in Sources */,
 				B9F9F176207305FB00F0D24D /* QuoteModel.swift in Sources */,
 				E95E13872075879300BF4276 /* NetworkingLayer+Sites.swift in Sources */,
@@ -486,6 +476,7 @@
 				B9F9F17E20758E5F00F0D24D /* AlertVC.swift in Sources */,
 				B965295D2069C96E007FAD4D /* ExploreTripsTVCell.swift in Sources */,
 				E97ED76820784B600021B651 /* ImagesCollectionViewCell.swift in Sources */,
+				E96BEF8520CCBAC200295ECD /* InfoPlist.swift in Sources */,
 				B91449452069F9250074F71B /* ExploreTripsCollectionViewCell.swift in Sources */,
 				B9B8F916206C54A9009C017F /* API.swift in Sources */,
 				B9F9F18420782EAA00F0D24D /* NteworkingLayer+Images.swift in Sources */,
@@ -503,6 +494,7 @@
 				B940C850206EEB3100E7144D /* TripModel.swift in Sources */,
 				E98F034C2072B69C004D4074 /* BTHotel.swift in Sources */,
 				E95E13842075651F00BF4276 /* BTSite.swift in Sources */,
+				E96BEF8620CCBC9600295ECD /* NetworkingLayer+QOD.swift in Sources */,
 				E97ED761207809BF0021B651 /* UtilityExtensions+Date.swift in Sources */,
 				B9F9F17A2075585500F0D24D /* UtilityExtensions.swift in Sources */,
 				E9B1B9C1207D558900FCBC2E /* UtilityExtensions+UITextField.swift in Sources */,
@@ -534,7 +526,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		B96529572069A571007FAD4D /* Debug */ = {
+		B96529572069A571007FAD4D /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -591,9 +583,9 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Debug;
+			name = Development;
 		};
-		B96529582069A571007FAD4D /* Release */ = {
+		B96529582069A571007FAD4D /* Production */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -643,9 +635,9 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Production;
 		};
-		B965295A2069A571007FAD4D /* Debug */ = {
+		B965295A2069A571007FAD4D /* Development */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D4D1B7FDD5E8D5B55A8B124 /* Pods-Breezy-Traveler.debug.xcconfig */;
 			buildSettings = {
@@ -659,9 +651,9 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Debug;
+			name = Development;
 		};
-		B965295B2069A571007FAD4D /* Release */ = {
+		B965295B2069A571007FAD4D /* Production */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E61EF07259D1B3C17908FB3F /* Pods-Breezy-Traveler.release.xcconfig */;
 			buildSettings = {
@@ -675,7 +667,7 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Release;
+			name = Production;
 		};
 /* End XCBuildConfiguration section */
 
@@ -683,20 +675,20 @@
 		B96529422069A571007FAD4D /* Build configuration list for PBXProject "Breezy-Traveler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B96529572069A571007FAD4D /* Debug */,
-				B96529582069A571007FAD4D /* Release */,
+				B96529572069A571007FAD4D /* Development */,
+				B96529582069A571007FAD4D /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 		B96529592069A571007FAD4D /* Build configuration list for PBXNativeTarget "Breezy-Traveler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B965295A2069A571007FAD4D /* Debug */,
-				B965295B2069A571007FAD4D /* Release */,
+				B965295A2069A571007FAD4D /* Development */,
+				B965295B2069A571007FAD4D /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 /* End XCConfigurationList section */
 	};
