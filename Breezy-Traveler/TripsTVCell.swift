@@ -33,9 +33,6 @@ class TripsTVCell: UITableViewCell {
         // text
         self.placeName.text = trip.place
         self.isPublic.text = trip.isPublic ? "Shared" : "Private"
-        
-        // Adding the ability to see the trip's start date in the tableview
-        self.date.text = trip.startDate?.description
     }
     
     // MARK: - IBACTIONS

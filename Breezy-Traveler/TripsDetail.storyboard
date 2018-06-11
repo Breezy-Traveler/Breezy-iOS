@@ -140,10 +140,10 @@
                         <outlet property="coverImage" destination="xVd-pC-7wE" id="nMP-uI-yTi"/>
                         <segue destination="Rsd-vQ-snA" kind="show" identifier="show hotels" id="Vj6-H4-UGL"/>
                         <segue destination="Qgb-Ap-1wf" kind="show" identifier="show sites" id="7xo-VB-flZ"/>
-                        <segue destination="gDZ-s6-AJ9" kind="show" identifier="show notes" id="bqM-2S-CFl"/>
                         <segue destination="ThX-hg-EJG" kind="unwind" identifier="unwind to my trips" unwindAction="unwindToMyTrips:" id="rhH-2V-dla"/>
                         <segue destination="6Pz-Wr-JFH" kind="show" identifier="show date picker" id="Bl1-Dx-ipQ"/>
                         <segue destination="mcp-Oi-jBT" kind="show" identifier="showCollectionViewSegue" id="6kW-ly-1tK"/>
+                        <segue destination="JQ6-IX-LwJ" kind="show" identifier="show notes" id="Set-s0-Nyq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wzh-VX-xPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -179,7 +179,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m6z-HY-MnN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2593" y="1605"/>
+            <point key="canvasLocation" x="2986" y="1012"/>
         </scene>
         <!--Images View Controller-->
         <scene sceneID="qpX-a1-A6K">
@@ -216,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LfS-4a-nIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1780" y="1938"/>
+            <point key="canvasLocation" x="2516" y="367"/>
         </scene>
         <!--Storyboard Reference-->
         <scene sceneID="050-SU-qQ0">
@@ -234,13 +234,37 @@
             </objects>
             <point key="canvasLocation" x="2489" y="828"/>
         </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="p90-nL-u7u">
+        <!--Notes-->
+        <scene sceneID="x43-XO-fD8">
             <objects>
-                <viewControllerPlaceholder id="gDZ-s6-AJ9" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Xl-ld-y7a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="JQ6-IX-LwJ" customClass="TripDetailedNotesViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="atH-31-N6q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dFK-vN-Tzw">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="JQ6-IX-LwJ" id="JUR-Qt-gFV"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="zQH-hc-b42"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Notes" id="snZ-4l-385"/>
+                    <connections>
+                        <outlet property="textviewNotes" destination="dFK-vN-Tzw" id="YKR-ga-zJd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Je-CH-6Eb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2548" y="885"/>
+            <point key="canvasLocation" x="2656.8000000000002" y="1530.5847076461771"/>
         </scene>
     </scenes>
 </document>
