@@ -237,7 +237,7 @@ extension BTAPIEndPoints: TargetType {
             
         } else {
             guard let token = userPersistence.getUserToken() else {
-                fatalError("no user token")
+                fatalError("request made without a user is logged in thus, no user token")
             }
             
             // Authorization

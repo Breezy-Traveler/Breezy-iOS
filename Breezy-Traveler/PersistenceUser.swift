@@ -134,10 +134,7 @@ struct UserPersistence {
             case .success(let userReturned):
                 self.setUserToken(token: userReturned.token!)
                 callback(true)
-            case .failure(let error):
-                
-                // FIXME: breaking here with bad credentials
-//                assertionFailure("bad user credentials \(error.localizedDescription)")
+            case .failure:
                 callback(false)
             }
         }
