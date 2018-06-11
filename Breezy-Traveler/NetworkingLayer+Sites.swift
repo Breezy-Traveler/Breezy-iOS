@@ -12,7 +12,7 @@ import Result
 import SwiftyJSON
 
 extension NetworkStack {
-    func create(a site: BTSite, for trip: BTTrip, completion: @escaping (Result<BTSite, BTAPIErrors>) -> ()) {
+    func create(a site: BTSite, for trip: BTTrip, callback: @escaping (Result<BTSite, UserfacingErrors>) -> ()) {
         apiService.request(.createSite(site, for: trip)) { (result) in
             switch result {
             case .success(let response):
@@ -21,113 +21,120 @@ extension NetworkStack {
                 // Created
                 case 201:
                     guard let returnedSite = try? JSONDecoder().decode(BTSite.self, from: response.data) else {
-                        fatalError("could not decode json into site model")
+                        assertionFailure("JSON data not decodable")
+                        
+                        let errors = UserfacingErrors.somethingWentWrong()
+                        return callback(.failure(errors))
                     }
                     
-                    completion(.success(returnedSite))
+                    callback(.success(returnedSite))
                     
                 // Unhandled codes
                 default:
-                    let serverErrors = (try! JSON(data: response.data).dictionaryObject) ?? ["error": "Server Error"]
-                    let errors = BTAPIErrors(errors: ["Something went wrong.", serverErrors.description])
-                    
-                    completion(.failure(errors))
+                    let errors = UserfacingErrors.serverError(message: response.data)
+                    callback(.failure(errors))
                 }
+                
             case .failure(let err):
-                let errors = BTAPIErrors(errors: [err.localizedDescription])
-                completion(.failure(errors))
+                let errors = UserfacingErrors.somethingWentWrong(message: err.localizedDescription)
+                callback(.failure(errors))
             }
         }
     }
     
-    func loadSites(for trip: BTTrip, completion: @escaping (Result<[BTSite], BTAPIErrors>) -> ()) {
+    func loadSites(for trip: BTTrip, callback: @escaping (Result<[BTSite], UserfacingErrors>) -> ()) {
         apiService.request(.loadSites(for: trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
                     guard let sites = try? JSONDecoder().decode([BTSite].self, from: response.data) else {
-                        fatalError("could not decode response.data into site models")
+                        assertionFailure("JSON data not decodable")
+                        
+                        let errors = UserfacingErrors.somethingWentWrong()
+                        return callback(.failure(errors))
                     }
                     
-                    completion(.success(sites))
+                    callback(.success(sites))
                 default:
-                    let serverErrors = (try! JSON(data: response.data).dictionaryObject) ?? ["error": "Server Error"]
-                    let errors = BTAPIErrors(errors: ["Something went wrong.", serverErrors.description])
-                    
-                    completion(.failure(errors))
+                    let errors = UserfacingErrors.serverError(message: response.data)
+                    callback(.failure(errors))
                 }
+                
             case .failure(let err):
-                let errors = BTAPIErrors(errors: [err.localizedDescription])
-                completion(.failure(errors))
+                let errors = UserfacingErrors.somethingWentWrong(message: err.localizedDescription)
+                callback(.failure(errors))
             }
         }
     }
     
-    func showSite(for siteId: Int, for trip: BTTrip, completion: @escaping (Result<BTSite, BTAPIErrors>) -> ()) {
+    func showSite(for siteId: Int, for trip: BTTrip, callback: @escaping (Result<BTSite, UserfacingErrors>) -> ()) {
         apiService.request(.showSite(forSiteId: siteId, for: trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
                     guard let site = try? JSONDecoder().decode(BTSite.self, from: response.data) else {
-                        fatalError("could not decode response.data into site model")
+                        assertionFailure("JSON data not decodable")
+                        
+                        let errors = UserfacingErrors.somethingWentWrong()
+                        return callback(.failure(errors))
                     }
                     
-                    completion(.success(site))
+                    callback(.success(site))
                 default:
-                    let serverErrors = (try! JSON(data: response.data).dictionaryObject) ?? ["error": "Server Error"]
-                    let errors = BTAPIErrors(errors: ["Something went wrong.", serverErrors.description])
-                    
-                    completion(.failure(errors))
+                    let errors = UserfacingErrors.serverError(message: response.data)
+                    callback(.failure(errors))
                 }
+                
             case .failure(let err):
-                let errors = BTAPIErrors(errors: [err.localizedDescription])
-                completion(.failure(errors))
+                let errors = UserfacingErrors.somethingWentWrong(message: err.localizedDescription)
+                callback(.failure(errors))
             }
         }
     }
     
-    func update(site: BTSite, for trip: BTTrip, completion: @escaping (Result<BTSite, BTAPIErrors>) -> ()) {
+    func update(site: BTSite, for trip: BTTrip, callback: @escaping (Result<BTSite, UserfacingErrors>) -> ()) {
         apiService.request(.updateSite(site, for: trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
                     guard let updatedSite = try? JSONDecoder().decode(BTSite.self, from: response.data) else {
-                        fatalError("could not decode response.data to site model")
+                        assertionFailure("JSON data not decodable")
+                        
+                        let errors = UserfacingErrors.somethingWentWrong()
+                        return callback(.failure(errors))
                     }
                     
-                    completion(.success(updatedSite))
+                    callback(.success(updatedSite))
                 default:
-                    let serverErrors = (try! JSON(data: response.data).dictionaryObject) ?? ["error": "Server Error"]
-                    let errors = BTAPIErrors(errors: ["Something went wrong.", serverErrors.description])
-                    
-                    completion(.failure(errors))
+                    let errors = UserfacingErrors.serverError(message: response.data)
+                    callback(.failure(errors))
                 }
+                
             case .failure(let err):
-                let errors = BTAPIErrors(errors: [err.localizedDescription])
-                completion(.failure(errors))
+                let errors = UserfacingErrors.somethingWentWrong(message: err.localizedDescription)
+                callback(.failure(errors))
             }
         }
     }
     
-    func delete(site: BTSite, for trip: BTTrip, completion: @escaping (Result<String, BTAPIErrors>) -> ()) {
+    func delete(site: BTSite, for trip: BTTrip, callback: @escaping (Result<String, UserfacingErrors>) -> ()) {
         apiService.request(.deleteSite(site, for: trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
                 case 204:
-                    completion(.success("\(site.title) was deleted"))
+                    callback(.success("\(site.title) was deleted"))
                 default:
-                    let serverErrors = (try! JSON(data: response.data).dictionaryObject) ?? ["error": "Server Error"]
-                    let errors = BTAPIErrors(errors: ["Something went wrong.", serverErrors.description])
-                    
-                    completion(.failure(errors))
+                    let errors = UserfacingErrors.serverError(message: response.data)
+                    callback(.failure(errors))
                 }
+                
             case .failure(let err):
-                let errors = BTAPIErrors(errors: [err.localizedDescription])
-                completion(.failure(errors))
+                let errors = UserfacingErrors.somethingWentWrong(message: err.localizedDescription)
+                callback(.failure(errors))
             }
         }
     }

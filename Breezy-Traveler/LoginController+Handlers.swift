@@ -70,7 +70,7 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
                             unwrappedSelf.dismiss(animated: true, completion: nil)
                                 
                         case .failure(let userErrors):
-                            unwrappedSelf.present(AlertViewController.showErrorAlert(message: userErrors.localizedDescription), animated: true, completion: nil)
+                            unwrappedSelf.present(AlertViewController.showErrorAlert(message: userErrors.description), animated: true, completion: nil)
                             
                             // Print the erros for debugging
                             debugPrint(userErrors)

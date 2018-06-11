@@ -62,7 +62,7 @@ class PublishedTripsVc: UIViewController {
             case .failure(let err):
                 UIAlertController(
                     title: "Published Trips",
-                    message: "Failed to load published trips. Error: \(err.localizedDescription)",
+                    message: "Failed to load published trips. Error: \(err.description)",
                     preferredStyle: .alert)
                     .addDismissButton()
                     .present(in: unwrappedSelf)
@@ -94,7 +94,7 @@ class PublishedTripsVc: UIViewController {
             case .failure(let err):
                 UIAlertController(
                     title: "Published Trips",
-                    message: "Failed to load published trips. Error: \(err.localizedDescription)",
+                    message: "Failed to load published trips. Error: \(err.description)",
                     preferredStyle: .alert)
                     .addDismissButton()
                     .present(in: unwrappedSelf)

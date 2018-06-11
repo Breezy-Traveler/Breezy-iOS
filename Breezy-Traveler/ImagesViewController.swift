@@ -51,8 +51,14 @@ class ImagesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        networkStack.fetchImages(searchTerm: self.searchTerm) { (urls) in
-            self.fetchedImagesUrls = urls
+        networkStack.fetchImages(searchTerm: self.searchTerm) { (result) in
+            switch result {
+            case .success(let urls):
+                self.fetchedImagesUrls = urls
+            case .failure(let userErrors):
+                let alert = AlertViewController.showErrorAlert(message: userErrors.description)
+                self.present(alert, animated: true)
+            }
         }
     }
 }

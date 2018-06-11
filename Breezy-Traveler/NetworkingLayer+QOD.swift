@@ -73,6 +73,7 @@ extension QODAPIEndPoint: TargetType {
 
 extension NetworkStack {
     
+    //TODO: remove fatalErrors and ensure callback is being called in each case
     func getQuoteOfTheDay(callback: @escaping (Quote) -> ()) {
         qodApiService.request(.getQuote) { (result) in
             switch result {
