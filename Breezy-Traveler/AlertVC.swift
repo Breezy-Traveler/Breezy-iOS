@@ -11,6 +11,12 @@ import UIKit
 
 struct AlertViewController {
     
+    static func showErrorAlert(message: String) -> UIAlertController {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        return alertController
+    }
+    
     static func showWrongUsernameOrPAsswordAlert() -> UIAlertController {
         let alertController = UIAlertController(title: "Error", message: "Wrong username or password", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))

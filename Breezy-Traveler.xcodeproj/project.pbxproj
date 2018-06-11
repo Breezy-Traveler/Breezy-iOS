@@ -40,6 +40,8 @@
 		E95E13872075879300BF4276 /* NetworkingLayer+Sites.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E13862075879300BF4276 /* NetworkingLayer+Sites.swift */; };
 		E96BEF8520CCBAC200295ECD /* InfoPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96BEF8420CCBAC200295ECD /* InfoPlist.swift */; };
 		E96BEF8620CCBC9600295ECD /* NetworkingLayer+QOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */; };
+		E97B4E8520CB24AD0018036D /* PublishedTripsVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B4E8420CB24AD0018036D /* PublishedTripsVc.swift */; };
+		E97B4E8720CB29E00018036D /* PublishedTripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B4E8620CB29E00018036D /* PublishedTripTableViewCell.swift */; };
 		E97ED75B2077EF140021B651 /* UIButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97ED75A2077EF140021B651 /* UIButtonCell.swift */; };
 		E97ED75D2077EF190021B651 /* UIButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E97ED75C2077EF190021B651 /* UIButtonCell.xib */; };
 		E97ED75F207807FF0021B651 /* TripDetailedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97ED75E207807FF0021B651 /* TripDetailedViewModel.swift */; };
@@ -49,6 +51,9 @@
 		E98F03482072A95A004D4074 /* Trips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E98F03472072A95A004D4074 /* Trips.storyboard */; };
 		E98F034A2072AEF2004D4074 /* NetworkingLayer+Hotels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F03492072AEF2004D4074 /* NetworkingLayer+Hotels.swift */; };
 		E98F034C2072B69C004D4074 /* BTHotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F034B2072B69C004D4074 /* BTHotel.swift */; };
+		E996A4B920CCD48900A0038E /* TripDetailedNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996A4B820CCD48900A0038E /* TripDetailedNotesViewController.swift */; };
+		E996A4BB20CDFF5E00A0038E /* UserfacingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996A4BA20CDFF5E00A0038E /* UserfacingErrors.swift */; };
+		E996A4BD20CE1CA300A0038E /* UserfacingErrors+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996A4BC20CE1CA300A0038E /* UserfacingErrors+User.swift */; };
 		E9B1B9B8207D3AD800FCBC2E /* UICoverImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B1B9B6207D3AD800FCBC2E /* UICoverImageView.xib */; };
 		E9B1B9B9207D3AD800FCBC2E /* UICoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9B7207D3AD800FCBC2E /* UICoverImageView.swift */; };
 		E9B1B9BB207D3ED000FCBC2E /* UtilityExtensions+Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9BA207D3ED000FCBC2E /* UtilityExtensions+Bool.swift */; };
@@ -106,6 +111,8 @@
 		E96BEF8220CCB80200295ECD /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		E96BEF8320CCB80E00295ECD /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		E96BEF8420CCBAC200295ECD /* InfoPlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlist.swift; sourceTree = "<group>"; };
+		E97B4E8420CB24AD0018036D /* PublishedTripsVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishedTripsVc.swift; sourceTree = "<group>"; };
+		E97B4E8620CB29E00018036D /* PublishedTripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishedTripTableViewCell.swift; sourceTree = "<group>"; };
 		E97ED75A2077EF140021B651 /* UIButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonCell.swift; sourceTree = "<group>"; };
 		E97ED75C2077EF190021B651 /* UIButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIButtonCell.xib; sourceTree = "<group>"; };
 		E97ED75E207807FF0021B651 /* TripDetailedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailedViewModel.swift; sourceTree = "<group>"; };
@@ -115,6 +122,9 @@
 		E98F03472072A95A004D4074 /* Trips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Trips.storyboard; sourceTree = "<group>"; };
 		E98F03492072AEF2004D4074 /* NetworkingLayer+Hotels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Hotels.swift"; sourceTree = "<group>"; };
 		E98F034B2072B69C004D4074 /* BTHotel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTHotel.swift; sourceTree = "<group>"; };
+		E996A4B820CCD48900A0038E /* TripDetailedNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailedNotesViewController.swift; sourceTree = "<group>"; };
+		E996A4BA20CDFF5E00A0038E /* UserfacingErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserfacingErrors.swift; sourceTree = "<group>"; };
+		E996A4BC20CE1CA300A0038E /* UserfacingErrors+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserfacingErrors+User.swift"; sourceTree = "<group>"; };
 		E9B1B9B6207D3AD800FCBC2E /* UICoverImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICoverImageView.xib; sourceTree = "<group>"; };
 		E9B1B9B7207D3AD800FCBC2E /* UICoverImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICoverImageView.swift; sourceTree = "<group>"; };
 		E9B1B9BA207D3ED000FCBC2E /* UtilityExtensions+Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtensions+Bool.swift"; sourceTree = "<group>"; };
@@ -217,8 +227,11 @@
 				E97ED75E207807FF0021B651 /* TripDetailedViewModel.swift */,
 				E91A196520840D0C00CEE74A /* TripDetailedViewController.swift */,
 				E91A196420840D0C00CEE74A /* TripDatePickerViewController.swift */,
+				E996A4B820CCD48900A0038E /* TripDetailedNotesViewController.swift */,
 				B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */,
 				B965295F2069D17B007FAD4D /* TripsTVCell.swift */,
+				E97B4E8420CB24AD0018036D /* PublishedTripsVc.swift */,
+				E97B4E8620CB29E00018036D /* PublishedTripTableViewCell.swift */,
 				B9F9F185207833D800F0D24D /* Images */,
 			);
 			name = Trip;
@@ -247,6 +260,8 @@
 				E95E13862075879300BF4276 /* NetworkingLayer+Sites.swift */,
 				E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */,
 				B9F9F18320782EAA00F0D24D /* NteworkingLayer+Images.swift */,
+				E996A4BA20CDFF5E00A0038E /* UserfacingErrors.swift */,
+				E996A4BC20CE1CA300A0038E /* UserfacingErrors+User.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -467,6 +482,7 @@
 				B96529602069D17B007FAD4D /* TripsTVCell.swift in Sources */,
 				E91A196920840D6900CEE74A /* QuoteViewController.swift in Sources */,
 				B9F9F1802077EE4B00F0D24D /* LoginController.swift in Sources */,
+				E97B4E8720CB29E00018036D /* PublishedTripTableViewCell.swift in Sources */,
 				B9B8F912206C52AF009C017F /* UserModel.swift in Sources */,
 				E9FF77AB207FEAA90086D6D9 /* UIDatePickerViewController.swift in Sources */,
 				E97ED75F207807FF0021B651 /* TripDetailedViewModel.swift in Sources */,
@@ -480,10 +496,14 @@
 				B91449452069F9250074F71B /* ExploreTripsCollectionViewCell.swift in Sources */,
 				B9B8F916206C54A9009C017F /* API.swift in Sources */,
 				B9F9F18420782EAA00F0D24D /* NteworkingLayer+Images.swift in Sources */,
+				E97B4E8520CB24AD0018036D /* PublishedTripsVc.swift in Sources */,
 				E97ED75B2077EF140021B651 /* UIButtonCell.swift in Sources */,
 				E9B1B9C3207D604B00FCBC2E /* ExploreTripsVC.swift in Sources */,
+				E996A4B920CCD48900A0038E /* TripDetailedNotesViewController.swift in Sources */,
 				E91A196720840D0C00CEE74A /* TripDetailedViewController.swift in Sources */,
+				E996A4BB20CDFF5E00A0038E /* UserfacingErrors.swift in Sources */,
 				E91A196620840D0C00CEE74A /* TripDatePickerViewController.swift in Sources */,
+				E996A4BD20CE1CA300A0038E /* UserfacingErrors+User.swift in Sources */,
 				E9B1B9BF207D501B00FCBC2E /* UtilityExtensions+UIButton.swift in Sources */,
 				E9DC241B207E8FE4001691C2 /* UIDatePickerTableViewCell.swift in Sources */,
 				B940C85220719D0000E7144D /* CreateTripVC.swift in Sources */,
@@ -528,7 +548,6 @@
 /* Begin XCBuildConfiguration section */
 		B96529572069A571007FAD4D /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E96BEF8220CCB80200295ECD /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -588,7 +607,6 @@
 		};
 		B96529582069A571007FAD4D /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E96BEF8320CCB80E00295ECD /* Production.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -645,7 +663,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8U3L6K9JA6;
+				DEVELOPMENT_TEAM = S44SNCV32X;
 				INFOPLIST_FILE = "Breezy-Traveler/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.breezyApps.Breezy-Traveler";
@@ -661,7 +679,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8U3L6K9JA6;
+				DEVELOPMENT_TEAM = S44SNCV32X;
 				INFOPLIST_FILE = "Breezy-Traveler/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.breezyApps.Breezy-Traveler";

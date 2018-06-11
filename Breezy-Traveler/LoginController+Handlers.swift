@@ -20,7 +20,7 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
         // Safely unwrap all input values from the user
         guard let name = nameTextField.text, name.count > 0 else {
             // popup an alert view that name can't be blank
-            self.present(AlertViewController.showUsernameAlert(), animated: true, completion: nil)
+            self.present(AlertViewController.showNameAlert(), animated: true, completion: nil)
             return
         }
         
@@ -44,7 +44,6 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
 
         // Set the criteria to register the user, and to log in the user
         let userRegister = UserRegister(name: name, username: username, password: password, email: email)
-        let userLogin = UserLogin(username: username, password: password)
         
         // Ask the API to register the user
         networkStack.register(a: userRegister) { [weak self] (result) in
@@ -56,6 +55,7 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
                     
             // The user was registered into the database
             case .success:
+                let userLogin = UserLogin(username: username, password: password)
                         
                 // Auto login the user and navigate to the MyTripsView
                 unwrappedSelf.networkStack.login(a: userLogin) { (result) in
@@ -70,18 +70,17 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
                             unwrappedSelf.dismiss(animated: true, completion: nil)
                                 
                         case .failure(let userErrors):
-                            DispatchQueue.main.async {
-                                unwrappedSelf.present(AlertViewController.showWrongUsernameOrPAsswordAlert(), animated: true, completion: nil)
-                            }
+                            unwrappedSelf.present(AlertViewController.showErrorAlert(message: userErrors.description), animated: true, completion: nil)
+                            
                             // Print the erros for debugging
-                            print(userErrors.errors)
+                            debugPrint(userErrors)
                     }
                 }
                         
-            case .failure:
-                DispatchQueue.main.async {
-                    unwrappedSelf.present(AlertViewController.showUserAlreadyRegisteredAlert(), animated: true, completion: nil)
-                }
+            case .failure(let err):
+                unwrappedSelf.present(AlertViewController.showErrorAlert(message: err.localizedDescription), animated: true, completion: nil)
+                
+                debugPrint(err)
             }
         }
     }

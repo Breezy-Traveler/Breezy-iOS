@@ -8,11 +8,12 @@
 
 import Foundation
 import Moya
+import Result
 import SwiftyJSON
 
 extension NetworkStack {
     
-    func fetchImages(searchTerm: String, callback: @escaping ([URL]) -> ()) {
+    func fetchImages(searchTerm: String, callback: @escaping (Result<[URL], UserfacingErrors>) -> ()) {
         apiService.request(.loadTenImages(searchTerm)) { (result) in
             switch result {
                 
@@ -22,19 +23,23 @@ extension NetworkStack {
                     guard let imagesArray = try? JSON(data: response.data),
                         let urlData = try? imagesArray["images"].rawData(),
                         let urlArray = try? JSONDecoder().decode([URL].self, from: urlData) else {
-                        fatalError("not JSON decodable")
+                        assertionFailure("JSON data not decodable")
+                        
+                        let errors = UserfacingErrors.somethingWentWrong()
+                        return callback(.failure(errors))
                     }
-                    callback(urlArray)
+                    
+                    callback(.success(urlArray))
                     
                 default:
-                    return assertionFailure("\(response.statusCode)")
+                    let errors = UserfacingErrors.serverError(message: response.data)
+                    callback(.failure(errors))
                 }
                 
             case .failure(let err):
-                print("Error: \(err)")
-                break
+                let errors = UserfacingErrors.somethingWentWrong(message: err.localizedDescription)
+                callback(.failure(errors))
             }
         }
     }
-    
 }
