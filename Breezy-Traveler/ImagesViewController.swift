@@ -54,7 +54,14 @@ class ImagesViewController: UIViewController {
         networkStack.fetchImages(searchTerm: self.searchTerm) { (result) in
             switch result {
             case .success(let urls):
-                self.fetchedImagesUrls = urls
+                if urls.count > 0 {
+                    self.fetchedImagesUrls = urls
+                } else {
+                    UIAlertController(title: "Cover Image", message: "no results found for \"\(self.searchTerm)\"", preferredStyle: .alert)
+                        .addDismissButton()
+                        .present(in: self)
+                }
+                
             case .failure(let userErrors):
                 let alert = AlertViewController.showErrorAlert(message: userErrors.description)
                 self.present(alert, animated: true)
