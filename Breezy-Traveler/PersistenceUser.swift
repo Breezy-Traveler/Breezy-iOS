@@ -70,6 +70,9 @@ struct UserPersistence {
             fatalError("no current user")
         }
         keychain.set(currentUserData, forKey: currentUserKey)
+        
+        // FIXME: Refactor this, function not really needed
+        // CurrentUserData includes token property
         setUserToken(token: currentUser.token!)
     }
     
@@ -122,7 +125,8 @@ struct UserPersistence {
         guard let userCredentials = getUserLoginCredentials() else {
             return callback(false)
         }
-        
+
+        //FIXME: don't perform network call if token exists
         let userLogin = UserLogin(username: userCredentials.username, password: userCredentials.password)
 
         networkStack.login(a: userLogin) { (result) in
