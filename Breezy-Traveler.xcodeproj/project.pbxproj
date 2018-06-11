@@ -51,7 +51,8 @@
 		E98F034A2072AEF2004D4074 /* NetworkingLayer+Hotels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F03492072AEF2004D4074 /* NetworkingLayer+Hotels.swift */; };
 		E98F034C2072B69C004D4074 /* BTHotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F034B2072B69C004D4074 /* BTHotel.swift */; };
 		E996A4B920CCD48900A0038E /* TripDetailedNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996A4B820CCD48900A0038E /* TripDetailedNotesViewController.swift */; };
-		E996A4BB20CDFF5E00A0038E /* NetworkingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996A4BA20CDFF5E00A0038E /* NetworkingErrors.swift */; };
+		E996A4BB20CDFF5E00A0038E /* UserfacingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996A4BA20CDFF5E00A0038E /* UserfacingErrors.swift */; };
+		E996A4BD20CE1CA300A0038E /* UserfacingErrors+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996A4BC20CE1CA300A0038E /* UserfacingErrors+User.swift */; };
 		E9B1B9B8207D3AD800FCBC2E /* UICoverImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B1B9B6207D3AD800FCBC2E /* UICoverImageView.xib */; };
 		E9B1B9B9207D3AD800FCBC2E /* UICoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9B7207D3AD800FCBC2E /* UICoverImageView.swift */; };
 		E9B1B9BB207D3ED000FCBC2E /* UtilityExtensions+Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9BA207D3ED000FCBC2E /* UtilityExtensions+Bool.swift */; };
@@ -118,7 +119,8 @@
 		E98F03492072AEF2004D4074 /* NetworkingLayer+Hotels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Hotels.swift"; sourceTree = "<group>"; };
 		E98F034B2072B69C004D4074 /* BTHotel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTHotel.swift; sourceTree = "<group>"; };
 		E996A4B820CCD48900A0038E /* TripDetailedNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailedNotesViewController.swift; sourceTree = "<group>"; };
-		E996A4BA20CDFF5E00A0038E /* NetworkingErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrors.swift; sourceTree = "<group>"; };
+		E996A4BA20CDFF5E00A0038E /* UserfacingErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserfacingErrors.swift; sourceTree = "<group>"; };
+		E996A4BC20CE1CA300A0038E /* UserfacingErrors+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserfacingErrors+User.swift"; sourceTree = "<group>"; };
 		E9B1B9B6207D3AD800FCBC2E /* UICoverImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICoverImageView.xib; sourceTree = "<group>"; };
 		E9B1B9B7207D3AD800FCBC2E /* UICoverImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICoverImageView.swift; sourceTree = "<group>"; };
 		E9B1B9BA207D3ED000FCBC2E /* UtilityExtensions+Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtensions+Bool.swift"; sourceTree = "<group>"; };
@@ -252,7 +254,8 @@
 				E95E13862075879300BF4276 /* NetworkingLayer+Sites.swift */,
 				E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */,
 				B9F9F18320782EAA00F0D24D /* NteworkingLayer+Images.swift */,
-				E996A4BA20CDFF5E00A0038E /* NetworkingErrors.swift */,
+				E996A4BA20CDFF5E00A0038E /* UserfacingErrors.swift */,
+				E996A4BC20CE1CA300A0038E /* UserfacingErrors+User.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -507,8 +510,9 @@
 				E9B1B9C3207D604B00FCBC2E /* ExploreTripsVC.swift in Sources */,
 				E996A4B920CCD48900A0038E /* TripDetailedNotesViewController.swift in Sources */,
 				E91A196720840D0C00CEE74A /* TripDetailedViewController.swift in Sources */,
-				E996A4BB20CDFF5E00A0038E /* NetworkingErrors.swift in Sources */,
+				E996A4BB20CDFF5E00A0038E /* UserfacingErrors.swift in Sources */,
 				E91A196620840D0C00CEE74A /* TripDatePickerViewController.swift in Sources */,
+				E996A4BD20CE1CA300A0038E /* UserfacingErrors+User.swift in Sources */,
 				E9B1B9BF207D501B00FCBC2E /* UtilityExtensions+UIButton.swift in Sources */,
 				E9DC241B207E8FE4001691C2 /* UIDatePickerTableViewCell.swift in Sources */,
 				B940C85220719D0000E7144D /* CreateTripVC.swift in Sources */,

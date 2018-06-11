@@ -18,7 +18,7 @@ struct NetworkStack {
     private(set) var qodApiService = MoyaProvider<QODAPIEndPoint>()
     
     // MARK: - User Login
-    func register(a user: UserRegister, callback: @escaping (Result<BTUser, UserErrorMessages>) -> ()) {
+    func register(a user: UserRegister, callback: @escaping (Result<BTUser, UserfacingErrors>) -> ()) {
         /// handles the response data after the networkService has fired and come back with a result
         apiService.request(.registerUser(user)) { (result) in
             
@@ -30,28 +30,28 @@ struct NetworkStack {
                     guard let user = try? JSONDecoder().decode(BTUser.self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
-                        let errors = UserErrorMessages.somethingWentWrong()
+                        let errors = UserfacingErrors.somethingWentWrong()
                         return callback(.failure(errors))
                     }
                     
                     callback(.success(user))
                 case 422:
-                    let errors = UserErrorMessages(dataValues: response.data)
+                    let errors = UserfacingErrors(userData: response.data)
                     callback(.failure(errors))
                     
                 default:
-                    let errors = UserErrorMessages.serverError(message: response.data)
+                    let errors = UserfacingErrors.serverError(message: response.data)
                     callback(.failure(errors))
                 }
                 
             case .failure(let err):
-                let errors = UserErrorMessages.somethingWentWrong(message: err.localizedDescription)
+                let errors = UserfacingErrors.somethingWentWrong(message: err.localizedDescription)
                 callback(.failure(errors))
             }
         }
     }
     
-    func login(a user: UserLogin, callback: @escaping (Result<BTUser, UserErrorMessages>) -> ()) {
+    func login(a user: UserLogin, callback: @escaping (Result<BTUser, UserfacingErrors>) -> ()) {
         apiService.request(.loginUser(user)) { (result) in
             switch result {
             case .success(let response):
@@ -62,22 +62,22 @@ struct NetworkStack {
                     guard let user = try? JSONDecoder().decode(BTUser.self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
-                        let errors = UserErrorMessages.somethingWentWrong()
+                        let errors = UserfacingErrors.somethingWentWrong()
                         return callback(.failure(errors))
                     }
                     callback(.success(user))
                 
                 case 401:
-                    let errors = UserErrorMessages.invalidCredentials()
+                    let errors = UserfacingErrors.invalidCredentials()
                     callback(.failure(errors))
                     
                 default:
-                    let errors = UserErrorMessages.serverError(message: response.data)
+                    let errors = UserfacingErrors.serverError(message: response.data)
                     callback(.failure(errors))
                 }
                 
             case .failure(let err):
-                let errors = UserErrorMessages.somethingWentWrong(message: err.localizedDescription)
+                let errors = UserfacingErrors.somethingWentWrong(message: err.localizedDescription)
                 callback(.failure(errors))
             }
         }
