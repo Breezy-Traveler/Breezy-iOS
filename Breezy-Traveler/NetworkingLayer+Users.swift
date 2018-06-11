@@ -83,7 +83,7 @@ struct NetworkStack {
         }
     }
     
-    func update(a user: BTUser, callback: @escaping (Result<BTUser, BTAPIUserError>) -> ()) {
+    func update(a user: BTUser, callback: @escaping (Result<BTUser, UserfacingErrors>) -> ()) {
         apiService.request(.updateUser(user)) { (result) in
             switch result {
             case .success(let response):
@@ -94,15 +94,12 @@ struct NetworkStack {
                     callback(.success(user))
                 } catch {
 
-                    // FIXME: do some thing useful with the error
-                    let errors = BTAPIUserError(errors: ["Something went wrong"])
+                    let errors = UserfacingErrors.serverError(message: response.data)
                     callback(.failure(errors))
                 }
-
-                // do some shit
+                
             case .failure(let err):
-                // FIXME: do some thing useful with the error
-                let errors = BTAPIUserError(errors: [err.localizedDescription])
+                let errors = UserfacingErrors.somethingWentWrong(message: err.localizedDescription)
                 callback(.failure(errors))
             }
         }
