@@ -58,7 +58,7 @@ class TripDetailedViewModel {
             case .success(let returnedTrip):
                 unwrappedSelf.delegate.viewModel(unwrappedSelf, didUpdate: returnedTrip)
             case .failure(let err):
-                debugPrint("failed to pull trip: \(err.localizedDescription)")
+                debugPrint("failed to pull trip: \(err.description)")
                 unwrappedSelf.delegate.viewModel(unwrappedSelf, didRecieve: err.errors)
             }
         }
@@ -91,6 +91,12 @@ extension TripDetailedViewModel {
     func updateDates(start: Date?, end: Date?) {
         self.trip.startDate = start
         self.trip.endDate = end
+        self.pushTrip()
+    }
+    
+    func updateNotes(with newNotes: String) {
+        trip.notes = newNotes
+        
         self.pushTrip()
     }
     
