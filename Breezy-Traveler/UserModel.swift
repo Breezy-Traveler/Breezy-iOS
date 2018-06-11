@@ -14,15 +14,16 @@ struct BTUser: Codable {
     let username: String
     let email: String
     let token: String?
+    let imageUrl: URL?
+    let imageData: Data?
+    
     
     static func getStoredUser() -> BTUser {
         let userPersistence = UserPersistence()
         guard let currentUser = userPersistence.getCurrentUser() else {
-            
-            // Added to test: otherwise app crashes
-            let user = BTUser(id: 99, name: "defaultUser", username: "defaultUserName", email: "default@mail.com", token: "lkjashfklukasjf")
-            return user
-//            fatalError("No Current User Data")
+
+            // FIXME: crashing the app
+            fatalError("No Current User Data")
         }
         return currentUser
     }
