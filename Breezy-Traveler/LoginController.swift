@@ -83,13 +83,18 @@ class LoginController: UIViewController {
     
     @objc func handleLogin() {
         guard let username = usernameTextField.text, let password = passwordTextField.text else {
-            fatalError("Invalid form")
+            return assertionFailure("username or password textfeilds are nil")
         }
         
+        guard let name = usernameTextField.text, name.count > 0 else {
+            // popup an alert view that username can't be blank
+            self.present(AlertViewController.showUsernameAlert(), animated: true, completion: nil)
+            return
+        }
         
         let userLogin = UserLogin(username: username, password: password)
 
-        networkStack.login(a: userLogin) {[weak self] (result) in
+        networkStack.login(a: userLogin) { [weak self] (result) in
             guard let unwrappedSelf = self else { return }
             
             switch result {
@@ -103,10 +108,9 @@ class LoginController: UIViewController {
                     unwrappedSelf.dismiss(animated: true, completion: nil)
                 
                 case .failure(let userErrors):
-                    DispatchQueue.main.async {
-                        unwrappedSelf.present(AlertViewController.showWrongUsernameOrPAsswordAlert(), animated: true, completion: nil)
-                    }
-                print(userErrors.errors)
+                    unwrappedSelf.present(AlertViewController.showErrorAlert(message: userErrors.localizedDescription), animated: true, completion: nil)
+
+                    debugPrint(userErrors)
             }
         }
     }

@@ -44,7 +44,7 @@ struct UserErrorMessages: Error, CustomStringConvertible {
     var description: String {
         guard self.errors.count > 0 else { return "" }
         
-        var errorMessage = "Error: "
+        var errorMessage = ""
         
         let errorMessages = self.errors.map { $0.localizedDescription }
         errorMessage += errorMessages.joined(separator: ", ")
