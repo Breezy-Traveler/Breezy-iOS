@@ -13,72 +13,71 @@ import SwiftyJSON
 
 
 struct NetworkStack {
-    
+
     private(set) var apiService = MoyaProvider<BTAPIEndPoints>()
     private(set) var qodApiService = MoyaProvider<QODAPIEndPoint>()
-    
-    struct BTAPIUserError: Error {
-        var errors = [String]()
-        
-        var localizedDescription: String {
-            return self.errors.reduce("", { $0 + "\($1)\n"} )
-        }
-    }
-    
-    
+
     // MARK: - User Login
-    func register(a user: UserRegister, callback: @escaping (Result<BTUser, BTAPIUserError>) -> ()) {
+    func register(a user: UserRegister, callback: @escaping (Result<BTUser, UserfacingErrors>) -> ()) {
         /// handles the response data after the networkService has fired and come back with a result
         apiService.request(.registerUser(user)) { (result) in
-            
+
             switch result {
             case .success(let response):
-                
+
                 switch response.statusCode {
                 case 201:
                     guard let user = try? JSONDecoder().decode(BTUser.self, from: response.data) else {
-                        return assertionFailure("JSON data not decodable")
+                        assertionFailure("JSON data not decodable")
+
+                        let errors = UserfacingErrors.somethingWentWrong()
+                        return callback(.failure(errors))
                     }
-                    
+
                     callback(.success(user))
                 case 422:
-                    let errors = BTAPIUserError(errors: ["Unprocessable entity"])
+                    let errors = UserfacingErrors(userData: response.data)
                     callback(.failure(errors))
-                    
+
                 default:
-                    let errors = BTAPIUserError(errors: ["Server Error"])
+                    let errors = UserfacingErrors.serverError(message: response.data)
                     callback(.failure(errors))
                 }
-                
+
             case .failure(let err):
-                let errors = BTAPIUserError(errors: [err.localizedDescription])
+                let errors = UserfacingErrors.somethingWentWrong(message: err.localizedDescription)
                 callback(.failure(errors))
             }
         }
     }
-    
-    func login(a user: UserLogin, callback: @escaping (Result<BTUser, BTAPIUserError>) -> ()) {
+
+    func login(a user: UserLogin, callback: @escaping (Result<BTUser, UserfacingErrors>) -> ()) {
         apiService.request(.loginUser(user)) { (result) in
             switch result {
             case .success(let response):
-                
+
                 // FIXME: handle 401 (invalid credentials)
                 switch response.statusCode {
                 case 201:
                     guard let user = try? JSONDecoder().decode(BTUser.self, from: response.data) else {
-                        return assertionFailure("JSON data not decodable")
+                        assertionFailure("JSON data not decodable")
+
+                        let errors = UserfacingErrors.somethingWentWrong()
+                        return callback(.failure(errors))
                     }
                     callback(.success(user))
-                
+
                 case 401:
-                    let errors = BTAPIUserError(errors: ["Invalid Credentials"])
+                    let errors = UserfacingErrors.invalidCredentials()
                     callback(.failure(errors))
+
                 default:
-                    return assertionFailure("\(response.statusCode)")
+                    let errors = UserfacingErrors.serverError(message: response.data)
+                    callback(.failure(errors))
                 }
-                
+
             case .failure(let err):
-                let errors = BTAPIUserError(errors: [err.localizedDescription])
+                let errors = UserfacingErrors.somethingWentWrong(message: err.localizedDescription)
                 callback(.failure(errors))
             }
         }
@@ -94,12 +93,12 @@ struct NetworkStack {
                     let user = try JSONDecoder().decode(BTUser.self, from: response.data)
                     callback(.success(user))
                 } catch {
-                    
+
                     // FIXME: do some thing useful with the error
                     let errors = BTAPIUserError(errors: ["Something went wrong"])
                     callback(.failure(errors))
                 }
-                
+
                 // do some shit
             case .failure(let err):
                 // FIXME: do some thing useful with the error
@@ -110,8 +109,3 @@ struct NetworkStack {
     }
 
 }
-
-
-
-
-

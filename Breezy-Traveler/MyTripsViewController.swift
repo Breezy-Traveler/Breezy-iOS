@@ -67,7 +67,7 @@ class MyTripsViewController: UIViewController {
                 
                 //TODO: present errors differently, perhaps
                 // prompt user of error
-                UIAlertController(title: "Fetching Published Trips", message: err.localizedDescription, preferredStyle: .alert)
+                UIAlertController(title: "Fetching Published Trips", message: err.description, preferredStyle: .alert)
                     .addDismissButton()
                     .present(in: self)
             }
