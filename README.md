@@ -1,10 +1,10 @@
 # Breezy Traveler!
 
-A socail platform for travelers!
+A social platform for travelers!
 
 ## Motivation
 
-Something good :) 
+Sharing travel plans, and discovering the world. 
 
 ![breezy traveler](https://user-images.githubusercontent.com/1758210/41187117-e2eeda9c-6b57-11e8-86d2-147544b385c4.png)
 
