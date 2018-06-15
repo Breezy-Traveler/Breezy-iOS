@@ -69,5 +69,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>Base Url</key>
+	<string>$(BASE_URL)</string>
 </dict>
 </plist>
