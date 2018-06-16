@@ -15,7 +15,7 @@ struct BTUser: Codable {
     let email: String
     let token: String?
     let imageUrl: URL?
-    let imageData: Data?
+    let avatar: Data?
     
     
     static func getStoredUser() -> BTUser {
