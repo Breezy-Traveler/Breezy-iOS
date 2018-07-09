@@ -44,6 +44,11 @@ class PublishedTripsVc: UIViewController {
         }
     }
     
+    /**
+     reloads the table
+     
+     - parameter trips: if not nil, `publishedTrips` is updated to the given trips
+     */
     private func reloadTable(for trips: [BTTrip]? = nil) {
         if let newTrips = trips {
             self.publishedTrips = newTrips
@@ -136,6 +141,8 @@ extension PublishedTripsVc: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchTerm = searchBar.text {
             loadTrips(for: searchTerm)
+            
+            searchBar.resignFirstResponder()
         }
     }
 }
