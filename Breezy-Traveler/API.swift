@@ -24,6 +24,7 @@ enum BTAPIEndPoints {
 
     // Published Trips
     case loadPublishedTrips(fetchAll: Bool)
+    case searchPublishedTrips(searchTerm: String)
 
     // Hotels
     case createHotel(BTHotel, for: BTTrip)
@@ -87,7 +88,7 @@ extension BTAPIEndPoints: TargetType {
             return "/users/trips/\(id)"
 
         // Published Trips
-        case .loadPublishedTrips:
+        case .loadPublishedTrips, .searchPublishedTrips:
             return "/published_trips"
 
         // Hotels
@@ -148,7 +149,7 @@ extension BTAPIEndPoints: TargetType {
             return .delete
 
         // Published Trips
-        case .loadPublishedTrips:
+        case .loadPublishedTrips, .searchPublishedTrips:
             return .get
 
         // Hotels
@@ -202,6 +203,8 @@ extension BTAPIEndPoints: TargetType {
         // Published Trips
         case .loadPublishedTrips(let fetchAllTrips):
             return .requestParameters(parameters: ["fetch_all" : fetchAllTrips], encoding: URLEncoding.default)
+        case .searchPublishedTrips(let searchTerm):
+            return .requestParameters(parameters: ["search_term" : searchTerm], encoding: URLEncoding.default)
 
         // Hotels
         case .createHotel(let hotel, for: _):

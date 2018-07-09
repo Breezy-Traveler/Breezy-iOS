@@ -169,8 +169,31 @@ extension NetworkStack {
         }
     }
     
-    func loadPublishedTrips(for searchTerm: String, completion: @escaping (Result<[BTTrip], UserfacingErrors>) -> ()) {
-        //TODO: implement
+    func loadPublishedTrips(for searchTerm: String, callback: @escaping (Result<[BTTrip], UserfacingErrors>) -> ()) {
+        apiService.request(.searchPublishedTrips(searchTerm: searchTerm)) { (result) in
+            switch result {
+                
+            case .success(let response):
+                switch response.statusCode {
+                case 200:
+                    guard let trips = try? JSONDecoder().decode([BTTrip].self, from: response.data) else {
+                        assertionFailure("JSON data not decodable")
+                        
+                        let errors = UserfacingErrors.somethingWentWrong()
+                        return callback(.failure(errors))
+                    }
+                    
+                    callback(.success(trips))
+                default:
+                    let errors = UserfacingErrors.serverError(message: response.data)
+                    callback(.failure(errors))
+                }
+                
+            case .failure(let err):
+                let errors = UserfacingErrors.somethingWentWrong(message: err.localizedDescription)
+                callback(.failure(errors))
+            }
+        }
     }
 }
 

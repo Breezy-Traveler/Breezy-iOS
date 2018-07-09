@@ -19,6 +19,9 @@ class PublishedTripTableViewCell: UITableViewCell {
         
         // last published date
         //TODO: display last publishe date
+        let nHotels = trip.hotels.count
+        let nSites = trip.sites.count
+        self.lastDatePublished.text = "Hotels: \(nHotels) Sites: \(nSites)"
         
         // cover image
 //        if let coverImageUrl =  trip.coverImageUrl {
