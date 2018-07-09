@@ -25,7 +25,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var fullnameLabel: UILabel!
-
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     // Views
     override func viewDidLoad() {
@@ -70,9 +70,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         userPersistence.logoutUser()
         let loginViewController = LoginController()
         self.present(loginViewController, animated: false, completion: nil)
-        
-        // clear the image from the device storage
-        userPersistence.removeUserProfileImage()
     }
     
     func updateLabels() {
@@ -98,6 +95,24 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(singleTap)
     }
+    
+    /** displays a loading indicator when true, hidden when false */
+    private var isUploadingUserAvatar: Bool {
+        set {
+            if newValue {
+                loadingIndicator.startAnimating()
+                loadingIndicator.isHidden = false
+                imageView.alpha = 0.6
+            } else {
+                loadingIndicator.stopAnimating()
+                loadingIndicator.isHidden = true
+                imageView.alpha = 1
+            }
+        }
+        get {
+            return loadingIndicator.isAnimating
+        }
+    }
 
     // Fixes the orientation of the profile image
     private func fixOrientation(img: UIImage) -> UIImage {
@@ -121,23 +136,27 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
         
         let rotatedImage = fixOrientation(img: pickedImage)
+        isUploadingUserAvatar = true
         
-        networkStack.update(a: currentUser) { (result) in
-            switch result {
-            case .success(let user):
+        userPersistence.updateUserProfileImage(image: rotatedImage, for: currentUser) { (user) in
+            if let updatedUser = user {
+                self.currentUser = updatedUser
+                
                 self.imageView.contentMode = .scaleAspectFill
                 self.imageView.image = pickedImage
                 
                 // Updating the user with the url of their profile image
-                self.userPersistence.setCurrentUser(currentUser: user)
+                self.userPersistence.setCurrentUser(currentUser: updatedUser)
                 
-            case .failure:
+            } else {
+                
                 // display an alert view letting user know it failed
                 let av = AlertViewController.showNoImageAlert()
                 self.present(av, animated: true, completion: nil)
             }
+            
+            self.isUploadingUserAvatar = false
         }
-        userPersistence.storeUserProfileImage(image: rotatedImage)
         
         
         dismiss(animated: true, completion: nil)

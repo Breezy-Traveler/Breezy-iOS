@@ -14,9 +14,18 @@ struct BTUser: Codable {
     let username: String
     let email: String
     let token: String?
-    let imageUrl: URL?
-    let avatar: Data?
+    let avatarUrl: URL?
+    var avatar: Data?
     
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case username
+        case email
+        case token
+        case avatarUrl = "avatar_url"
+        case avatar
+    }
     
     static func getStoredUser() -> BTUser {
         let userPersistence = UserPersistence()

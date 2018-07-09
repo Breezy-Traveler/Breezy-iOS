@@ -105,7 +105,7 @@ extension UIImageView {
     
     func setUserProfileImage(currentUser: BTUser) {
         // TODO: Refactor to something else
-        if let imageUrl = currentUser.imageUrl  {
+        if let imageUrl = currentUser.avatarUrl  {
             
             // Serve up a default image from the bundle
             self.kf.setImage(with: imageUrl)

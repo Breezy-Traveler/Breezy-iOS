@@ -16,62 +16,25 @@ struct UserPersistence {
     private let tokenKey: String = "token"
     private let currentUserKey: String = "currentUser"
     
-    
-    var userProfileURL: URL = {
-        
-        // Get the URL for where to save the image
-        guard let libraryDirectory = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first else {
-            fatalError("no access to this directory")
-        }
-        // Create a filepath name for the image store
-        let userProfileURL = libraryDirectory.appendingPathComponent("userProfile.png")
-        return userProfileURL
-    }()
-    
-    func storeUserProfileImage(image: UIImage) {
-        
-        // Convert the UIImage into Data
+    func updateUserProfileImage(image: UIImage, for user: BTUser, callback: @escaping (BTUser?) -> Void) {
         guard let imageData = UIImagePNGRepresentation(image) else {
-            return
-        }
-        // Use file manager to save the data
-        
-        do {
-            try imageData.write(to: userProfileURL)
-        } catch {
-            assertionFailure("\(error)")
-        }
-    }
-    
-    func removeUserProfileImage() {
-        let filemanager = FileManager.default
-        guard let libraryDirectory = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first else {
-            fatalError("no access to this directory")
-        }
-        let userProfileImageURL = libraryDirectory.appendingPathComponent("userProfile.png")
-        
-        try? filemanager.removeItem(at: userProfileImageURL)
-    }
-    
-    func loadUserProfileImage() -> UIImage? {
-        let currentUser = getCurrentUser()
-        
-        guard let imageUrl = currentUser?.imageUrl else {
+            assertionFailure("could not convert image into data")
             
-            // Serve up a default image from the bundle
-            return nil
+            return callback(nil)
         }
         
-        guard let imageData = try? Data(contentsOf: imageUrl) else {
-            return nil
-        }
+        var user = user
+        user.avatar = imageData
         
-        if let image = UIImage(data: imageData) {
-            return image
-            
-        } else {
-            
-            fatalError("image did not convert from data")
+        let networkStack = NetworkStack()
+        networkStack.update(a: user) { (result) in
+            switch result {
+            case .success(let user):
+                callback(user)
+                
+            case .failure:
+                callback(nil)
+            }
         }
     }
     

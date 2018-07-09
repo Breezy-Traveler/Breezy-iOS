@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -54,9 +54,14 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="KnM-EM-PK5">
+                                <rect key="frame" x="177" y="269" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="KnM-EM-PK5" firstAttribute="centerX" secondItem="gHG-nV-VM6" secondAttribute="centerX" id="coo-Sk-6K5"/>
+                            <constraint firstItem="KnM-EM-PK5" firstAttribute="centerY" secondItem="gHG-nV-VM6" secondAttribute="centerY" id="lCo-hY-bU5"/>
                             <constraint firstItem="T2E-89-QX2" firstAttribute="centerX" secondItem="EHM-Kd-F2d" secondAttribute="centerX" id="roI-uP-4Cf"/>
                             <constraint firstItem="T2E-89-QX2" firstAttribute="top" secondItem="mvB-QF-wou" secondAttribute="top" constant="47" id="ul5-aq-mTh"/>
                         </constraints>
@@ -73,6 +78,7 @@
                         <outlet property="emailLabel" destination="z8l-WS-gou" id="syt-kK-YJh"/>
                         <outlet property="fullnameLabel" destination="9BJ-2D-fBD" id="Xfl-3T-HAh"/>
                         <outlet property="imageView" destination="gHG-nV-VM6" id="e0X-ZU-9Td"/>
+                        <outlet property="loadingIndicator" destination="KnM-EM-PK5" id="OCp-OE-bmu"/>
                         <outlet property="usernameLabel" destination="Uv3-TI-N5d" id="TPD-rS-6sB"/>
                     </connections>
                 </viewController>
