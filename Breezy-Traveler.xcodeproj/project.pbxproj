@@ -67,6 +67,7 @@
 		E9DC241C207E8FE4001691C2 /* UIDatePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DC241A207E8FE4001691C2 /* UIDatePickerTableViewCell.xib */; };
 		E9DC241F207E92BD001691C2 /* UITitleClearButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DC241D207E92BD001691C2 /* UITitleClearButtonTableViewCell.swift */; };
 		E9DC2420207E92BD001691C2 /* UITitleClearButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DC241E207E92BD001691C2 /* UITitleClearButtonTableViewCell.xib */; };
+		E9E3EA6F20F4057100835BB7 /* UtilityExtensions+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E3EA6E20F4057100835BB7 /* UtilityExtensions+UIImage.swift */; };
 		E9FF77AB207FEAA90086D6D9 /* UIDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF77A9207FEAA90086D6D9 /* UIDatePickerViewController.swift */; };
 		E9FF77AC207FEAA90086D6D9 /* UIDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FF77AA207FEAA90086D6D9 /* UIDatePickerViewController.xib */; };
 /* End PBXBuildFile section */
@@ -139,6 +140,7 @@
 		E9DC241A207E8FE4001691C2 /* UIDatePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIDatePickerTableViewCell.xib; sourceTree = "<group>"; };
 		E9DC241D207E92BD001691C2 /* UITitleClearButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITitleClearButtonTableViewCell.swift; sourceTree = "<group>"; };
 		E9DC241E207E92BD001691C2 /* UITitleClearButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UITitleClearButtonTableViewCell.xib; sourceTree = "<group>"; };
+		E9E3EA6E20F4057100835BB7 /* UtilityExtensions+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtensions+UIImage.swift"; sourceTree = "<group>"; };
 		E9FF77A9207FEAA90086D6D9 /* UIDatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDatePickerViewController.swift; sourceTree = "<group>"; };
 		E9FF77AA207FEAA90086D6D9 /* UIDatePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIDatePickerViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -287,6 +289,7 @@
 				E9B1B9BE207D501B00FCBC2E /* UtilityExtensions+UIButton.swift */,
 				E9B1B9C0207D558900FCBC2E /* UtilityExtensions+UITextField.swift */,
 				E9B34743209AA13700A7B313 /* UtilityExtensions+UIViewController.swift */,
+				E9E3EA6E20F4057100835BB7 /* UtilityExtensions+UIImage.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				B9F9F18420782EAA00F0D24D /* NteworkingLayer+Images.swift in Sources */,
 				E97B4E8520CB24AD0018036D /* PublishedTripsVc.swift in Sources */,
 				E97ED75B2077EF140021B651 /* UIButtonCell.swift in Sources */,
+				E9E3EA6F20F4057100835BB7 /* UtilityExtensions+UIImage.swift in Sources */,
 				E9B1B9C3207D604B00FCBC2E /* ExploreTripsVC.swift in Sources */,
 				E996A4B920CCD48900A0038E /* TripDetailedNotesViewController.swift in Sources */,
 				E91A196720840D0C00CEE74A /* TripDetailedViewController.swift in Sources */,

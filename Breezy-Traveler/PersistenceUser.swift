@@ -17,7 +17,8 @@ struct UserPersistence {
     private let currentUserKey: String = "currentUser"
     
     func updateUserProfileImage(image: UIImage, for user: BTUser, callback: @escaping (BTUser?) -> Void) {
-        guard let imageData = UIImagePNGRepresentation(image) else {
+        let scaledImage = image.scaled(to: CGSize(width: 256, height: 256))
+        guard let imageData = UIImagePNGRepresentation(scaledImage) else {
             assertionFailure("could not convert image into data")
             
             return callback(nil)

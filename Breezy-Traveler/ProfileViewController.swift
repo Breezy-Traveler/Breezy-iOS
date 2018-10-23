@@ -102,7 +102,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             if newValue {
                 loadingIndicator.startAnimating()
                 loadingIndicator.isHidden = false
-                imageView.alpha = 0.6
+                imageView.alpha = 0.45
             } else {
                 loadingIndicator.stopAnimating()
                 loadingIndicator.isHidden = true
@@ -162,15 +162,15 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerController(didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
-            // FIXME: add a default image instead of throwing an error
-            fatalError("problem getting image")
-        }
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = pickedImage
-        dismiss(animated: true, completion: nil)
-    }
+//    func imagePickerController(didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+//        guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+//            // FIXME: add a default image instead of throwing an error
+//            fatalError("problem getting image")
+//        }
+//        imageView.contentMode = .scaleAspectFit
+//        imageView.image = pickedImage
+//        dismiss(animated: true, completion: nil)
+//    }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)

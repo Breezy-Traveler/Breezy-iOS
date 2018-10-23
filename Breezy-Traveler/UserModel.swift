@@ -14,7 +14,24 @@ struct BTUser: Codable {
     let username: String
     let email: String
     let token: String?
-    let avatarUrl: URL?
+    private var _avatarUrl: String
+    var avatarUrl: URL? {
+        set {
+            if let newUrl = newValue {
+                self._avatarUrl = newUrl.absoluteString
+            } else {
+                self._avatarUrl = "/avatars/original/missing.png"
+            }
+        }
+        get {
+            if self._avatarUrl == "/avatars/original/missing.png" || self._avatarUrl == "" {
+                return nil
+            } else {
+                return URL(string: self._avatarUrl)
+            }
+        }
+    }
+    
     var avatar: Data?
     
     enum CodingKeys: String, CodingKey {
@@ -23,7 +40,7 @@ struct BTUser: Codable {
         case username
         case email
         case token
-        case avatarUrl = "avatar_url"
+        case _avatarUrl = "avatar_url"
         case avatar
     }
     
