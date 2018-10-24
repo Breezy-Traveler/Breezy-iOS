@@ -28,8 +28,6 @@ class MyTripsViewController: UIViewController {
         profileImage.layer.cornerRadius = profileImage.frame.size.height / 2
         profileImage.layer.borderWidth = 2
         profileImage.layer.borderColor = UIColor.white.cgColor
-        
-        profileImage.setUserProfileImage(currentUser: currentUser)
     }
     
     func setupUserDataDisplay() {
@@ -158,6 +156,7 @@ class MyTripsViewController: UIViewController {
                 self.loadUserTrips()
                 self.loadPublishedTrips()
                 self.setupUserDataDisplay()
+                self.profileImage.setUserProfileImage(currentUser: self.currentUser)
                 //TODO: show loading indicator
             }
         }
