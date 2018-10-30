@@ -78,7 +78,7 @@ struct BTTrip: Codable {
     var sites: [BTSite]
     var coverImageUrl: URL?
     var isPublic: Bool
-    var notes: String
+    var notes: String?
     
     enum CodingKeys: String, CodingKey {
         case idValue = "id"
