@@ -17,7 +17,7 @@ extension NetworkStack {
         /// handles the response data after the networkService has fired and come back with a result
         apiService.request(.loadTrips(user)) { (result) in
             switch result {
-                
+            
             case .success(let response):
                 
                 switch response.statusCode {
@@ -69,7 +69,7 @@ extension NetworkStack {
         }
     }
     
-    func showTrip(for id: Int, callback: @escaping (Result<BTTrip, UserfacingErrors>) -> ()) {
+    func showTrip(for id: String, callback: @escaping (Result<BTTrip, UserfacingErrors>) -> ()) {
         apiService.request(.showTrip(forTripID: id)) { (result) in
             switch result {
             case .success(let response):

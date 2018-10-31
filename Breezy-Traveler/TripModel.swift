@@ -9,10 +9,10 @@
 import Foundation
 
 struct BTTrip: Codable {
-    let idValue: Int?
+    let idValue: String?
     
     /** A helper var to return the unwrapped idValue of trip */
-    var id: Int {
+    var id: String {
         get {
             guard let id = self.idValue else {
                 fatalError("trip did not have an id")
@@ -81,19 +81,19 @@ struct BTTrip: Codable {
     var notes: String?
     
     enum CodingKeys: String, CodingKey {
-        case idValue = "id"
+        case idValue = "_id"
         case place
-        case _startDate = "start_date"
-        case _endDate = "end_date"
+        case _startDate = "startDate"
+        case _endDate = "endDate"
         case hotels
         case sites
-        case coverImageUrl = "cover_image_url"
-        case isPublic = "is_public"
+        case coverImageUrl
+        case isPublic
         case notes
     }
     
     init(
-        id: Int? = nil,
+        id: String? = nil,
         place: String,
         startDate: Date? = nil,
         endDate: Date? = nil,

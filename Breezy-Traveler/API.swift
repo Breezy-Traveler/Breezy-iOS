@@ -18,7 +18,7 @@ enum BTAPIEndPoints {
     // Trips
     case createTrip(BTTrip)
     case loadTrips(BTUser)
-    case showTrip(forTripID: Int)
+    case showTrip(forTripID: String)
     case updateTrip(BTTrip)
     case deleteTrip(BTTrip)
 
@@ -73,19 +73,24 @@ extension BTAPIEndPoints: TargetType {
 
         // Trips
         case .createTrip, .loadTrips:
-            return "/users/trips"
+//            return "/users/trips"
+            return "/trips"
 
         case .showTrip(forTripID: let id):
-            return "/users/trips/\(id)"
+//            return "/users/trips/\(id)"
+            return "/trips/\(id)"
 
         case .updateTrip(let trip):
             let id = trip.id
 
-            return "/users/trips/\(id)"
+//            return "/users/trips/\(id)"
+            return "/trips/\(id)"
 
         case .deleteTrip(let trip):
             let id = trip.id
-            return "/users/trips/\(id)"
+            
+//            return "/users/trips/\(id)"
+            return "/trips/\(id)"
 
         // Published Trips
         case .loadPublishedTrips, .searchPublishedTrips:
@@ -144,7 +149,7 @@ extension BTAPIEndPoints: TargetType {
         case .loadTrips, .showTrip:
             return .get
         case .updateTrip:
-            return .patch
+            return .post
         case .deleteTrip:
             return .delete
 

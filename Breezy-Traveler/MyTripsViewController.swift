@@ -58,6 +58,9 @@ class MyTripsViewController: UIViewController {
     }
     
     func loadPublishedTrips() {
+        //TODO: published trips
+        return ()
+        
         networkStack.loadPublishedTrips(fetchAllTrips: false) { (result) in
             switch result {
             case .success(let publishedTrips):

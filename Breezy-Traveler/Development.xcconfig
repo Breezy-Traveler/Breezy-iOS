@@ -8,4 +8,4 @@
 
 #include "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.development.xcconfig"
 
-BASE_URL=http:\/\/localhost:3000
+BASE_URL=http:\/\/localhost:8080

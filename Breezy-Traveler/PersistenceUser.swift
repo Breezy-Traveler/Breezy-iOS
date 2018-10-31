@@ -120,6 +120,8 @@ struct UserPersistence {
     
     func checkUserLoggedIn(callback: @escaping (Bool) -> ()) {
         
+        return callback(true)
+        
         let networkStack = NetworkStack()
 //        let keychain = KeychainSwift()
         guard let userCredentials = getUserLoginCredentials() else {
