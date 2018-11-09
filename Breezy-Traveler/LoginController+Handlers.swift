@@ -43,7 +43,7 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
         }
 
         // Set the criteria to register the user, and to log in the user
-        let userRegister = UserRegister(name: name, username: username, password: password, email: email)
+        let userRegister = UserRegister(username: username, password: password, email: email)
         
         // Ask the API to register the user
         networkStack.register(a: userRegister) { [weak self] (result) in
@@ -54,7 +54,11 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
             switch result {
                     
             // The user was registered into the database
-            case .success:
+            case .success(let registeredUser):
+                print(registeredUser)
+                
+                return ()
+                
                 let userLogin = UserLogin(username: username, password: password)
                         
                 // Auto login the user and navigate to the MyTripsView

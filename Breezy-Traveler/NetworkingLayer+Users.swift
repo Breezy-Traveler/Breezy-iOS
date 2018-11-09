@@ -18,7 +18,7 @@ struct NetworkStack {
     private(set) var qodApiService = MoyaProvider<QODAPIEndPoint>()
     
     // MARK: - User Login
-    func register(a user: UserRegister, callback: @escaping (Result<BTUser, UserfacingErrors>) -> ()) {
+    func register(a user: UserRegister, callback: @escaping (Result<User, UserfacingErrors>) -> ()) {
         /// handles the response data after the networkService has fired and come back with a result
         apiService.request(.registerUser(user)) { (result) in
             
@@ -27,7 +27,7 @@ struct NetworkStack {
                 
                 switch response.statusCode {
                 case 201:
-                    guard let user = try? JSONDecoder().decode(BTUser.self, from: response.data) else {
+                    guard let user = try? JSONDecoder().decode(User.self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -35,7 +35,7 @@ struct NetworkStack {
                     }
                     
                     callback(.success(user))
-                case 422:
+                case 401:
                     let errors = UserfacingErrors(userData: response.data)
                     callback(.failure(errors))
                     
@@ -51,15 +51,15 @@ struct NetworkStack {
         }
     }
     
-    func login(a user: UserLogin, callback: @escaping (Result<BTUser, UserfacingErrors>) -> ()) {
+    func login(a user: UserLogin, callback: @escaping (Result<User, UserfacingErrors>) -> ()) {
         apiService.request(.loginUser(user)) { (result) in
             switch result {
             case .success(let response):
                 
                 // FIXME: handle 401 (invalid credentials)
                 switch response.statusCode {
-                case 201:
-                    guard let user = try? JSONDecoder().decode(BTUser.self, from: response.data) else {
+                case 200:
+                    guard let user = try? JSONDecoder().decode(User.self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()

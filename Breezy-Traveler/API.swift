@@ -66,7 +66,7 @@ extension BTAPIEndPoints: TargetType {
 
         // Users
         case .registerUser:
-            return "/register"
+            return "/signup"
 
         case .loginUser:
             return "/login"

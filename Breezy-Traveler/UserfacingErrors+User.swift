@@ -19,26 +19,16 @@ extension UserfacingErrors {
      values of array which contain strings
      */
     init(userData: Data) {
-        guard let errorValues = try? JSONDecoder().decode([String: [String]].self, from: userData) else {
+        guard let errorValues = try? JSONDecoder().decode([String: String].self, from: userData) else {
             self.errors = []
             
             return
         }
         
-        var errors = [String]()
+        self.errors = []
         
-        if let emailError = errorValues["email"] {
-            if emailError.contains("has already been taken") {
-                errors.append("email already taken")
-            }
+        if let errorMessage = errorValues["Error"] {
+            self.errors.append(errorMessage)
         }
-        
-        if let usernameError = errorValues["username"] {
-            if usernameError.contains("has already been taken") {
-                errors.append("username already taken")
-            }
-        }
-        
-        self.errors = errors
     }
 }

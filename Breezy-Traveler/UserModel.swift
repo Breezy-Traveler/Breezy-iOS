@@ -98,8 +98,7 @@ struct BTUser: Codable {
     }
 }
 
-struct UserRegister: Codable {    
-    let name: String
+struct UserRegister: Codable {
     let username: String
     let password: String
     let email: String
