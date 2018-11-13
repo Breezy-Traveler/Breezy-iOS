@@ -29,19 +29,10 @@ struct User: Codable {
     }
     var facebook: Facebook?
     
-    struct Google: Codable {
-        var id: String
-        var token: String
-        var email: String
-        var name: String
-    }
-    var google: Google?
-    
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case local
         case facebook
-        case google
     }
     
     var username: String {
@@ -49,8 +40,6 @@ struct User: Codable {
             return localUser.username
         } else if let facebook = self.facebook {
             return facebook.name
-        } else if let google = self.google {
-            return google.name
         } else {
             assertionFailure("no user provider found")
             
@@ -63,8 +52,6 @@ struct User: Codable {
             return localUser.email
         } else if let facebook = self.facebook {
             return facebook.email
-        } else if let google = self.google {
-            return google.email
         } else {
             assertionFailure("no user provider found")
             
@@ -77,8 +64,6 @@ struct User: Codable {
             return localUser.token
         } else if let facebook = self.facebook {
             return facebook.token
-        } else if let google = self.google {
-            return google.token
         } else {
             assertionFailure("no user provider found")
             
@@ -88,28 +73,17 @@ struct User: Codable {
     
     // MARK: - RETURN VALUES
     
-    // MARK: - METHODS
-}
-
-struct BTUser: Codable {
-    let id: Int
-    let name: String
-    let username: String
-    let email: String
-    let token: String?
-    let imageUrl: URL?
-    let imageData: Data?
-    
-    
-    static func getStoredUser() -> BTUser {
+    static func getStoredUser() -> User {
         let userPersistence = UserPersistence()
         guard let currentUser = userPersistence.getCurrentUser() else {
-
+            
             // FIXME: crashing the app
             fatalError("No Current User Data")
         }
         return currentUser
     }
+    
+    // MARK: - METHODS
 }
 
 struct UserRegister: Codable {

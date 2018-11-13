@@ -9,7 +9,7 @@
 import Foundation
 
 protocol TripDetailedViewModelDelegate: class {
-    func viewModel(_ model: TripDetailedViewModel, didUpdate trip: BTTrip)
+    func viewModel(_ model: TripDetailedViewModel, didUpdate trip: Trip)
     func viewModel(_ model: TripDetailedViewModel, didRecieve errors: [String])
 }
 
@@ -18,7 +18,7 @@ class TripDetailedViewModel {
     
     private var network = NetworkStack()
     
-    var trip: BTTrip!
+    var trip: Trip!
     
     unowned var delegate: TripDetailedViewModelDelegate
     

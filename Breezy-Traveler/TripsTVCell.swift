@@ -14,7 +14,7 @@ class TripsTVCell: UITableViewCell {
     
     // MARK: - VOID METHODS
     
-    func configure(_ trip: BTTrip) {
+    func configure(_ trip: Trip) {
         
         // start date
         if let startDate = trip.startDate {

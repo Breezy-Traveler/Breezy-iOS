@@ -14,7 +14,7 @@ class ExploreTripsCollectionViewCell: UICollectionViewCell {
     
     // MARK: - VOID METHODS
     
-    func configure(_ trip: BTTrip) {
+    func configure(_ trip: Trip) {
         
         self.placeLabel.text = trip.place
         self.placeLabel.layer.shadowColor = UIColor.black.cgColor

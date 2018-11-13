@@ -16,7 +16,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     // Variables
     let networkStack = NetworkStack()
     let userPersistence = UserPersistence()
-    var currentUser = BTUser.getStoredUser()
+    var currentUser = User.getStoredUser()
     let imagePicker = UIImagePickerController()
 
     // Mark: IBOutlets
@@ -79,7 +79,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     func updateLabels() {
         usernameLabel.text = currentUser.username
         emailLabel.text = currentUser.email
-        fullnameLabel.text = currentUser.name
+        fullnameLabel.text = currentUser.username
     }
     
     func setupTextProperties() {

@@ -76,9 +76,9 @@ struct UserPersistence {
         setUserToken(token: currentUser.token)
     }
     
-    func getCurrentUser() -> BTUser? {
+    func getCurrentUser() -> User? {
         let keychain = KeychainSwift()
-        guard let currentUserData = keychain.getData(currentUserKey), let currentUser = try? JSONDecoder().decode(BTUser.self, from: currentUserData) else {
+        guard let currentUserData = keychain.getData(currentUserKey), let currentUser = try? JSONDecoder().decode(User.self, from: currentUserData) else {
             return nil
         }
         return currentUser

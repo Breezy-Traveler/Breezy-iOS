@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct BTTrip: Codable {
+struct Trip: Codable {
     let idValue: String?
     
     /** A helper var to return the unwrapped idValue of trip */

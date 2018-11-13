@@ -12,7 +12,7 @@ import Result
 import SwiftyJSON
 
 extension NetworkStack {
-    func create(a site: BTSite, for trip: BTTrip, callback: @escaping (Result<BTSite, UserfacingErrors>) -> ()) {
+    func create(a site: BTSite, for trip: Trip, callback: @escaping (Result<BTSite, UserfacingErrors>) -> ()) {
         apiService.request(.createSite(site, for: trip)) { (result) in
             switch result {
             case .success(let response):
@@ -42,7 +42,7 @@ extension NetworkStack {
         }
     }
     
-    func loadSites(for trip: BTTrip, callback: @escaping (Result<[BTSite], UserfacingErrors>) -> ()) {
+    func loadSites(for trip: Trip, callback: @escaping (Result<[BTSite], UserfacingErrors>) -> ()) {
         apiService.request(.loadSites(for: trip)) { (result) in
             switch result {
             case .success(let response):
@@ -68,7 +68,7 @@ extension NetworkStack {
         }
     }
     
-    func showSite(for siteId: Int, for trip: BTTrip, callback: @escaping (Result<BTSite, UserfacingErrors>) -> ()) {
+    func showSite(for siteId: Int, for trip: Trip, callback: @escaping (Result<BTSite, UserfacingErrors>) -> ()) {
         apiService.request(.showSite(forSiteId: siteId, for: trip)) { (result) in
             switch result {
             case .success(let response):
@@ -94,7 +94,7 @@ extension NetworkStack {
         }
     }
     
-    func update(site: BTSite, for trip: BTTrip, callback: @escaping (Result<BTSite, UserfacingErrors>) -> ()) {
+    func update(site: BTSite, for trip: Trip, callback: @escaping (Result<BTSite, UserfacingErrors>) -> ()) {
         apiService.request(.updateSite(site, for: trip)) { (result) in
             switch result {
             case .success(let response):
@@ -120,7 +120,7 @@ extension NetworkStack {
         }
     }
     
-    func delete(site: BTSite, for trip: BTTrip, callback: @escaping (Result<String, UserfacingErrors>) -> ()) {
+    func delete(site: BTSite, for trip: Trip, callback: @escaping (Result<String, UserfacingErrors>) -> ()) {
         apiService.request(.deleteSite(site, for: trip)) { (result) in
             switch result {
             case .success(let response):

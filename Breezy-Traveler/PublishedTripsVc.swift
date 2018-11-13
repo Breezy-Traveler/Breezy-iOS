@@ -13,7 +13,7 @@ class PublishedTripsVc: UIViewController {
     
     private var networkStack = NetworkStack()
     
-    private var publishedTrips = [BTTrip]() {
+    private var publishedTrips = [Trip]() {
         didSet {
             table.reloadData()
         }
@@ -49,7 +49,7 @@ class PublishedTripsVc: UIViewController {
      
      - parameter trips: if not nil, `publishedTrips` is updated to the given trips
      */
-    private func reloadTable(for trips: [BTTrip]? = nil) {
+    private func reloadTable(for trips: [Trip]? = nil) {
         if let newTrips = trips {
             self.publishedTrips = newTrips
         }

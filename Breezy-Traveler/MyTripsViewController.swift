@@ -10,11 +10,11 @@ import UIKit
 
 class MyTripsViewController: UIViewController {
     
-    private var trips = [BTTrip]()
-    private var publishedTrips: [BTTrip]?
+    private var trips = [Trip]()
+    private var publishedTrips: [Trip]?
     
     // FIXME: This is crashing the app
-    lazy var currentUser: BTUser = BTUser.getStoredUser()
+    lazy var currentUser: User = User.getStoredUser()
     let userPersistence = UserPersistence()
     let networkStack = NetworkStack()
     

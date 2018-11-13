@@ -16,29 +16,29 @@ enum BTAPIEndPoints {
     case loginUser(UserLogin)
 
     // Trips
-    case createTrip(BTTrip)
-    case loadTrips(BTUser)
+    case createTrip(Trip)
+    case loadTrips(User)
     case showTrip(forTripID: String)
-    case updateTrip(BTTrip)
-    case deleteTrip(BTTrip)
+    case updateTrip(Trip)
+    case deleteTrip(Trip)
 
     // Published Trips
     case loadPublishedTrips(fetchAll: Bool)
     case searchPublishedTrips(searchTerm: String)
 
     // Hotels
-    case createHotel(BTHotel, for: BTTrip)
-    case loadHotels(for: BTTrip)
-    case showHotel(forHotelId: Int, for: BTTrip)
-    case updateHotel(BTHotel, for: BTTrip)
-    case deleteHotel(BTHotel, for: BTTrip)
+    case createHotel(BTHotel, for: Trip)
+    case loadHotels(for: Trip)
+    case showHotel(forHotelId: Int, for: Trip)
+    case updateHotel(BTHotel, for: Trip)
+    case deleteHotel(BTHotel, for: Trip)
 
     // Sites
-    case createSite(BTSite, for: BTTrip)
-    case loadSites(for: BTTrip)
-    case showSite(forSiteId: Int, for: BTTrip)
-    case updateSite(BTSite, for: BTTrip)
-    case deleteSite(BTSite, for: BTTrip)
+    case createSite(BTSite, for: Trip)
+    case loadSites(for: Trip)
+    case showSite(forSiteId: Int, for: Trip)
+    case updateSite(BTSite, for: Trip)
+    case deleteSite(BTSite, for: Trip)
 
     // Images
     case loadTenImages(String)
