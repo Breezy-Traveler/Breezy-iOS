@@ -72,6 +72,20 @@ struct User: Codable {
         }
     }
     
+    var token: String {
+        if let localUser = self.local {
+            return localUser.token
+        } else if let facebook = self.facebook {
+            return facebook.token
+        } else if let google = self.google {
+            return google.token
+        } else {
+            assertionFailure("no user provider found")
+            
+            return "null"
+        }
+    }
+    
     // MARK: - RETURN VALUES
     
     // MARK: - METHODS
