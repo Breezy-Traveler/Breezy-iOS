@@ -13,70 +13,28 @@ import KeychainSwift
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    // Variables
+    // MARK: - VARS
+    
     let networkStack = NetworkStack()
     let userPersistence = UserPersistence()
-    var currentUser = User.getStoredUser()
+    var currentUser: User!
     let imagePicker = UIImagePickerController()
-
-    // Mark: IBOutlets
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var fullnameLabel: UILabel!
-
     
-    // Views
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = UIColor(r: 61, g: 91, b: 151)
-        imagePicker.delegate = self
-        
-        // Set the navigation bar appearence for the entire app
-        let navigationBarAppearace = UINavigationBar.appearance()
-
-        // change navigation item title color
-        navigationBarAppearace.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        navigationBarAppearace.tintColor = UIColor.white
-        navigationBarAppearace.barTintColor = UIColor(r: 61, g: 91, b: 151)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        updateLabels()
-        setupimageViewProperties()
-        setupTextProperties()
-        
-        if let storedImage = userPersistence.loadUserProfileImage() {
-            imageView.image = storedImage
-        }
-    }
-
-    lazy var singleTap: UITapGestureRecognizer = {
+    private lazy var singleTap: UITapGestureRecognizer = {
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(tapDetected))
         singleTap.numberOfTapsRequired = 1
         return singleTap
     }()
     
-
-    // Actions
-    @objc func tapDetected() {
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
-    }
+    // MARK: - RETURN VALUES
     
-    @IBAction func pressedLogout(_ sender: UIBarButtonItem) {
-        let userPersistence = UserPersistence()
-        userPersistence.logoutUser()
-        let loginViewController = LoginController()
-        self.present(loginViewController, animated: false, completion: nil)
+    // MARK: - METHODS
+    
+    private func updateUI() {
+        if let storedImage = userPersistence.loadUserProfileImage() {
+            imageView.image = storedImage
+        }
         
-        // clear the image from the device storage
-        userPersistence.removeUserProfileImage()
-    }
-    
-    func updateLabels() {
         usernameLabel.text = currentUser.username
         emailLabel.text = currentUser.email
         fullnameLabel.text = currentUser.username
@@ -90,8 +48,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func setupimageViewProperties() {
         /* Set the imageView to a circle
-           Add a border around the imageView
-           Set the color to white */
+         Add a border around the imageView
+         Set the color to white */
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = imageView.frame.size.height / 2
         imageView.layer.borderWidth = 2
@@ -99,7 +57,58 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(singleTap)
     }
+    
+    // MARK: - IBACTIONS
+    
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var fullnameLabel: UILabel!
+    
+    @objc func tapDetected() {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func pressedLogout(_ sender: UIBarButtonItem) {
+        let userPersistence = UserPersistence()
+        userPersistence.logoutUser()
+        let loginViewController = LoginController()
+        self.present(loginViewController, animated: false, completion: nil)
+    }
+    
+    // MARK: - LIFE CYCLE
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor(r: 61, g: 91, b: 151)
+        imagePicker.delegate = self
+        
+        setupimageViewProperties()
+        setupTextProperties()
+        
+        // Set the navigation bar appearence for the entire app
+        let navigationBarAppearace = UINavigationBar.appearance()
+        
+        // change navigation item title color
+        navigationBarAppearace.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationBarAppearace.tintColor = UIColor.white
+        navigationBarAppearace.barTintColor = UIColor(r: 61, g: 91, b: 151)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        currentUser = User.getStoredUser()
+        updateUI()
+    }
+}
 
+// MARK: - UIImagePickerControllerDelegate Methods
+
+extension ProfileViewController {
+    
     // Fixes the orientation of the profile image
     private func fixOrientation(img: UIImage) -> UIImage {
         if (img.imageOrientation == UIImageOrientation.up) { return img }
@@ -114,8 +123,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         return normalizedImage
     }
     
-    
-    // MARK: - UIImagePickerControllerDelegate Methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             fatalError("problem getting image")

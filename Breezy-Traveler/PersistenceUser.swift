@@ -116,6 +116,8 @@ struct UserPersistence {
         keychain.delete(usernameKey)
         keychain.delete(passwordKey)
         keychain.delete(tokenKey)
+        
+        self.removeUserProfileImage()
     }
     
     func checkUserLoggedIn(callback: @escaping (Bool) -> ()) {
