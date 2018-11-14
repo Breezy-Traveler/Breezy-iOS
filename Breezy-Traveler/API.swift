@@ -249,7 +249,7 @@ extension BTAPIEndPoints: TargetType {
             }
 
             // Authorization
-            defaultHeaders["Authorization"] = "Token token=\(token)"
+            defaultHeaders["Authorization"] = "Token \(token)"
         }
         return defaultHeaders
     }
