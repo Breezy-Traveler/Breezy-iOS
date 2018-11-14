@@ -9,17 +9,11 @@
 import Foundation
 import SwiftyJSON
 
-struct UserfacingErrors: Error, CustomStringConvertible {
+struct UserfacingErrors: Error {
     
     var errors: [String]
     
     var localizedDescription: String {
-        assertionFailure("localized errors not implemented")
-        
-        return self.description
-    }
-    
-    var description: String {
         guard self.errors.count > 0 else { return "" }
         
         var errorMessage = ""

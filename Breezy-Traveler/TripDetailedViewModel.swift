@@ -58,7 +58,7 @@ class TripDetailedViewModel {
             case .success(let returnedTrip):
                 unwrappedSelf.delegate.viewModel(unwrappedSelf, didUpdate: returnedTrip)
             case .failure(let err):
-                debugPrint("failed to pull trip: \(err.description)")
+                debugPrint("failed to pull trip: \(err.localizedDescription)")
                 unwrappedSelf.delegate.viewModel(unwrappedSelf, didRecieve: err.errors)
             }
         }

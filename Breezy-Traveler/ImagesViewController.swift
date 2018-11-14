@@ -63,7 +63,7 @@ class ImagesViewController: UIViewController {
                 }
                 
             case .failure(let userErrors):
-                let alert = AlertViewController.showErrorAlert(message: userErrors.description)
+                let alert = AlertViewController.showErrorAlert(message: userErrors.localizedDescription)
                 self.present(alert, animated: true)
             }
         }

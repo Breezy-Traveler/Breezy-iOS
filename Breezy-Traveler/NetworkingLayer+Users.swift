@@ -56,7 +56,6 @@ struct NetworkStack {
             switch result {
             case .success(let response):
                 
-                // FIXME: handle 401 (invalid credentials)
                 switch response.statusCode {
                 case 200:
                     guard let user = try? JSONDecoder().decode(User.self, from: response.data) else {
