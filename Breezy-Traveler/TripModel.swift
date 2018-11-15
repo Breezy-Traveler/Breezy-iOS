@@ -8,72 +8,15 @@
 
 import Foundation
 
+/**
+ used for reading, updating and deleting a trip
+ */
 struct Trip: Codable {
-    let idValue: String?
     
-    /** A helper var to return the unwrapped idValue of trip */
-    var id: String {
-        get {
-            guard let id = self.idValue else {
-                fatalError("trip did not have an id")
-            }
-            return id
-        }
-    }
-    
+    var id: String
     var place: String
-    private var _startDate: String?
-    var startDate: Date? {
-        set {
-            if let newDate = newValue {
-                let formatter = ISO8601DateFormatter()
-                self._startDate = formatter.string(from: newDate)
-            } else {
-                self._startDate = nil
-            }
-        }
-        get {
-            if let dateValue = self._startDate {
-                let formatter = ISO8601DateFormatter()
-                guard let date = formatter.date(from: dateValue) else {
-                    assertionFailure("failed to convert date from iso86601")
-                    
-                    return nil
-                }
-                
-                return date
-            }
-            
-            return nil
-        }
-    }
-    
-    private var _endDate: String?
-    var endDate: Date? {
-        set {
-            if let newDate = newValue {
-                let formatter = ISO8601DateFormatter()
-                self._endDate = formatter.string(from: newDate)
-            } else {
-                self._endDate = nil
-            }
-        }
-        get {
-            if let dateValue = self._endDate {
-                let formatter = ISO8601DateFormatter()
-                guard let date = formatter.date(from: dateValue) else {
-                    assertionFailure("failed to convert date from iso86601")
-                    
-                    return nil
-                }
-                
-                return date
-            }
-            
-            return nil
-        }
-    }
-    
+    var startDate: Date?
+    var endDate: Date?
     var hotels: [BTHotel]
     var sites: [BTSite]
     var coverImageUrl: URL?
@@ -81,41 +24,32 @@ struct Trip: Codable {
     var notes: String?
     
     enum CodingKeys: String, CodingKey {
-        case idValue = "_id"
+        case id = "_id"
         case place
-        case _startDate = "startDate"
-        case _endDate = "endDate"
+        case startDate
+        case endDate
         case hotels
         case sites
         case coverImageUrl
         case isPublic
         case notes
     }
-    
-    init(
-        id: String? = nil,
-        place: String,
-        startDate: Date? = nil,
-        endDate: Date? = nil,
-        hotels: [BTHotel] = [],
-        sites: [BTSite] = [],
-        coverImageUrl: URL? = nil,
-        notes: String = "",
-        isPublic: Bool) {
-        
-        //properties
-        self.idValue = id
-        self.place = place
-        self.hotels = hotels
-        self.sites = sites
-        self.coverImageUrl = coverImageUrl
-        self.isPublic = isPublic
-        self.notes = notes
-        
-        //computed vars
-        self.startDate = startDate
-        self.endDate = endDate
-    }
 }
 
-
+/**
+ used only for posting a new trip
+ */
+struct CreateTrip: Encodable {
+    let place: String
+    let startDate: Date? = nil
+    let endDate: Date? = nil
+    let hotels: [BTHotel] = []
+    let sites: [BTSite] = []
+    let coverImageUrl: URL? = nil
+    let isPublic: Bool = false
+    let notes: String? = nil
+    
+    init(place: String) {
+        self.place = place
+    }
+}

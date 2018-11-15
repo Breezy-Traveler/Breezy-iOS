@@ -25,7 +25,7 @@ class CreateTripVC: UIViewController {
     @IBAction func pressedSave(_ sender: UIBarButtonItem) {
         guard let place = placeTextField.text else { return }
         
-        let newTrip = Trip(place: place, isPublic: false)
+        let newTrip = CreateTrip(place: place)
         networkStack.createTrip(trip: newTrip) { (result) in
             switch result {
                 

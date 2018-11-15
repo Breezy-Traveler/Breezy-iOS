@@ -42,7 +42,7 @@ extension NetworkStack {
         }
     }
     
-    func createTrip(trip: Trip, callback: @escaping (Result<Trip, UserfacingErrors>) -> ()) {
+    func createTrip(trip: CreateTrip, callback: @escaping (Result<Trip, UserfacingErrors>) -> ()) {
         apiService.request(.createTrip(trip)) { (result) in
             switch result {
             case .success(let response):

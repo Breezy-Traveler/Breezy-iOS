@@ -16,7 +16,7 @@ enum BTAPIEndPoints {
     case loginUser(UserLogin)
 
     // Trips
-    case createTrip(Trip)
+    case createTrip(CreateTrip)
     case loadTrips(User)
     case showTrip(forTripID: String)
     case updateTrip(Trip)
