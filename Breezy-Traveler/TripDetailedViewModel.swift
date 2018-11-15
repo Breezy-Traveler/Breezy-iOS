@@ -9,7 +9,7 @@
 import Foundation
 
 protocol TripDetailedViewModelDelegate: class {
-    func viewModel(_ model: TripDetailedViewModel, didUpdate trip: BTTrip)
+    func viewModel(_ model: TripDetailedViewModel, didUpdate trip: Trip)
     func viewModel(_ model: TripDetailedViewModel, didRecieve errors: [String])
 }
 
@@ -18,7 +18,7 @@ class TripDetailedViewModel {
     
     private var network = NetworkStack()
     
-    var trip: BTTrip!
+    var trip: Trip!
     
     unowned var delegate: TripDetailedViewModelDelegate
     
@@ -58,7 +58,7 @@ class TripDetailedViewModel {
             case .success(let returnedTrip):
                 unwrappedSelf.delegate.viewModel(unwrappedSelf, didUpdate: returnedTrip)
             case .failure(let err):
-                debugPrint("failed to pull trip: \(err.description)")
+                debugPrint("failed to pull trip: \(err.localizedDescription)")
                 unwrappedSelf.delegate.viewModel(unwrappedSelf, didRecieve: err.errors)
             }
         }

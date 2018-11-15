@@ -12,7 +12,7 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
     
     private lazy var viewModel = TripDetailedViewModel(delegate: self)
     
-    var trip: BTTrip {
+    var trip: Trip {
         set {
             self.viewModel.trip = newValue
         }
@@ -209,7 +209,7 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
 // MARK: - TripDetailedViewModelDelegate
 
 extension TripDetailedViewController: TripDetailedViewModelDelegate {
-    func viewModel(_ model: TripDetailedViewModel, didUpdate trip: BTTrip) {
+    func viewModel(_ model: TripDetailedViewModel, didUpdate trip: Trip) {
         self.updateUI()
     }
     

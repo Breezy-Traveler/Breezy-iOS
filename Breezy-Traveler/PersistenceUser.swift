@@ -64,7 +64,7 @@ struct UserPersistence {
         }
     }
     
-    func setCurrentUser(currentUser: BTUser) {
+    func setCurrentUser(currentUser: User) {
         let keychain = KeychainSwift()
         guard let currentUserData = try? JSONEncoder().encode(currentUser) else {
             fatalError("no current user")
@@ -73,12 +73,12 @@ struct UserPersistence {
         
         // FIXME: Refactor this, function not really needed
         // CurrentUserData includes token property
-        setUserToken(token: currentUser.token!)
+        setUserToken(token: currentUser.token)
     }
     
-    func getCurrentUser() -> BTUser? {
+    func getCurrentUser() -> User? {
         let keychain = KeychainSwift()
-        guard let currentUserData = keychain.getData(currentUserKey), let currentUser = try? JSONDecoder().decode(BTUser.self, from: currentUserData) else {
+        guard let currentUserData = keychain.getData(currentUserKey), let currentUser = try? JSONDecoder().decode(User.self, from: currentUserData) else {
             return nil
         }
         return currentUser
@@ -116,6 +116,8 @@ struct UserPersistence {
         keychain.delete(usernameKey)
         keychain.delete(passwordKey)
         keychain.delete(tokenKey)
+        
+        self.removeUserProfileImage()
     }
     
     func checkUserLoggedIn(callback: @escaping (Bool) -> ()) {
@@ -132,12 +134,11 @@ struct UserPersistence {
         networkStack.login(a: userLogin) { (result) in
             switch result {
             case .success(let userReturned):
-                self.setUserToken(token: userReturned.token!)
+                self.setUserToken(token: userReturned.token)
                 callback(true)
             case .failure:
                 callback(false)
             }
         }
     }
-    
 }

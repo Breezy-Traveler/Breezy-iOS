@@ -12,7 +12,7 @@ import Result
 import SwiftyJSON
 
 extension NetworkStack {
-    func create(a hotel: BTHotel, for trip: BTTrip, callback: @escaping (Result<BTHotel, UserfacingErrors>) -> ()) {
+    func create(a hotel: BTHotel, for trip: Trip, callback: @escaping (Result<BTHotel, UserfacingErrors>) -> ()) {
         apiService.request(.createHotel(hotel, for: trip)) { (result) in
             switch result {
             case .success(let response):
@@ -42,7 +42,7 @@ extension NetworkStack {
         }
     }
     
-    func loadHotels(for trip: BTTrip, callback: @escaping (Result<[BTHotel], UserfacingErrors>) -> ()) {
+    func loadHotels(for trip: Trip, callback: @escaping (Result<[BTHotel], UserfacingErrors>) -> ()) {
         apiService.request(.loadHotels(for: trip)) { (result) in
             switch result {
             case .success(let response):
@@ -68,7 +68,7 @@ extension NetworkStack {
         }
     }
     
-    func showHotel(for hotelId: Int, for trip: BTTrip, callback: @escaping (Result<BTHotel, UserfacingErrors>) -> ()) {
+    func showHotel(for hotelId: Int, for trip: Trip, callback: @escaping (Result<BTHotel, UserfacingErrors>) -> ()) {
         apiService.request(.showHotel(forHotelId: hotelId, for: trip)) { (result) in
             switch result {
             case .success(let response):
@@ -94,7 +94,7 @@ extension NetworkStack {
         }
     }
     
-    func update(hotel: BTHotel, for trip: BTTrip, callback: @escaping (Result<BTHotel, UserfacingErrors>) -> ()) {
+    func update(hotel: BTHotel, for trip: Trip, callback: @escaping (Result<BTHotel, UserfacingErrors>) -> ()) {
         apiService.request(.updateHotel(hotel, for: trip)) { (result) in
             switch result {
             case .success(let response):
@@ -120,7 +120,7 @@ extension NetworkStack {
         }
     }
     
-    func delete(hotel: BTHotel, for trip: BTTrip, callback: @escaping (Result<String, UserfacingErrors>) -> ()) {
+    func delete(hotel: BTHotel, for trip: Trip, callback: @escaping (Result<String, UserfacingErrors>) -> ()) {
         apiService.request(.deleteHotel(hotel, for: trip)) { (result) in
             switch result {
             case .success(let response):

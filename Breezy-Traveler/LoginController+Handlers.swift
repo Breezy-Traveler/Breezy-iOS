@@ -43,7 +43,7 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
         }
 
         // Set the criteria to register the user, and to log in the user
-        let userRegister = UserRegister(name: name, username: username, password: password, email: email)
+        let userRegister = UserRegister(username: username, password: password, email: email)
         
         // Ask the API to register the user
         networkStack.register(a: userRegister) { [weak self] (result) in
@@ -54,28 +54,12 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
             switch result {
                     
             // The user was registered into the database
-            case .success:
-                let userLogin = UserLogin(username: username, password: password)
-                        
-                // Auto login the user and navigate to the MyTripsView
-                unwrappedSelf.networkStack.login(a: userLogin) { (result) in
-                            
-                    switch result {
-                        case .success(let loggedInUser):
-                            print(loggedInUser)
-                            unwrappedSelf.userPersistence.setCurrentUser(currentUser: loggedInUser)
-                            unwrappedSelf.userPersistence.loginUser(username: userLogin.username, password: userLogin.password)
-                            
-                            // successfully logged in user
-                            unwrappedSelf.dismiss(animated: true, completion: nil)
-                                
-                        case .failure(let userErrors):
-                            unwrappedSelf.present(AlertViewController.showErrorAlert(message: userErrors.description), animated: true, completion: nil)
-                            
-                            // Print the erros for debugging
-                            debugPrint(userErrors)
-                    }
-                }
+            case .success(let registeredUser):
+                unwrappedSelf.userPersistence.setCurrentUser(currentUser: registeredUser)
+                unwrappedSelf.userPersistence.loginUser(username: userRegister.username, password: userRegister.password)
+                
+                // successfully logged in user
+                unwrappedSelf.dismiss(animated: true, completion: nil)
                         
             case .failure(let err):
                 unwrappedSelf.present(AlertViewController.showErrorAlert(message: err.localizedDescription), animated: true, completion: nil)

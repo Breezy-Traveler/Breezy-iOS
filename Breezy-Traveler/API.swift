@@ -16,29 +16,29 @@ enum BTAPIEndPoints {
     case loginUser(UserLogin)
 
     // Trips
-    case createTrip(BTTrip)
-    case loadTrips(BTUser)
-    case showTrip(forTripID: Int)
-    case updateTrip(BTTrip)
-    case deleteTrip(BTTrip)
+    case createTrip(Trip)
+    case loadTrips(User)
+    case showTrip(forTripID: String)
+    case updateTrip(Trip)
+    case deleteTrip(Trip)
 
     // Published Trips
     case loadPublishedTrips(fetchAll: Bool)
     case searchPublishedTrips(searchTerm: String)
 
     // Hotels
-    case createHotel(BTHotel, for: BTTrip)
-    case loadHotels(for: BTTrip)
-    case showHotel(forHotelId: Int, for: BTTrip)
-    case updateHotel(BTHotel, for: BTTrip)
-    case deleteHotel(BTHotel, for: BTTrip)
+    case createHotel(BTHotel, for: Trip)
+    case loadHotels(for: Trip)
+    case showHotel(forHotelId: Int, for: Trip)
+    case updateHotel(BTHotel, for: Trip)
+    case deleteHotel(BTHotel, for: Trip)
 
     // Sites
-    case createSite(BTSite, for: BTTrip)
-    case loadSites(for: BTTrip)
-    case showSite(forSiteId: Int, for: BTTrip)
-    case updateSite(BTSite, for: BTTrip)
-    case deleteSite(BTSite, for: BTTrip)
+    case createSite(BTSite, for: Trip)
+    case loadSites(for: Trip)
+    case showSite(forSiteId: Int, for: Trip)
+    case updateSite(BTSite, for: Trip)
+    case deleteSite(BTSite, for: Trip)
 
     // Images
     case loadTenImages(String)
@@ -66,26 +66,31 @@ extension BTAPIEndPoints: TargetType {
 
         // Users
         case .registerUser:
-            return "/register"
+            return "/signup"
 
         case .loginUser:
             return "/login"
 
         // Trips
         case .createTrip, .loadTrips:
-            return "/users/trips"
+//            return "/users/trips"
+            return "/trips"
 
         case .showTrip(forTripID: let id):
-            return "/users/trips/\(id)"
+//            return "/users/trips/\(id)"
+            return "/trips/\(id)"
 
         case .updateTrip(let trip):
             let id = trip.id
 
-            return "/users/trips/\(id)"
+//            return "/users/trips/\(id)"
+            return "/trips/\(id)"
 
         case .deleteTrip(let trip):
             let id = trip.id
-            return "/users/trips/\(id)"
+            
+//            return "/users/trips/\(id)"
+            return "/trips/\(id)"
 
         // Published Trips
         case .loadPublishedTrips, .searchPublishedTrips:
@@ -144,7 +149,7 @@ extension BTAPIEndPoints: TargetType {
         case .loadTrips, .showTrip:
             return .get
         case .updateTrip:
-            return .patch
+            return .post
         case .deleteTrip:
             return .delete
 
@@ -244,7 +249,7 @@ extension BTAPIEndPoints: TargetType {
             }
 
             // Authorization
-            defaultHeaders["Authorization"] = "Token token=\(token)"
+            defaultHeaders["Authorization"] = "Token \(token)"
         }
         return defaultHeaders
     }

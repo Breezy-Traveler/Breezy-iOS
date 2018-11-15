@@ -13,7 +13,7 @@ class PublishedTripsVc: UIViewController {
     
     private var networkStack = NetworkStack()
     
-    private var publishedTrips = [BTTrip]() {
+    private var publishedTrips = [Trip]() {
         didSet {
             table.reloadData()
         }
@@ -49,7 +49,7 @@ class PublishedTripsVc: UIViewController {
      
      - parameter trips: if not nil, `publishedTrips` is updated to the given trips
      */
-    private func reloadTable(for trips: [BTTrip]? = nil) {
+    private func reloadTable(for trips: [Trip]? = nil) {
         if let newTrips = trips {
             self.publishedTrips = newTrips
         }
@@ -67,7 +67,7 @@ class PublishedTripsVc: UIViewController {
             case .failure(let err):
                 UIAlertController(
                     title: "Published Trips",
-                    message: "Failed to load published trips. Error: \(err.description)",
+                    message: "Failed to load published trips. Error: \(err.localizedDescription)",
                     preferredStyle: .alert)
                     .addDismissButton()
                     .present(in: unwrappedSelf)
@@ -99,7 +99,7 @@ class PublishedTripsVc: UIViewController {
             case .failure(let err):
                 UIAlertController(
                     title: "Published Trips",
-                    message: "Failed to load published trips. Error: \(err.description)",
+                    message: "Failed to load published trips. Error: \(err.localizedDescription)",
                     preferredStyle: .alert)
                     .addDismissButton()
                     .present(in: unwrappedSelf)

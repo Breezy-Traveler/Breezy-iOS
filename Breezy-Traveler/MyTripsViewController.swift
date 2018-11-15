@@ -10,11 +10,11 @@ import UIKit
 
 class MyTripsViewController: UIViewController {
     
-    private var trips = [BTTrip]()
-    private var publishedTrips: [BTTrip]?
+    private var trips = [Trip]()
+    private var publishedTrips: [Trip]?
     
     // FIXME: This is crashing the app
-    lazy var currentUser: BTUser = BTUser.getStoredUser()
+    var currentUser: User!
     let userPersistence = UserPersistence()
     let networkStack = NetworkStack()
     
@@ -22,24 +22,12 @@ class MyTripsViewController: UIViewController {
     
     // MARK: - METHODS
     
-    
     func setupProfileImage() {
         profileImage.layer.masksToBounds = true
         profileImage.layer.cornerRadius = profileImage.frame.size.height / 2
         profileImage.layer.borderWidth = 2
         profileImage.layer.borderColor = UIColor.white.cgColor
-        
-        if let savedProfileImage = userPersistence.loadUserProfileImage() {
-            profileImage.image = savedProfileImage
-        }
     }
-    
-    func setupUserDataDisplay() {
-        usernameLabel.text = currentUser.username
-        emailLabel.text = currentUser.email
-    }
-    
- 
     
     func loadUserTrips() {
         networkStack.loadUserTrips(user: currentUser) { (result) in
@@ -58,6 +46,9 @@ class MyTripsViewController: UIViewController {
     }
     
     func loadPublishedTrips() {
+        //TODO: published trips
+        return ()
+        
         networkStack.loadPublishedTrips(fetchAllTrips: false) { (result) in
             switch result {
             case .success(let publishedTrips):
@@ -69,7 +60,7 @@ class MyTripsViewController: UIViewController {
                 
                 //TODO: present errors differently, perhaps
                 // prompt user of error
-                UIAlertController(title: "Fetching Published Trips", message: err.description, preferredStyle: .alert)
+                UIAlertController(title: "Fetching Published Trips", message: err.localizedDescription, preferredStyle: .alert)
                     .addDismissButton()
                     .present(in: self)
             }
@@ -110,7 +101,20 @@ class MyTripsViewController: UIViewController {
         }
     }
     
+    private func updateUI() {
+        if let savedProfileImage = userPersistence.loadUserProfileImage() {
+            profileImage.image = savedProfileImage
+        }
+        
+        usernameLabel.text = currentUser.username
+        emailLabel.text = currentUser.email
+        
+        loadUserTrips()
+        loadPublishedTrips()
+    }
+    
     // MARK: - OUTLETS
+    
     @IBOutlet weak var tripsTableView: UITableView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
@@ -118,9 +122,8 @@ class MyTripsViewController: UIViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet var singleTap: UITapGestureRecognizer!
     
-    
-    
     // MARK: - ACTIONS
+    
     @IBAction func unwindToMyTrips(_ segue: UIStoryboardSegue) {
         debugPrint("welcome back, unwind!")
     }
@@ -136,6 +139,7 @@ class MyTripsViewController: UIViewController {
     }
     
     // MARK: - LIFE CYCLE
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -146,20 +150,14 @@ class MyTripsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
         userPersistence.checkUserLoggedIn { [unowned self] (isLoggedIn) in
             if !isLoggedIn {
                 let loginViewController = LoginController()
                 self.present(loginViewController, animated: false, completion: nil)
             } else {
-                self.loadUserTrips()
-                self.loadPublishedTrips()
-                self.setupUserDataDisplay()
+                self.currentUser = User.getStoredUser()
+                self.updateUI()
                 //TODO: show loading indicator
             }
         }

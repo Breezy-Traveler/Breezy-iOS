@@ -15,7 +15,7 @@ class PublishedTripTableViewCell: UITableViewCell {
     
     // MARK: - VOID METHODS
     
-    func configure(_ trip: BTTrip) {
+    func configure(_ trip: Trip) {
         
         // last published date
         //TODO: display last publishe date

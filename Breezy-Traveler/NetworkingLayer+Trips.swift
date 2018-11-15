@@ -13,16 +13,16 @@ import SwiftyJSON
 
 extension NetworkStack {
     
-    func loadUserTrips(user: BTUser, callback: @escaping (Result<[BTTrip], UserfacingErrors>) -> ()) {
+    func loadUserTrips(user: User, callback: @escaping (Result<[Trip], UserfacingErrors>) -> ()) {
         /// handles the response data after the networkService has fired and come back with a result
         apiService.request(.loadTrips(user)) { (result) in
             switch result {
-                
+            
             case .success(let response):
                 
                 switch response.statusCode {
                 case 200:
-                    guard let trips = try? JSONDecoder().decode([BTTrip].self, from: response.data) else {
+                    guard let trips = try? JSONDecoder().decode([Trip].self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -42,14 +42,14 @@ extension NetworkStack {
         }
     }
     
-    func createTrip(trip: BTTrip, callback: @escaping (Result<BTTrip, UserfacingErrors>) -> ()) {
+    func createTrip(trip: Trip, callback: @escaping (Result<Trip, UserfacingErrors>) -> ()) {
         apiService.request(.createTrip(trip)) { (result) in
             switch result {
             case .success(let response):
                 
                 switch response.statusCode {
                 case 201:
-                    guard let trip = try? JSONDecoder().decode(BTTrip.self, from: response.data) else {
+                    guard let trip = try? JSONDecoder().decode(Trip.self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -69,13 +69,13 @@ extension NetworkStack {
         }
     }
     
-    func showTrip(for id: Int, callback: @escaping (Result<BTTrip, UserfacingErrors>) -> ()) {
+    func showTrip(for id: String, callback: @escaping (Result<Trip, UserfacingErrors>) -> ()) {
         apiService.request(.showTrip(forTripID: id)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let trip = try? JSONDecoder().decode(BTTrip.self, from: response.data) else {
+                    guard let trip = try? JSONDecoder().decode(Trip.self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -95,13 +95,13 @@ extension NetworkStack {
         }
     }
     
-    func update(trip: BTTrip, callback: @escaping (Result<BTTrip, UserfacingErrors>) -> ()) {
+    func update(trip: Trip, callback: @escaping (Result<Trip, UserfacingErrors>) -> ()) {
         apiService.request(.updateTrip(trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let updatedTrip = try? JSONDecoder().decode(BTTrip.self, from: response.data) else {
+                    guard let updatedTrip = try? JSONDecoder().decode(Trip.self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -122,7 +122,7 @@ extension NetworkStack {
     }
     
     
-    func deleteTrip(trip: BTTrip, callback: @escaping (Result<BTTrip, UserfacingErrors>) -> ()) {
+    func deleteTrip(trip: Trip, callback: @escaping (Result<Trip, UserfacingErrors>) -> ()) {
         apiService.request(.deleteTrip(trip)) { (result) in
             switch result {
                 
@@ -142,14 +142,14 @@ extension NetworkStack {
         }
     }
     
-    func loadPublishedTrips(fetchAllTrips: Bool, callback: @escaping (Result<[BTTrip], UserfacingErrors>) -> ()) {
+    func loadPublishedTrips(fetchAllTrips: Bool, callback: @escaping (Result<[Trip], UserfacingErrors>) -> ()) {
         apiService.request(.loadPublishedTrips(fetchAll: fetchAllTrips)) { (result) in
             switch result {
                 
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let trips = try? JSONDecoder().decode([BTTrip].self, from: response.data) else {
+                    guard let trips = try? JSONDecoder().decode([Trip].self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -169,14 +169,14 @@ extension NetworkStack {
         }
     }
     
-    func loadPublishedTrips(for searchTerm: String, callback: @escaping (Result<[BTTrip], UserfacingErrors>) -> ()) {
+    func loadPublishedTrips(for searchTerm: String, callback: @escaping (Result<[Trip], UserfacingErrors>) -> ()) {
         apiService.request(.searchPublishedTrips(searchTerm: searchTerm)) { (result) in
             switch result {
                 
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let trips = try? JSONDecoder().decode([BTTrip].self, from: response.data) else {
+                    guard let trips = try? JSONDecoder().decode([Trip].self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
