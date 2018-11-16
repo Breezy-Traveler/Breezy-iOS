@@ -149,7 +149,7 @@ extension BTAPIEndPoints: TargetType {
         case .loadTrips, .showTrip:
             return .get
         case .updateTrip:
-            return .post
+            return .put
         case .deleteTrip:
             return .delete
 

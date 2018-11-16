@@ -34,6 +34,19 @@ struct Trip: Codable {
         case isPublic
         case notes
     }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.id, forKey: .id)
+        try container.encode(self.place, forKey: .place)
+        try container.encode(self.startDate, forKey: .startDate)
+        try container.encode(self.endDate, forKey: .endDate)
+        try container.encode(self.hotels, forKey: .hotels)
+        try container.encode(self.sites, forKey: .sites)
+        try container.encode(self.coverImageUrl, forKey: .coverImageUrl)
+        try container.encode(self.isPublic, forKey: .isPublic)
+        try container.encode(self.notes, forKey: .notes)
+    }
 }
 
 /**
