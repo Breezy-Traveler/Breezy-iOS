@@ -16,7 +16,7 @@ enum BTAPIEndPoints {
     case loginUser(UserLogin)
 
     // Trips
-    case createTrip(Trip)
+    case createTrip(CreateTrip)
     case loadTrips(User)
     case showTrip(forTripID: String)
     case updateTrip(Trip)
@@ -132,7 +132,7 @@ extension BTAPIEndPoints: TargetType {
 
         // Images
         case .loadTenImages:
-            return "/image_search"
+            return "/image-search"
         }
     }
 
@@ -149,7 +149,7 @@ extension BTAPIEndPoints: TargetType {
         case .loadTrips, .showTrip:
             return .get
         case .updateTrip:
-            return .post
+            return .put
         case .deleteTrip:
             return .delete
 
@@ -201,9 +201,9 @@ extension BTAPIEndPoints: TargetType {
 
         // Trips
         case .createTrip(let trip):
-            return .requestJSONEncodable(trip)
+            return .requestCustomJSONEncodable(trip, encoder: JSONEncoder.tripsEncoder)
         case .updateTrip(let trip):
-            return .requestJSONEncodable(trip)
+            return .requestCustomJSONEncodable(trip, encoder: JSONEncoder.tripsEncoder)
 
         // Published Trips
         case .loadPublishedTrips(let fetchAllTrips):
@@ -225,7 +225,7 @@ extension BTAPIEndPoints: TargetType {
 
         // Images
         case .loadTenImages(let searchTerm):
-            return .requestParameters(parameters: ["search_term": searchTerm], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["phrase": searchTerm], encoding: URLEncoding.default)
 
         default:
             return .requestPlain

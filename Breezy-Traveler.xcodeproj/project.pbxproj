@@ -40,6 +40,7 @@
 		E95E13872075879300BF4276 /* NetworkingLayer+Sites.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E13862075879300BF4276 /* NetworkingLayer+Sites.swift */; };
 		E96BEF8520CCBAC200295ECD /* InfoPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96BEF8420CCBAC200295ECD /* InfoPlist.swift */; };
 		E96BEF8620CCBC9600295ECD /* NetworkingLayer+QOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */; };
+		E97A40CB219E42E2007B48DE /* UtilityExtensions+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A40CA219E42E2007B48DE /* UtilityExtensions+Codable.swift */; };
 		E97B4E8520CB24AD0018036D /* PublishedTripsVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B4E8420CB24AD0018036D /* PublishedTripsVc.swift */; };
 		E97B4E8720CB29E00018036D /* PublishedTripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B4E8620CB29E00018036D /* PublishedTripTableViewCell.swift */; };
 		E97ED75B2077EF140021B651 /* UIButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97ED75A2077EF140021B651 /* UIButtonCell.swift */; };
@@ -112,6 +113,7 @@
 		E96BEF8220CCB80200295ECD /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		E96BEF8320CCB80E00295ECD /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
 		E96BEF8420CCBAC200295ECD /* InfoPlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlist.swift; sourceTree = "<group>"; };
+		E97A40CA219E42E2007B48DE /* UtilityExtensions+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtensions+Codable.swift"; sourceTree = "<group>"; };
 		E97B4E8420CB24AD0018036D /* PublishedTripsVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishedTripsVc.swift; sourceTree = "<group>"; };
 		E97B4E8620CB29E00018036D /* PublishedTripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishedTripTableViewCell.swift; sourceTree = "<group>"; };
 		E97ED75A2077EF140021B651 /* UIButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonCell.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			children = (
 				E96BEF8420CCBAC200295ECD /* InfoPlist.swift */,
 				B9F9F1792075585500F0D24D /* UtilityExtensions.swift */,
+				E97A40CA219E42E2007B48DE /* UtilityExtensions+Codable.swift */,
 				E97ED760207809BF0021B651 /* UtilityExtensions+Date.swift */,
 				E9B1B9BA207D3ED000FCBC2E /* UtilityExtensions+Bool.swift */,
 				E9B1B9BC207D4B6000FCBC2E /* UtilityExtensions+UIAlertController.swift */,
@@ -478,6 +481,7 @@
 				E9B34744209AA13700A7B313 /* UtilityExtensions+UIViewController.swift in Sources */,
 				B9F9F176207305FB00F0D24D /* QuoteModel.swift in Sources */,
 				E95E13872075879300BF4276 /* NetworkingLayer+Sites.swift in Sources */,
+				E97A40CB219E42E2007B48DE /* UtilityExtensions+Codable.swift in Sources */,
 				E98F034A2072AEF2004D4074 /* NetworkingLayer+Hotels.swift in Sources */,
 				E95E138220754C6C00BF4276 /* NetworkingLayer+Trips.swift in Sources */,
 				B950975E207D585800B4FE9B /* ProfileViewController.swift in Sources */,

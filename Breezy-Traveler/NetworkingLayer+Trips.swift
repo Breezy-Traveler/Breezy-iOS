@@ -22,7 +22,7 @@ extension NetworkStack {
                 
                 switch response.statusCode {
                 case 200:
-                    guard let trips = try? JSONDecoder().decode([Trip].self, from: response.data) else {
+                    guard let trips = try? JSONDecoder.trips(from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -42,14 +42,14 @@ extension NetworkStack {
         }
     }
     
-    func createTrip(trip: Trip, callback: @escaping (Result<Trip, UserfacingErrors>) -> ()) {
+    func createTrip(trip: CreateTrip, callback: @escaping (Result<Trip, UserfacingErrors>) -> ()) {
         apiService.request(.createTrip(trip)) { (result) in
             switch result {
             case .success(let response):
                 
                 switch response.statusCode {
                 case 201:
-                    guard let trip = try? JSONDecoder().decode(Trip.self, from: response.data) else {
+                    guard let trip = try? JSONDecoder.trip(from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -75,7 +75,7 @@ extension NetworkStack {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let trip = try? JSONDecoder().decode(Trip.self, from: response.data) else {
+                    guard let trip = try? JSONDecoder.trip(from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -101,7 +101,7 @@ extension NetworkStack {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let updatedTrip = try? JSONDecoder().decode(Trip.self, from: response.data) else {
+                    guard let updatedTrip = try? JSONDecoder.trip(from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -149,7 +149,7 @@ extension NetworkStack {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let trips = try? JSONDecoder().decode([Trip].self, from: response.data) else {
+                    guard let trips = try? JSONDecoder.trips(from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -176,7 +176,7 @@ extension NetworkStack {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let trips = try? JSONDecoder().decode([Trip].self, from: response.data) else {
+                    guard let trips = try? JSONDecoder.trips(from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
