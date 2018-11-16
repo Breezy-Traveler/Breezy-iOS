@@ -152,7 +152,6 @@ extension TripDetailedViewModel {
     }
     
     var notesSubtitle: String {
-        //TODO: add notes to trips
-        return "tap to add"
+        return trip.notes
     }
 }

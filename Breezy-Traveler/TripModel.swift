@@ -21,7 +21,7 @@ struct Trip: Codable {
     var sites: [BTSite]
     var coverImageUrl: URL?
     var isPublic: Bool
-    var notes: String?
+    var notes: String
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -60,9 +60,32 @@ struct CreateTrip: Encodable {
     let sites: [BTSite] = []
     let coverImageUrl: URL? = nil
     let isPublic: Bool = false
-    let notes: String? = nil
+    let notes: String = ""
     
     init(place: String) {
         self.place = place
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case place
+        case startDate
+        case endDate
+        case hotels
+        case sites
+        case coverImageUrl
+        case isPublic
+        case notes
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.place, forKey: .place)
+        try container.encode(self.startDate, forKey: .startDate)
+        try container.encode(self.endDate, forKey: .endDate)
+        try container.encode(self.hotels, forKey: .hotels)
+        try container.encode(self.sites, forKey: .sites)
+        try container.encode(self.coverImageUrl, forKey: .coverImageUrl)
+        try container.encode(self.isPublic, forKey: .isPublic)
+        try container.encode(self.notes, forKey: .notes)
     }
 }
