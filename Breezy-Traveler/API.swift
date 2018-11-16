@@ -201,9 +201,9 @@ extension BTAPIEndPoints: TargetType {
 
         // Trips
         case .createTrip(let trip):
-            return .requestJSONEncodable(trip)
+            return .requestCustomJSONEncodable(trip, encoder: JSONEncoder.tripsEncoder)
         case .updateTrip(let trip):
-            return .requestJSONEncodable(trip)
+            return .requestCustomJSONEncodable(trip, encoder: JSONEncoder.tripsEncoder)
 
         // Published Trips
         case .loadPublishedTrips(let fetchAllTrips):
