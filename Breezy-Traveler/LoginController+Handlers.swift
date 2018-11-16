@@ -18,12 +18,6 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
 
         
         // Safely unwrap all input values from the user
-        guard let name = nameTextField.text, name.count > 0 else {
-            // popup an alert view that name can't be blank
-            self.present(AlertViewController.showNameAlert(), animated: true, completion: nil)
-            return
-        }
-        
         guard let username = usernameTextField.text, username.count > 0 else {
             // popup an alert view that user name can't be blank
             self.present(AlertViewController.showUsernameAlert(), animated: true, completion: nil)
