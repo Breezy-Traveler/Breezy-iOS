@@ -162,12 +162,14 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         
         alertPlace
             .addTextField(defaultText: tripPlace, placeholderText: "trip's place")
-            .addConfirmationButton(title: "Rename") { [unowned self] (action) in
+            .addConfirmationButton(title: "Rename") { [weak self] (action) in
+                guard let unwrappedSelf = self else { return }
+
                 guard let newPlace = alertPlace.inputField.text else {
                     return debugPrint("no text was in the text field")
                 }
                 
-                self.viewModel.updatePlace(with: newPlace)
+                unwrappedSelf.viewModel.updatePlace(with: newPlace)
             }
             .present(in: self)
     }

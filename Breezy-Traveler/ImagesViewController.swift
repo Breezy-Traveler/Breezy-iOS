@@ -51,21 +51,23 @@ class ImagesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        networkStack.fetchImages(searchTerm: self.searchTerm) { (result) in
+        networkStack.fetchImages(searchTerm: self.searchTerm) { [weak self] (result) in
+            guard let unwrappedSelf = self else { return }
+
             switch result {
             case .success(let urls):
                 if urls.count > 0 {
-                    self.fetchedImagesUrls = urls
+                    unwrappedSelf.fetchedImagesUrls = urls
                 } else {
-                    let searchTerm: String = self.searchTerm
+                    let searchTerm: String = unwrappedSelf.searchTerm
                     UIAlertController(title: "Cover Image", message: "no results found for \"\(searchTerm)\"", preferredStyle: .alert)
                         .addDismissButton()
-                        .present(in: self)
+                        .present(in: unwrappedSelf)
                 }
                 
             case .failure(let userErrors):
                 let alert = AlertViewController.showErrorAlert(message: userErrors.localizedDescription)
-                self.present(alert, animated: true)
+                unwrappedSelf.present(alert, animated: true)
             }
         }
     }
