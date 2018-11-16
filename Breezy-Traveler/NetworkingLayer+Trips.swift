@@ -101,7 +101,10 @@ extension NetworkStack {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let updatedTrip = try? JSONDecoder().decode(Trip.self, from: response.data) else {
+                    let decoder = JSONDecoder()
+                    decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601)
+                    
+                    guard let updatedTrip = try? decoder.decode(Trip.self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()

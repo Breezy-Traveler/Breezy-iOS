@@ -57,7 +57,8 @@ class ImagesViewController: UIViewController {
                 if urls.count > 0 {
                     self.fetchedImagesUrls = urls
                 } else {
-                    UIAlertController(title: "Cover Image", message: "no results found for \"\(self.searchTerm)\"", preferredStyle: .alert)
+                    let searchTerm: String = self.searchTerm
+                    UIAlertController(title: "Cover Image", message: "no results found for \"\(searchTerm)\"", preferredStyle: .alert)
                         .addDismissButton()
                         .present(in: self)
                 }

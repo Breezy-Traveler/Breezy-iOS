@@ -132,7 +132,7 @@ extension BTAPIEndPoints: TargetType {
 
         // Images
         case .loadTenImages:
-            return "/image_search"
+            return "/image-search"
         }
     }
 
@@ -225,7 +225,7 @@ extension BTAPIEndPoints: TargetType {
 
         // Images
         case .loadTenImages(let searchTerm):
-            return .requestParameters(parameters: ["search_term": searchTerm], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["phrase": searchTerm], encoding: URLEncoding.default)
 
         default:
             return .requestPlain
