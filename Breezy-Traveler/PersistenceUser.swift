@@ -11,84 +11,6 @@ import KeychainSwift
 
 struct UserPersistence {
     
-    func setCurrentUser(currentUser: User) {
-        let keychain = KeychainSwift()
-        guard let currentUserData = try? JSONEncoder().encode(currentUser) else {
-            fatalError("no current user")
-        }
-        keychain.set(currentUserData, forKey: currentUserKey)
-        
-        // FIXME: Refactor this, function not really needed
-        // CurrentUserData includes token property
-        setUserToken(token: currentUser.token)
-    }
-    
-    func getCurrentUser() -> User? {
-        let keychain = KeychainSwift()
-        guard let currentUserData = keychain.getData(currentUserKey), let currentUser = try? JSONDecoder().decode(User.self, from: currentUserData) else {
-            return nil
-        }
-        return currentUser
-    } //computed var
-    
-    func loginUser(username: String, password: String) {
-        let keychain = KeychainSwift()
-        keychain.set(username, forKey: usernameKey)
-        keychain.set(password, forKey: passwordKey)
-    } //no need to store credintials
-    
-    func getUserLoginCredentials() -> (username: String, password: String)? {
-        let keychain = KeychainSwift()
-        guard let username = keychain.get(usernameKey), let password = keychain.get(passwordKey) else {
-            return nil
-        }
-        return (username, password)
-    } //not needed after using token to validate current user
-    
-    func setUserToken(token: String) {
-        let keychain = KeychainSwift()
-        keychain.set(token, forKey: tokenKey)
-    } //user login
-    
-    func getUserToken() -> String? {
-        let keychain = KeychainSwift()
-        guard let token = keychain.get(tokenKey) else {
-            return nil
-        }
-        return token
-    } //from current user
-    
-    mutating func logoutUser() {
-        let keychain = KeychainSwift()
-        keychain.delete(usernameKey)
-        keychain.delete(passwordKey)
-        keychain.delete(tokenKey)
-        
-        self.userProfileImage = nil
-    }
-    
-    func checkUserLoggedIn(callback: @escaping (Bool) -> ()) {
-        
-        let networkStack = NetworkStack()
-//        let keychain = KeychainSwift()
-        guard let userCredentials = getUserLoginCredentials() else {
-            return callback(false)
-        }
-
-        //FIXME: don't perform network call if token exists
-        let userLogin = UserLogin(username: userCredentials.username, password: userCredentials.password)
-
-        networkStack.login(a: userLogin) { (result) in
-            switch result {
-            case .success(let userReturned):
-                self.setUserToken(token: userReturned.token)
-                callback(true)
-            case .failure:
-                callback(false)
-            }
-        }
-    }
-    
     // MARK: - VARS
     
     var userProfileImage: UIImage? {
@@ -145,21 +67,73 @@ struct UserPersistence {
         let url = libraryDirectory.appendingPathComponent("userProfile.png")
         
         return url
-    } //keep
+    }
     
     // MARK: - RETURN VALUES
     
     // MARK: - METHODS
     
-    static private(set) var currentUser: User!
+    static var currentUser: User {
+        guard let user = self._currentUser else {
+            fatalError("no user logged in. Please ensure this property is not invoked without ensuring a user is logged in")
+        }
+        
+        return user
+    }
+    
+    static private var _currentUser: User?
     
     //check if there is already a user persisted in user defaults
         //make a network call to validate their token?
         //store user in memory
+    func checkIfUserIsLoggedIn(callback: (Bool) -> ()) {
+        
+        if let currentUser = self.loadUser() {
+            self.setCurrentUser(currentUser)
+            
+            callback(true)
+            
+            //TODO: validate using validate endpoint
+//            let networkStack = NetworkStack()
+//            networkStack.validate(currentUser, ...)
+            
+            //if validation failed, clear the user and invoke the callback with false
+            //otherwise, store user in memory and invoke callback with true
+        } else {
+            
+            callback(false)
+        }
+    }
+    
+    func login(_ user: User) {
+        self.setCurrentUser(user, writeToPersistence: true)
+    }
+    
+    mutating func logout() {
+        self.removeUser()
+    }
     
     //store the given User in persistence
         //store USER_ALREADY_LOGGED_IN true in user defaults
         //store user in Keychains since user contains token
+    private func setCurrentUser(_ user: User, writeToPersistence: Bool = false) {
+        
+        UserPersistence._currentUser = user
+        
+        if writeToPersistence {
+            let userDefaults = UserDefaults.standard
+            let keychains = KeychainSwift()
+            
+            userDefaults.set(true, forKey: currentUserKey)
+            
+            do {
+                let userData = try JSONEncoder().encode(user)
+                keychains.set(userData, forKey: currentUserKey)
+            } catch {
+                assertionFailure(error.localizedDescription)
+            }
+        }
+    }
     
     //load the user from persistence (private?)
         //does user default contain USER_ALREADY_LOGGED_IN?
@@ -167,8 +141,46 @@ struct UserPersistence {
         //return user
     
         //otherwise, clear user, if stored, from keychains since user default doesn't contain key
+    private mutating func loadUser() -> User? {
+        /**
+         since deleting the app doesn't clear keychains, we must check if the user defaults
+         contains USER_ALREADY_LOGGED_IN before we check the keychains in the event
+         the user deletes the app.
+         */
+        
+        let userDefaults = UserDefaults.standard
+        let keychains = KeychainSwift()
+        
+        guard userDefaults.bool(forKey: currentUserKey) else {
+            
+            //clear user, if stored, from keychains since user default doesn't contain key
+            self.removeUser()
+            
+            return nil
+        }
+        
+        guard
+            let userDataFromKeychains = keychains.getData(currentUserKey),
+            let user = try? JSONDecoder().decode(User.self, from: userDataFromKeychains) else {
+                
+                //invalid user, clear the keychain and remove the key from user defaults
+                self.removeUser()
+                
+                return nil
+        }
+        
+        return user
+    }
     
     //remove the user, if stored, from persistence
         //clear USER_ALREADY_LOGGED_IN from user defaults
-    
+    private mutating func removeUser() {
+        let userDefaults = UserDefaults.standard
+        let keychains = KeychainSwift()
+        
+        userDefaults.set(nil, forKey: currentUserKey)
+        keychains.delete(currentUserKey)
+        
+        self.userProfileImage = nil
+    }
 }

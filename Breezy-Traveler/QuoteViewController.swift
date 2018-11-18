@@ -14,7 +14,7 @@ class QuoteViewController: UIViewController {
     
     // Instance of networking stack
     let networkStack = NetworkStack()
-    let userPersistence = UserPersistence()
+    var userPersistence = UserPersistence()
     var quote: Quote? = nil
     
     @IBOutlet weak var quoteOfTheDayLabel: UILabel!
@@ -42,7 +42,7 @@ class QuoteViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        userPersistence.checkUserLoggedIn { [weak self] (isLoggedIn) in
+        userPersistence.checkIfUserIsLoggedIn { [weak self] (isLoggedIn) in
             guard let unwrappedSelf = self else { return }
             
             if !isLoggedIn {
@@ -58,8 +58,7 @@ class QuoteViewController: UIViewController {
     }
     
     @IBAction func pressedLogout(_ sender: UIBarButtonItem) {
-        var userPersistence = UserPersistence()
-        userPersistence.logoutUser()
+        userPersistence.logout()
         let loginViewController = LoginController()
         self.present(loginViewController, animated: false, completion: nil)
     }

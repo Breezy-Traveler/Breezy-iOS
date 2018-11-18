@@ -49,8 +49,7 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
                     
             // The user was registered into the database
             case .success(let registeredUser):
-                unwrappedSelf.userPersistence.setCurrentUser(currentUser: registeredUser)
-                unwrappedSelf.userPersistence.loginUser(username: userRegister.username, password: userRegister.password)
+                unwrappedSelf.userPersistence.login(registeredUser)
                 
                 // successfully logged in user
                 unwrappedSelf.dismiss(animated: true, completion: nil)

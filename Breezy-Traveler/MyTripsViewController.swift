@@ -155,14 +155,14 @@ class MyTripsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        userPersistence.checkUserLoggedIn { [weak self] (isLoggedIn) in
+        userPersistence.checkIfUserIsLoggedIn { [weak self] (isLoggedIn) in
             guard let unwrappedSelf = self else { return }
 
             if !isLoggedIn {
                 let loginViewController = LoginController()
                 unwrappedSelf.present(loginViewController, animated: false, completion: nil)
             } else {
-                unwrappedSelf.currentUser = User.getStoredUser()
+                unwrappedSelf.currentUser = User.getStoredUser() //TODO: erick-use computed var
                 unwrappedSelf.updateUI()
                 //TODO: show loading indicator
             }

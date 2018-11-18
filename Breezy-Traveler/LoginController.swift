@@ -99,9 +99,7 @@ class LoginController: UIViewController {
             
             switch result {
                 case .success(let loggedInUser):
-                    print(loggedInUser)
-                    unwrappedSelf.userPersistence.setCurrentUser(currentUser: loggedInUser)
-                    unwrappedSelf.userPersistence.loginUser(username: userLogin.username, password: userLogin.password)
+                    unwrappedSelf.userPersistence.login(loggedInUser)
                     
                     // Go back to Trips ViewController
                     // successfully logged in user
