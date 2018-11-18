@@ -9,7 +9,7 @@
 import Foundation
 import KeychainSwift
 
-struct UserPersistence {
+class UserPersistence {
     
     // MARK: - VARS
     
@@ -81,6 +81,10 @@ struct UserPersistence {
         return user
     }
     
+    static var currentUserIfLoggedIn: User? {
+        return self._currentUser
+    }
+    
     static private var _currentUser: User?
     
     //check if there is already a user persisted in user defaults
@@ -109,7 +113,7 @@ struct UserPersistence {
         self.setCurrentUser(user, writeToPersistence: true)
     }
     
-    mutating func logout() {
+    func logout() {
         self.removeUser()
     }
     
@@ -135,13 +139,13 @@ struct UserPersistence {
         }
     }
     
-    //load the user from persistence (private?)
+    //load the user from persistence and return it
         //does user default contain USER_ALREADY_LOGGED_IN?
         //is user in keychains present and valid?
         //return user
     
         //otherwise, clear user, if stored, from keychains since user default doesn't contain key
-    private mutating func loadUser() -> User? {
+    private func loadUser() -> User? {
         /**
          since deleting the app doesn't clear keychains, we must check if the user defaults
          contains USER_ALREADY_LOGGED_IN before we check the keychains in the event
@@ -174,7 +178,7 @@ struct UserPersistence {
     
     //remove the user, if stored, from persistence
         //clear USER_ALREADY_LOGGED_IN from user defaults
-    private mutating func removeUser() {
+    private func removeUser() {
         let userDefaults = UserDefaults.standard
         let keychains = KeychainSwift()
         

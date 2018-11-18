@@ -13,9 +13,7 @@ class MyTripsViewController: UIViewController {
     private var trips = [Trip]()
     private var publishedTrips: [Trip]?
     
-    // FIXME: This is crashing the app
-    var currentUser: User!
-    let userPersistence = UserPersistence()
+    var userPersistence = UserPersistence()
     let networkStack = NetworkStack()
     
     // MARK: - RETURN VALUES
@@ -30,7 +28,7 @@ class MyTripsViewController: UIViewController {
     }
     
     func loadUserTrips() {
-        networkStack.loadUserTrips(user: currentUser) { [weak self] (result) in
+        networkStack.loadUserTrips(user: UserPersistence.currentUser) { [weak self] (result) in
             guard let unwrappedSelf = self else { return }
 
             switch result {
@@ -110,8 +108,9 @@ class MyTripsViewController: UIViewController {
             profileImage.image = savedProfileImage
         }
         
-        usernameLabel.text = currentUser.username
-        emailLabel.text = currentUser.email
+        let user = UserPersistence.currentUser
+        usernameLabel.text = user.username
+        emailLabel.text = user.email
         
         loadUserTrips()
         loadPublishedTrips()
@@ -162,8 +161,8 @@ class MyTripsViewController: UIViewController {
                 let loginViewController = LoginController()
                 unwrappedSelf.present(loginViewController, animated: false, completion: nil)
             } else {
-                unwrappedSelf.currentUser = User.getStoredUser() //TODO: erick-use computed var
                 unwrappedSelf.updateUI()
+                
                 //TODO: show loading indicator
             }
         }

@@ -17,7 +17,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     let networkStack = NetworkStack()
     var userPersistence = UserPersistence()
-    var currentUser: User!
     let imagePicker = UIImagePickerController()
     
     private lazy var singleTap: UITapGestureRecognizer = {
@@ -35,9 +34,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             imageView.image = storedImage
         }
         
-        usernameLabel.text = currentUser.username
-        emailLabel.text = currentUser.email
-        fullnameLabel.text = currentUser.username
+        let user = UserPersistence.currentUser
+        usernameLabel.text = user.username
+        emailLabel.text = user.email
+        fullnameLabel.text = user.username
     }
     
     func setupTextProperties() {
@@ -99,7 +99,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        currentUser = User.getStoredUser()
         updateUI()
     }
 }
