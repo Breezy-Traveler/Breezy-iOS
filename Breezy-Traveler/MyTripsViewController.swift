@@ -106,7 +106,7 @@ class MyTripsViewController: UIViewController {
     }
     
     private func updateUI() {
-        if let savedProfileImage = userPersistence.loadUserProfileImage() {
+        if let savedProfileImage = userPersistence.userProfileImage {
             profileImage.image = savedProfileImage
         }
         

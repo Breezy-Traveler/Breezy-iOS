@@ -16,7 +16,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     // MARK: - VARS
     
     let networkStack = NetworkStack()
-    let userPersistence = UserPersistence()
+    var userPersistence = UserPersistence()
     var currentUser: User!
     let imagePicker = UIImagePickerController()
     
@@ -31,7 +31,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     // MARK: - METHODS
     
     private func updateUI() {
-        if let storedImage = userPersistence.loadUserProfileImage() {
+        if let storedImage = userPersistence.userProfileImage {
             imageView.image = storedImage
         }
         
@@ -72,7 +72,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func pressedLogout(_ sender: UIBarButtonItem) {
-        let userPersistence = UserPersistence()
         userPersistence.logoutUser()
         let loginViewController = LoginController()
         self.present(loginViewController, animated: false, completion: nil)
@@ -128,9 +127,9 @@ extension ProfileViewController {
             fatalError("problem getting image")
         }
         
-        let rotated = fixOrientation(img: pickedImage)
+        let rotatedImage = fixOrientation(img: pickedImage)
         
-        userPersistence.storeUserProfileImage(image: rotated)
+        userPersistence.userProfileImage = rotatedImage
         imageView.contentMode = .scaleAspectFill
         imageView.image = pickedImage
         

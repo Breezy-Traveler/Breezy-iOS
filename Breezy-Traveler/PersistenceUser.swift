@@ -11,59 +11,6 @@ import KeychainSwift
 
 struct UserPersistence {
     
-    private let usernameKey: String = "username"
-    private let passwordKey: String = "password"
-    private let tokenKey: String = "token"
-    private let currentUserKey: String = "currentUser"
-    
-    var userProfileURL: URL = {
-        // Get the URL for where to save the image
-        guard let libraryDirectory = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first else {
-            fatalError("no access to this directory")
-        }
-        // Create a filepath name for the image store
-        let userProfileURL = libraryDirectory.appendingPathComponent("userProfile.png")
-        return userProfileURL
-    }()
-    
-    func storeUserProfileImage(image: UIImage) {
-        
-        // Convert the UIImage into Data
-        guard let imageData = UIImagePNGRepresentation(image) else {
-            return
-        }
-        // Use file manager to save the data
-        
-        do {
-            try imageData.write(to: userProfileURL)
-        } catch {
-            assertionFailure("\(error)")
-        }
-    }
-    
-    func removeUserProfileImage() {
-        let filemanager = FileManager.default
-        guard let libraryDirectory = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first else {
-            fatalError("no access to this directory")
-        }
-        let userProfileImageURL = libraryDirectory.appendingPathComponent("userProfile.png")
-        
-        try? filemanager.removeItem(at: userProfileImageURL)
-    }
-    
-    func loadUserProfileImage() -> UIImage? {
-        guard let imageData = try? Data(contentsOf: userProfileURL) else {
-            return nil
-        }
-        
-        if let image = UIImage(data: imageData) {
-            return image
-        } else {
-            print("image not converted from data")
-            return nil
-        }
-    }
-    
     func setCurrentUser(currentUser: User) {
         let keychain = KeychainSwift()
         guard let currentUserData = try? JSONEncoder().encode(currentUser) else {
@@ -82,13 +29,13 @@ struct UserPersistence {
             return nil
         }
         return currentUser
-    }
+    } //computed var
     
     func loginUser(username: String, password: String) {
         let keychain = KeychainSwift()
         keychain.set(username, forKey: usernameKey)
         keychain.set(password, forKey: passwordKey)
-    }
+    } //no need to store credintials
     
     func getUserLoginCredentials() -> (username: String, password: String)? {
         let keychain = KeychainSwift()
@@ -96,12 +43,12 @@ struct UserPersistence {
             return nil
         }
         return (username, password)
-    }
+    } //not needed after using token to validate current user
     
     func setUserToken(token: String) {
         let keychain = KeychainSwift()
         keychain.set(token, forKey: tokenKey)
-    }
+    } //user login
     
     func getUserToken() -> String? {
         let keychain = KeychainSwift()
@@ -109,15 +56,15 @@ struct UserPersistence {
             return nil
         }
         return token
-    }
+    } //from current user
     
-    func logoutUser() {
+    mutating func logoutUser() {
         let keychain = KeychainSwift()
         keychain.delete(usernameKey)
         keychain.delete(passwordKey)
         keychain.delete(tokenKey)
         
-        self.removeUserProfileImage()
+        self.userProfileImage = nil
     }
     
     func checkUserLoggedIn(callback: @escaping (Bool) -> ()) {
@@ -141,4 +88,87 @@ struct UserPersistence {
             }
         }
     }
+    
+    // MARK: - VARS
+    
+    var userProfileImage: UIImage? {
+        set {
+            if let newImage = newValue {
+                let url = userProfileImageURL
+                
+                // Convert the UIImage into Data
+                guard let imageData = UIImagePNGRepresentation(newImage) else {
+                    return assertionFailure("failed to create data from image")
+                }
+                
+                // Use file manager to save the data
+                do {
+                    try imageData.write(to: url)
+                } catch {
+                    assertionFailure("\(error)")
+                }
+            } else {
+                
+                //try to delete image from storage
+                try? FileManager.default.removeItem(at: userProfileImageURL)
+            }
+        }
+        
+        get {
+            guard let imageData = try? Data(contentsOf: userProfileImageURL) else {
+                return nil
+            }
+            
+            if let image = UIImage(data: imageData) {
+                return image
+            } else {
+                assertionFailure("image not converted from data")
+                
+                return nil
+            }
+        }
+    }
+    
+    private let usernameKey: String = "username"
+    private let passwordKey: String = "password"
+    private let tokenKey: String = "token"
+    private let currentUserKey: String = "currentUser"
+    
+    private var userProfileImageURL: URL {
+        
+        // Get the URL for where to save the image
+        guard let libraryDirectory = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first else {
+            fatalError("no access to this directory")
+        }
+        
+        // Create a filepath name for the image store
+        let url = libraryDirectory.appendingPathComponent("userProfile.png")
+        
+        return url
+    } //keep
+    
+    // MARK: - RETURN VALUES
+    
+    // MARK: - METHODS
+    
+    static private(set) var currentUser: User!
+    
+    //check if there is already a user persisted in user defaults
+        //make a network call to validate their token?
+        //store user in memory
+    
+    //store the given User in persistence
+        //store USER_ALREADY_LOGGED_IN true in user defaults
+        //store user in Keychains since user contains token
+    
+    //load the user from persistence (private?)
+        //does user default contain USER_ALREADY_LOGGED_IN?
+        //is user in keychains present and valid?
+        //return user
+    
+        //otherwise, clear user, if stored, from keychains since user default doesn't contain key
+    
+    //remove the user, if stored, from persistence
+        //clear USER_ALREADY_LOGGED_IN from user defaults
+    
 }

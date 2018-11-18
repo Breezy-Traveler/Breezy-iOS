@@ -58,7 +58,7 @@ class QuoteViewController: UIViewController {
     }
     
     @IBAction func pressedLogout(_ sender: UIBarButtonItem) {
-        let userPersistence = UserPersistence()
+        var userPersistence = UserPersistence()
         userPersistence.logoutUser()
         let loginViewController = LoginController()
         self.present(loginViewController, animated: false, completion: nil)
