@@ -32,7 +32,7 @@ class UIDatePickerViewController: UIViewController {
                 if newValue {
                     unwrappedSelf.constraintBottom.constant = 0
                 } else {
-                    unwrappedSelf.constraintBottom.constant = -unichar.datePicker.bounds.size.height
+                    unwrappedSelf.constraintBottom.constant = -unwrappedSelf.datePicker.bounds.size.height
                 }
                 unwrappedSelf.view.layoutIfNeeded()
             })
