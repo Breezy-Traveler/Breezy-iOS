@@ -16,8 +16,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     // MARK: - VARS
     
     let networkStack = NetworkStack()
-    let userPersistence = UserPersistence()
-    var currentUser: User!
+    var userPersistence = UserPersistence()
     let imagePicker = UIImagePickerController()
     
     private lazy var singleTap: UITapGestureRecognizer = {
@@ -31,13 +30,14 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     // MARK: - METHODS
     
     private func updateUI() {
-        if let storedImage = userPersistence.loadUserProfileImage() {
+        if let storedImage = userPersistence.userProfileImage {
             imageView.image = storedImage
         }
         
-        usernameLabel.text = currentUser.username
-        emailLabel.text = currentUser.email
-        fullnameLabel.text = currentUser.username
+        let user = UserPersistence.currentUser
+        usernameLabel.text = user.username
+        emailLabel.text = user.email
+        fullnameLabel.text = user.username
     }
     
     func setupTextProperties() {
@@ -72,10 +72,14 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func pressedLogout(_ sender: UIBarButtonItem) {
-        let userPersistence = UserPersistence()
-        userPersistence.logoutUser()
-        let loginViewController = LoginController()
-        self.present(loginViewController, animated: false, completion: nil)
+        userPersistence.logout()
+        
+        if let presentingVc = self.navigationController?.presentingViewController {
+            presentingVc.dismiss(animated: true)
+        } else {
+            let loginVc = LoginController()
+            self.present(loginVc, animated: true)
+        }
     }
     
     // MARK: - LIFE CYCLE
@@ -100,7 +104,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        currentUser = User.getStoredUser()
         updateUI()
     }
 }
@@ -128,9 +131,9 @@ extension ProfileViewController {
             fatalError("problem getting image")
         }
         
-        let rotated = fixOrientation(img: pickedImage)
+        let rotatedImage = fixOrientation(img: pickedImage)
         
-        userPersistence.storeUserProfileImage(image: rotated)
+        userPersistence.userProfileImage = rotatedImage
         imageView.contentMode = .scaleAspectFill
         imageView.image = pickedImage
         

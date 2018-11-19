@@ -73,16 +73,6 @@ struct User: Codable {
     
     // MARK: - RETURN VALUES
     
-    static func getStoredUser() -> User {
-        let userPersistence = UserPersistence()
-        guard let currentUser = userPersistence.getCurrentUser() else {
-            
-            // FIXME: crashing the app
-            fatalError("No Current User Data")
-        }
-        return currentUser
-    }
-    
     // MARK: - METHODS
 }
 

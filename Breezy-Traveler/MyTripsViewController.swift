@@ -10,13 +10,17 @@ import UIKit
 
 class MyTripsViewController: UIViewController {
     
+    // MARK: - VARS
+    
     private var trips = [Trip]()
     private var publishedTrips: [Trip]?
     
-    // FIXME: This is crashing the app
-    var currentUser: User!
-    let userPersistence = UserPersistence()
+    var userPersistence = UserPersistence()
     let networkStack = NetworkStack()
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     // MARK: - RETURN VALUES
     
@@ -30,7 +34,7 @@ class MyTripsViewController: UIViewController {
     }
     
     func loadUserTrips() {
-        networkStack.loadUserTrips(user: currentUser) { [weak self] (result) in
+        networkStack.loadUserTrips(user: UserPersistence.currentUser) { [weak self] (result) in
             guard let unwrappedSelf = self else { return }
 
             switch result {
@@ -106,15 +110,20 @@ class MyTripsViewController: UIViewController {
     }
     
     private func updateUI() {
-        if let savedProfileImage = userPersistence.loadUserProfileImage() {
+        if let savedProfileImage = userPersistence.userProfileImage {
             profileImage.image = savedProfileImage
         }
         
-        usernameLabel.text = currentUser.username
-        emailLabel.text = currentUser.email
+        let user = UserPersistence.currentUser
+        usernameLabel.text = user.username
+        emailLabel.text = user.email
         
         loadUserTrips()
         loadPublishedTrips()
+    }
+    
+    private func listenForUserLogout() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.userDidLogout(_:)), name: NSNotification.Name.userDidLogout, object: nil)
     }
     
     // MARK: - OUTLETS
@@ -142,6 +151,11 @@ class MyTripsViewController: UIViewController {
         self.navigationController?.pushViewController(VC, animated: true)
     }
     
+    @objc private func userDidLogout(_ notification: Notification) {
+        trips = []
+        tripsTableView.reloadData()
+    }
+    
     // MARK: - LIFE CYCLE
     
     override func viewDidLoad() {
@@ -149,23 +163,19 @@ class MyTripsViewController: UIViewController {
         
         setupProfileImage()
         setupNavigationBarAppearence()
+        listenForUserLogout()
         profileImage.addGestureRecognizer(singleTap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        userPersistence.checkUserLoggedIn { [weak self] (isLoggedIn) in
-            guard let unwrappedSelf = self else { return }
-
-            if !isLoggedIn {
-                let loginViewController = LoginController()
-                unwrappedSelf.present(loginViewController, animated: false, completion: nil)
-            } else {
-                unwrappedSelf.currentUser = User.getStoredUser()
-                unwrappedSelf.updateUI()
-                //TODO: show loading indicator
-            }
+        if userPersistence.checkIfUserIsLoggedIn() {
+            updateUI()
+            //TODO: show loading indicator
+        } else {
+            let loginViewController = LoginController()
+            present(loginViewController, animated: false, completion: nil)
         }
     }
 }

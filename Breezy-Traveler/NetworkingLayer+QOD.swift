@@ -57,15 +57,10 @@ extension QODAPIEndPoint: TargetType {
     
     var headers: [String : String]? {
         var defaultHeaders = [String : String]()
-        let userPersistence = UserPersistence()
+        let token = UserPersistence.currentUser.token
         
-      
-            guard let token = userPersistence.getUserToken() else {
-                fatalError("request made without a user is logged in thus, no user token")
-            }
-            
-            // Authorization
-            defaultHeaders["Authorization"] = "Token token=\(token)"
+        // Authorization
+        defaultHeaders["Authorization"] = "Token token=\(token)"
         
         return defaultHeaders
     }

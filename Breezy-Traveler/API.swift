@@ -237,16 +237,12 @@ extension BTAPIEndPoints: TargetType {
 
     var headers: [String : String]? {
         var defaultHeaders = [String : String]()
-        let userPersistence = UserPersistence()
 
         // default header pairs
         if self.isRegisteringOrLoginging {
 
         } else {
-            guard let token = userPersistence.getUserToken() else {
-                fatalError("request made without a user is logged in thus, no user token")
-
-            }
+            let token = UserPersistence.currentUser.token
 
             // Authorization
             defaultHeaders["Authorization"] = "Token \(token)"

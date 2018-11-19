@@ -12,6 +12,8 @@ import KeychainSwift
 
 class LoginController: UIViewController {
     
+    // MARK: - VARS
+    
     let networkStack = NetworkStack()
     let userPersistence = UserPersistence()
     
@@ -20,10 +22,10 @@ class LoginController: UIViewController {
     lazy var height: CGFloat = 0.0
     var inputContainerHeight: CGFloat?
     
-    func getScreenSizes() {
-        // Get the initial width and height
-        self.width = self.view.frame.width
-        self.height = self.view.frame.height
+    // Make the Status Bar Light/Dark Content for this View
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+        //return UIStatusBarStyle.default   // Make dark again
     }
     
     // Create the container for user input
@@ -62,58 +64,6 @@ class LoginController: UIViewController {
         return imageView
         
     }()
-    func setupLogoImageView() {
-        guard let height = inputContainerHeight else {
-            fatalError("No inputs container height")
-        }
-        // Need x, y, width, and height contraints
-        logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logoImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -16).isActive = true
-        logoImageView.widthAnchor.constraint(equalToConstant: height * 0.60).isActive = true
-        logoImageView.heightAnchor.constraint(equalToConstant: height * 0.60).isActive = true
-    }
-    
-    @objc func handleLoginRegister() {
-        if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
-            handleLogin()
-        } else {
-            handleRegister()
-        }
-    }
-    
-    @objc func handleLogin() {
-        guard let username = usernameTextField.text, let password = passwordTextField.text else {
-            return assertionFailure("username or password textfeilds are nil")
-        }
-        
-        guard let name = usernameTextField.text, name.count > 0 else {
-            // popup an alert view that username can't be blank
-            self.present(AlertViewController.showUsernameAlert(), animated: true, completion: nil)
-            return
-        }
-        
-        let userLogin = UserLogin(username: username, password: password)
-
-        networkStack.login(a: userLogin) { [weak self] (result) in
-            guard let unwrappedSelf = self else { return }
-            
-            switch result {
-                case .success(let loggedInUser):
-                    print(loggedInUser)
-                    unwrappedSelf.userPersistence.setCurrentUser(currentUser: loggedInUser)
-                    unwrappedSelf.userPersistence.loginUser(username: userLogin.username, password: userLogin.password)
-                    
-                    // Go back to Trips ViewController
-                    // successfully logged in user
-                    unwrappedSelf.dismiss(animated: true, completion: nil)
-                
-                case .failure(let userErrors):
-                    unwrappedSelf.present(AlertViewController.showErrorAlert(message: userErrors.localizedDescription), animated: true, completion: nil)
-
-                    debugPrint(userErrors)
-            }
-        }
-    }
     
     let usernameTextField: UITextField = {
         let tf = UITextField()
@@ -152,7 +102,6 @@ class LoginController: UIViewController {
         return tf
     }()
     
-    
     lazy var loginRegisterSegmentedControl: UISegmentedControl = {
         let sc = UISegmentedControl(items: ["Login", "Register"])
         sc.translatesAutoresizingMaskIntoConstraints = false
@@ -161,6 +110,70 @@ class LoginController: UIViewController {
         sc.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
         return sc
     }()
+    
+    var inputContainerViewHeightAnchor: NSLayoutConstraint?
+    var usernameTextFieldHeightAnchor: NSLayoutConstraint?
+    var emailTextFieldHeightAnchor: NSLayoutConstraint?
+    var passwordTextFieldHeightAnchor: NSLayoutConstraint?
+    
+    // MARK: - RETURN VALUES
+    
+    // MARK: - METHODS
+    
+    func getScreenSizes() {
+        // Get the initial width and height
+        self.width = self.view.frame.width
+        self.height = self.view.frame.height
+    }
+    
+    @objc func handleLoginRegister() {
+        if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
+            handleLogin()
+        } else {
+            handleRegister()
+        }
+    }
+    
+    @objc func handleLogin() {
+        guard let username = usernameTextField.text, let password = passwordTextField.text else {
+            return assertionFailure("username or password textfeilds are nil")
+        }
+        
+        guard let name = usernameTextField.text, name.count > 0 else {
+            // popup an alert view that username can't be blank
+            self.present(AlertViewController.showUsernameAlert(), animated: true, completion: nil)
+            return
+        }
+        
+        let userLogin = UserLogin(username: username, password: password)
+        
+        networkStack.login(a: userLogin) { [weak self] (result) in
+            guard let unwrappedSelf = self else { return }
+            
+            switch result {
+            case .success(let loggedInUser):
+                unwrappedSelf.userPersistence.login(loggedInUser)
+                
+                // Go back to Trips ViewController
+                // successfully logged in user
+                if let presentingVc = unwrappedSelf.presentingViewController {
+                    presentingVc.dismiss(animated: true)
+                } else {
+                    let tripsStoryboard = UIStoryboard(name: "Trips", bundle: nil)
+                    guard let tripsVc = tripsStoryboard.instantiateInitialViewController() else {
+                        fatalError("storyboard not set up with an initial view controller")
+                    }
+                    
+                    unwrappedSelf.present(tripsVc, animated: true)
+                }
+                
+            case .failure(let userErrors):
+                unwrappedSelf.present(AlertViewController.showErrorAlert(message: userErrors.localizedDescription), animated: true, completion: nil)
+                
+                debugPrint(userErrors)
+            }
+        }
+    }
     
     @objc func handleLoginRegisterChange() {
         let title = loginRegisterSegmentedControl.titleForSegment(at: loginRegisterSegmentedControl.selectedSegmentIndex)
@@ -190,24 +203,22 @@ class LoginController: UIViewController {
         passwordTextFieldHeightAnchor?.isActive = true
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.hideKeyboard()
-        
-        view.backgroundColor = UIColor(r: 61, g: 91, b: 151)
-        view.addSubview(loginRegisterSegmentedControl)
-        view.addSubview(inputsContainerView)
-        view.addSubview(loginRegisterButton)
-        view.addSubview(logoImageView)
-        
-        setupLoginRegisterSegmentedControl()
-        setUpContainerView()
-        
-        setUpLoginRegisterButton()
-        setupLogoImageView()
-        handleLoginRegisterChange()
+    func clearForms() {
+        usernameTextField.text = nil
+        passwordTextField.text = nil
+        emailTextField.text = nil
     }
     
+    func setupLogoImageView() {
+        guard let height = inputContainerHeight else {
+            fatalError("No inputs container height")
+        }
+        // Need x, y, width, and height contraints
+        logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        logoImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -16).isActive = true
+        logoImageView.widthAnchor.constraint(equalToConstant: height * 0.60).isActive = true
+        logoImageView.heightAnchor.constraint(equalToConstant: height * 0.60).isActive = true
+    }
     
     func setupLoginRegisterSegmentedControl() {
         // Need x, y, width, and height contraints
@@ -217,11 +228,6 @@ class LoginController: UIViewController {
         loginRegisterSegmentedControl.heightAnchor.constraint(lessThanOrEqualToConstant: 36).isActive = true
         
     }
-    
-    var inputContainerViewHeightAnchor: NSLayoutConstraint?
-    var usernameTextFieldHeightAnchor: NSLayoutConstraint?
-    var emailTextFieldHeightAnchor: NSLayoutConstraint?
-    var passwordTextFieldHeightAnchor: NSLayoutConstraint?
     
     func setUpContainerView() {
         getScreenSizes()
@@ -250,11 +256,11 @@ class LoginController: UIViewController {
         usernameTextFieldHeightAnchor = usernameTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/3)
         usernameTextFieldHeightAnchor?.isActive = true
         
-            // Constraints for line below the Name
-            usernameSeparatorView.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor).isActive = true
-            usernameSeparatorView.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor).isActive = true
-            usernameSeparatorView.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
-            usernameSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        // Constraints for line below the Name
+        usernameSeparatorView.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor).isActive = true
+        usernameSeparatorView.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor).isActive = true
+        usernameSeparatorView.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        usernameSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
         // Contraints: x, y, width, and height of Email field
         emailTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
@@ -263,11 +269,11 @@ class LoginController: UIViewController {
         emailTextFieldHeightAnchor = emailTextField.heightAnchor.constraint(equalTo: usernameTextField.heightAnchor)
         emailTextFieldHeightAnchor?.isActive = true
         
-            // Constraints for line below the email
-            emailSeparatorView.leftAnchor.constraint(equalTo: usernameSeparatorView.leftAnchor).isActive = true
-            emailSeparatorView.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
-            emailSeparatorView.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
-            emailSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        // Constraints for line below the email
+        emailSeparatorView.leftAnchor.constraint(equalTo: usernameSeparatorView.leftAnchor).isActive = true
+        emailSeparatorView.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
+        emailSeparatorView.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        emailSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
         // Constrain x, y, width, and height of Password text field
         passwordTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
@@ -291,10 +297,32 @@ class LoginController: UIViewController {
         loginRegisterButton.tintColor = UIColor.black
     }
     
-    // Make the Status Bar Light/Dark Content for this View
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
-        //return UIStatusBarStyle.default   // Make dark again
+    // MARK: - IBACTIONS
+    
+    // MARK: - LIFE CYCLE
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.hideKeyboard()
+        
+        view.backgroundColor = UIColor(r: 61, g: 91, b: 151)
+        view.addSubview(loginRegisterSegmentedControl)
+        view.addSubview(inputsContainerView)
+        view.addSubview(loginRegisterButton)
+        view.addSubview(logoImageView)
+        
+        setupLoginRegisterSegmentedControl()
+        setUpContainerView()
+        
+        setUpLoginRegisterButton()
+        setupLogoImageView()
+        handleLoginRegisterChange()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.clearForms()
     }
 }
 

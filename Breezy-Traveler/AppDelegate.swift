@@ -30,6 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set the status bar to white
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         
+        self.setUpInital(&window)
+        
         return true
     }
 
@@ -55,6 +57,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    private func setUpInital(_ window: inout UIWindow?) {
+        
+        let viewController: UIViewController
+        let userPersistence = UserPersistence()
+        
+        if userPersistence.checkIfUserIsLoggedIn() {
+            let tripsStoryboard = UIStoryboard(name: "Trips", bundle: nil)
+            guard let tripsVc = tripsStoryboard.instantiateInitialViewController() else {
+                fatalError("storyboard not set up with an initial view controller")
+            }
+            
+            viewController = tripsVc
+        } else {
+            let loginVc = LoginController()
+            
+            viewController = loginVc
+        }
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = viewController
+        window?.makeKeyAndVisible()
+    }
 
 }
 

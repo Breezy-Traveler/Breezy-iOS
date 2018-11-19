@@ -9,136 +9,186 @@
 import Foundation
 import KeychainSwift
 
-struct UserPersistence {
+class UserPersistence {
     
-    private let usernameKey: String = "username"
-    private let passwordKey: String = "password"
-    private let tokenKey: String = "token"
+    // MARK: - VARS
+    
+    var userProfileImage: UIImage? {
+        set {
+            if let newImage = newValue {
+                let url = userProfileImageURL
+                
+                // Convert the UIImage into Data
+                guard let imageData = UIImagePNGRepresentation(newImage) else {
+                    return assertionFailure("failed to create data from image")
+                }
+                
+                // Use file manager to save the data
+                do {
+                    try imageData.write(to: url)
+                } catch {
+                    assertionFailure("\(error)")
+                }
+            } else {
+                
+                //try to delete image from storage
+                try? FileManager.default.removeItem(at: userProfileImageURL)
+            }
+        }
+        
+        get {
+            guard let imageData = try? Data(contentsOf: userProfileImageURL) else {
+                return nil
+            }
+            
+            if let image = UIImage(data: imageData) {
+                return image
+            } else {
+                assertionFailure("image not converted from data")
+                
+                return nil
+            }
+        }
+    }
+    
     private let currentUserKey: String = "currentUser"
     
-    var userProfileURL: URL = {
+    private var userProfileImageURL: URL {
+        
         // Get the URL for where to save the image
         guard let libraryDirectory = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first else {
             fatalError("no access to this directory")
         }
+        
         // Create a filepath name for the image store
-        let userProfileURL = libraryDirectory.appendingPathComponent("userProfile.png")
-        return userProfileURL
-    }()
-    
-    func storeUserProfileImage(image: UIImage) {
+        let url = libraryDirectory.appendingPathComponent("userProfile.png")
         
-        // Convert the UIImage into Data
-        guard let imageData = UIImagePNGRepresentation(image) else {
-            return
-        }
-        // Use file manager to save the data
-        
-        do {
-            try imageData.write(to: userProfileURL)
-        } catch {
-            assertionFailure("\(error)")
-        }
+        return url
     }
     
-    func removeUserProfileImage() {
-        let filemanager = FileManager.default
-        guard let libraryDirectory = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first else {
-            fatalError("no access to this directory")
+    static var currentUser: User {
+        guard let user = self._currentUser else {
+            fatalError("no user logged in. Please ensure this property is not invoked without ensuring a user is logged in")
         }
-        let userProfileImageURL = libraryDirectory.appendingPathComponent("userProfile.png")
         
-        try? filemanager.removeItem(at: userProfileImageURL)
+        return user
     }
     
-    func loadUserProfileImage() -> UIImage? {
-        guard let imageData = try? Data(contentsOf: userProfileURL) else {
+    static var currentUserIfLoggedIn: User? {
+        return self._currentUser
+    }
+    
+    static private var _currentUser: User?
+    
+    // MARK: - RETURN VALUES
+    
+    //load the user from persistence and return it
+        //does user default contain USER_ALREADY_LOGGED_IN?
+        //is user in keychains present and valid?
+        //return user
+    
+        //otherwise, clear user, if stored, from keychains since user default doesn't contain key
+    private func loadUser() -> User? {
+        /**
+         since deleting the app doesn't clear keychains, we must check if the user defaults
+         contains USER_ALREADY_LOGGED_IN before we check the keychains in the event
+         the user deletes the app.
+         */
+        
+        let userDefaults = UserDefaults.standard
+        let keychains = KeychainSwift()
+        
+        guard userDefaults.bool(forKey: currentUserKey) else {
+            
+            //clear user, if stored, from keychains since user default doesn't contain key
+            self.removeUser()
+            
             return nil
         }
         
-        if let image = UIImage(data: imageData) {
-            return image
+        guard
+            let userDataFromKeychains = keychains.getData(currentUserKey),
+            let user = try? JSONDecoder().decode(User.self, from: userDataFromKeychains) else {
+                
+                //invalid user, clear the keychain and remove the key from user defaults
+                self.removeUser()
+                
+                return nil
+        }
+        
+        return user
+    }
+    
+    // MARK: - METHODS
+    
+    //check if there is already a user persisted in user defaults
+        //make a network call to validate their token?
+        //store user in memory
+    func checkIfUserIsLoggedIn() -> Bool {
+        
+        if let currentUser = self.loadUser() {
+            self.setCurrentUser(currentUser)
+            
+            return true
+            
+            //TODO: validate using validate endpoint
+//            let networkStack = NetworkStack()
+//            networkStack.validate(currentUser, ...)
+            
+            //if validation failed, clear the user and invoke the callback with false
+            //otherwise, store user in memory and invoke callback with true
         } else {
-            print("image not converted from data")
-            return nil
+            
+            return false
         }
     }
     
-    func setCurrentUser(currentUser: User) {
-        let keychain = KeychainSwift()
-        guard let currentUserData = try? JSONEncoder().encode(currentUser) else {
-            fatalError("no current user")
-        }
-        keychain.set(currentUserData, forKey: currentUserKey)
+    func login(_ user: User) {
+        self.setCurrentUser(user, writeToPersistence: true)
+    }
+    
+    func logout() {
+        self.removeUser()
         
-        // FIXME: Refactor this, function not really needed
-        // CurrentUserData includes token property
-        setUserToken(token: currentUser.token)
+        //notify the user has been logged out
+        NotificationCenter.default.post(name: NSNotification.Name.userDidLogout, object: nil)
     }
     
-    func getCurrentUser() -> User? {
-        let keychain = KeychainSwift()
-        guard let currentUserData = keychain.getData(currentUserKey), let currentUser = try? JSONDecoder().decode(User.self, from: currentUserData) else {
-            return nil
-        }
-        return currentUser
-    }
-    
-    func loginUser(username: String, password: String) {
-        let keychain = KeychainSwift()
-        keychain.set(username, forKey: usernameKey)
-        keychain.set(password, forKey: passwordKey)
-    }
-    
-    func getUserLoginCredentials() -> (username: String, password: String)? {
-        let keychain = KeychainSwift()
-        guard let username = keychain.get(usernameKey), let password = keychain.get(passwordKey) else {
-            return nil
-        }
-        return (username, password)
-    }
-    
-    func setUserToken(token: String) {
-        let keychain = KeychainSwift()
-        keychain.set(token, forKey: tokenKey)
-    }
-    
-    func getUserToken() -> String? {
-        let keychain = KeychainSwift()
-        guard let token = keychain.get(tokenKey) else {
-            return nil
-        }
-        return token
-    }
-    
-    func logoutUser() {
-        let keychain = KeychainSwift()
-        keychain.delete(usernameKey)
-        keychain.delete(passwordKey)
-        keychain.delete(tokenKey)
+    //store the given User in persistence
+        //store USER_ALREADY_LOGGED_IN true in user defaults
+        //store user in Keychains since user contains token
+    private func setCurrentUser(_ user: User, writeToPersistence: Bool = false) {
         
-        self.removeUserProfileImage()
-    }
-    
-    func checkUserLoggedIn(callback: @escaping (Bool) -> ()) {
+        UserPersistence._currentUser = user
         
-        let networkStack = NetworkStack()
-//        let keychain = KeychainSwift()
-        guard let userCredentials = getUserLoginCredentials() else {
-            return callback(false)
-        }
-
-        //FIXME: don't perform network call if token exists
-        let userLogin = UserLogin(username: userCredentials.username, password: userCredentials.password)
-
-        networkStack.login(a: userLogin) { (result) in
-            switch result {
-            case .success(let userReturned):
-                self.setUserToken(token: userReturned.token)
-                callback(true)
-            case .failure:
-                callback(false)
+        if writeToPersistence {
+            let userDefaults = UserDefaults.standard
+            let keychains = KeychainSwift()
+            
+            userDefaults.set(true, forKey: currentUserKey)
+            
+            do {
+                let userData = try JSONEncoder().encode(user)
+                keychains.set(userData, forKey: currentUserKey)
+            } catch {
+                assertionFailure(error.localizedDescription)
             }
         }
     }
+    
+    //remove the user, if stored, from persistence
+        //clear USER_ALREADY_LOGGED_IN from user defaults
+    private func removeUser() {
+        let userDefaults = UserDefaults.standard
+        let keychains = KeychainSwift()
+        
+        userDefaults.set(nil, forKey: currentUserKey)
+        keychains.delete(currentUserKey)
+        
+        self.userProfileImage = nil
+    }
+}
+
+extension NSNotification.Name {
+    static let userDidLogout = NSNotification.Name.init("USER_DID_LOGOUT")
 }
