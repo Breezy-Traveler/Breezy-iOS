@@ -42,13 +42,12 @@ class QuoteViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        userPersistence.checkIfUserIsLoggedIn { [weak self] (isLoggedIn) in
-            guard let unwrappedSelf = self else { return }
+        
+        if userPersistence.checkIfUserIsLoggedIn() == false {
+            let loginViewController = LoginController()
+            present(loginViewController, animated: false, completion: nil)
             
-            if !isLoggedIn {
-                let loginViewController = LoginController()
-                unwrappedSelf.present(loginViewController, animated: false, completion: nil)
-            }
+            return ()
         }
         
         let dummyText = "We must let go of the life we have planned, so as to accept the one that is waiting for us."

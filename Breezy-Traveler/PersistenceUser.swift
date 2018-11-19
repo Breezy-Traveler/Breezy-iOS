@@ -124,12 +124,12 @@ class UserPersistence {
     //check if there is already a user persisted in user defaults
         //make a network call to validate their token?
         //store user in memory
-    func checkIfUserIsLoggedIn(callback: (Bool) -> ()) {
+    func checkIfUserIsLoggedIn() -> Bool {
         
         if let currentUser = self.loadUser() {
             self.setCurrentUser(currentUser)
             
-            callback(true)
+            return true
             
             //TODO: validate using validate endpoint
 //            let networkStack = NetworkStack()
@@ -139,7 +139,7 @@ class UserPersistence {
             //otherwise, store user in memory and invoke callback with true
         } else {
             
-            callback(false)
+            return false
         }
     }
     

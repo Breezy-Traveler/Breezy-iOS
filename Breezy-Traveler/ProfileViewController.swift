@@ -74,7 +74,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBAction func pressedLogout(_ sender: UIBarButtonItem) {
         userPersistence.logout()
         let loginViewController = LoginController()
-        self.present(loginViewController, animated: false, completion: nil)
+        self.present(loginViewController, animated: true, completion: nil)
     }
     
     // MARK: - LIFE CYCLE
