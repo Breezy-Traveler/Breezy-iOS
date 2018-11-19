@@ -10,11 +10,17 @@ import UIKit
 
 class MyTripsViewController: UIViewController {
     
+    // MARK: - VARS
+    
     private var trips = [Trip]()
     private var publishedTrips: [Trip]?
     
     var userPersistence = UserPersistence()
     let networkStack = NetworkStack()
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     // MARK: - RETURN VALUES
     
@@ -116,6 +122,10 @@ class MyTripsViewController: UIViewController {
         loadPublishedTrips()
     }
     
+    private func listenForUserLogout() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.userDidLogout(_:)), name: NSNotification.Name.userDidLogout, object: nil)
+    }
+    
     // MARK: - OUTLETS
     
     @IBOutlet weak var tripsTableView: UITableView!
@@ -141,6 +151,11 @@ class MyTripsViewController: UIViewController {
         self.navigationController?.pushViewController(VC, animated: true)
     }
     
+    @objc private func userDidLogout(_ notification: Notification) {
+        trips = []
+        tripsTableView.reloadData()
+    }
+    
     // MARK: - LIFE CYCLE
     
     override func viewDidLoad() {
@@ -148,6 +163,7 @@ class MyTripsViewController: UIViewController {
         
         setupProfileImage()
         setupNavigationBarAppearence()
+        listenForUserLogout()
         profileImage.addGestureRecognizer(singleTap)
     }
     

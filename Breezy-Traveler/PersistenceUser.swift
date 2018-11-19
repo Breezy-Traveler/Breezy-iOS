@@ -149,6 +149,9 @@ class UserPersistence {
     
     func logout() {
         self.removeUser()
+        
+        //notify the user has been logged out
+        NotificationCenter.default.post(name: NSNotification.Name.userDidLogout, object: nil)
     }
     
     //store the given User in persistence
@@ -184,4 +187,8 @@ class UserPersistence {
         
         self.userProfileImage = nil
     }
+}
+
+extension NSNotification.Name {
+    static let userDidLogout = NSNotification.Name.init("USER_DID_LOGOUT")
 }
