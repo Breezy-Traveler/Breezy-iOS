@@ -26,7 +26,9 @@ class CreateTripVC: UIViewController {
         guard let place = placeTextField.text else { return }
         
         let newTrip = CreateTrip(place: place)
-        networkStack.createTrip(trip: newTrip) { (result) in
+        networkStack.createTrip(trip: newTrip) { [weak self] (result) in
+            guard let unwrappedSelf = self else { return }
+
             switch result {
                 
             case .success(let trip):
@@ -39,7 +41,7 @@ class CreateTripVC: UIViewController {
                 // Bring back to the main thread before presenting the Trip Detail View
                 DispatchQueue.main.async {
                     vc.trip = trip
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    unwrappedSelf.navigationController?.pushViewController(vc, animated: true)
                 }
                 
             case .failure(let tripsErrors):

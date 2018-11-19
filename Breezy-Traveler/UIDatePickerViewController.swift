@@ -26,13 +26,15 @@ class UIDatePickerViewController: UIViewController {
 
     private var isShowingDatePicker: Bool {
         set {
-            UIView.animate(withDuration: 0.15, delay: 0.0, options: .curveLinear, animations: { [unowned self] in
+            UIView.animate(withDuration: 0.15, delay: 0.0, options: .curveLinear, animations: { [weak self] in
+                guard let unwrappedSelf = self else { return }
+
                 if newValue {
-                    self.constraintBottom.constant = 0
+                    unwrappedSelf.constraintBottom.constant = 0
                 } else {
-                    self.constraintBottom.constant = -self.datePicker.bounds.size.height
+                    unwrappedSelf.constraintBottom.constant = -unwrappedSelf.datePicker.bounds.size.height
                 }
-                self.view.layoutIfNeeded()
+                unwrappedSelf.view.layoutIfNeeded()
             })
         }
         get {

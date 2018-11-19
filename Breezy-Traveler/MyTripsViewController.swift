@@ -30,13 +30,15 @@ class MyTripsViewController: UIViewController {
     }
     
     func loadUserTrips() {
-        networkStack.loadUserTrips(user: currentUser) { (result) in
+        networkStack.loadUserTrips(user: currentUser) { [weak self] (result) in
+            guard let unwrappedSelf = self else { return }
+
             switch result {
                 
             case .success(let tripsDictionaries):
-                self.trips = tripsDictionaries
+                unwrappedSelf.trips = tripsDictionaries
                 DispatchQueue.main.async {
-                    self.tripsTableView.reloadData()
+                    unwrappedSelf.tripsTableView.reloadData()
                 }
                 
             case .failure(let tripsErrors):
@@ -49,12 +51,14 @@ class MyTripsViewController: UIViewController {
         //TODO: published trips
         return ()
         
-        networkStack.loadPublishedTrips(fetchAllTrips: false) { (result) in
+        networkStack.loadPublishedTrips(fetchAllTrips: false) { [weak self] (result) in
+            guard let unwrappedSelf = self else { return }
+
             switch result {
             case .success(let publishedTrips):
-                self.publishedTrips = publishedTrips
+                unwrappedSelf.publishedTrips = publishedTrips
                 DispatchQueue.main.async {
-                    self.collectionView.reloadData()
+                    unwrappedSelf.collectionView.reloadData()
                 }
             case .failure(let err):
                 
@@ -62,7 +66,7 @@ class MyTripsViewController: UIViewController {
                 // prompt user of error
                 UIAlertController(title: "Fetching Published Trips", message: err.localizedDescription, preferredStyle: .alert)
                     .addDismissButton()
-                    .present(in: self)
+                    .present(in: unwrappedSelf)
             }
         }
     }
@@ -151,13 +155,15 @@ class MyTripsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        userPersistence.checkUserLoggedIn { [unowned self] (isLoggedIn) in
+        userPersistence.checkUserLoggedIn { [weak self] (isLoggedIn) in
+            guard let unwrappedSelf = self else { return }
+
             if !isLoggedIn {
                 let loginViewController = LoginController()
-                self.present(loginViewController, animated: false, completion: nil)
+                unwrappedSelf.present(loginViewController, animated: false, completion: nil)
             } else {
-                self.currentUser = User.getStoredUser()
-                self.updateUI()
+                unwrappedSelf.currentUser = User.getStoredUser()
+                unwrappedSelf.updateUI()
                 //TODO: show loading indicator
             }
         }
@@ -208,13 +214,15 @@ extension MyTripsViewController: UITableViewDataSource, UITableViewDelegate {
             tableView.deleteRows(at: [indexPath], with: .fade)
             
             // delete trip from the database
-            self.networkStack.deleteTrip(trip: deleteTrip, callback: { (result) in
+            networkStack.deleteTrip(trip: deleteTrip, callback: { [weak self] (result) in
+                guard let unwrappedSelf = self else { return }
+
                 switch result {
                     
                 case .success(_):
                     print("\(deleteTrip.place)\n was deleted")
                     DispatchQueue.main.async {
-                        self.tripsTableView.reloadData()
+                        unwrappedSelf.tripsTableView.reloadData()
                     }
                     print(deleteTrip)
                 case .failure(let tripsErrors):

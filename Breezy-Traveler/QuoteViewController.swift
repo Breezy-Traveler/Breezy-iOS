@@ -42,10 +42,12 @@ class QuoteViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        userPersistence.checkUserLoggedIn { (isLoggedIn) in
+        userPersistence.checkUserLoggedIn { [weak self] (isLoggedIn) in
+            guard let unwrappedSelf = self else { return }
+            
             if !isLoggedIn {
                 let loginViewController = LoginController()
-                self.present(loginViewController, animated: false, completion: nil)
+                unwrappedSelf.present(loginViewController, animated: false, completion: nil)
             }
         }
         
