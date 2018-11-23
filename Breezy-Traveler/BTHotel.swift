@@ -9,7 +9,7 @@
 import Foundation
 
 struct Hotel: Codable {
-    let id: Int
+    let id: String
     var name: String
     var address: String
     
