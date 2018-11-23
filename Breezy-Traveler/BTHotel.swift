@@ -8,53 +8,70 @@
 
 import Foundation
 
-struct BTHotel: Codable {
-    let idValue: Int?
-    
-    /** A helper var to return the unwrapped idValue of hotel */
-    var id: Int {
-        get {
-            guard let id = self.idValue else {
-                fatalError("hotel did not have an id")
-            }
-            
-            return id
-        }
-    }
-    var title: String
-    var address: String?
-    var visited: Bool
-    var notes: String?
-    var rating: Like?
-
-    enum Like: Int, Codable {
-        // Zero is dislike, one is like
-        case dislike = 0
-        case like = 1
-    }
+struct Hotel: Codable {
+    let id: Int
+    var name: String
+    var address: String
     
     enum CodingKeys: String, CodingKey {
-        case title
+        case id = "_id"
+        case name
         case address
-        case visited = "is_visited"
-        case notes
-        case rating = "ratings"
-        case idValue = "id"
-    }
-    
-    init(
-        id: Int? = nil,
-        title: String,
-        address: String? = nil,
-        visited: Bool,
-        notes: String? = nil,
-        rating: Like? = nil) {
-        
-        self.idValue = id
-        self.title = title
-        self.address = address
-        self.visited = visited
-        self.notes = notes
-        self.rating = rating
     }
 }
+
+struct CreateHotel: Encodable {
+    let name: String
+    let address: String
+}
+
+//struct BTHotel: Codable {
+//    let idValue: Int?
+//
+//    /** A helper var to return the unwrapped idValue of hotel */
+//    var id: Int {
+//        get {
+//            guard let id = self.idValue else {
+//                fatalError("hotel did not have an id")
+//            }
+//
+//            return id
+//        }
+//    }
+//    var title: String
+//    var address: String?
+//    var visited: Bool
+//    var notes: String?
+//    var rating: Like?
+//
+//    enum Like: Int, Codable {
+//        // Zero is dislike, one is like
+//        case dislike = 0
+//        case like = 1
+//    }
+//
+//    enum CodingKeys: String, CodingKey {
+//        case title
+//        case address
+//        case visited = "is_visited"
+//        case notes
+//        case rating = "ratings"
+//        case idValue = "id"
+//    }
+//
+//    init(
+//        id: Int? = nil,
+//        title: String,
+//        address: String? = nil,
+//        visited: Bool,
+//        notes: String? = nil,
+//        rating: Like? = nil) {
+//
+//        self.idValue = id
+//        self.title = title
+//        self.address = address
+//        self.visited = visited
+//        self.notes = notes
+//        self.rating = rating
+//    }
+//}

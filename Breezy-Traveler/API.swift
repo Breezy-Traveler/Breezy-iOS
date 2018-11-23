@@ -27,11 +27,11 @@ enum BTAPIEndPoints {
     case searchPublishedTrips(searchTerm: String)
 
     // Hotels
-    case createHotel(BTHotel, for: Trip)
+    case createHotel(CreateHotel, for: Trip)
     case loadHotels(for: Trip)
     case showHotel(forHotelId: Int, for: Trip)
-    case updateHotel(BTHotel, for: Trip)
-    case deleteHotel(BTHotel, for: Trip)
+    case updateHotel(Hotel, for: Trip)
+    case deleteHotel(Hotel, for: Trip)
 
     // Sites
     case createSite(BTSite, for: Trip)

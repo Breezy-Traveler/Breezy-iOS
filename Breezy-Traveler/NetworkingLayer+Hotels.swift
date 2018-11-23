@@ -13,7 +13,7 @@ import SwiftyJSON
 
 extension NetworkStack {
     
-    func create(a hotel: BTHotel, for trip: Trip, callback: @escaping (Result<BTHotel, UserfacingErrors>) -> ()) {
+    func create(a hotel: CreateHotel, for trip: Trip, callback: @escaping (Result<Hotel, UserfacingErrors>) -> ()) {
         apiService.request(.createHotel(hotel, for: trip)) { (result) in
             switch result {
             case .success(let response):
@@ -21,7 +21,7 @@ extension NetworkStack {
                     
                 // Created
                 case 201:
-                    guard let returnedHotel = try? JSONDecoder().decode(BTHotel.self, from: response.data) else {
+                    guard let returnedHotel = try? JSONDecoder().decode(Hotel.self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -44,13 +44,13 @@ extension NetworkStack {
     }
     
     //TODO: test endpoint once api supports this endpoint
-    func loadHotels(for trip: Trip, callback: @escaping (Result<[BTHotel], UserfacingErrors>) -> ()) {
+    func loadHotels(for trip: Trip, callback: @escaping (Result<[Hotel], UserfacingErrors>) -> ()) {
         apiService.request(.loadHotels(for: trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let hotels = try? JSONDecoder().decode([BTHotel].self, from: response.data) else {
+                    guard let hotels = try? JSONDecoder().decode([Hotel].self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -71,13 +71,13 @@ extension NetworkStack {
     }
     
     //TODO: test endpoint once api supports this endpoint
-    func showHotel(for hotelId: Int, for trip: Trip, callback: @escaping (Result<BTHotel, UserfacingErrors>) -> ()) {
+    func showHotel(for hotelId: Int, for trip: Trip, callback: @escaping (Result<Hotel, UserfacingErrors>) -> ()) {
         apiService.request(.showHotel(forHotelId: hotelId, for: trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let hotel = try? JSONDecoder().decode(BTHotel.self, from: response.data) else {
+                    guard let hotel = try? JSONDecoder().decode(Hotel.self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -98,13 +98,13 @@ extension NetworkStack {
     }
     
     //TODO: test endpoint once api supports this endpoint
-    func update(hotel: BTHotel, for trip: Trip, callback: @escaping (Result<BTHotel, UserfacingErrors>) -> ()) {
+    func update(hotel: Hotel, for trip: Trip, callback: @escaping (Result<Hotel, UserfacingErrors>) -> ()) {
         apiService.request(.updateHotel(hotel, for: trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let updatedHotel = try? JSONDecoder().decode(BTHotel.self, from: response.data) else {
+                    guard let updatedHotel = try? JSONDecoder().decode(Hotel.self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -125,13 +125,13 @@ extension NetworkStack {
     }
     
     //TODO: test endpoint once api supports this endpoint
-    func delete(hotel: BTHotel, for trip: Trip, callback: @escaping (Result<String, UserfacingErrors>) -> ()) {
+    func delete(hotel: Hotel, for trip: Trip, callback: @escaping (Result<String, UserfacingErrors>) -> ()) {
         apiService.request(.deleteHotel(hotel, for: trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
                 case 204:
-                    callback(.success("\(hotel.title) was deleted"))
+                    callback(.success("\(hotel.name) was deleted"))
                 default:
                     let errors = UserfacingErrors.serverError(message: response.data)
                     callback(.failure(errors))
