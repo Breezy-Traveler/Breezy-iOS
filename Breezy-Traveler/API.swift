@@ -99,19 +99,19 @@ extension BTAPIEndPoints: TargetType {
         // Hotels
         case .createHotel(_, for: let trip):
             let id = trip.id
-            return "/users/trips/\(id)/hotels"
+            return "/trips/\(id)/hotels"
 
         case .loadHotels(for: let trip):
             let id = trip.id
-            return "/users/trips/\(id)/hotels"
+            return "/trips/\(id)/hotels"
 
         case .showHotel(forHotelId: let id, for: let trip):
             let tripId = trip.id, hotelId = id
-            return "/users/trips/\(tripId)/hotels/\(hotelId)"
+            return "/trips/\(tripId)/hotels/\(hotelId)"
 
         case .updateHotel(let hotel, for: let trip), .deleteHotel(let hotel, for: let trip):
             let tripId = trip.id, hotelId = hotel.id
-            return "/users/trips/\(tripId)/hotels/\(hotelId)"
+            return "/trips/\(tripId)/hotels/\(hotelId)"
 
         // Sites
         case .createSite(_, for: let trip):
@@ -163,7 +163,7 @@ extension BTAPIEndPoints: TargetType {
         case .loadHotels, .showHotel:
             return .get
         case .updateHotel:
-            return .patch
+            return .put
         case .deleteHotel:
             return .delete
 
