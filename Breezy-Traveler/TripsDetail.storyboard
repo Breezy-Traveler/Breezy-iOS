@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eqz-PU-wnb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eqz-PU-wnb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -65,7 +64,7 @@
                                         <rect key="frame" x="0.0" y="299.5" width="375" height="243.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ODw-1X-nKt" customClass="UIButtonCell" customModule="Breezy_Traveler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="60.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Dates"/>
@@ -75,7 +74,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oej-io-fHL" customClass="UIButtonCell" customModule="Breezy_Traveler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="61" width="375" height="61"/>
+                                                <rect key="frame" x="0.0" y="60.5" width="375" height="61"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Hotels"/>
@@ -85,7 +84,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FKG-ib-5ZQ" customClass="UIButtonCell" customModule="Breezy_Traveler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="122" width="375" height="60.5"/>
+                                                <rect key="frame" x="0.0" y="121.5" width="375" height="61"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Sites"/>
@@ -179,7 +178,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m6z-HY-MnN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2986" y="1012"/>
+            <point key="canvasLocation" x="3263" y="1012"/>
         </scene>
         <!--Images View Controller-->
         <scene sceneID="qpX-a1-A6K">
@@ -216,15 +215,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LfS-4a-nIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2516" y="367"/>
+            <point key="canvasLocation" x="2489" y="214"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--Hotels-->
         <scene sceneID="050-SU-qQ0">
             <objects>
-                <viewControllerPlaceholder id="Rsd-vQ-snA" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Hotels" id="Rsd-vQ-snA" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c0r-Rq-5Uh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2425" y="776"/>
+            <point key="canvasLocation" x="2430" y="647"/>
         </scene>
         <!--Storyboard Reference-->
         <scene sceneID="cJa-CE-x3M">
@@ -232,7 +231,7 @@
                 <viewControllerPlaceholder id="Qgb-Ap-1wf" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PsA-CC-RUI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2489" y="828"/>
+            <point key="canvasLocation" x="2489" y="904"/>
         </scene>
         <!--Notes-->
         <scene sceneID="x43-XO-fD8">
@@ -264,7 +263,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Je-CH-6Eb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2656.8000000000002" y="1530.5847076461771"/>
+            <point key="canvasLocation" x="1964" y="1821"/>
         </scene>
     </scenes>
 </document>

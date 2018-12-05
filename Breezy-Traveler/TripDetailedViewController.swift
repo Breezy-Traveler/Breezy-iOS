@@ -143,17 +143,7 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
     
     @IBOutlet weak var buttonHotels: UIButtonCell!
     @IBAction func pressHotels(_ sender: Any) {
-//        self.performSegue(withIdentifier: UIStoryboardSegue.showHotels, sender: nil)
-        //TODO: erick-testing purposes
-        let hotel = CreateHotel.init(name: "LA", address: "1234 Infinity Circle")
-        NetworkStack().create(a: hotel, for: self.trip) { (result) in
-            switch result {
-            case .success(let createdHotel):
-                print(createdHotel)
-            case .failure(let err):
-                print(err.localizedDescription)
-            }
-        }
+        self.performSegue(withIdentifier: UIStoryboardSegue.showHotels, sender: nil)
     }
     
     @IBOutlet weak var buttonStites: UIButtonCell!

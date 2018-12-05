@@ -35,6 +35,8 @@
 		E91A196620840D0C00CEE74A /* TripDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A196420840D0C00CEE74A /* TripDatePickerViewController.swift */; };
 		E91A196720840D0C00CEE74A /* TripDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A196520840D0C00CEE74A /* TripDetailedViewController.swift */; };
 		E91A196920840D6900CEE74A /* QuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A196820840D6900CEE74A /* QuoteViewController.swift */; };
+		E934F2D921B86C5B00553138 /* HotelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934F2D721B86C5B00553138 /* HotelsViewController.swift */; };
+		E934F2DC21B86CB800553138 /* Hotels.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E934F2DB21B86CB800553138 /* Hotels.storyboard */; };
 		E95E138220754C6C00BF4276 /* NetworkingLayer+Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */; };
 		E95E13842075651F00BF4276 /* BTSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E13832075651F00BF4276 /* BTSite.swift */; };
 		E95E13872075879300BF4276 /* NetworkingLayer+Sites.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E13862075879300BF4276 /* NetworkingLayer+Sites.swift */; };
@@ -106,6 +108,8 @@
 		E91A196420840D0C00CEE74A /* TripDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDatePickerViewController.swift; sourceTree = "<group>"; };
 		E91A196520840D0C00CEE74A /* TripDetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailedViewController.swift; sourceTree = "<group>"; };
 		E91A196820840D6900CEE74A /* QuoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteViewController.swift; sourceTree = "<group>"; };
+		E934F2D721B86C5B00553138 /* HotelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelsViewController.swift; sourceTree = "<group>"; };
+		E934F2DB21B86CB800553138 /* Hotels.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Hotels.storyboard; sourceTree = "<group>"; };
 		E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+QOD.swift"; sourceTree = "<group>"; };
 		E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Trips.swift"; sourceTree = "<group>"; };
 		E95E13832075651F00BF4276 /* BTSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTSite.swift; sourceTree = "<group>"; };
@@ -274,6 +278,8 @@
 			isa = PBXGroup;
 			children = (
 				E98F034B2072B69C004D4074 /* BTHotel.swift */,
+				E934F2D721B86C5B00553138 /* HotelsViewController.swift */,
+				E934F2DB21B86CB800553138 /* Hotels.storyboard */,
 			);
 			name = Hotel;
 			sourceTree = "<group>";
@@ -415,6 +421,7 @@
 				E98F03482072A95A004D4074 /* Trips.storyboard in Resources */,
 				B96529522069A571007FAD4D /* Assets.xcassets in Resources */,
 				B9BF275E2085356A00265140 /* Absolute-Regular.otf in Resources */,
+				E934F2DC21B86CB800553138 /* Hotels.storyboard in Resources */,
 				E9DC2420207E92BD001691C2 /* UITitleClearButtonTableViewCell.xib in Resources */,
 				B96529502069A571007FAD4D /* Main.storyboard in Resources */,
 				B950975C207D3E6600B4FE9B /* CreateTrip.storyboard in Resources */,
@@ -522,6 +529,7 @@
 				E95E13842075651F00BF4276 /* BTSite.swift in Sources */,
 				E96BEF8620CCBC9600295ECD /* NetworkingLayer+QOD.swift in Sources */,
 				E97ED761207809BF0021B651 /* UtilityExtensions+Date.swift in Sources */,
+				E934F2D921B86C5B00553138 /* HotelsViewController.swift in Sources */,
 				B9F9F17A2075585500F0D24D /* UtilityExtensions.swift in Sources */,
 				E9B1B9C1207D558900FCBC2E /* UtilityExtensions+UITextField.swift in Sources */,
 				B965294B2069A571007FAD4D /* AppDelegate.swift in Sources */,
