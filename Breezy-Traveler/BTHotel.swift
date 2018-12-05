@@ -27,6 +27,13 @@ struct Hotel: Codable {
     }
 }
 
+extension Hotel: Equatable {
+    
+    static func == (lhs: Hotel, rhs: Hotel) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
 struct CreateHotel: Encodable {
     let name: String
     let address: String

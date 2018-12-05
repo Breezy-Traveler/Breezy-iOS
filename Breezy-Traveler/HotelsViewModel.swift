@@ -37,7 +37,7 @@ class HotelsViewModel {
     }
     
     func createHotel(name: String, address: String, for trip: Trip, compeltion: @escaping (Bool) -> Void) {
-
+        
         let hotel = CreateHotel.init(name: name, address: address)
         networking.create(a: hotel, for: trip) { [weak self] (result) in
             guard let unwrappedSelf = self else { return }
@@ -49,6 +49,45 @@ class HotelsViewModel {
             case .failure(let err):
                 assertionFailure(err.localizedDescription)
                 compeltion(false)
+            }
+        }
+    }
+    
+    func updateHotel(_ hotel: Hotel, for trip: Trip, compeltion: @escaping (Bool) -> Void) {
+        
+        networking.update(hotel: hotel, for: trip) { [weak self] (result) in
+            guard let unwrappedSelf = self else { return }
+            
+            switch result {
+            case .success(let updatedHotel):
+                if let indexToUpdate = unwrappedSelf.hotels.firstIndex(of: hotel) {
+                    unwrappedSelf.hotels[indexToUpdate] = updatedHotel
+                }
+                
+                compeltion(true)
+            case .failure(let err):
+                assertionFailure(err.localizedDescription)
+                compeltion(false)
+            }
+        }
+    }
+    
+    func deleteHotel(_ hotel: Hotel, for trip: Trip, completion: @escaping (Bool) -> Void) {
+        
+        networking.delete(hotel: hotel, for: trip) { [weak self] (result) in
+            guard let unwrappedSelf = self else { return }
+            
+            switch result {
+            case .success(let message):
+                if let indexToRemove = unwrappedSelf.hotels.firstIndex(of: hotel) {
+                    unwrappedSelf.hotels.remove(at: indexToRemove)
+                }
+                
+                debugPrint(message)
+                completion(true)
+            case .failure(let err):
+                assertionFailure(err.localizedDescription)
+                completion(false)
             }
         }
     }

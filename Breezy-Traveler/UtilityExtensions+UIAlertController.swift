@@ -93,10 +93,10 @@ extension UIAlertController {
 }
 
 extension UIAlertController {
-    convenience init(newHotelFor trip: Trip, action: @escaping (_ name: String, _ address: String) -> Void) {
+    convenience init(hotelEditorFor trip: Trip, hotelName: String = "", hotelAddress: String = "", action: @escaping (_ name: String, _ address: String) -> Void) {
         self.init(title: "New Hotel", message: "new hotel for \(trip.place)", preferredStyle: .alert)
-        _ = self.addTextField(defaultText: nil, placeholderText: "Hotel Name")
-        _ = self.addTextField(defaultText: nil, placeholderText: "Address")
+        _ = self.addTextField(defaultText: hotelName, placeholderText: "Hotel Name")
+        _ = self.addTextField(defaultText: hotelAddress, placeholderText: "Address")
         _ = self.addConfirmationButton(title: "Add") { [weak self] _ in
             guard let unwrappedSelf = self else { return }
             

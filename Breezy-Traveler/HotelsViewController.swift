@@ -24,12 +24,43 @@ class HotelsViewController: UIViewController {
     
     // MARK: - METHODS
     
+    private func deleteHotel(at indexPath: IndexPath) {
+        let hotelToDelete = viewModel.hotels[indexPath.row]
+        
+        viewModel.deleteHotel(hotelToDelete, for: self.trip) { isSuccessful in
+            if isSuccessful {
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            } else {
+                self.presentAlert(error: nil, title: "Deleting a Hotel")
+            }
+        }
+    }
+    
+    private func editHotel(at indexPath: IndexPath) {
+        let hotelToEdit = viewModel.hotels[indexPath.row]
+        
+        let editHotelAlert = UIAlertController(
+            hotelEditorFor: self.trip,
+            hotelName: hotelToEdit.name,
+            hotelAddress: hotelToEdit.address) { [unowned self] hotelName, hotelAddress in
+            
+            self.viewModel.updateHotel(hotelToEdit, for: self.trip) { isSuccessful in
+                if isSuccessful {
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                } else {
+                    self.presentAlert(error: nil, title: "Updating a Hotel")
+                }
+            }
+        }
+        self.present(editHotelAlert, animated: true)
+    }
+    
     // MARK: - IBACTIONS
     
     @IBOutlet weak var tableView: UITableView!
     @IBAction func pressAddHotel(_ sender: Any) {
         
-        let newHotelAlert = UIAlertController(newHotelFor: self.trip) { [unowned self] hotelName, hotelAddress in
+        let newHotelAlert = UIAlertController(hotelEditorFor: self.trip) { [unowned self] hotelName, hotelAddress in
             
             self.viewModel.createHotel(name: hotelName, address: hotelAddress, for: self.trip) { isSuccessful in
                 if isSuccessful {
@@ -70,6 +101,23 @@ extension HotelsViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         return "Hotels for \(self.trip.place)"
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let editAction = UITableViewRowAction(style: .default, title: "Edit") { [weak self] (action, indexPath) in
+            guard let unwrappedSelf = self else { return }
+            
+            unwrappedSelf.editHotel(at: indexPath)
+        }
+        editAction.backgroundColor = .orange
+        
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] (action, indexPath) in
+            guard let unwrappedSelf = self else { return }
+            
+            unwrappedSelf.deleteHotel(at: indexPath)
+        }
+        
+        return [deleteAction, editAction]
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
