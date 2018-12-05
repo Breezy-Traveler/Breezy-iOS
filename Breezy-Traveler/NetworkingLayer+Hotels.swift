@@ -45,6 +45,10 @@ extension NetworkStack {
     
     //TODO: test endpoint once api supports this endpoint
     func loadHotels(for trip: Trip, callback: @escaping (Result<[Hotel], UserfacingErrors>) -> ()) {
+        
+        #warning ("erick-remove after endpoint for GET /trips/:tripId/hotels is made")
+        return callback(.success([Hotel(name: "Marriot"), Hotel(name: "Days Inn", address: "1234 Not your place")]))
+        
         apiService.request(.loadHotels(for: trip)) { (result) in
             switch result {
             case .success(let response):

@@ -89,8 +89,11 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
                 vc.startDate = trip.startDate
                 vc.endDate = trip.endDate
             case UIStoryboardSegue.showHotels:
-                //TODO: prepare show hotels
-                break
+                guard let vc = segue.destination as? HotelsViewController else {
+                    fatalError("HotelsViewController was not set up in storyboard")
+                }
+                
+                vc.trip = self.trip
             case UIStoryboardSegue.showSites:
                 //TODO: prepare show sites
                 break

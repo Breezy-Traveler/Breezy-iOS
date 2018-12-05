@@ -37,6 +37,8 @@
 		E91A196920840D6900CEE74A /* QuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A196820840D6900CEE74A /* QuoteViewController.swift */; };
 		E934F2D921B86C5B00553138 /* HotelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934F2D721B86C5B00553138 /* HotelsViewController.swift */; };
 		E934F2DC21B86CB800553138 /* Hotels.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E934F2DB21B86CB800553138 /* Hotels.storyboard */; };
+		E934F2DE21B86EBD00553138 /* HotelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934F2DD21B86EBD00553138 /* HotelsViewModel.swift */; };
+		E934F2E021B8704800553138 /* HotelTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934F2DF21B8704800553138 /* HotelTVCell.swift */; };
 		E95E138220754C6C00BF4276 /* NetworkingLayer+Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */; };
 		E95E13842075651F00BF4276 /* BTSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E13832075651F00BF4276 /* BTSite.swift */; };
 		E95E13872075879300BF4276 /* NetworkingLayer+Sites.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E13862075879300BF4276 /* NetworkingLayer+Sites.swift */; };
@@ -110,6 +112,8 @@
 		E91A196820840D6900CEE74A /* QuoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteViewController.swift; sourceTree = "<group>"; };
 		E934F2D721B86C5B00553138 /* HotelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelsViewController.swift; sourceTree = "<group>"; };
 		E934F2DB21B86CB800553138 /* Hotels.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Hotels.storyboard; sourceTree = "<group>"; };
+		E934F2DD21B86EBD00553138 /* HotelsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelsViewModel.swift; sourceTree = "<group>"; };
+		E934F2DF21B8704800553138 /* HotelTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelTVCell.swift; sourceTree = "<group>"; };
 		E95E137F20754BE200BF4276 /* NetworkingLayer+QOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+QOD.swift"; sourceTree = "<group>"; };
 		E95E138120754C6C00BF4276 /* NetworkingLayer+Trips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Trips.swift"; sourceTree = "<group>"; };
 		E95E13832075651F00BF4276 /* BTSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTSite.swift; sourceTree = "<group>"; };
@@ -279,6 +283,8 @@
 			children = (
 				E98F034B2072B69C004D4074 /* BTHotel.swift */,
 				E934F2D721B86C5B00553138 /* HotelsViewController.swift */,
+				E934F2DD21B86EBD00553138 /* HotelsViewModel.swift */,
+				E934F2DF21B8704800553138 /* HotelTVCell.swift */,
 				E934F2DB21B86CB800553138 /* Hotels.storyboard */,
 			);
 			name = Hotel;
@@ -503,12 +509,14 @@
 				B9F9F1822077F2FC00F0D24D /* LoginController+Handlers.swift in Sources */,
 				E9B1B9B9207D3AD800FCBC2E /* UICoverImageView.swift in Sources */,
 				B9F9F17E20758E5F00F0D24D /* AlertVC.swift in Sources */,
+				E934F2E021B8704800553138 /* HotelTVCell.swift in Sources */,
 				B965295D2069C96E007FAD4D /* ExploreTripsTVCell.swift in Sources */,
 				E97ED76820784B600021B651 /* ImagesCollectionViewCell.swift in Sources */,
 				E96BEF8520CCBAC200295ECD /* InfoPlist.swift in Sources */,
 				B91449452069F9250074F71B /* ExploreTripsCollectionViewCell.swift in Sources */,
 				B9B8F916206C54A9009C017F /* API.swift in Sources */,
 				B9F9F18420782EAA00F0D24D /* NteworkingLayer+Images.swift in Sources */,
+				E934F2DE21B86EBD00553138 /* HotelsViewModel.swift in Sources */,
 				E97B4E8520CB24AD0018036D /* PublishedTripsVc.swift in Sources */,
 				E97ED75B2077EF140021B651 /* UIButtonCell.swift in Sources */,
 				E9B1B9C3207D604B00FCBC2E /* ExploreTripsVC.swift in Sources */,

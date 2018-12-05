@@ -14,12 +14,18 @@ class HotelsViewController: UIViewController {
     
     var trip: Trip!
     
+    //TODO: refactor to view model
+    private var hotels: [Hotel] = []
+    
+    private var viewModel = HotelsViewModel()
+    
     // MARK: - RETURN VALUES
     
     // MARK: - METHODS
     
     // MARK: - IBACTIONS
     
+    @IBOutlet weak var tableView: UITableView!
     @IBAction func pressAddHotel(_ sender: Any) {
         
         //TODO: erick-testing purposes
@@ -35,5 +41,41 @@ class HotelsViewController: UIViewController {
     }
     
     // MARK: - LIFE CYCLE
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.fetchHotels(for: self.trip) { [weak self] (hotels) in
+            guard let unwrappedSelf = self else { return }
+            
+            unwrappedSelf.hotels = hotels
+            unwrappedSelf.tableView.reloadData()
+        }
+    }
+}
 
+extension HotelsViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.hotels.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard self.trip.place.isNotEmpty else {
+            return nil
+        }
+        
+        return "Hotels for \(self.trip.place)"
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: HotelTVCell.identifier,
+            for: indexPath
+        ) as! HotelTVCell
+        
+        let hotel = self.hotels[indexPath.row]
+        cell.configure(hotel)
+        
+        return cell
+    }
 }
