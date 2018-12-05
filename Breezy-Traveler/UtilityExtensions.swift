@@ -117,6 +117,14 @@ extension String {
             return self
         }
     }
+    
+    func joinIfNotEmptyOrNil(_ otherString: String?, by joiner: String) -> String {
+        if let other = otherString, other.isNotEmpty {
+            return self + joiner + other
+        } else {
+            return self
+        }
+    }
 }
 
 extension Optional where Wrapped == String {

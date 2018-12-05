@@ -91,3 +91,33 @@ extension UIAlertController {
         return self.textFields!.first!
     }
 }
+
+extension UIAlertController {
+    convenience init(newHotelFor trip: Trip, action: @escaping (_ name: String, _ address: String) -> Void) {
+        self.init(title: "New Hotel", message: "new hotel for \(trip.place)", preferredStyle: .alert)
+        _ = self.addTextField(defaultText: nil, placeholderText: "Hotel Name")
+        _ = self.addTextField(defaultText: nil, placeholderText: "Address")
+        _ = self.addConfirmationButton(title: "Add") { [weak self] _ in
+            guard let unwrappedSelf = self else { return }
+            
+            guard
+                let name = unwrappedSelf.textFields?[0].text,
+                let address = unwrappedSelf.textFields?[1].text else {
+                    return
+            }
+                
+            action(name, address)
+        }
+    }
+}
+
+extension UIViewController {
+    func presentAlert(error: String?, title: String = "", completion: (() -> Void)? = nil) {
+        let alertTitle = title.ifEmpty(use: "Error")
+        let alertMessage = "Something went wrong".joinIfNotEmptyOrNil(error, by: ": ")
+        
+        UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+            .addDismissButton()
+            .present(in: self, completion: completion)
+    }
+}

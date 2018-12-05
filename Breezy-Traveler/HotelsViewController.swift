@@ -28,16 +28,17 @@ class HotelsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBAction func pressAddHotel(_ sender: Any) {
         
-        //TODO: erick-testing purposes
-//        let hotel = CreateHotel.init(name: "LA", address: "1234 Infinity Circle")
-//        NetworkStack().create(a: hotel, for: self.trip) { (result) in
-//            switch result {
-//            case .success(let createdHotel):
-//                print(createdHotel)
-//            case .failure(let err):
-//                print(err.localizedDescription)
-//            }
-//        }
+        let newHotelAlert = UIAlertController(newHotelFor: self.trip) { [unowned self] hotelName, hotelAddress in
+            self.viewModel.createHotel(name: hotelName, address: hotelAddress, for: self.trip) { isSuccessful in
+                if isSuccessful {
+                    self.hotels.append(Hotel(name: hotelName, address: hotelAddress))
+                    self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+                } else {
+                    self.presentAlert(error: nil, title: "Adding a Hotel")
+                }
+            }
+        }
+        self.present(newHotelAlert, animated: true)
     }
     
     // MARK: - LIFE CYCLE

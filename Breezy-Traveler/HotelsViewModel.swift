@@ -30,4 +30,18 @@ struct HotelsViewModel {
             }
         }
     }
+    
+    func createHotel(name: String, address: String, for trip: Trip, compeltion: @escaping (Bool) -> Void) {
+
+        let hotel = CreateHotel.init(name: name, address: address)
+        networking.create(a: hotel, for: trip) { (result) in
+            switch result {
+            case .success(let createdHotel):
+                compeltion(true)
+            case .failure(let err):
+                assertionFailure(err.localizedDescription)
+                compeltion(false)
+            }
+        }
+    }
 }
