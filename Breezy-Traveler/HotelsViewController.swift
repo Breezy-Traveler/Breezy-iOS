@@ -14,10 +14,11 @@ class HotelsViewController: UIViewController {
     
     var trip: Trip!
     
-    //TODO: refactor to view model
-    private var hotels: [Hotel] = []
-    
     private var viewModel = HotelsViewModel()
+    
+    private var hotels: [Hotel] {
+        return viewModel.hotels
+    }
     
     // MARK: - RETURN VALUES
     
@@ -29,9 +30,9 @@ class HotelsViewController: UIViewController {
     @IBAction func pressAddHotel(_ sender: Any) {
         
         let newHotelAlert = UIAlertController(newHotelFor: self.trip) { [unowned self] hotelName, hotelAddress in
+            
             self.viewModel.createHotel(name: hotelName, address: hotelAddress, for: self.trip) { isSuccessful in
                 if isSuccessful {
-                    self.hotels.append(Hotel(name: hotelName, address: hotelAddress))
                     self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
                 } else {
                     self.presentAlert(error: nil, title: "Adding a Hotel")
@@ -46,11 +47,14 @@ class HotelsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModel.fetchHotels(for: self.trip) { [weak self] (hotels) in
+        viewModel.fetchHotels(for: self.trip) { [weak self] isSuccessful in
             guard let unwrappedSelf = self else { return }
             
-            unwrappedSelf.hotels = hotels
-            unwrappedSelf.tableView.reloadData()
+            if isSuccessful {
+                unwrappedSelf.tableView.reloadData()
+            } else {
+                unwrappedSelf.presentAlert(error: nil, title: "Loading Hotels")
+            }
         }
     }
 }

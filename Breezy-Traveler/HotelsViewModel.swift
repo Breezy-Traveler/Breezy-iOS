@@ -8,9 +8,11 @@
 
 import Foundation
 
-struct HotelsViewModel {
+class HotelsViewModel {
     
     // MARK: - VARS
+    
+    private(set) var hotels: [Hotel] = []
     
     private let networking = NetworkStack()
     
@@ -18,15 +20,18 @@ struct HotelsViewModel {
     
     // MARK: - METHODS
     
-    func fetchHotels(for trip: Trip, completion: @escaping ([Hotel]) -> Void) {
+    func fetchHotels(for trip: Trip, completion: @escaping (Bool) -> Void) {
         
-        networking.loadHotels(for: trip) { (result) in
+        networking.loadHotels(for: trip) { [weak self] (result) in
+            guard let unwrappedSelf = self else { return }
+            
             switch result {
             case .success(let hotels):
-                completion(hotels)
+                unwrappedSelf.hotels = hotels
+                completion(true)
             case .failure(let err):
                 assertionFailure(err.localizedDescription)
-                completion([])
+                completion(false)
             }
         }
     }
@@ -34,9 +39,12 @@ struct HotelsViewModel {
     func createHotel(name: String, address: String, for trip: Trip, compeltion: @escaping (Bool) -> Void) {
 
         let hotel = CreateHotel.init(name: name, address: address)
-        networking.create(a: hotel, for: trip) { (result) in
+        networking.create(a: hotel, for: trip) { [weak self] (result) in
+            guard let unwrappedSelf = self else { return }
+            
             switch result {
             case .success(let createdHotel):
+                unwrappedSelf.hotels.insert(createdHotel, at: 0)
                 compeltion(true)
             case .failure(let err):
                 assertionFailure(err.localizedDescription)
