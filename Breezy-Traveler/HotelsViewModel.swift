@@ -8,26 +8,20 @@
 
 import Foundation
 
-class HotelsViewModel {
+class HotelsViewModel: ResourceViewModel {
     
-    // MARK: - VARS
+    var resource: [Resource] = []
     
-    private(set) var hotels: [Hotel] = []
+    let resourceName: String = "Hotel"
     
-    private let networking = NetworkStack()
-    
-    // MARK: - RETURN VALUES
-    
-    // MARK: - METHODS
-    
-    func fetchHotels(for trip: Trip, completion: @escaping (Bool) -> Void) {
+    func fetchResource(for trip: Trip, completion: @escaping (Bool) -> Void) {
         
         networking.loadHotels(for: trip) { [weak self] (result) in
             guard let unwrappedSelf = self else { return }
             
             switch result {
             case .success(let hotels):
-                unwrappedSelf.hotels = hotels
+                unwrappedSelf.resource = hotels
                 completion(true)
             case .failure(let err):
                 assertionFailure(err.localizedDescription)
@@ -36,51 +30,57 @@ class HotelsViewModel {
         }
     }
     
-    func createHotel(name: String, address: String, for trip: Trip, compeltion: @escaping (Bool) -> Void) {
+    func createResource(name: String, address: String, for trip: Trip, completion: @escaping (Bool) -> Void) {
         
-        let hotel = CreateHotel.init(name: name, address: address)
+        let hotel = CreateHotel(name: name, address: address)
         networking.create(a: hotel, for: trip) { [weak self] (result) in
             guard let unwrappedSelf = self else { return }
             
             switch result {
             case .success(let createdHotel):
-                unwrappedSelf.hotels.insert(createdHotel, at: 0)
-                compeltion(true)
+                unwrappedSelf.resource.insert(createdHotel, at: 0)
+                completion(true)
             case .failure(let err):
                 assertionFailure(err.localizedDescription)
-                compeltion(false)
+                completion(false)
             }
         }
     }
     
-    func updateHotel(_ hotel: Hotel, for trip: Trip, compeltion: @escaping (Bool) -> Void) {
+    func updateResource(_ resource: Resource, for trip: Trip, completion: @escaping (Bool) -> Void) {
+        guard let hotel = resource as? Hotel else {
+            fatalError("resource given failed to downcast to a Hotel")
+        }
         
         networking.update(hotel: hotel, for: trip) { [weak self] (result) in
             guard let unwrappedSelf = self else { return }
             
             switch result {
             case .success(let updatedHotel):
-                if let indexToUpdate = unwrappedSelf.hotels.firstIndex(of: hotel) {
-                    unwrappedSelf.hotels[indexToUpdate] = updatedHotel
+                if let indexToUpdate = unwrappedSelf.resource.firstIndex(where: { $0.id == resource.id }) {
+                    unwrappedSelf.resource[indexToUpdate] = updatedHotel
                 }
                 
-                compeltion(true)
+                completion(true)
             case .failure(let err):
                 assertionFailure(err.localizedDescription)
-                compeltion(false)
+                completion(false)
             }
         }
     }
     
-    func deleteHotel(_ hotel: Hotel, for trip: Trip, completion: @escaping (Bool) -> Void) {
+    func deleteResource(_ resource: Resource, for trip: Trip, completion: @escaping (Bool) -> Void) {
+        guard let hotel = resource as? Hotel else {
+            fatalError("resource given failed to downcast to a Hotel")
+        }
         
         networking.delete(hotel: hotel, for: trip) { [weak self] (result) in
             guard let unwrappedSelf = self else { return }
             
             switch result {
             case .success(let message):
-                if let indexToRemove = unwrappedSelf.hotels.firstIndex(of: hotel) {
-                    unwrappedSelf.hotels.remove(at: indexToRemove)
+                if let indexToRemove = unwrappedSelf.resource.firstIndex(where: { $0.id == resource.id }) {
+                    unwrappedSelf.resource.remove(at: indexToRemove)
                 }
                 
                 debugPrint(message)
@@ -91,4 +91,31 @@ class HotelsViewModel {
             }
         }
     }
+    
+    
+    // MARK: - VARS
+    
+//    private(set) var hotels: [Hotel] = []
+    
+    private let networking = NetworkStack()
+    
+    // MARK: - RETURN VALUES
+    
+    // MARK: - METHODS
+    
+    func fetchHotels(for trip: Trip, completion: @escaping (Bool) -> Void) {
+    }
+    
+    func createHotel(name: String, address: String, for trip: Trip, compeltion: @escaping (Bool) -> Void) {
+    }
+    
+    func updateHotel(_ hotel: Hotel, for trip: Trip, compeltion: @escaping (Bool) -> Void) {
+    }
+    
+    func deleteHotel(_ hotel: Hotel, for trip: Trip, completion: @escaping (Bool) -> Void) {
+    }
+}
+
+extension Hotel: Resource {
+    
 }

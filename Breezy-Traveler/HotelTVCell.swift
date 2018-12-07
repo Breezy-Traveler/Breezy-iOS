@@ -8,19 +8,19 @@
 
 import UIKit
 
-class HotelTVCell: UITableViewCell {
+class ResourceTVCell: UITableViewCell {
 
     // MARK: - VARS
     
-    static let identifier = "hotel cell"
+    static let identifier = "resource cell"
     
     // MARK: - RETURN VALUES
     
     // MARK: - METHODS
     
-    func configure(_ hotel: Hotel) {
-        self.textLabel?.text = hotel.name
-        self.detailTextLabel?.text = hotel.address.ifEmpty(use: "No address")
+    func configure(_ resource: Resource) {
+        self.textLabel?.text = resource.name
+        self.detailTextLabel?.text = resource.address.ifEmpty(use: "No address")
     }
     
     // MARK: - IBACTIONS

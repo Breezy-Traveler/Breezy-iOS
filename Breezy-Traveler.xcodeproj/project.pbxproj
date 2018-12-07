@@ -59,6 +59,7 @@
 		E996A4B920CCD48900A0038E /* TripDetailedNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996A4B820CCD48900A0038E /* TripDetailedNotesViewController.swift */; };
 		E996A4BB20CDFF5E00A0038E /* UserfacingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996A4BA20CDFF5E00A0038E /* UserfacingErrors.swift */; };
 		E996A4BD20CE1CA300A0038E /* UserfacingErrors+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996A4BC20CE1CA300A0038E /* UserfacingErrors+User.swift */; };
+		E9A91C2821BA14A4007BBF6F /* ResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A91C2721BA14A4007BBF6F /* ResourceViewController.swift */; };
 		E9B1B9B8207D3AD800FCBC2E /* UICoverImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9B1B9B6207D3AD800FCBC2E /* UICoverImageView.xib */; };
 		E9B1B9B9207D3AD800FCBC2E /* UICoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9B7207D3AD800FCBC2E /* UICoverImageView.swift */; };
 		E9B1B9BB207D3ED000FCBC2E /* UtilityExtensions+Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9BA207D3ED000FCBC2E /* UtilityExtensions+Bool.swift */; };
@@ -136,6 +137,7 @@
 		E996A4B820CCD48900A0038E /* TripDetailedNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailedNotesViewController.swift; sourceTree = "<group>"; };
 		E996A4BA20CDFF5E00A0038E /* UserfacingErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserfacingErrors.swift; sourceTree = "<group>"; };
 		E996A4BC20CE1CA300A0038E /* UserfacingErrors+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserfacingErrors+User.swift"; sourceTree = "<group>"; };
+		E9A91C2721BA14A4007BBF6F /* ResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceViewController.swift; sourceTree = "<group>"; };
 		E9B1B9B6207D3AD800FCBC2E /* UICoverImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UICoverImageView.xib; sourceTree = "<group>"; };
 		E9B1B9B7207D3AD800FCBC2E /* UICoverImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICoverImageView.swift; sourceTree = "<group>"; };
 		E9B1B9BA207D3ED000FCBC2E /* UtilityExtensions+Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtensions+Bool.swift"; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				E98F034B2072B69C004D4074 /* BTHotel.swift */,
+				E9A91C2721BA14A4007BBF6F /* ResourceViewController.swift */,
 				E934F2D721B86C5B00553138 /* HotelsViewController.swift */,
 				E934F2DD21B86EBD00553138 /* HotelsViewModel.swift */,
 				E934F2DF21B8704800553138 /* HotelTVCell.swift */,
@@ -523,6 +526,7 @@
 				E996A4B920CCD48900A0038E /* TripDetailedNotesViewController.swift in Sources */,
 				E91A196720840D0C00CEE74A /* TripDetailedViewController.swift in Sources */,
 				E996A4BB20CDFF5E00A0038E /* UserfacingErrors.swift in Sources */,
+				E9A91C2821BA14A4007BBF6F /* ResourceViewController.swift in Sources */,
 				E91A196620840D0C00CEE74A /* TripDatePickerViewController.swift in Sources */,
 				E996A4BD20CE1CA300A0038E /* UserfacingErrors+User.swift in Sources */,
 				E9B1B9BF207D501B00FCBC2E /* UtilityExtensions+UIButton.swift in Sources */,

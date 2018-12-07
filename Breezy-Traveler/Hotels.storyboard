@@ -23,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="hotel cell" textLabel="PB6-4P-qqS" detailTextLabel="zp4-3D-xsS" style="IBUITableViewCellStyleSubtitle" id="pQ9-xp-J3x" customClass="HotelTVCell" customModule="Breezy_Traveler" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="resource cell" textLabel="PB6-4P-qqS" detailTextLabel="zp4-3D-xsS" style="IBUITableViewCellStyleSubtitle" id="pQ9-xp-J3x" customClass="ResourceTVCell" customModule="Breezy_Traveler" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pQ9-xp-J3x" id="6hY-3i-Zet">
@@ -61,7 +61,7 @@
                     <navigationItem key="navigationItem" title="Hotels" id="av6-bN-RRL">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aZA-Zd-jGD">
                             <connections>
-                                <action selector="pressAddHotel:" destination="Trf-uL-GRz" id="cxU-83-YNf"/>
+                                <action selector="pressAddResource:" destination="Trf-uL-GRz" id="B4g-0O-6pX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
