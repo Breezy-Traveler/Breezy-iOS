@@ -21,6 +21,7 @@ class ResourceTVCell: UITableViewCell {
     func configure(_ resource: Resource) {
         self.textLabel?.text = resource.name
         self.detailTextLabel?.text = resource.address.ifEmpty(use: "No address")
+        self.detailTextLabel?.textColor = .lightGray
     }
     
     // MARK: - IBACTIONS

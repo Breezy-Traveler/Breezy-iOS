@@ -82,6 +82,14 @@ class ResourceViewController: UIViewController {
         self.present(editorAlert, animated: true)
     }
     
+    override func loadView() {
+        guard let viewFromNib = Bundle.main.loadNibNamed("ResourceView", owner: self, options: nil)?.first as? UIView else {
+            fatalError("xib file not set up correctly")
+        }
+
+        view = viewFromNib
+    }
+    
     // MARK: - IBACTIONS
     
     @IBOutlet weak var tableView: UITableView!
@@ -104,8 +112,21 @@ class ResourceViewController: UIViewController {
     
     // MARK: - LIFE CYCLE
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       
+        //setup view controller
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(self.pressAddResource(_:))
+        )
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        title = viewModel.resourceName.plural
         
         viewModel.fetchResource(for: self.trip) { [weak self] isSuccessful in
             guard let unwrappedSelf = self else { return }
@@ -129,8 +150,7 @@ extension ResourceViewController: UITableViewDataSource, UITableViewDelegate {
             return nil
         }
         
-        //TODO: pularize resourceName
-        return "Hotels for \(self.trip.place)"
+        return "\(viewModel.resourceName.plural) for \(self.trip.place)"
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -151,10 +171,13 @@ extension ResourceViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: ResourceTVCell.identifier,
-            for: indexPath
-            ) as! ResourceTVCell
+        let cell: ResourceTVCell
+        
+        if let dequeueCell = tableView.dequeueReusableCell(withIdentifier: "resource cell") as! ResourceTVCell? {
+            cell = dequeueCell
+        } else {
+            cell = ResourceTVCell(style: .subtitle, reuseIdentifier: "resource cell")
+        }
         
         let resource = self.resource[indexPath.row]
         cell.configure(resource)

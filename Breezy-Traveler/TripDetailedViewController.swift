@@ -146,11 +146,20 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
     
     @IBOutlet weak var buttonHotels: UIButtonCell!
     @IBAction func pressHotels(_ sender: Any) {
-        self.performSegue(withIdentifier: UIStoryboardSegue.showHotels, sender: nil)
+        let hotelsVc = HotelsViewController()
+        hotelsVc.trip = self.trip
+        
+        self.navigationController!.pushViewController(hotelsVc, animated: true)
+        
+//        self.performSegue(withIdentifier: UIStoryboardSegue.showHotels, sender: nil)
     }
     
     @IBOutlet weak var buttonStites: UIButtonCell!
     @IBAction func pressSites(_ sender: Any) {
+        let sitesVc = SitesViewController()
+        sitesVc.trip = self.trip
+        
+        self.navigationController!.pushViewController(sitesVc, animated: true)
 //        self.performSegue(withIdentifier: UIStoryboardSegue.showSites, sender: nil)
     }
     

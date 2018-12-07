@@ -137,8 +137,6 @@
                         <outlet property="buttonNotes" destination="TB5-gA-0jh" id="L0R-b6-Zo9"/>
                         <outlet property="buttonStites" destination="FKG-ib-5ZQ" id="VAD-ad-Vrh"/>
                         <outlet property="coverImage" destination="xVd-pC-7wE" id="nMP-uI-yTi"/>
-                        <segue destination="Rsd-vQ-snA" kind="show" identifier="show hotels" id="Vj6-H4-UGL"/>
-                        <segue destination="Qgb-Ap-1wf" kind="show" identifier="show sites" id="7xo-VB-flZ"/>
                         <segue destination="ThX-hg-EJG" kind="unwind" identifier="unwind to my trips" unwindAction="unwindToMyTrips:" id="rhH-2V-dla"/>
                         <segue destination="6Pz-Wr-JFH" kind="show" identifier="show date picker" id="Bl1-Dx-ipQ"/>
                         <segue destination="mcp-Oi-jBT" kind="show" identifier="showCollectionViewSegue" id="6kW-ly-1tK"/>
@@ -216,22 +214,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LfS-4a-nIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2489" y="214"/>
-        </scene>
-        <!--Hotels-->
-        <scene sceneID="050-SU-qQ0">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Hotels" id="Rsd-vQ-snA" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c0r-Rq-5Uh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2430" y="647"/>
-        </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="cJa-CE-x3M">
-            <objects>
-                <viewControllerPlaceholder id="Qgb-Ap-1wf" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PsA-CC-RUI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2489" y="904"/>
         </scene>
         <!--Notes-->
         <scene sceneID="x43-XO-fD8">
