@@ -205,12 +205,10 @@
 			isa = PBXGroup;
 			children = (
 				B965294A2069A571007FAD4D /* AppDelegate.swift */,
+				E9189FC821C31DF100C4132A /* View Hierarchy */,
 				B965294E2069A571007FAD4D /* Main.storyboard */,
-				E95E13852075652200BF4276 /* Site */,
-				B9F9F177207547F300F0D24D /* Hotel */,
-				B9A7E97A20729F9A0054DC4F /* Quote */,
-				B9B8F913206C5317009C017F /* User */,
-				B9B8F90F206C5276009C017F /* Trip */,
+				B9B8F913206C5317009C017F /* Services */,
+				B9B8F90F206C5276009C017F /* Models */,
 				B9B8F914206C5493009C017F /* Networking */,
 				E97ED7592077EF040021B651 /* UICustomViews */,
 				B9F9F1782075583700F0D24D /* Utility */,
@@ -224,50 +222,25 @@
 			path = "Breezy-Traveler";
 			sourceTree = "<group>";
 		};
-		B9A7E97A20729F9A0054DC4F /* Quote */ = {
+		B9B8F90F206C5276009C017F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B9F9F175207305FB00F0D24D /* QuoteModel.swift */,
-				E91A196820840D6900CEE74A /* QuoteViewController.swift */,
-			);
-			name = Quote;
-			sourceTree = "<group>";
-		};
-		B9B8F90F206C5276009C017F /* Trip */ = {
-			isa = PBXGroup;
-			children = (
-				E98F03472072A95A004D4074 /* Trips.storyboard */,
-				E9DC2412207E88EC001691C2 /* TripsDetail.storyboard */,
-				B950975B207D3E6600B4FE9B /* CreateTrip.storyboard */,
-				B940C85120719D0000E7144D /* CreateTripVC.swift */,
-				B940C84F206EEB3100E7144D /* TripModel.swift */,
-				E9B1B9C2207D604B00FCBC2E /* ExploreTripsVC.swift */,
-				B91449442069F9250074F71B /* ExploreTripsCollectionViewCell.swift */,
-				B91449422069E54E0074F71B /* MyTripsViewController.swift */,
-				E97ED75E207807FF0021B651 /* TripDetailedViewModel.swift */,
-				E91A196520840D0C00CEE74A /* TripDetailedViewController.swift */,
-				E91A196420840D0C00CEE74A /* TripDatePickerViewController.swift */,
-				E996A4B820CCD48900A0038E /* TripDetailedNotesViewController.swift */,
-				B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */,
-				B965295F2069D17B007FAD4D /* TripsTVCell.swift */,
-				E97B4E8420CB24AD0018036D /* PublishedTripsVc.swift */,
-				E97B4E8620CB29E00018036D /* PublishedTripTableViewCell.swift */,
-				B9F9F185207833D800F0D24D /* Images */,
-			);
-			name = Trip;
-			sourceTree = "<group>";
-		};
-		B9B8F913206C5317009C017F /* User */ = {
-			isa = PBXGroup;
-			children = (
-				B9F9F17F2077EE4B00F0D24D /* LoginController.swift */,
-				B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */,
 				B9B8F911206C52AF009C017F /* UserModel.swift */,
+				B940C84F206EEB3100E7144D /* TripModel.swift */,
+				E98F034B2072B69C004D4074 /* Hotel.swift */,
+				E95E13832075651F00BF4276 /* BTSite.swift */,
+				B9F9F175207305FB00F0D24D /* QuoteModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		B9B8F913206C5317009C017F /* Services */ = {
+			isa = PBXGroup;
+			children = (
 				B9F9F17B20756B0700F0D24D /* PersistenceUser.swift */,
 				B9F9F17D20758E5F00F0D24D /* AlertVC.swift */,
-				B950975D207D585800B4FE9B /* ProfileViewController.swift */,
 			);
-			name = User;
+			name = Services;
 			sourceTree = "<group>";
 		};
 		B9B8F914206C5493009C017F /* Networking */ = {
@@ -286,14 +259,13 @@
 			name = Networking;
 			sourceTree = "<group>";
 		};
-		B9F9F177207547F300F0D24D /* Hotel */ = {
+		B9F9F177207547F300F0D24D /* Hotels */ = {
 			isa = PBXGroup;
 			children = (
-				E98F034B2072B69C004D4074 /* Hotel.swift */,
 				E934F2DD21B86EBD00553138 /* HotelsViewModel.swift */,
 				E934F2D721B86C5B00553138 /* HotelsViewController.swift */,
 			);
-			name = Hotel;
+			name = Hotels;
 			sourceTree = "<group>";
 		};
 		B9F9F1782075583700F0D24D /* Utility */ = {
@@ -325,14 +297,87 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		E95E13852075652200BF4276 /* Site */ = {
+		E9189FC821C31DF100C4132A /* View Hierarchy */ = {
 			isa = PBXGroup;
 			children = (
-				E95E13832075651F00BF4276 /* BTSite.swift */,
+				B950975D207D585800B4FE9B /* ProfileViewController.swift */,
+				E9189FCE21C31F3000C4132A /* Quote of the Day */,
+				E9189FCA21C31E0100C4132A /* Login */,
+				E9189FC921C31DFA00C4132A /* Trips */,
+			);
+			name = "View Hierarchy";
+			sourceTree = "<group>";
+		};
+		E9189FC921C31DFA00C4132A /* Trips */ = {
+			isa = PBXGroup;
+			children = (
+				B91449422069E54E0074F71B /* MyTripsViewController.swift */,
+				B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */,
+				B91449442069F9250074F71B /* ExploreTripsCollectionViewCell.swift */,
+				E9189FCD21C31E9200C4132A /* Create Trip */,
+				E9189FCC21C31E3300C4132A /* Detailed Trip */,
+				E9189FCB21C31E1D00C4132A /* Explore Trips */,
+				E98F03472072A95A004D4074 /* Trips.storyboard */,
+			);
+			name = Trips;
+			sourceTree = "<group>";
+		};
+		E9189FCA21C31E0100C4132A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B9F9F17F2077EE4B00F0D24D /* LoginController.swift */,
+				B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		E9189FCB21C31E1D00C4132A /* Explore Trips */ = {
+			isa = PBXGroup;
+			children = (
+				E97B4E8420CB24AD0018036D /* PublishedTripsVc.swift */,
+				E9B1B9C2207D604B00FCBC2E /* ExploreTripsVC.swift */,
+			);
+			name = "Explore Trips";
+			sourceTree = "<group>";
+		};
+		E9189FCC21C31E3300C4132A /* Detailed Trip */ = {
+			isa = PBXGroup;
+			children = (
+				E97ED75E207807FF0021B651 /* TripDetailedViewModel.swift */,
+				E91A196520840D0C00CEE74A /* TripDetailedViewController.swift */,
+				E91A196420840D0C00CEE74A /* TripDatePickerViewController.swift */,
+				B9F9F177207547F300F0D24D /* Hotels */,
+				E95E13852075652200BF4276 /* Sites */,
+				E996A4B820CCD48900A0038E /* TripDetailedNotesViewController.swift */,
+				E9DC2412207E88EC001691C2 /* TripsDetail.storyboard */,
+			);
+			name = "Detailed Trip";
+			sourceTree = "<group>";
+		};
+		E9189FCD21C31E9200C4132A /* Create Trip */ = {
+			isa = PBXGroup;
+			children = (
+				B940C85120719D0000E7144D /* CreateTripVC.swift */,
+				B950975B207D3E6600B4FE9B /* CreateTrip.storyboard */,
+			);
+			name = "Create Trip";
+			sourceTree = "<group>";
+		};
+		E9189FCE21C31F3000C4132A /* Quote of the Day */ = {
+			isa = PBXGroup;
+			children = (
+				E91A196820840D6900CEE74A /* QuoteViewController.swift */,
+			);
+			name = "Quote of the Day";
+			sourceTree = "<group>";
+		};
+		E95E13852075652200BF4276 /* Sites */ = {
+			isa = PBXGroup;
+			children = (
 				E9A91C3021BAE793007BBF6F /* SitesViewModel.swift */,
 				E9A91C2E21BAE6D2007BBF6F /* SitesViewController.swift */,
 			);
-			name = Site;
+			name = Sites;
 			sourceTree = "<group>";
 		};
 		E97ED7592077EF040021B651 /* UICustomViews */ = {
@@ -340,6 +385,7 @@
 			children = (
 				E97ED75A2077EF140021B651 /* UIButtonCell.swift */,
 				E97ED75C2077EF190021B651 /* UIButtonCell.xib */,
+				B9F9F185207833D800F0D24D /* Images */,
 				E9DC2418207E8FC8001691C2 /* TableViewCells */,
 				E9FF77A9207FEAA90086D6D9 /* UIDatePickerViewController.swift */,
 				E9FF77AA207FEAA90086D6D9 /* UIDatePickerViewController.xib */,
@@ -361,6 +407,8 @@
 		E9DC2418207E8FC8001691C2 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				B965295F2069D17B007FAD4D /* TripsTVCell.swift */,
+				E97B4E8620CB29E00018036D /* PublishedTripTableViewCell.swift */,
 				E9DC2419207E8FE4001691C2 /* UIDatePickerTableViewCell.swift */,
 				E9DC241A207E8FE4001691C2 /* UIDatePickerTableViewCell.xib */,
 				E9DC241D207E92BD001691C2 /* UITitleClearButtonTableViewCell.swift */,
