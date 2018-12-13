@@ -131,8 +131,8 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         }
         
         // if the controller who presented this VC, by a push on the navigation controller,
-        // was the Explore Trips VC, then pop this view. otherwise, unwind to the my trips VC
-        if lastViewController is ExploreTripsVC {
+        // was the Published Trips VC, then pop this view. otherwise, unwind to the my trips VC
+        if lastViewController is PublishedTripsVc {
             self.navigationController!.popViewController(animated: true)
         } else {
             self.performSegue(withIdentifier: UIStoryboardSegue.unwindToMyTrips, sender: nil)
