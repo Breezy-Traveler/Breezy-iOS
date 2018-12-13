@@ -143,6 +143,12 @@ extension NetworkStack {
     }
     
     func loadPublishedTrips(fetchAllTrips: Bool, callback: @escaping (Result<[Trip], UserfacingErrors>) -> ()) {
+        
+        #warning ("erick-remove mocked data after backend supports endpoint (GET published-trips)")
+        let trips = [Trip(place: "LA"), Trip(place: "SF"), Trip(place: "NYC"), Trip(place: "NY"), Trip(place: "New York City")]
+        callback(.success(trips))
+        
+        return ()
         apiService.request(.loadPublishedTrips(fetchAll: fetchAllTrips)) { (result) in
             switch result {
                 
@@ -170,6 +176,13 @@ extension NetworkStack {
     }
     
     func loadPublishedTrips(for searchTerm: String, callback: @escaping (Result<[Trip], UserfacingErrors>) -> ()) {
+        
+        #warning ("erick-remove mocked data after backend supports endpoint (GET published-trips)")
+        let trips = [Trip(place: "LA"), Trip(place: "SF"), Trip(place: "NYC"), Trip(place: "NY"), Trip(place: "New York City")]
+        let filteredTrips = trips.filter { $0.place.hasPrefix(searchTerm) }
+        callback(.success(filteredTrips))
+        
+        return ()
         apiService.request(.searchPublishedTrips(searchTerm: searchTerm)) { (result) in
             switch result {
                 

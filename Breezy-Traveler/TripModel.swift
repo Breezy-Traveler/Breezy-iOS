@@ -23,6 +23,16 @@ struct Trip: Codable {
     var isPublic: Bool
     var notes: String
     
+    #warning ("erick-remove mocked data after backend supports endpoint (GET published-trips)")
+    init(place: String) {
+        self.id = UUID().uuidString
+        self.place = place
+        self.hotels = []
+        self.sites = []
+        self.isPublic = true
+        self.notes = ""
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case place
