@@ -165,6 +165,7 @@ class MyTripsViewController: UIViewController {
         setupNavigationBarAppearence()
         listenForUserLogout()
         profileImage.addGestureRecognizer(singleTap)
+        tripsTableView.register(TripsTVCell.self)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -8,7 +8,9 @@
 
 import UIKit
 
-class TripsTVCell: UITableViewCell {
+class TripsTVCell: UITableViewCell, RegisterableCell {
+    
+    static var identifier: String = "tripsCell"
     
     // MARK: - RETURN VALUES
     
@@ -18,9 +20,9 @@ class TripsTVCell: UITableViewCell {
         
         // start date
         if let startDate = trip.startDate {
-            self.date.text = String(date: startDate, formatterMap: .Month_shorthand, " ", .Day_ofTheMonthSingleDigit, ", ", .Year_noPadding)
+            self.subtitle.text = String(date: startDate, formatterMap: .Month_shorthand, " ", .Day_ofTheMonthSingleDigit, ", ", .Year_noPadding)
         } else {
-            self.date.text = nil
+            self.subtitle.text = nil
         }
         
         // cover image
@@ -35,12 +37,30 @@ class TripsTVCell: UITableViewCell {
         self.isPublic.text = trip.isPublic ? "Shared" : "Private"
     }
     
+    func configure(published trip: Trip) {
+        
+        // cover image
+        if let coverImageUrl = trip.coverImageUrl {
+            self.coverImage.kf.setImage(with: coverImageUrl)
+        } else {
+            self.coverImage.image = UIImage.defaultCoverImage
+        }
+        
+        // text
+        self.placeName.text = trip.place
+        
+        let nHotels = trip.hotels.count
+        let nSites = trip.sites.count
+        self.subtitle.text = "Hotels: \(nHotels) Sites: \(nSites)"
+        self.isPublic.text = nil
+    }
+    
     // MARK: - IBACTIONS
     
     @IBOutlet weak var placeName: UILabel!
     @IBOutlet weak var isPublic: UILabel!
     @IBOutlet weak var coverImage: UIImageView!
-    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var subtitle: UILabel!
     
     // MARK: - LIFE CYCLE
     

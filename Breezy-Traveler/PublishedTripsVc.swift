@@ -32,8 +32,7 @@ class PublishedTripsVc: UIViewController {
                 }
                 
                 guard
-                    let cell = sender as? UITableViewCell,
-                    let indexPath = self.table.indexPath(for: cell) else {
+                    let indexPath = sender as? IndexPath else {
                         fatalError("this segue identifer was triggered by something else other than a UITableView Cell")
                 }
                 let selectedTrip = self.publishedTrips[indexPath.row]
@@ -85,6 +84,7 @@ class PublishedTripsVc: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        table.register(TripsTVCell.self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,15 +119,19 @@ extension PublishedTripsVc: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "published trip cell", for: indexPath) as! PublishedTripTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tripsCell", for: indexPath) as! TripsTVCell
         
         let trip = publishedTrips[indexPath.row]
-        cell.configure(trip)
+        cell.configure(published: trip)
         
         return cell
     }
     
     // MARK: METHODS
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "show detailed published trip", sender: indexPath)
+    }
     
     // MARK: IBACTIONS
     
