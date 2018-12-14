@@ -34,6 +34,7 @@
 		B9F9F1872078340300F0D24D /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F1862078340300F0D24D /* ImagesViewController.swift */; };
 		E9189FD021C328E500C4132A /* TripsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9189FCF21C328E500C4132A /* TripsTVCell.xib */; };
 		E9189FD221C3293800C4132A /* UtilityExtensions+Interfacable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9189FD121C3293800C4132A /* UtilityExtensions+Interfacable.swift */; };
+		E9189FD421C330E500C4132A /* Once.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9189FD321C330E500C4132A /* Once.swift */; };
 		E91A196620840D0C00CEE74A /* TripDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A196420840D0C00CEE74A /* TripDatePickerViewController.swift */; };
 		E91A196720840D0C00CEE74A /* TripDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A196520840D0C00CEE74A /* TripDetailedViewController.swift */; };
 		E91A196920840D6900CEE74A /* QuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A196820840D6900CEE74A /* QuoteViewController.swift */; };
@@ -114,6 +115,7 @@
 		BDBB5C3BE3B43399A8D2F68F /* Pods-Breezy-Traveler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy-Traveler.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.release.xcconfig"; sourceTree = "<group>"; };
 		E9189FCF21C328E500C4132A /* TripsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripsTVCell.xib; sourceTree = "<group>"; };
 		E9189FD121C3293800C4132A /* UtilityExtensions+Interfacable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtensions+Interfacable.swift"; sourceTree = "<group>"; };
+		E9189FD321C330E500C4132A /* Once.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Once.swift; sourceTree = "<group>"; };
 		E91A196420840D0C00CEE74A /* TripDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDatePickerViewController.swift; sourceTree = "<group>"; };
 		E91A196520840D0C00CEE74A /* TripDetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailedViewController.swift; sourceTree = "<group>"; };
 		E91A196820840D6900CEE74A /* QuoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteViewController.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				E9B34743209AA13700A7B313 /* UtilityExtensions+UIViewController.swift */,
 				E9A91C2C21BAE4F8007BBF6F /* UtitlityExtensions+Pluralize.swift */,
 				E9189FD121C3293800C4132A /* UtilityExtensions+Interfacable.swift */,
+				E9189FD321C330E500C4132A /* Once.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				E9B1B9BB207D3ED000FCBC2E /* UtilityExtensions+Bool.swift in Sources */,
 				B9F7620A206D506500821C28 /* NetworkingLayer+Users.swift in Sources */,
 				E9A91C3121BAE793007BBF6F /* SitesViewModel.swift in Sources */,
+				E9189FD421C330E500C4132A /* Once.swift in Sources */,
 				B940C850206EEB3100E7144D /* TripModel.swift in Sources */,
 				E98F034C2072B69C004D4074 /* Hotel.swift in Sources */,
 				E95E13842075651F00BF4276 /* BTSite.swift in Sources */,
