@@ -10,9 +10,17 @@ import Foundation
 
 class HotelsViewModel: ResourceViewModel {
     
+    // MARK: - VARS
+    
     var resource: [Resource] = []
     
     let resourceName: String = "Hotel"
+    
+    private let networking = NetworkStack()
+    
+    // MARK: - RETURN VALUES
+    
+    // MARK: - METHODS
     
     func fetchResource(for trip: Trip, completion: @escaping (Bool) -> Void) {
         
@@ -90,29 +98,6 @@ class HotelsViewModel: ResourceViewModel {
                 completion(false)
             }
         }
-    }
-    
-    
-    // MARK: - VARS
-    
-//    private(set) var hotels: [Hotel] = []
-    
-    private let networking = NetworkStack()
-    
-    // MARK: - RETURN VALUES
-    
-    // MARK: - METHODS
-    
-    func fetchHotels(for trip: Trip, completion: @escaping (Bool) -> Void) {
-    }
-    
-    func createHotel(name: String, address: String, for trip: Trip, compeltion: @escaping (Bool) -> Void) {
-    }
-    
-    func updateHotel(_ hotel: Hotel, for trip: Trip, compeltion: @escaping (Bool) -> Void) {
-    }
-    
-    func deleteHotel(_ hotel: Hotel, for trip: Trip, completion: @escaping (Bool) -> Void) {
     }
 }
 
