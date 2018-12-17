@@ -13,13 +13,6 @@ struct Hotel: Codable {
     var name: String
     var address: String
     
-    #warning ("erick-remove (this was only used for mocking data)")
-    init(name: String, address: String = "") {
-        id = UUID.init().uuidString
-        self.name = name
-        self.address = address
-    }
-    
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case name

@@ -37,6 +37,7 @@ class TripsTVCell: UITableViewCell, RegisterableCell {
         self.isPublic.text = trip.isPublic ? "Shared" : "Private"
     }
     
+    //TODO: use PublishedTripTableViewCell
     func configure(published trip: Trip) {
         
         // cover image

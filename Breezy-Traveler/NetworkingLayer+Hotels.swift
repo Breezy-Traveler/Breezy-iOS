@@ -43,7 +43,6 @@ extension NetworkStack {
         }
     }
     
-    //TODO: test endpoint once api supports this endpoint
     func loadHotels(for trip: Trip, callback: @escaping (Result<[Hotel], UserfacingErrors>) -> ()) {
         apiService.request(.loadHotels(for: trip)) { (result) in
             switch result {
@@ -70,7 +69,6 @@ extension NetworkStack {
         }
     }
     
-    //TODO: test endpoint once api supports this endpoint
     func showHotel(for hotelId: Int, for trip: Trip, callback: @escaping (Result<Hotel, UserfacingErrors>) -> ()) {
         apiService.request(.showHotel(forHotelId: hotelId, for: trip)) { (result) in
             switch result {
@@ -97,7 +95,6 @@ extension NetworkStack {
         }
     }
     
-    //TODO: test endpoint once api supports this endpoint
     func update(hotel: Hotel, for trip: Trip, callback: @escaping (Result<Hotel, UserfacingErrors>) -> ()) {
         apiService.request(.updateHotel(hotel, for: trip)) { (result) in
             switch result {
@@ -124,7 +121,6 @@ extension NetworkStack {
         }
     }
     
-    //TODO: test endpoint once api supports this endpoint
     func delete(hotel: Hotel, for trip: Trip, callback: @escaping (Result<String, UserfacingErrors>) -> ()) {
         apiService.request(.deleteHotel(hotel, for: trip)) { (result) in
             switch result {
