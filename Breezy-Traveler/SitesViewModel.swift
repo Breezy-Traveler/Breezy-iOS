@@ -10,13 +10,21 @@ import Foundation
 
 class SitesViewModel: ResourceViewModel {
     
-    var resource: [Resource] = []
+    // MARK: - VARS
+    
+    var resource: [Resource] = [Site]()
     
     let resourceName: String = "Site"
     
+    private let networking = NetworkStack()
+    
+    // MARK: - RETURN VALUES
+    
+    // MARK: - METHODS
+    
     func fetchResource(for trip: Trip, completion: @escaping (Bool) -> Void) {
         
-        networking.loadHotels(for: trip) { [weak self] (result) in
+        networking.loadSites(for: trip) { [weak self] (result) in
             guard let unwrappedSelf = self else { return }
             
             switch result {
@@ -32,13 +40,13 @@ class SitesViewModel: ResourceViewModel {
     
     func createResource(name: String, address: String, for trip: Trip, completion: @escaping (Bool) -> Void) {
         
-        let hotel = CreateHotel(name: name, address: address)
-        networking.create(a: hotel, for: trip) { [weak self] (result) in
+        let site = CreateSite(name: name, address: address)
+        networking.create(a: site, for: trip) { [weak self] (result) in
             guard let unwrappedSelf = self else { return }
             
             switch result {
-            case .success(let createdHotel):
-                unwrappedSelf.resource.insert(createdHotel, at: 0)
+            case .success(let createdSite):
+                unwrappedSelf.resource.insert(createdSite, at: 0)
                 completion(true)
             case .failure(let err):
                 assertionFailure(err.localizedDescription)
@@ -48,17 +56,17 @@ class SitesViewModel: ResourceViewModel {
     }
     
     func updateResource(_ resource: Resource, for trip: Trip, completion: @escaping (Bool) -> Void) {
-        guard let hotel = resource as? Hotel else {
-            fatalError("resource given failed to downcast to a Hotel")
+        guard let site = resource as? Site else {
+            fatalError("resource given failed to downcast to a Site")
         }
         
-        networking.update(hotel: hotel, for: trip) { [weak self] (result) in
+        networking.update(site: site, for: trip) { [weak self] (result) in
             guard let unwrappedSelf = self else { return }
             
             switch result {
-            case .success(let updatedHotel):
+            case .success(let updatedSite):
                 if let indexToUpdate = unwrappedSelf.resource.firstIndex(where: { $0.id == resource.id }) {
-                    unwrappedSelf.resource[indexToUpdate] = updatedHotel
+                    unwrappedSelf.resource[indexToUpdate] = updatedSite
                 }
                 
                 completion(true)
@@ -70,11 +78,11 @@ class SitesViewModel: ResourceViewModel {
     }
     
     func deleteResource(_ resource: Resource, for trip: Trip, completion: @escaping (Bool) -> Void) {
-        guard let hotel = resource as? Hotel else {
-            fatalError("resource given failed to downcast to a Hotel")
+        guard let site = resource as? Site else {
+            fatalError("resource given failed to downcast to a Site")
         }
         
-        networking.delete(hotel: hotel, for: trip) { [weak self] (result) in
+        networking.delete(site: site, for: trip) { [weak self] (result) in
             guard let unwrappedSelf = self else { return }
             
             switch result {
@@ -91,31 +99,8 @@ class SitesViewModel: ResourceViewModel {
             }
         }
     }
-    
-    
-    // MARK: - VARS
-    
-    //    private(set) var hotels: [Hotel] = []
-    
-    private let networking = NetworkStack()
-    
-    // MARK: - RETURN VALUES
-    
-    // MARK: - METHODS
-    
-    func fetchHotels(for trip: Trip, completion: @escaping (Bool) -> Void) {
-    }
-    
-    func createHotel(name: String, address: String, for trip: Trip, compeltion: @escaping (Bool) -> Void) {
-    }
-    
-    func updateHotel(_ hotel: Hotel, for trip: Trip, compeltion: @escaping (Bool) -> Void) {
-    }
-    
-    func deleteHotel(_ hotel: Hotel, for trip: Trip, completion: @escaping (Bool) -> Void) {
-    }
 }
 
-//extension Site: Resource {
-//    
-//}
+extension Site: Resource {
+    
+}

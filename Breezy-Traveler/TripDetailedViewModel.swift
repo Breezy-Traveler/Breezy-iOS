@@ -147,7 +147,7 @@ extension TripDetailedViewModel {
         } else {
             let firstSite = trip.sites.first!
             
-            return firstSite.title
+            return firstSite.name
         }
     }
     

@@ -34,11 +34,11 @@ enum BTAPIEndPoints {
     case deleteHotel(Hotel, for: Trip)
 
     // Sites
-    case createSite(BTSite, for: Trip)
+    case createSite(CreateSite, for: Trip)
     case loadSites(for: Trip)
     case showSite(forSiteId: Int, for: Trip)
-    case updateSite(BTSite, for: Trip)
-    case deleteSite(BTSite, for: Trip)
+    case updateSite(Site, for: Trip)
+    case deleteSite(Site, for: Trip)
 
     // Images
     case loadTenImages(String)
@@ -116,19 +116,19 @@ extension BTAPIEndPoints: TargetType {
         // Sites
         case .createSite(_, for: let trip):
             let id = trip.id
-            return "/users/trips/\(id)/sites"
+            return "/trips/\(id)/sites"
 
         case .loadSites(for: let trip):
             let id = trip.id
-            return "/users/trips/\(id)/sites"
+            return "/trips/\(id)/sites"
 
         case .showSite(forSiteId: let id, for: let trip):
             let tripId = trip.id, siteId = id
-            return "/users/trips/\(tripId)/sites/\(siteId)"
+            return "/trips/\(tripId)/sites/\(siteId)"
 
         case .updateSite(let site, for: let trip), .deleteSite(let site, for: let trip):
             let tripId = trip.id, siteId = site.id
-            return "/users/trips/\(tripId)/sites/\(siteId)"
+            return "/trips/\(tripId)/sites/\(siteId)"
 
         // Images
         case .loadTenImages:
@@ -173,7 +173,7 @@ extension BTAPIEndPoints: TargetType {
         case .loadSites, .showSite:
             return .get
         case .updateSite:
-            return .patch
+            return .put
         case .deleteSite:
             return .delete
 

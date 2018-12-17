@@ -12,7 +12,7 @@ import Result
 import SwiftyJSON
 
 extension NetworkStack {
-    func create(a site: BTSite, for trip: Trip, callback: @escaping (Result<BTSite, UserfacingErrors>) -> ()) {
+    func create(a site: CreateSite, for trip: Trip, callback: @escaping (Result<Site, UserfacingErrors>) -> ()) {
         apiService.request(.createSite(site, for: trip)) { (result) in
             switch result {
             case .success(let response):
@@ -20,7 +20,7 @@ extension NetworkStack {
                     
                 // Created
                 case 201:
-                    guard let returnedSite = try? JSONDecoder().decode(BTSite.self, from: response.data) else {
+                    guard let returnedSite = try? JSONDecoder().decode(Site.self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -42,13 +42,13 @@ extension NetworkStack {
         }
     }
     
-    func loadSites(for trip: Trip, callback: @escaping (Result<[BTSite], UserfacingErrors>) -> ()) {
+    func loadSites(for trip: Trip, callback: @escaping (Result<[Site], UserfacingErrors>) -> ()) {
         apiService.request(.loadSites(for: trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let sites = try? JSONDecoder().decode([BTSite].self, from: response.data) else {
+                    guard let sites = try? JSONDecoder().decode([Site].self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -68,13 +68,13 @@ extension NetworkStack {
         }
     }
     
-    func showSite(for siteId: Int, for trip: Trip, callback: @escaping (Result<BTSite, UserfacingErrors>) -> ()) {
+    func showSite(for siteId: Int, for trip: Trip, callback: @escaping (Result<Site, UserfacingErrors>) -> ()) {
         apiService.request(.showSite(forSiteId: siteId, for: trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let site = try? JSONDecoder().decode(BTSite.self, from: response.data) else {
+                    guard let site = try? JSONDecoder().decode(Site.self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -94,13 +94,13 @@ extension NetworkStack {
         }
     }
     
-    func update(site: BTSite, for trip: Trip, callback: @escaping (Result<BTSite, UserfacingErrors>) -> ()) {
+    func update(site: Site, for trip: Trip, callback: @escaping (Result<Site, UserfacingErrors>) -> ()) {
         apiService.request(.updateSite(site, for: trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
                 case 200:
-                    guard let updatedSite = try? JSONDecoder().decode(BTSite.self, from: response.data) else {
+                    guard let updatedSite = try? JSONDecoder().decode(Site.self, from: response.data) else {
                         assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
@@ -120,13 +120,13 @@ extension NetworkStack {
         }
     }
     
-    func delete(site: BTSite, for trip: Trip, callback: @escaping (Result<String, UserfacingErrors>) -> ()) {
+    func delete(site: Site, for trip: Trip, callback: @escaping (Result<String, UserfacingErrors>) -> ()) {
         apiService.request(.deleteSite(site, for: trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
-                case 204:
-                    callback(.success("\(site.title) was deleted"))
+                case 202:
+                    callback(.success("\(site.name) was deleted"))
                 default:
                     let errors = UserfacingErrors.serverError(message: response.data)
                     callback(.failure(errors))
