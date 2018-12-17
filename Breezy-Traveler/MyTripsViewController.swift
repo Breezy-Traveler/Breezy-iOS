@@ -84,8 +84,7 @@ class MyTripsViewController: UIViewController {
                 }
                 
                 guard
-                    let cell = sender as? UITableViewCell,
-                    let indexPath = self.tripsTableView.indexPath(for: cell) else {
+                    let indexPath = sender as? IndexPath else {
                         fatalError("this segue identifer was triggered by something else other than a UITableView Cell")
                 }
                 let selectedTrip = self.trips[indexPath.row]
@@ -165,6 +164,7 @@ class MyTripsViewController: UIViewController {
         setupNavigationBarAppearence()
         listenForUserLogout()
         profileImage.addGestureRecognizer(singleTap)
+        tripsTableView.register(TripsTVCell.self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -176,6 +176,10 @@ class MyTripsViewController: UIViewController {
         } else {
             let loginViewController = LoginController()
             present(loginViewController, animated: false, completion: nil)
+        }
+        
+        if let selectedRow = tripsTableView.indexPathForSelectedRow {
+            tripsTableView.deselectRow(at: selectedRow, animated: true)
         }
     }
 }
@@ -208,6 +212,10 @@ extension MyTripsViewController: UITableViewDataSource, UITableViewDelegate {
       
         tableView.rowHeight = screenSize.height / 6.0
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "show trip detailed", sender: indexPath)
     }
     
     // Swipe left actions: edit and delete

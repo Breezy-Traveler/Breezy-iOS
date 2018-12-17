@@ -43,12 +43,7 @@ extension NetworkStack {
         }
     }
     
-    //TODO: test endpoint once api supports this endpoint
     func loadHotels(for trip: Trip, callback: @escaping (Result<[Hotel], UserfacingErrors>) -> ()) {
-        
-        #warning ("erick-remove after endpoint for GET /trips/:tripId/hotels is made")
-        return callback(.success([Hotel(name: "Marriot"), Hotel(name: "Days Inn", address: "1234 Not your place")]))
-        
         apiService.request(.loadHotels(for: trip)) { (result) in
             switch result {
             case .success(let response):
@@ -74,12 +69,7 @@ extension NetworkStack {
         }
     }
     
-    //TODO: test endpoint once api supports this endpoint
     func showHotel(for hotelId: Int, for trip: Trip, callback: @escaping (Result<Hotel, UserfacingErrors>) -> ()) {
-        
-        #warning ("erick-remove after endpoint for GET /trips/:tripId/hotels/:hotelId is made")
-        return callback(.success(Hotel(name: "Marriot", address: "This came from a mock")))
-
         apiService.request(.showHotel(forHotelId: hotelId, for: trip)) { (result) in
             switch result {
             case .success(let response):
@@ -105,12 +95,7 @@ extension NetworkStack {
         }
     }
     
-    //TODO: test endpoint once api supports this endpoint
     func update(hotel: Hotel, for trip: Trip, callback: @escaping (Result<Hotel, UserfacingErrors>) -> ()) {
-        
-        #warning ("erick-remove after endpoint for PUT /trips/:tripId/hotels/:hotelId is made")
-        return callback(.success(Hotel(name: "Marriot", address: "This came from a mock")))
-        
         apiService.request(.updateHotel(hotel, for: trip)) { (result) in
             switch result {
             case .success(let response):
@@ -136,17 +121,12 @@ extension NetworkStack {
         }
     }
     
-    //TODO: test endpoint once api supports this endpoint
     func delete(hotel: Hotel, for trip: Trip, callback: @escaping (Result<String, UserfacingErrors>) -> ()) {
-        
-        #warning ("erick-remove after endpoint for DETLETE /trips/:tripId/hotels/:hotelId is made")
-        return callback(.success("IT GONE!"))
-        
         apiService.request(.deleteHotel(hotel, for: trip)) { (result) in
             switch result {
             case .success(let response):
                 switch response.statusCode {
-                case 204:
+                case 202:
                     callback(.success("\(hotel.name) was deleted"))
                 default:
                     let errors = UserfacingErrors.serverError(message: response.data)

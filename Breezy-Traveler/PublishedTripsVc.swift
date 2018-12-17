@@ -21,6 +21,10 @@ class PublishedTripsVc: UIViewController {
     
     // MARK: - RETURN VALUES
     
+    deinit {
+        reset(onceKey: "published trips")
+    }
+    
     // MARK: - METHODS
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -32,8 +36,7 @@ class PublishedTripsVc: UIViewController {
                 }
                 
                 guard
-                    let cell = sender as? UITableViewCell,
-                    let indexPath = self.table.indexPath(for: cell) else {
+                    let indexPath = sender as? IndexPath else {
                         fatalError("this segue identifer was triggered by something else other than a UITableView Cell")
                 }
                 let selectedTrip = self.publishedTrips[indexPath.row]
@@ -55,6 +58,7 @@ class PublishedTripsVc: UIViewController {
         }
         
         table.reloadData()
+        table.contentOffset = CGPoint.zero
     }
     
     private func loadTrips(for searchTerm: String) {
@@ -85,25 +89,32 @@ class PublishedTripsVc: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        table.register(TripsTVCell.self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        networkStack.loadPublishedTrips(fetchAllTrips: true) { [weak self] (result) in
-            guard let unwrappedSelf = self else { return }
-            
-            switch result {
-            case .success(let trips):
-                unwrappedSelf.reloadTable(for: trips)
-            case .failure(let err):
-                UIAlertController(
-                    title: "Published Trips",
-                    message: "Failed to load published trips. Error: \(err.localizedDescription)",
-                    preferredStyle: .alert)
-                    .addDismissButton()
-                    .present(in: unwrappedSelf)
+        once("published trips") {
+            networkStack.loadPublishedTrips(fetchAllTrips: true) { [weak self] (result) in
+                guard let unwrappedSelf = self else { return }
+                
+                switch result {
+                case .success(let trips):
+                    unwrappedSelf.reloadTable(for: trips)
+                case .failure(let err):
+                    UIAlertController(
+                        title: "Published Trips",
+                        message: "Failed to load published trips. Error: \(err.localizedDescription)",
+                        preferredStyle: .alert)
+                        .addDismissButton()
+                        .present(in: unwrappedSelf)
+                }
             }
+        }
+        
+        if let selectedRow = table.indexPathForSelectedRow {
+            table.deselectRow(at: selectedRow, animated: true)
         }
     }
 }
@@ -119,15 +130,19 @@ extension PublishedTripsVc: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "published trip cell", for: indexPath) as! PublishedTripTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tripsCell", for: indexPath) as! TripsTVCell
         
         let trip = publishedTrips[indexPath.row]
-        cell.configure(trip)
+        cell.configure(published: trip)
         
         return cell
     }
     
     // MARK: METHODS
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "show detailed published trip", sender: indexPath)
+    }
     
     // MARK: IBACTIONS
     

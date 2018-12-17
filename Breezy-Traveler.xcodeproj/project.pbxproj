@@ -32,6 +32,9 @@
 		B9F9F1822077F2FC00F0D24D /* LoginController+Handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */; };
 		B9F9F18420782EAA00F0D24D /* NteworkingLayer+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F18320782EAA00F0D24D /* NteworkingLayer+Images.swift */; };
 		B9F9F1872078340300F0D24D /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F9F1862078340300F0D24D /* ImagesViewController.swift */; };
+		E9189FD021C328E500C4132A /* TripsTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9189FCF21C328E500C4132A /* TripsTVCell.xib */; };
+		E9189FD221C3293800C4132A /* UtilityExtensions+Interfacable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9189FD121C3293800C4132A /* UtilityExtensions+Interfacable.swift */; };
+		E9189FD421C330E500C4132A /* Once.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9189FD321C330E500C4132A /* Once.swift */; };
 		E91A196620840D0C00CEE74A /* TripDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A196420840D0C00CEE74A /* TripDatePickerViewController.swift */; };
 		E91A196720840D0C00CEE74A /* TripDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A196520840D0C00CEE74A /* TripDetailedViewController.swift */; };
 		E91A196920840D6900CEE74A /* QuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A196820840D6900CEE74A /* QuoteViewController.swift */; };
@@ -69,7 +72,6 @@
 		E9B1B9BD207D4B6000FCBC2E /* UtilityExtensions+UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9BC207D4B6000FCBC2E /* UtilityExtensions+UIAlertController.swift */; };
 		E9B1B9BF207D501B00FCBC2E /* UtilityExtensions+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9BE207D501B00FCBC2E /* UtilityExtensions+UIButton.swift */; };
 		E9B1B9C1207D558900FCBC2E /* UtilityExtensions+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9C0207D558900FCBC2E /* UtilityExtensions+UITextField.swift */; };
-		E9B1B9C3207D604B00FCBC2E /* ExploreTripsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B1B9C2207D604B00FCBC2E /* ExploreTripsVC.swift */; };
 		E9B34744209AA13700A7B313 /* UtilityExtensions+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B34743209AA13700A7B313 /* UtilityExtensions+UIViewController.swift */; };
 		E9DC2413207E88EC001691C2 /* TripsDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9DC2412207E88EC001691C2 /* TripsDetail.storyboard */; };
 		E9DC241B207E8FE4001691C2 /* UIDatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DC2419207E8FE4001691C2 /* UIDatePickerTableViewCell.swift */; };
@@ -111,6 +113,9 @@
 		B9F9F18320782EAA00F0D24D /* NteworkingLayer+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NteworkingLayer+Images.swift"; sourceTree = "<group>"; };
 		B9F9F1862078340300F0D24D /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		BDBB5C3BE3B43399A8D2F68F /* Pods-Breezy-Traveler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezy-Traveler.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.release.xcconfig"; sourceTree = "<group>"; };
+		E9189FCF21C328E500C4132A /* TripsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TripsTVCell.xib; sourceTree = "<group>"; };
+		E9189FD121C3293800C4132A /* UtilityExtensions+Interfacable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtensions+Interfacable.swift"; sourceTree = "<group>"; };
+		E9189FD321C330E500C4132A /* Once.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Once.swift; sourceTree = "<group>"; };
 		E91A196420840D0C00CEE74A /* TripDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDatePickerViewController.swift; sourceTree = "<group>"; };
 		E91A196520840D0C00CEE74A /* TripDetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailedViewController.swift; sourceTree = "<group>"; };
 		E91A196820840D6900CEE74A /* QuoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteViewController.swift; sourceTree = "<group>"; };
@@ -150,7 +155,6 @@
 		E9B1B9BC207D4B6000FCBC2E /* UtilityExtensions+UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtensions+UIAlertController.swift"; sourceTree = "<group>"; };
 		E9B1B9BE207D501B00FCBC2E /* UtilityExtensions+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtensions+UIButton.swift"; sourceTree = "<group>"; };
 		E9B1B9C0207D558900FCBC2E /* UtilityExtensions+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtensions+UITextField.swift"; sourceTree = "<group>"; };
-		E9B1B9C2207D604B00FCBC2E /* ExploreTripsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTripsVC.swift; sourceTree = "<group>"; };
 		E9B34743209AA13700A7B313 /* UtilityExtensions+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtensions+UIViewController.swift"; sourceTree = "<group>"; };
 		E9DC2412207E88EC001691C2 /* TripsDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TripsDetail.storyboard; sourceTree = "<group>"; };
 		E9DC2419207E8FE4001691C2 /* UIDatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDatePickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -205,12 +209,10 @@
 			isa = PBXGroup;
 			children = (
 				B965294A2069A571007FAD4D /* AppDelegate.swift */,
+				E9189FC821C31DF100C4132A /* View Hierarchy */,
 				B965294E2069A571007FAD4D /* Main.storyboard */,
-				E95E13852075652200BF4276 /* Site */,
-				B9F9F177207547F300F0D24D /* Hotel */,
-				B9A7E97A20729F9A0054DC4F /* Quote */,
-				B9B8F913206C5317009C017F /* User */,
-				B9B8F90F206C5276009C017F /* Trip */,
+				B9B8F913206C5317009C017F /* Services */,
+				B9B8F90F206C5276009C017F /* Models */,
 				B9B8F914206C5493009C017F /* Networking */,
 				E97ED7592077EF040021B651 /* UICustomViews */,
 				B9F9F1782075583700F0D24D /* Utility */,
@@ -224,50 +226,25 @@
 			path = "Breezy-Traveler";
 			sourceTree = "<group>";
 		};
-		B9A7E97A20729F9A0054DC4F /* Quote */ = {
+		B9B8F90F206C5276009C017F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B9F9F175207305FB00F0D24D /* QuoteModel.swift */,
-				E91A196820840D6900CEE74A /* QuoteViewController.swift */,
-			);
-			name = Quote;
-			sourceTree = "<group>";
-		};
-		B9B8F90F206C5276009C017F /* Trip */ = {
-			isa = PBXGroup;
-			children = (
-				E98F03472072A95A004D4074 /* Trips.storyboard */,
-				E9DC2412207E88EC001691C2 /* TripsDetail.storyboard */,
-				B950975B207D3E6600B4FE9B /* CreateTrip.storyboard */,
-				B940C85120719D0000E7144D /* CreateTripVC.swift */,
-				B940C84F206EEB3100E7144D /* TripModel.swift */,
-				E9B1B9C2207D604B00FCBC2E /* ExploreTripsVC.swift */,
-				B91449442069F9250074F71B /* ExploreTripsCollectionViewCell.swift */,
-				B91449422069E54E0074F71B /* MyTripsViewController.swift */,
-				E97ED75E207807FF0021B651 /* TripDetailedViewModel.swift */,
-				E91A196520840D0C00CEE74A /* TripDetailedViewController.swift */,
-				E91A196420840D0C00CEE74A /* TripDatePickerViewController.swift */,
-				E996A4B820CCD48900A0038E /* TripDetailedNotesViewController.swift */,
-				B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */,
-				B965295F2069D17B007FAD4D /* TripsTVCell.swift */,
-				E97B4E8420CB24AD0018036D /* PublishedTripsVc.swift */,
-				E97B4E8620CB29E00018036D /* PublishedTripTableViewCell.swift */,
-				B9F9F185207833D800F0D24D /* Images */,
-			);
-			name = Trip;
-			sourceTree = "<group>";
-		};
-		B9B8F913206C5317009C017F /* User */ = {
-			isa = PBXGroup;
-			children = (
-				B9F9F17F2077EE4B00F0D24D /* LoginController.swift */,
-				B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */,
 				B9B8F911206C52AF009C017F /* UserModel.swift */,
+				B940C84F206EEB3100E7144D /* TripModel.swift */,
+				E98F034B2072B69C004D4074 /* Hotel.swift */,
+				E95E13832075651F00BF4276 /* BTSite.swift */,
+				B9F9F175207305FB00F0D24D /* QuoteModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		B9B8F913206C5317009C017F /* Services */ = {
+			isa = PBXGroup;
+			children = (
 				B9F9F17B20756B0700F0D24D /* PersistenceUser.swift */,
 				B9F9F17D20758E5F00F0D24D /* AlertVC.swift */,
-				B950975D207D585800B4FE9B /* ProfileViewController.swift */,
 			);
-			name = User;
+			name = Services;
 			sourceTree = "<group>";
 		};
 		B9B8F914206C5493009C017F /* Networking */ = {
@@ -286,14 +263,13 @@
 			name = Networking;
 			sourceTree = "<group>";
 		};
-		B9F9F177207547F300F0D24D /* Hotel */ = {
+		B9F9F177207547F300F0D24D /* Hotels */ = {
 			isa = PBXGroup;
 			children = (
-				E98F034B2072B69C004D4074 /* Hotel.swift */,
 				E934F2DD21B86EBD00553138 /* HotelsViewModel.swift */,
 				E934F2D721B86C5B00553138 /* HotelsViewController.swift */,
 			);
-			name = Hotel;
+			name = Hotels;
 			sourceTree = "<group>";
 		};
 		B9F9F1782075583700F0D24D /* Utility */ = {
@@ -309,6 +285,8 @@
 				E9B1B9C0207D558900FCBC2E /* UtilityExtensions+UITextField.swift */,
 				E9B34743209AA13700A7B313 /* UtilityExtensions+UIViewController.swift */,
 				E9A91C2C21BAE4F8007BBF6F /* UtitlityExtensions+Pluralize.swift */,
+				E9189FD121C3293800C4132A /* UtilityExtensions+Interfacable.swift */,
+				E9189FD321C330E500C4132A /* Once.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -325,14 +303,86 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		E95E13852075652200BF4276 /* Site */ = {
+		E9189FC821C31DF100C4132A /* View Hierarchy */ = {
 			isa = PBXGroup;
 			children = (
-				E95E13832075651F00BF4276 /* BTSite.swift */,
+				B950975D207D585800B4FE9B /* ProfileViewController.swift */,
+				E9189FCE21C31F3000C4132A /* Quote of the Day */,
+				E9189FCA21C31E0100C4132A /* Login */,
+				E9189FC921C31DFA00C4132A /* Trips */,
+			);
+			name = "View Hierarchy";
+			sourceTree = "<group>";
+		};
+		E9189FC921C31DFA00C4132A /* Trips */ = {
+			isa = PBXGroup;
+			children = (
+				B91449422069E54E0074F71B /* MyTripsViewController.swift */,
+				B965295C2069C96E007FAD4D /* ExploreTripsTVCell.swift */,
+				B91449442069F9250074F71B /* ExploreTripsCollectionViewCell.swift */,
+				E9189FCD21C31E9200C4132A /* Create Trip */,
+				E9189FCC21C31E3300C4132A /* Detailed Trip */,
+				E9189FCB21C31E1D00C4132A /* Explore Trips */,
+				E98F03472072A95A004D4074 /* Trips.storyboard */,
+			);
+			name = Trips;
+			sourceTree = "<group>";
+		};
+		E9189FCA21C31E0100C4132A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B9F9F17F2077EE4B00F0D24D /* LoginController.swift */,
+				B9F9F1812077F2FC00F0D24D /* LoginController+Handlers.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		E9189FCB21C31E1D00C4132A /* Explore Trips */ = {
+			isa = PBXGroup;
+			children = (
+				E97B4E8420CB24AD0018036D /* PublishedTripsVc.swift */,
+			);
+			name = "Explore Trips";
+			sourceTree = "<group>";
+		};
+		E9189FCC21C31E3300C4132A /* Detailed Trip */ = {
+			isa = PBXGroup;
+			children = (
+				E97ED75E207807FF0021B651 /* TripDetailedViewModel.swift */,
+				E91A196520840D0C00CEE74A /* TripDetailedViewController.swift */,
+				E91A196420840D0C00CEE74A /* TripDatePickerViewController.swift */,
+				B9F9F177207547F300F0D24D /* Hotels */,
+				E95E13852075652200BF4276 /* Sites */,
+				E996A4B820CCD48900A0038E /* TripDetailedNotesViewController.swift */,
+				E9DC2412207E88EC001691C2 /* TripsDetail.storyboard */,
+			);
+			name = "Detailed Trip";
+			sourceTree = "<group>";
+		};
+		E9189FCD21C31E9200C4132A /* Create Trip */ = {
+			isa = PBXGroup;
+			children = (
+				B940C85120719D0000E7144D /* CreateTripVC.swift */,
+				B950975B207D3E6600B4FE9B /* CreateTrip.storyboard */,
+			);
+			name = "Create Trip";
+			sourceTree = "<group>";
+		};
+		E9189FCE21C31F3000C4132A /* Quote of the Day */ = {
+			isa = PBXGroup;
+			children = (
+				E91A196820840D6900CEE74A /* QuoteViewController.swift */,
+			);
+			name = "Quote of the Day";
+			sourceTree = "<group>";
+		};
+		E95E13852075652200BF4276 /* Sites */ = {
+			isa = PBXGroup;
+			children = (
 				E9A91C3021BAE793007BBF6F /* SitesViewModel.swift */,
 				E9A91C2E21BAE6D2007BBF6F /* SitesViewController.swift */,
 			);
-			name = Site;
+			name = Sites;
 			sourceTree = "<group>";
 		};
 		E97ED7592077EF040021B651 /* UICustomViews */ = {
@@ -340,6 +390,7 @@
 			children = (
 				E97ED75A2077EF140021B651 /* UIButtonCell.swift */,
 				E97ED75C2077EF190021B651 /* UIButtonCell.xib */,
+				B9F9F185207833D800F0D24D /* Images */,
 				E9DC2418207E8FC8001691C2 /* TableViewCells */,
 				E9FF77A9207FEAA90086D6D9 /* UIDatePickerViewController.swift */,
 				E9FF77AA207FEAA90086D6D9 /* UIDatePickerViewController.xib */,
@@ -361,6 +412,9 @@
 		E9DC2418207E8FC8001691C2 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				B965295F2069D17B007FAD4D /* TripsTVCell.swift */,
+				E9189FCF21C328E500C4132A /* TripsTVCell.xib */,
+				E97B4E8620CB29E00018036D /* PublishedTripTableViewCell.swift */,
 				E9DC2419207E8FE4001691C2 /* UIDatePickerTableViewCell.swift */,
 				E9DC241A207E8FE4001691C2 /* UIDatePickerTableViewCell.xib */,
 				E9DC241D207E92BD001691C2 /* UITitleClearButtonTableViewCell.swift */,
@@ -449,6 +503,7 @@
 				B9BF275E2085356A00265140 /* Absolute-Regular.otf in Resources */,
 				E9DC2420207E92BD001691C2 /* UITitleClearButtonTableViewCell.xib in Resources */,
 				E9A91C2B21BADD87007BBF6F /* ResourceView.xib in Resources */,
+				E9189FD021C328E500C4132A /* TripsTVCell.xib in Resources */,
 				B96529502069A571007FAD4D /* Main.storyboard in Resources */,
 				B950975C207D3E6600B4FE9B /* CreateTrip.storyboard in Resources */,
 				E9FF77AC207FEAA90086D6D9 /* UIDatePickerViewController.xib in Resources */,
@@ -533,6 +588,7 @@
 				B965295D2069C96E007FAD4D /* ExploreTripsTVCell.swift in Sources */,
 				E97ED76820784B600021B651 /* ImagesCollectionViewCell.swift in Sources */,
 				E96BEF8520CCBAC200295ECD /* InfoPlist.swift in Sources */,
+				E9189FD221C3293800C4132A /* UtilityExtensions+Interfacable.swift in Sources */,
 				B91449452069F9250074F71B /* ExploreTripsCollectionViewCell.swift in Sources */,
 				B9B8F916206C54A9009C017F /* API.swift in Sources */,
 				B9F9F18420782EAA00F0D24D /* NteworkingLayer+Images.swift in Sources */,
@@ -540,7 +596,6 @@
 				E9A91C2D21BAE4F8007BBF6F /* UtitlityExtensions+Pluralize.swift in Sources */,
 				E97B4E8520CB24AD0018036D /* PublishedTripsVc.swift in Sources */,
 				E97ED75B2077EF140021B651 /* UIButtonCell.swift in Sources */,
-				E9B1B9C3207D604B00FCBC2E /* ExploreTripsVC.swift in Sources */,
 				E996A4B920CCD48900A0038E /* TripDetailedNotesViewController.swift in Sources */,
 				E91A196720840D0C00CEE74A /* TripDetailedViewController.swift in Sources */,
 				E996A4BB20CDFF5E00A0038E /* UserfacingErrors.swift in Sources */,
@@ -555,6 +610,7 @@
 				E9B1B9BB207D3ED000FCBC2E /* UtilityExtensions+Bool.swift in Sources */,
 				B9F7620A206D506500821C28 /* NetworkingLayer+Users.swift in Sources */,
 				E9A91C3121BAE793007BBF6F /* SitesViewModel.swift in Sources */,
+				E9189FD421C330E500C4132A /* Once.swift in Sources */,
 				B940C850206EEB3100E7144D /* TripModel.swift in Sources */,
 				E98F034C2072B69C004D4074 /* Hotel.swift in Sources */,
 				E95E13842075651F00BF4276 /* BTSite.swift in Sources */,
@@ -709,7 +765,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S44SNCV32X;
+				DEVELOPMENT_TEAM = 8U3L6K9JA6;
 				INFOPLIST_FILE = "Breezy-Traveler/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.breezyApps.Breezy-Traveler";
@@ -725,7 +781,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S44SNCV32X;
+				DEVELOPMENT_TEAM = 8U3L6K9JA6;
 				INFOPLIST_FILE = "Breezy-Traveler/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
@@ -801,7 +857,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S44SNCV32X;
+				DEVELOPMENT_TEAM = 8U3L6K9JA6;
 				INFOPLIST_FILE = "Breezy-Traveler/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.breezyApps.Breezy-Traveler";

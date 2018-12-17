@@ -94,7 +94,7 @@ extension BTAPIEndPoints: TargetType {
 
         // Published Trips
         case .loadPublishedTrips, .searchPublishedTrips:
-            return "/published_trips"
+            return "/publishedTrips"
 
         // Hotels
         case .createHotel(_, for: let trip):
@@ -206,10 +206,10 @@ extension BTAPIEndPoints: TargetType {
             return .requestCustomJSONEncodable(trip, encoder: JSONEncoder.tripsEncoder)
 
         // Published Trips
-        case .loadPublishedTrips(let fetchAllTrips):
-            return .requestParameters(parameters: ["fetch_all" : fetchAllTrips], encoding: URLEncoding.default)
+        case .loadPublishedTrips:
+            return .requestPlain
         case .searchPublishedTrips(let searchTerm):
-            return .requestParameters(parameters: ["search_term" : searchTerm], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["searchTerm" : searchTerm], encoding: URLEncoding.default)
 
         // Hotels
         case .createHotel(let hotel, for: _):

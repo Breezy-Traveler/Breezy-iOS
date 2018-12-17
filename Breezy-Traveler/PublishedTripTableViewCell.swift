@@ -8,7 +8,7 @@
 
 import UIKit
 
-//TODO: layout published trip cell
+//TODO: layout published trip cell vs the trips cell
 class PublishedTripTableViewCell: UITableViewCell {
     
     // MARK: - RETURN VALUES

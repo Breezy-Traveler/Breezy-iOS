@@ -13,13 +13,6 @@ struct Hotel: Codable {
     var name: String
     var address: String
     
-    #warning ("erick-remove (this was only used for mocking data)")
-    init(name: String, address: String = "") {
-        id = UUID.init().uuidString
-        self.name = name
-        self.address = address
-    }
-    
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case name
@@ -37,6 +30,17 @@ extension Hotel: Equatable {
 struct CreateHotel: Encodable {
     let name: String
     let address: String
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case address
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CreateHotel.CodingKeys.self)
+        try container.encode(self.name, forKey: .name)
+        try container.encode(self.address, forKey: .address)
+    }
 }
 
 //struct BTHotel: Codable {
