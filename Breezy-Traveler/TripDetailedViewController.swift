@@ -89,8 +89,11 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
                 vc.startDate = trip.startDate
                 vc.endDate = trip.endDate
             case UIStoryboardSegue.showHotels:
-                //TODO: prepare show hotels
-                break
+                guard let vc = segue.destination as? HotelsViewController else {
+                    fatalError("HotelsViewController was not set up in storyboard")
+                }
+                
+                vc.trip = self.trip
             case UIStoryboardSegue.showSites:
                 //TODO: prepare show sites
                 break
@@ -143,11 +146,20 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
     
     @IBOutlet weak var buttonHotels: UIButtonCell!
     @IBAction func pressHotels(_ sender: Any) {
+        let hotelsVc = HotelsViewController()
+        hotelsVc.trip = self.trip
+        
+        self.navigationController!.pushViewController(hotelsVc, animated: true)
+        
 //        self.performSegue(withIdentifier: UIStoryboardSegue.showHotels, sender: nil)
     }
     
     @IBOutlet weak var buttonStites: UIButtonCell!
     @IBAction func pressSites(_ sender: Any) {
+        let sitesVc = SitesViewController()
+        sitesVc.trip = self.trip
+        
+        self.navigationController!.pushViewController(sitesVc, animated: true)
 //        self.performSegue(withIdentifier: UIStoryboardSegue.showSites, sender: nil)
     }
     

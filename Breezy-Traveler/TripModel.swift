@@ -17,7 +17,7 @@ struct Trip: Codable {
     var place: String
     var startDate: Date?
     var endDate: Date?
-    var hotels: [BTHotel]
+    var hotels: [Hotel]
     var sites: [BTSite]
     var coverImageUrl: URL?
     var isPublic: Bool
@@ -56,7 +56,7 @@ struct CreateTrip: Encodable {
     let place: String
     let startDate: Date? = nil
     let endDate: Date? = nil
-    let hotels: [BTHotel] = []
+    let hotels: [Hotel] = []
     let sites: [BTSite] = []
     let coverImageUrl: URL? = nil
     let isPublic: Bool = false

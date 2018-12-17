@@ -8,6 +8,16 @@
 
 import UIKit.UIViewController
 
+protocol Interfacable where Self: UIViewController {
+    static func instantiateFromXib() -> Self
+}
+
+extension Interfacable {
+    static func instantiateFromXib() -> Self {
+        return self.init(nibName: String(describing: self), bundle: nil)
+    }
+}
+
 extension UIViewController {
   var screenSize: CGSize {
     return UIScreen.main.bounds.size
