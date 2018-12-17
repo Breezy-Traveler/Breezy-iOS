@@ -195,6 +195,7 @@
                         <outlet property="singleTap" destination="zyL-JL-fNF" id="Tn6-Yg-by4"/>
                         <outlet property="tripsTableView" destination="z1d-4s-dxh" id="J0X-BU-A9e"/>
                         <outlet property="usernameLabel" destination="5ol-Mt-jDi" id="mrn-tR-MPo"/>
+                        <segue destination="VCR-mM-z7r" kind="show" identifier="show trip detailed" id="DZ9-8h-t4S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="97a-BA-83L" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -301,6 +302,6 @@
         <image name="destination_carousel_berlin" width="750" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FJF-ca-pDQ"/>
+        <segue reference="DZ9-8h-t4S"/>
     </inferredMetricsTieBreakers>
 </document>

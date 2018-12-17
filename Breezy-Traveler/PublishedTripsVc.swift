@@ -112,10 +112,6 @@ class PublishedTripsVc: UIViewController {
                 }
             }
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
         if let selectedRow = table.indexPathForSelectedRow {
             table.deselectRow(at: selectedRow, animated: true)

@@ -37,6 +37,17 @@ extension Hotel: Equatable {
 struct CreateHotel: Encodable {
     let name: String
     let address: String
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case address
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CreateHotel.CodingKeys.self)
+        try container.encode(self.name, forKey: .name)
+        try container.encode(self.address, forKey: .address)
+    }
 }
 
 //struct BTHotel: Codable {
