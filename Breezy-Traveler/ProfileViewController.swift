@@ -15,14 +15,17 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     // MARK: - VARS
     
-    let networkStack = NetworkStack()
-    var userPersistence = UserPersistence()
-    let imagePicker = UIImagePickerController()
-    
-    private lazy var singleTap: UITapGestureRecognizer = {
-        let singleTap = UITapGestureRecognizer(target: self, action: #selector(tapDetected))
-        singleTap.numberOfTapsRequired = 1
-        return singleTap
+    lazy var networkStack = NetworkStack()
+    lazy var userPersistence = UserPersistence()
+    lazy var imagePicker: UIImagePickerController = {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        
+        /** this blocks the main thread for about 1 second */
+        picker.delegate = self
+        
+        return picker
     }()
     
     // MARK: - RETURN VALUES
@@ -54,8 +57,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         imageView.layer.cornerRadius = imageView.frame.size.height / 2
         imageView.layer.borderWidth = 2
         imageView.layer.borderColor = UIColor.white.cgColor
-        imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(singleTap)
     }
     
     // MARK: - IBACTIONS
@@ -64,12 +65,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var fullnameLabel: UILabel!
-    
-    @objc func tapDetected() {
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
-    }
     
     @IBAction func pressedLogout(_ sender: UIBarButtonItem) {
         userPersistence.logout()
@@ -82,12 +77,15 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
+    @IBAction func pressedUpdateProfileImage(_ sender: UIBarButtonItem) {
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
     // MARK: - LIFE CYCLE
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(r: 61, g: 91, b: 151)
-        imagePicker.delegate = self
         
         setupimageViewProperties()
         setupTextProperties()
