@@ -269,8 +269,13 @@ extension TripDetailedViewController: TripDatePickerViewControllerDelegate {
 // MARK: - TripDetailedNotesDelegate
 
 extension TripDetailedViewController: TripDetailedNotesDelegate {
-    func tripDetailedNotes(_ tripsDetailedNotesViewController: TripDetailedNotesViewController, didFinishWith notes: String) {
+    func tripDetailedNotes(_ tripsDetailedNotesViewController: TripDetailedNotesViewController, didSaveWith notes: String) {
+        self.navigationController?.popViewController(animated: true)
         viewModel.updateNotes(with: notes)
+    }
+    
+    func tripDetailedNotesDidCancel(_ tripsDetailedNotesViewController: TripDetailedNotesViewController) {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

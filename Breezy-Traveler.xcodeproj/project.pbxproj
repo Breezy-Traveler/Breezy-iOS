@@ -55,6 +55,7 @@
 		E97ED761207809BF0021B651 /* UtilityExtensions+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97ED760207809BF0021B651 /* UtilityExtensions+Date.swift */; };
 		E97ED76820784B600021B651 /* ImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97ED76620784B600021B651 /* ImagesCollectionViewCell.swift */; };
 		E97ED76920784B600021B651 /* ImagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E97ED76720784B600021B651 /* ImagesCollectionViewCell.xib */; };
+		E98036DE21C9BA8F002344C7 /* KeyboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98036DD21C9BA8F002344C7 /* KeyboardHelper.swift */; };
 		E98F03482072A95A004D4074 /* Trips.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E98F03472072A95A004D4074 /* Trips.storyboard */; };
 		E98F034A2072AEF2004D4074 /* NetworkingLayer+Hotels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F03492072AEF2004D4074 /* NetworkingLayer+Hotels.swift */; };
 		E98F034C2072B69C004D4074 /* Hotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98F034B2072B69C004D4074 /* Hotel.swift */; };
@@ -139,6 +140,7 @@
 		E97ED76620784B600021B651 /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		E97ED76720784B600021B651 /* ImagesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagesCollectionViewCell.xib; sourceTree = "<group>"; };
 		E98036DC21C98139002344C7 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		E98036DD21C9BA8F002344C7 /* KeyboardHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHelper.swift; sourceTree = "<group>"; };
 		E98F03472072A95A004D4074 /* Trips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Trips.storyboard; sourceTree = "<group>"; };
 		E98F03492072AEF2004D4074 /* NetworkingLayer+Hotels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Hotels.swift"; sourceTree = "<group>"; };
 		E98F034B2072B69C004D4074 /* Hotel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotel.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			children = (
 				B9F9F17B20756B0700F0D24D /* PersistenceUser.swift */,
 				B9F9F17D20758E5F00F0D24D /* AlertVC.swift */,
+				E98036DD21C9BA8F002344C7 /* KeyboardHelper.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				B9F9F1802077EE4B00F0D24D /* LoginController.swift in Sources */,
 				E97B4E8720CB29E00018036D /* PublishedTripTableViewCell.swift in Sources */,
 				B9B8F912206C52AF009C017F /* UserModel.swift in Sources */,
+				E98036DE21C9BA8F002344C7 /* KeyboardHelper.swift in Sources */,
 				E9FF77AB207FEAA90086D6D9 /* UIDatePickerViewController.swift in Sources */,
 				E97ED75F207807FF0021B651 /* TripDetailedViewModel.swift in Sources */,
 				B91449432069E54E0074F71B /* MyTripsViewController.swift in Sources */,
