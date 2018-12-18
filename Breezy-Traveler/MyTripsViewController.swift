@@ -147,6 +147,7 @@ class MyTripsViewController: UIViewController {
         // Initialize the new view controller in code using a storyboard identifier
         let VC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
         // and then use the navigation controller to segue to it.
+        
         self.navigationController?.pushViewController(VC, animated: true)
     }
     

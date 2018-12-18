@@ -79,6 +79,10 @@ extension UIViewController {
         
         // 5 Set the label on the navigation bar
         navigationItem.titleView = labelView
+        
+        let backButton = UIBarButtonItem()
+        backButton.title = "Back"
+        self.navigationItem.backBarButtonItem = backButton
     }
 }
 
