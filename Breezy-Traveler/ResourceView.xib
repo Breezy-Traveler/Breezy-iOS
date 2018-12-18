@@ -32,7 +32,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="TTQ-yc-u4q" firstAttribute="bottom" secondItem="1SD-Rt-4ND" secondAttribute="bottom" id="irs-gM-Ham"/>
+                <constraint firstItem="TTQ-yc-u4q" firstAttribute="bottom" secondItem="nid-PD-jhi" secondAttribute="bottom" id="irs-gM-Ham"/>
                 <constraint firstItem="TTQ-yc-u4q" firstAttribute="leading" secondItem="1SD-Rt-4ND" secondAttribute="leading" id="jCi-Lf-0ll"/>
                 <constraint firstItem="TTQ-yc-u4q" firstAttribute="trailing" secondItem="1SD-Rt-4ND" secondAttribute="trailing" id="pze-3X-fXv"/>
                 <constraint firstItem="TTQ-yc-u4q" firstAttribute="top" secondItem="1SD-Rt-4ND" secondAttribute="top" id="yBe-mw-BrX"/>

@@ -127,31 +127,37 @@ extension TripDetailedViewModel {
                 return "\(startDateText)"
             }
         } else {
-            return "tap to setup a date"
+            return "add dates"
         }
     }
     
     var hotelSubtitle: String {
-        if trip.hotels.isEmpty {
-            return "tap to add"
+        if let firstHotelName = trip.hotels.first?.name {
+            let nHotels = trip.hotels.count
+            if nHotels > 1 {
+                return "\(firstHotelName) + \(nHotels - 1)"
+            } else {
+                return firstHotelName
+            }
         } else {
-            let firstHotel = trip.hotels.first!
-            
-            return firstHotel.name
+            return "add hotels"
         }
     }
     
     var siteSubtitle: String {
-        if trip.sites.isEmpty {
-            return "tap to add"
+        if let firstSiteName = trip.sites.first?.name {
+            let nSites = trip.sites.count
+            if nSites > 1 {
+                return "\(firstSiteName) + \(nSites - 1)"
+            } else {
+                return firstSiteName
+            }
         } else {
-            let firstSite = trip.sites.first!
-            
-            return firstSite.name
+            return "add sites"
         }
     }
     
     var notesSubtitle: String {
-        return trip.notes
+        return trip.notes.ifEmpty(use: "add notes")
     }
 }

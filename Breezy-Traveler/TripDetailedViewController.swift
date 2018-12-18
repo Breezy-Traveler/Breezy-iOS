@@ -21,27 +21,6 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         }
     }
     
-    // MARK: - LIFE CYCLE
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.navigationItem.leftBarButtonItem =
-            UIBarButtonItem(
-                barButtonSystemItem: .done,
-                target: self,
-                action: #selector(TripDetailedViewController.pressDone(_:))
-        )
-        
-        self.updateButtonImages()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.updateUI()
-    }
-    
     // MARK: - RETURN VALUES
     
     // MARK: - METHODS
@@ -116,6 +95,7 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
     }
     
     // MARK: - Cover image method conforms to protocol
+    
     func imageView(_ imageViewController: ImagesViewController, didSetImage imageUrl: URL) {
 //        trip.coverImageUrl = imageUrl
         viewModel.updateCoverImageUrl(with: imageUrl)
@@ -214,6 +194,27 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
                 .present(in: self)
             
         }
+    }
+    
+    // MARK: - LIFE CYCLE
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationItem.leftBarButtonItem =
+            UIBarButtonItem(
+                barButtonSystemItem: .done,
+                target: self,
+                action: #selector(TripDetailedViewController.pressDone(_:))
+        )
+        
+        self.updateButtonImages()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.updateUI()
     }
 }
 
