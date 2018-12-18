@@ -52,9 +52,6 @@ class MyTripsViewController: UIViewController {
     }
     
     func loadPublishedTrips() {
-        //TODO: published trips
-        return ()
-        
         networkStack.loadPublishedTrips(fetchAllTrips: false) { [weak self] (result) in
             guard let unwrappedSelf = self else { return }
 
@@ -118,7 +115,11 @@ class MyTripsViewController: UIViewController {
         emailLabel.text = user.email
         
         loadUserTrips()
-        loadPublishedTrips()
+        
+        /** only fetch the published trips once  */
+        once {
+            loadPublishedTrips()
+        }
     }
     
     private func listenForUserLogout() {
