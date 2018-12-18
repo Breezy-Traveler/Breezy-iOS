@@ -150,8 +150,6 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         hotelsVc.trip = self.trip
         
         self.navigationController!.pushViewController(hotelsVc, animated: true)
-        
-//        self.performSegue(withIdentifier: UIStoryboardSegue.showHotels, sender: nil)
     }
     
     @IBOutlet weak var buttonStites: UIButtonCell!
@@ -160,7 +158,6 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         sitesVc.trip = self.trip
         
         self.navigationController!.pushViewController(sitesVc, animated: true)
-//        self.performSegue(withIdentifier: UIStoryboardSegue.showSites, sender: nil)
     }
     
     @IBOutlet weak var buttonNotes: UIButtonCell!

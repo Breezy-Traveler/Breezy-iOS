@@ -42,7 +42,7 @@ class TripDetailedViewModel {
                 unwrappedSelf.delegate.viewModel(unwrappedSelf, didUpdate: unwrappedSelf.trip)
                 
             case .failure(let err):
-                debugPrint("failed to push trip: \(err.localizedDescription)")
+                assertionFailure("failed to push trip: \(err.localizedDescription)")
                 unwrappedSelf.delegate.viewModel(unwrappedSelf, didRecieve: err.errors)
             }
         }
@@ -58,7 +58,7 @@ class TripDetailedViewModel {
             case .success(let returnedTrip):
                 unwrappedSelf.delegate.viewModel(unwrappedSelf, didUpdate: returnedTrip)
             case .failure(let err):
-                debugPrint("failed to pull trip: \(err.localizedDescription)")
+                assertionFailure("failed to pull trip: \(err.localizedDescription)")
                 unwrappedSelf.delegate.viewModel(unwrappedSelf, didRecieve: err.errors)
             }
         }
