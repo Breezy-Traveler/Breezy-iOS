@@ -138,6 +138,7 @@
 		E97ED760207809BF0021B651 /* UtilityExtensions+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtensions+Date.swift"; sourceTree = "<group>"; };
 		E97ED76620784B600021B651 /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		E97ED76720784B600021B651 /* ImagesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagesCollectionViewCell.xib; sourceTree = "<group>"; };
+		E98036DC21C98139002344C7 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		E98F03472072A95A004D4074 /* Trips.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Trips.storyboard; sourceTree = "<group>"; };
 		E98F03492072AEF2004D4074 /* NetworkingLayer+Hotels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkingLayer+Hotels.swift"; sourceTree = "<group>"; };
 		E98F034B2072B69C004D4074 /* Hotel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotel.swift; sourceTree = "<group>"; };
@@ -222,6 +223,7 @@
 				B96529562069A571007FAD4D /* Info.plist */,
 				E96BEF8220CCB80200295ECD /* Development.xcconfig */,
 				E96BEF8320CCB80E00295ECD /* Production.xcconfig */,
+				E98036DC21C98139002344C7 /* Release.xcconfig */,
 			);
 			path = "Breezy-Traveler";
 			sourceTree = "<group>";
@@ -777,7 +779,7 @@
 		};
 		B965295B2069A571007FAD4D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BDBB5C3BE3B43399A8D2F68F /* Pods-Breezy-Traveler.release.xcconfig */;
+			baseConfigurationReference = E98036DC21C98139002344C7 /* Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

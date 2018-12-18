@@ -1,0 +1,14 @@
+//
+//  Release.xcconfig
+//  Breezy-Traveler
+//
+//  Created by Erick Sanchez on 12/18/18.
+//  Copyright © 2018 Phyllis Wong. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "Pods/Target Support Files/Pods-Breezy-Traveler/Pods-Breezy-Traveler.release.xcconfig"
+
+BASE_URL=https:\/\/breezy-traveler.herokuapp.com
