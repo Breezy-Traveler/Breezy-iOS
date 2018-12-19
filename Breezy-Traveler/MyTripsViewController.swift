@@ -52,9 +52,6 @@ class MyTripsViewController: UIViewController {
     }
     
     func loadPublishedTrips() {
-        //TODO: published trips
-        return ()
-        
         networkStack.loadPublishedTrips(fetchAllTrips: false) { [weak self] (result) in
             guard let unwrappedSelf = self else { return }
 
@@ -118,7 +115,10 @@ class MyTripsViewController: UIViewController {
         emailLabel.text = user.email
         
         loadUserTrips()
-        loadPublishedTrips()
+        
+        once(every: 60.seconds) {
+            loadPublishedTrips()
+        }
     }
     
     private func listenForUserLogout() {
@@ -147,6 +147,7 @@ class MyTripsViewController: UIViewController {
         // Initialize the new view controller in code using a storyboard identifier
         let VC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
         // and then use the navigation controller to segue to it.
+        
         self.navigationController?.pushViewController(VC, animated: true)
     }
     

@@ -9,7 +9,8 @@
 import UIKit
 
 protocol TripDetailedNotesDelegate: class {
-    func tripDetailedNotes(_ tripsDetailedNotesViewController: TripDetailedNotesViewController, didFinishWith notes: String)
+    func tripDetailedNotesDidCancel(_ tripsDetailedNotesViewController: TripDetailedNotesViewController)
+    func tripDetailedNotes(_ tripsDetailedNotesViewController: TripDetailedNotesViewController, didSaveWith notes: String)
 }
 
 class TripDetailedNotesViewController: UIViewController {
@@ -17,6 +18,8 @@ class TripDetailedNotesViewController: UIViewController {
     var notes: String!
     
     weak var delegate: TripDetailedNotesDelegate?
+    
+    private let keyboard = KeyboardStack()
 
     // MARK: - RETURN VALUES
     
@@ -25,8 +28,23 @@ class TripDetailedNotesViewController: UIViewController {
     // MARK: - IBACTIONS
     
     @IBOutlet weak var textviewNotes: UITextView!
+    @IBOutlet weak var constrainNotesHeight: NSLayoutConstraint!
+    
+    @IBAction func pressSave(_ button: UIBarButtonItem) {
+        delegate?.tripDetailedNotes(self, didSaveWith: textviewNotes.text)
+    }
+    
+    @IBAction func pressCancel(_ button: UIBarButtonItem) {
+        delegate?.tripDetailedNotesDidCancel(self)
+    }
     
     // MARK: - LIFE CYCLE
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        keyboard.delegate = self
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -39,9 +57,18 @@ class TripDetailedNotesViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        delegate?.tripDetailedNotes(self, didFinishWith: textviewNotes.text)
-        
         textviewNotes.resignFirstResponder()
     }
+}
 
+extension TripDetailedNotesViewController: KeyboardStackDelegate {
+    func keyboard(_ keyboardStack: KeyboardStack, didChangeTo newHeight: CGFloat) {
+        
+        //caculate the new height
+        let viewHeight = view.frame.height
+        let verticalPadding: CGFloat = 64
+        let newHeight = viewHeight - newHeight - verticalPadding
+        constrainNotesHeight.constant = newHeight
+        view.layoutIfNeeded()
+    }
 }

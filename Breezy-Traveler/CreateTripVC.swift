@@ -22,6 +22,10 @@ class CreateTripVC: UIViewController {
         self.hideKeyboard()
     }
     
+    @IBAction func pressedCancel(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func pressedSave(_ sender: UIBarButtonItem) {
         guard let place = placeTextField.text else { return }
         

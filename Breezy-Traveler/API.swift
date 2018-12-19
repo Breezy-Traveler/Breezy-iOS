@@ -206,8 +206,9 @@ extension BTAPIEndPoints: TargetType {
             return .requestCustomJSONEncodable(trip, encoder: JSONEncoder.tripsEncoder)
 
         // Published Trips
-        case .loadPublishedTrips:
-            return .requestPlain
+        case .loadPublishedTrips(let fetchAll):
+            let limit = fetchAll ? 0 : 10
+            return .requestParameters(parameters: ["searchLimit": limit], encoding: URLEncoding.default)
         case .searchPublishedTrips(let searchTerm):
             return .requestParameters(parameters: ["searchTerm" : searchTerm], encoding: URLEncoding.default)
 

@@ -45,7 +45,7 @@ class ResourceViewController: UIViewController {
     // MARK: - METHODS
     
     private func deleteResource(at indexPath: IndexPath) {
-        let resourceToDelete = viewModel.resource[indexPath.row]
+        let resourceToDelete = resource[indexPath.row]
         
         viewModel.deleteResource(resourceToDelete, for: self.trip) { [weak self] isSuccessful in
             guard let unwrappedSelf = self else { return }
@@ -59,7 +59,7 @@ class ResourceViewController: UIViewController {
     }
     
     private func editResource(at indexPath: IndexPath) {
-        var resourceToEdit = viewModel.resource[indexPath.row]
+        var resourceToEdit = resource[indexPath.row]
         
         let editorAlert = UIAlertController(
             editorTitle: viewModel.resourceName,

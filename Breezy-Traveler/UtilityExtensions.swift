@@ -79,6 +79,10 @@ extension UIViewController {
         
         // 5 Set the label on the navigation bar
         navigationItem.titleView = labelView
+        
+        let backButton = UIBarButtonItem()
+        backButton.title = "Back"
+        self.navigationItem.backBarButtonItem = backButton
     }
 }
 
@@ -147,5 +151,21 @@ extension Optional where Wrapped == String {
     }
 }
 
-
+extension Int {
+    var seconds: TimeInterval {
+        return TimeInterval(self)
+    }
+    
+    var mintues: TimeInterval {
+        return TimeInterval(self * 60)
+    }
+    
+    var hours: TimeInterval {
+        return TimeInterval(self.mintues * 60)
+    }
+    
+    var days: TimeInterval {
+        return TimeInterval(self.hours * 24)
+    }
+}
 

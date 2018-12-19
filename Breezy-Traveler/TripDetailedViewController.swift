@@ -21,27 +21,6 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         }
     }
     
-    // MARK: - LIFE CYCLE
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.navigationItem.leftBarButtonItem =
-            UIBarButtonItem(
-                barButtonSystemItem: .done,
-                target: self,
-                action: #selector(TripDetailedViewController.pressDone(_:))
-        )
-        
-        self.updateButtonImages()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.updateUI()
-    }
-    
     // MARK: - RETURN VALUES
     
     // MARK: - METHODS
@@ -116,6 +95,7 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
     }
     
     // MARK: - Cover image method conforms to protocol
+    
     func imageView(_ imageViewController: ImagesViewController, didSetImage imageUrl: URL) {
 //        trip.coverImageUrl = imageUrl
         viewModel.updateCoverImageUrl(with: imageUrl)
@@ -150,8 +130,6 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         hotelsVc.trip = self.trip
         
         self.navigationController!.pushViewController(hotelsVc, animated: true)
-        
-//        self.performSegue(withIdentifier: UIStoryboardSegue.showHotels, sender: nil)
     }
     
     @IBOutlet weak var buttonStites: UIButtonCell!
@@ -160,7 +138,6 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         sitesVc.trip = self.trip
         
         self.navigationController!.pushViewController(sitesVc, animated: true)
-//        self.performSegue(withIdentifier: UIStoryboardSegue.showSites, sender: nil)
     }
     
     @IBOutlet weak var buttonNotes: UIButtonCell!
@@ -218,6 +195,27 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
             
         }
     }
+    
+    // MARK: - LIFE CYCLE
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationItem.leftBarButtonItem =
+            UIBarButtonItem(
+                barButtonSystemItem: .done,
+                target: self,
+                action: #selector(TripDetailedViewController.pressDone(_:))
+        )
+        
+        self.updateButtonImages()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.updateUI()
+    }
 }
 
 // MARK: - TripDetailedViewModelDelegate
@@ -271,8 +269,13 @@ extension TripDetailedViewController: TripDatePickerViewControllerDelegate {
 // MARK: - TripDetailedNotesDelegate
 
 extension TripDetailedViewController: TripDetailedNotesDelegate {
-    func tripDetailedNotes(_ tripsDetailedNotesViewController: TripDetailedNotesViewController, didFinishWith notes: String) {
+    func tripDetailedNotes(_ tripsDetailedNotesViewController: TripDetailedNotesViewController, didSaveWith notes: String) {
+        self.navigationController?.popViewController(animated: true)
         viewModel.updateNotes(with: notes)
+    }
+    
+    func tripDetailedNotesDidCancel(_ tripsDetailedNotesViewController: TripDetailedNotesViewController) {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

@@ -55,9 +55,9 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="xVd-pC-7wE" secondAttribute="bottom" id="G6r-qD-lZI"/>
-                                            <constraint firstAttribute="trailing" secondItem="xVd-pC-7wE" secondAttribute="trailing" constant="4" id="GQG-Py-5yd"/>
-                                            <constraint firstItem="xVd-pC-7wE" firstAttribute="top" secondItem="MyW-JB-MLa" secondAttribute="top" constant="8" id="haA-yO-r8S"/>
-                                            <constraint firstItem="xVd-pC-7wE" firstAttribute="leading" secondItem="MyW-JB-MLa" secondAttribute="leading" constant="4" id="iP7-UO-WMT"/>
+                                            <constraint firstAttribute="trailing" secondItem="xVd-pC-7wE" secondAttribute="trailing" id="GQG-Py-5yd"/>
+                                            <constraint firstItem="xVd-pC-7wE" firstAttribute="top" secondItem="MyW-JB-MLa" secondAttribute="top" id="haA-yO-r8S"/>
+                                            <constraint firstItem="xVd-pC-7wE" firstAttribute="leading" secondItem="MyW-JB-MLa" secondAttribute="leading" id="iP7-UO-WMT"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YeV-ww-To8">
@@ -146,7 +146,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wzh-VX-xPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ThX-hg-EJG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1676" y="1013"/>
+            <point key="canvasLocation" x="1676" y="1012.4437781109445"/>
         </scene>
         <!--Select Your Dates-->
         <scene sceneID="uVj-md-1f1">
@@ -223,10 +223,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dFK-vN-Tzw">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dFK-vN-Tzw">
+                                <rect key="frame" x="0.0" y="80" width="375" height="225"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="225" id="xL5-PJ-oPq"/>
+                                </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -235,17 +237,34 @@
                                 </connections>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dFK-vN-Tzw" firstAttribute="leading" secondItem="zQH-hc-b42" secondAttribute="leading" id="BNO-0z-emY"/>
+                            <constraint firstItem="dFK-vN-Tzw" firstAttribute="top" secondItem="zQH-hc-b42" secondAttribute="top" constant="16" id="ZRa-rS-zvm"/>
+                            <constraint firstItem="dFK-vN-Tzw" firstAttribute="trailing" secondItem="zQH-hc-b42" secondAttribute="trailing" id="iFv-dc-2b2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="zQH-hc-b42"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Notes" id="snZ-4l-385"/>
+                    <navigationItem key="navigationItem" title="Notes" id="snZ-4l-385">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Aek-aa-8sS">
+                            <connections>
+                                <action selector="pressCancel:" destination="JQ6-IX-LwJ" id="7wA-dl-0Vu"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="nzm-jx-vtK">
+                            <connections>
+                                <action selector="pressSave:" destination="JQ6-IX-LwJ" id="4Va-65-ibs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="constrainNotesHeight" destination="xL5-PJ-oPq" id="daz-JQ-SfM"/>
                         <outlet property="textviewNotes" destination="dFK-vN-Tzw" id="YKR-ga-zJd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Je-CH-6Eb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1964" y="1821"/>
+            <point key="canvasLocation" x="1964" y="1820.2398800599701"/>
         </scene>
     </scenes>
 </document>
