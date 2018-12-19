@@ -116,8 +116,7 @@ class MyTripsViewController: UIViewController {
         
         loadUserTrips()
         
-        /** only fetch the published trips once  */
-        once {
+        once(every: 60.seconds) {
             loadPublishedTrips()
         }
     }
