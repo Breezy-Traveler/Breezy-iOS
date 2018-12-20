@@ -132,23 +132,11 @@ class MyTripsViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet var singleTap: UITapGestureRecognizer!
     
     // MARK: - ACTIONS
     
     @IBAction func unwindToMyTrips(_ segue: UIStoryboardSegue) {
         debugPrint("welcome back, unwind!")
-    }
-    
-    @IBAction func tapDetected() {
-        print("Imageview Clicked")
-        // Initialize the new storyboard in code,
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        // Initialize the new view controller in code using a storyboard identifier
-        let VC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
-        // and then use the navigation controller to segue to it.
-        
-        self.navigationController?.pushViewController(VC, animated: true)
     }
     
     @objc private func userDidLogout(_ notification: Notification) {
@@ -164,7 +152,6 @@ class MyTripsViewController: UIViewController {
         setupProfileImage()
         setupNavigationBarAppearence()
         listenForUserLogout()
-        profileImage.addGestureRecognizer(singleTap)
         tripsTableView.register(TripsTVCell.self)
     }
     
