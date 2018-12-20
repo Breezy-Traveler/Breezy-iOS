@@ -212,7 +212,7 @@ extension BTAPIEndPoints: TargetType {
             return .requestJSONEncodable(loginUser)
         case .uploadUserProfileImage(let imageData):
             let body: [String: Any] = [
-                "payload": imageData,
+                "payload": imageData.base64EncodedString(),
                 "type": "image/png"
             ]
             

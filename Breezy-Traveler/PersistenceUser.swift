@@ -13,6 +13,34 @@ class UserPersistence {
     
     // MARK: - VARS
     
+    func updateUserProfileImage(_ image: UIImage?, completion: @escaping (Bool) -> Void) {
+        let networking = NetworkStack()
+        
+        if let image = image {
+            guard let scaledImage = image.resize(to: CGSize.userProfileSize) else {
+                assertionFailure("Failed to resize image")
+                
+                return completion(false)
+            }
+            
+            networking.upload(profile: scaledImage) { result in
+                switch result {
+                case .success(_):
+                    completion(true)
+                case .failure(let err):
+                    assertionFailure(err.localizedDescription)
+                    
+                    completion(false)
+                }
+            }
+        } else {
+            //TODO: erick-clear user profile image
+//            networking.clearProfileImage { result in
+//
+//            }
+        }
+    }
+    
     var userProfileImage: UIImage? {
         set {
             if let newImage = newValue {
@@ -191,4 +219,8 @@ class UserPersistence {
 
 extension NSNotification.Name {
     static let userDidLogout = NSNotification.Name.init("USER_DID_LOGOUT")
+}
+
+extension CGSize {
+    static let userProfileSize = CGSize(width: 512, height: 512)
 }
