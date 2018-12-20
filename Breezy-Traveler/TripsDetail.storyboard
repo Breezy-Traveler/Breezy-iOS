@@ -41,10 +41,10 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="543"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MyW-JB-MLa">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="283.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="281.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xVd-pC-7wE" customClass="UICoverImageView" customModule="Breezy_Traveler" customModuleProvider="target">
-                                                <rect key="frame" x="4" y="8" width="367" height="275.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="281.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="xVd-pC-7wE" secondAttribute="height" multiplier="4:3" id="fcT-ve-209"/>
                                                 </constraints>
@@ -61,10 +61,10 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YeV-ww-To8">
-                                        <rect key="frame" x="0.0" y="299.5" width="375" height="243.5"/>
+                                        <rect key="frame" x="0.0" y="297.5" width="375" height="245.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ODw-1X-nKt" customClass="UIButtonCell" customModule="Breezy_Traveler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="60.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Dates"/>
@@ -74,7 +74,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oej-io-fHL" customClass="UIButtonCell" customModule="Breezy_Traveler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="60.5" width="375" height="61"/>
+                                                <rect key="frame" x="0.0" y="61" width="375" height="61.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Hotels"/>
@@ -84,7 +84,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FKG-ib-5ZQ" customClass="UIButtonCell" customModule="Breezy_Traveler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="121.5" width="375" height="61"/>
+                                                <rect key="frame" x="0.0" y="122.5" width="375" height="61.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Sites"/>
@@ -94,7 +94,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TB5-gA-0jh" customClass="UIButtonCell" customModule="Breezy_Traveler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="182.5" width="375" height="61"/>
+                                                <rect key="frame" x="0.0" y="184" width="375" height="61.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Notes"/>

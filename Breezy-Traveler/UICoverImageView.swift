@@ -27,7 +27,7 @@ class UICoverImageView: UIView {
         super.init(coder: aDecoder)
         
         // Load the nib
-        self.view = Bundle.main.loadNibNamed("UICoverImageView", owner: self, options: nil)?.first! as! UIView
+        self.view = (Bundle.main.loadNibNamed("UICoverImageView", owner: self, options: nil)!.first! as! UIView)
         self.addSubview(view)
         self.view.frame = self.bounds
         self.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]

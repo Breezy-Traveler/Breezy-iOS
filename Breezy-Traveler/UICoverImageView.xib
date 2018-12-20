@@ -82,6 +82,11 @@
                         <mask key="subviews">
                             <exclude reference="Tat-1x-WUy"/>
                         </mask>
+                        <mask key="constraints">
+                            <exclude reference="P4B-5n-tel"/>
+                            <exclude reference="PSl-9k-YB8"/>
+                            <exclude reference="V50-ib-mFe"/>
+                        </mask>
                     </variation>
                 </view>
             </subviews>

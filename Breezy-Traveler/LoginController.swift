@@ -22,12 +22,6 @@ class LoginController: UIViewController {
     lazy var height: CGFloat = 0.0
     var inputContainerHeight: CGFloat?
     
-    // Make the Status Bar Light/Dark Content for this View
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
-        //return UIStatusBarStyle.default   // Make dark again
-    }
-    
     // Create the container for user input
     let inputsContainerView: UIView = {
         let view = UIView()
