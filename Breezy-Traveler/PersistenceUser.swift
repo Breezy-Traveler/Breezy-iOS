@@ -13,58 +13,38 @@ class UserPersistence {
     
     // MARK: - VARS
     
-    var userProfileImage: UIImage? {
-        set {
-            if let newImage = newValue {
-                let url = userProfileImageURL
-                
-                // Convert the UIImage into Data
-                guard let imageData = UIImagePNGRepresentation(newImage) else {
-                    return assertionFailure("failed to create data from image")
-                }
-                
-                // Use file manager to save the data
-                do {
-                    try imageData.write(to: url)
-                } catch {
-                    assertionFailure("\(error)")
-                }
-            } else {
-                
-                //try to delete image from storage
-                try? FileManager.default.removeItem(at: userProfileImageURL)
-            }
-        }
+    func updateUserProfileImage(_ image: UIImage?, completion: @escaping (Bool) -> Void) {
+        let networking = NetworkStack()
         
-        get {
-            guard let imageData = try? Data(contentsOf: userProfileImageURL) else {
-                return nil
+        if let image = image {
+            guard let scaledImage = image.resize(to: CGSize.userProfileSize) else {
+                assertionFailure("Failed to resize image")
+                
+                return completion(false)
             }
             
-            if let image = UIImage(data: imageData) {
-                return image
-            } else {
-                assertionFailure("image not converted from data")
-                
-                return nil
+            networking.upload(profile: scaledImage) { result in
+                switch result {
+                case .success(let updatedUser):
+                    self.setCurrentUser(updatedUser, writeToPersistence: true)
+                    completion(true)
+                case .failure(let err):
+                    assertionFailure(err.localizedDescription)
+                    
+                    completion(false)
+                }
             }
+        } else {
+            //TODO: erick-clear user profile image
+            
+            //TODO: clear kingfisher cache (mabye don't need to clear cache when image changes)
+//            networking.clearProfileImage { result in
+//
+//            }
         }
     }
     
     private let currentUserKey: String = "currentUser"
-    
-    private var userProfileImageURL: URL {
-        
-        // Get the URL for where to save the image
-        guard let libraryDirectory = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first else {
-            fatalError("no access to this directory")
-        }
-        
-        // Create a filepath name for the image store
-        let url = libraryDirectory.appendingPathComponent("userProfile.png")
-        
-        return url
-    }
     
     static var currentUser: User {
         guard let user = self._currentUser else {
@@ -184,11 +164,13 @@ class UserPersistence {
         
         userDefaults.set(nil, forKey: currentUserKey)
         keychains.delete(currentUserKey)
-        
-        self.userProfileImage = nil
     }
 }
 
 extension NSNotification.Name {
     static let userDidLogout = NSNotification.Name.init("USER_DID_LOGOUT")
+}
+
+extension CGSize {
+    static let userProfileSize = CGSize(width: 512, height: 512)
 }

@@ -33,11 +33,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     // MARK: - METHODS
     
     private func updateUI() {
-        if let storedImage = userPersistence.userProfileImage {
-            imageView.image = storedImage
-        }
-        
         let user = UserPersistence.currentUser
+        imageView.kf.setImage(with: user.profileUrl)
         usernameLabel.text = user.username
         emailLabel.text = user.email
         fullnameLabel.text = user.username
@@ -131,11 +128,27 @@ extension ProfileViewController {
         
         let rotatedImage = fixOrientation(img: pickedImage)
         
-        userPersistence.userProfileImage = rotatedImage
-        imageView.contentMode = .scaleAspectFill
-        imageView.image = pickedImage
-        
+        // dismis the image picker
         dismiss(animated: true, completion: nil)
+        
+        //TODO: present loading spinner
+        view.isUserInteractionEnabled = false
+        
+        userPersistence.updateUserProfileImage(rotatedImage) { [weak self] (isSuccessful) in
+            guard let unwrappedSelf = self else { return }
+            
+            if isSuccessful {
+                unwrappedSelf.imageView.contentMode = .scaleAspectFill
+                unwrappedSelf.imageView.image = rotatedImage
+            } else {
+                UIAlertController(title: "Updating Profile Image", message: "Something went wrong", preferredStyle: .alert)
+                    .addDismissButton()
+                    .present(in: unwrappedSelf)
+            }
+            
+            //TODO: dismiss loading spinner
+            unwrappedSelf.view.isUserInteractionEnabled = true
+        }
     }
     
     func imagePickerController(didFinishPickingMediaWithInfo info: [String : AnyObject]) {

@@ -28,11 +28,13 @@ struct User: Codable {
         var name: String
     }
     var facebook: Facebook?
+    let profileImage: String?
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case local
         case facebook
+        case profileImage
     }
     
     var username: String {

@@ -13,6 +13,15 @@ extension UIImage {
     static var defaultCoverImage: UIImage {
         return #imageLiteral(resourceName: "MountainsDefault")
     }
+    
+    func resize(to size: CGSize) -> UIImage? {        
+        UIGraphicsBeginImageContext(size)
+        self.draw(in: CGRect(origin: CGPoint.zero, size: size))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
 }
 
 extension Collection where Index : Comparable {
