@@ -44,58 +44,7 @@ class UserPersistence {
         }
     }
     
-    var userProfileImage: UIImage? {
-        set {
-            if let newImage = newValue {
-                let url = userProfileImageURL
-                
-                // Convert the UIImage into Data
-                guard let imageData = UIImagePNGRepresentation(newImage) else {
-                    return assertionFailure("failed to create data from image")
-                }
-                
-                // Use file manager to save the data
-                do {
-                    try imageData.write(to: url)
-                } catch {
-                    assertionFailure("\(error)")
-                }
-            } else {
-                
-                //try to delete image from storage
-                try? FileManager.default.removeItem(at: userProfileImageURL)
-            }
-        }
-        
-        get {
-            guard let imageData = try? Data(contentsOf: userProfileImageURL) else {
-                return nil
-            }
-            
-            if let image = UIImage(data: imageData) {
-                return image
-            } else {
-                assertionFailure("image not converted from data")
-                
-                return nil
-            }
-        }
-    }
-    
     private let currentUserKey: String = "currentUser"
-    
-    private var userProfileImageURL: URL {
-        
-        // Get the URL for where to save the image
-        guard let libraryDirectory = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first else {
-            fatalError("no access to this directory")
-        }
-        
-        // Create a filepath name for the image store
-        let url = libraryDirectory.appendingPathComponent("userProfile.png")
-        
-        return url
-    }
     
     static var currentUser: User {
         guard let user = self._currentUser else {
@@ -215,8 +164,6 @@ class UserPersistence {
         
         userDefaults.set(nil, forKey: currentUserKey)
         keychains.delete(currentUserKey)
-        
-        self.userProfileImage = nil
     }
 }
 
