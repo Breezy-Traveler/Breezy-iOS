@@ -26,10 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         navigationBarAppearance.tintColor = UIColor.white
         navigationBarAppearance.barTintColor = UIColor(r: 61, g: 91, b: 151)
-        
-        // Set the status bar to white
-        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
-        
+                
         self.setUpInital(&window)
         
         return true

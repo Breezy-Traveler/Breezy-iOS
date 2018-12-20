@@ -280,10 +280,4 @@ extension MyTripsViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         return CGSize(width: 100.0, height: rowHeight)
     }
-    
-    // Make the Status Bar Light/Dark Content for this View
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
-        //return UIStatusBarStyle.default   // Make dark again
-    }
 }

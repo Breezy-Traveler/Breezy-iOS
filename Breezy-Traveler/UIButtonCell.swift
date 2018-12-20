@@ -17,7 +17,7 @@ class UIButtonCell: UIControl {
     }
     
     private func layoutNib() {
-        self.view = Bundle.main.loadNibNamed("UIButtonCell", owner: self, options: nil)?.first! as! UIView
+        self.view = (Bundle.main.loadNibNamed("UIButtonCell", owner: self, options: nil)?.first! as! UIView)
         self.addSubview(view)
         self.view.frame = self.bounds
         self.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
