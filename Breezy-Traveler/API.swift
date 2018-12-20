@@ -14,6 +14,8 @@ enum BTAPIEndPoints {
     // Users
     case registerUser(UserRegister)
     case loginUser(UserLogin)
+    case uploadUserProfileImage(imageData: Data)
+    case userProfileImage(User)
 
     // Trips
     case createTrip(CreateTrip)
@@ -70,6 +72,12 @@ extension BTAPIEndPoints: TargetType {
 
         case .loginUser:
             return "/login"
+            
+        case .uploadUserProfileImage:
+            return "/userProfile"
+            
+        case .userProfileImage(let user):
+            return "/userProfile/\(user.profileImage ?? "no-image")"
 
         // Trips
         case .createTrip, .loadTrips:
@@ -142,6 +150,10 @@ extension BTAPIEndPoints: TargetType {
         // Users
         case .registerUser, .loginUser:
             return .post
+        case .uploadUserProfileImage:
+            return .post
+        case .userProfileImage:
+            return .get
 
         // Trips
         case .createTrip:
@@ -198,6 +210,15 @@ extension BTAPIEndPoints: TargetType {
             return .requestJSONEncodable(registerUser)
         case .loginUser(let loginUser):
             return .requestJSONEncodable(loginUser)
+        case .uploadUserProfileImage(let imageData):
+            let body: [String: Any] = [
+                "payload": imageData,
+                "type": "image/png"
+            ]
+            
+            return .requestParameters(parameters: body, encoding: URLEncoding.default)
+        case .userProfileImage:
+            return .requestPlain
 
         // Trips
         case .createTrip(let trip):
@@ -249,5 +270,19 @@ extension BTAPIEndPoints: TargetType {
             defaultHeaders["Authorization"] = "Token \(token)"
         }
         return defaultHeaders
+    }
+}
+
+extension TargetType {
+    var endpoint: URL {
+        return self.baseURL.appendingPathComponent(self.path)
+    }
+}
+
+extension User {
+    var profileUrl: URL {
+        let request = BTAPIEndPoints.userProfileImage(self)
+        
+        return request.endpoint
     }
 }
