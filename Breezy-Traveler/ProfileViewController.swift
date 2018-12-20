@@ -33,11 +33,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     // MARK: - METHODS
     
     private func updateUI() {
-        if let storedImage = userPersistence.userProfileImage {
-            imageView.image = storedImage
-        }
-        
         let user = UserPersistence.currentUser
+        imageView.kf.setImage(with: user.profileUrl)
         usernameLabel.text = user.username
         emailLabel.text = user.email
         fullnameLabel.text = user.username

@@ -14,10 +14,7 @@ extension UIImage {
         return #imageLiteral(resourceName: "MountainsDefault")
     }
     
-    func resize(to size: CGSize) -> UIImage? {
-        let scale = size.width / self.size.width
-        let newHeight = self.size.height * scale
-        
+    func resize(to size: CGSize) -> UIImage? {        
         UIGraphicsBeginImageContext(size)
         self.draw(in: CGRect(origin: CGPoint.zero, size: size))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()

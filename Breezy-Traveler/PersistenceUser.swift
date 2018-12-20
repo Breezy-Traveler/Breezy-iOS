@@ -25,7 +25,8 @@ class UserPersistence {
             
             networking.upload(profile: scaledImage) { result in
                 switch result {
-                case .success(_):
+                case .success(let updatedUser):
+                    self.setCurrentUser(updatedUser, writeToPersistence: true)
                     completion(true)
                 case .failure(let err):
                     assertionFailure(err.localizedDescription)
@@ -35,6 +36,8 @@ class UserPersistence {
             }
         } else {
             //TODO: erick-clear user profile image
+            
+            //TODO: clear kingfisher cache (mabye don't need to clear cache when image changes)
 //            networking.clearProfileImage { result in
 //
 //            }

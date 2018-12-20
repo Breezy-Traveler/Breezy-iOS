@@ -82,7 +82,7 @@ struct NetworkStack {
         }
     }
     
-    func upload(profile image: UIImage, callback: @escaping (Result<UIImage, UserfacingErrors>) -> ()) {
+    func upload(profile image: UIImage, callback: @escaping (Result<User, UserfacingErrors>) -> ()) {
         guard let imageData = UIImagePNGRepresentation(image) else {
             let err = UserfacingErrors.somethingWentWrong(message: "invalid image")
             
@@ -95,14 +95,14 @@ struct NetworkStack {
                 
                 switch response.statusCode {
                 case 200:
-                    guard let userImage = UIImage(data: response.data) else {
-                        assertionFailure("could not decode into an image")
+                    guard let user = try? JSONDecoder().decode(User.self, from: response.data) else {
+                        assertionFailure("JSON data not decodable")
                         
                         let errors = UserfacingErrors.somethingWentWrong()
                         return callback(.failure(errors))
                     }
                     
-                    callback(.success(userImage))
+                    callback(.success(user))
                     
                 case 413:
                     let errors = UserfacingErrors.somethingWentWrong(message: "payload too large")

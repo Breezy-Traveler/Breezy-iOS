@@ -106,11 +106,8 @@ class MyTripsViewController: UIViewController {
     }
     
     private func updateUI() {
-        if let savedProfileImage = userPersistence.userProfileImage {
-            profileImage.image = savedProfileImage
-        }
-        
         let user = UserPersistence.currentUser
+        profileImage.kf.setImage(with: user.profileUrl)
         usernameLabel.text = user.username
         emailLabel.text = user.email
         
