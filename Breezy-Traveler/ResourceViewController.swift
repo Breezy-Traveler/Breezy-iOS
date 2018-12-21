@@ -16,7 +16,11 @@ protocol Resource {
 
 protocol ResourceViewModel {
     
-    var resource: [Resource] { get }
+    init(trip: Trip)
+    
+    var trip: Trip { get }
+    
+    var resource: [Resource] { get set }
     var resourceName: String { get }
     
     func fetchResource(for trip: Trip, completion: @escaping (Bool) -> Void)
@@ -128,15 +132,17 @@ class ResourceViewController: UIViewController {
         
         title = viewModel.resourceName.plural
         
-        viewModel.fetchResource(for: self.trip) { [weak self] isSuccessful in
-            guard let unwrappedSelf = self else { return }
-            
-            if isSuccessful {
-                unwrappedSelf.tableView.reloadData()
-            } else {
-                unwrappedSelf.presentAlert(error: nil, title: "Loading \(unwrappedSelf.viewModel.resourceName)")
-            }
-        }
+        tableView.reloadData()
+        
+//        viewModel.fetchResource(for: self.trip) { [weak self] isSuccessful in
+//            guard let unwrappedSelf = self else { return }
+//            
+//            if isSuccessful {
+//                unwrappedSelf.tableView.reloadData()
+//            } else {
+//                unwrappedSelf.presentAlert(error: nil, title: "Loading \(unwrappedSelf.viewModel.resourceName)")
+//            }
+//        }
     }
 }
 

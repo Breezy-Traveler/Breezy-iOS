@@ -12,15 +12,36 @@ class HotelsViewModel: ResourceViewModel {
     
     // MARK: - VARS
     
-    var resource: [Resource] = []
+    var trip: Trip
+    
+    var resource: [Resource] {
+        set {
+            guard let hotels = newValue as? [Hotel] else {
+                fatalError("new value is not an array of hotels")
+            }
+            
+            trip.hotels = hotels
+        }
+        get {
+            return trip.hotels
+        }
+    }
     
     let resourceName: String = "Hotel"
     
     private let networking = NetworkStack()
     
+    required init(trip: Trip) {
+        self.trip = trip
+    }
+    
     // MARK: - RETURN VALUES
     
     // MARK: - METHODS
+    
+    func loadResource(for trip: Trip) {
+//        resource = trip.hotels
+    }
     
     func fetchResource(for trip: Trip, completion: @escaping (Bool) -> Void) {
         

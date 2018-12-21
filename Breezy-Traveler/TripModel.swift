@@ -11,7 +11,7 @@ import Foundation
 /**
  used for reading, updating and deleting a trip
  */
-struct Trip: Codable {
+class Trip: Codable {
     
     var id: String
     var place: String

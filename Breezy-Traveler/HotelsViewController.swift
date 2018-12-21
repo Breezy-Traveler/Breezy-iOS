@@ -13,6 +13,6 @@ class HotelsViewController: ResourceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = HotelsViewModel()
+        viewModel = HotelsViewModel(trip: self.trip)
     }
 }

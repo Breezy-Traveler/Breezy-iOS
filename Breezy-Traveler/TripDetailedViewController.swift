@@ -39,7 +39,6 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         // layout dates
         buttonDates.subtitleLabel.text = viewModel.dateRangesSubtitle
         
-        
         // layout hotels and sites
         buttonHotels.subtitleLabel.text = viewModel.hotelSubtitle
         
