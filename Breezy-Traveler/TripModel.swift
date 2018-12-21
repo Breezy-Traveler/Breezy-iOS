@@ -22,6 +22,11 @@ class Trip: Codable {
     var coverImageUrl: URL?
     var isPublic: Bool
     var notes: String
+    let author: User
+    
+    var canModify: Bool {
+        return author.id == UserPersistence.currentUser.id
+    }
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -33,6 +38,7 @@ class Trip: Codable {
         case coverImageUrl
         case isPublic
         case notes
+        case author = "userId"
     }
     
     func encode(to encoder: Encoder) throws {
@@ -46,6 +52,7 @@ class Trip: Codable {
         try container.encode(self.coverImageUrl, forKey: .coverImageUrl)
         try container.encode(self.isPublic, forKey: .isPublic)
         try container.encode(self.notes, forKey: .notes)
+        try container.encode(self.author, forKey: .author)
     }
 }
 

@@ -30,8 +30,10 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         self.title = trip.place
         
         // layout cover image
-        let likesTitle = viewModel.likesText
-        coverImage.leftLebel.text = String(likesTitle)
+        let author = trip.author
+        coverImage.leftImageIcon.kf.setImage(with: author.profileUrl)
+        coverImage.leftLebel.text = author.username
+        
         let publishedTitle = viewModel.publishedText
         coverImage.rightLabel.text = publishedTitle
         coverImage.setCoverImage(with: trip.coverImageUrl)

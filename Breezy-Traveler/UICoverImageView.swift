@@ -62,10 +62,7 @@ class UICoverImageView: UIView {
     // MARK: - IBACTIONS
     
     @IBOutlet weak var bottomBar: UIVisualEffectView!
-    @IBOutlet weak var leftButtonIcon: UIButton!
-    @IBAction func pressLeftButton(_ sender: Any) {
-        self.delegate?.coverImage?(view: self, leftButtonIconDidPress: self.leftButtonIcon)
-    }
+    @IBOutlet weak var leftImageIcon: UIImageView!
     @IBOutlet weak var leftLebel: UILabel!
     
     @IBOutlet weak var rightLabel: UILabel!
