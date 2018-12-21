@@ -25,7 +25,7 @@ class Trip: Codable {
     let author: User
     
     var canModify: Bool {
-        return author.id == UserPersistence.currentUser.id
+        return author == UserPersistence.currentUser
     }
     
     enum CodingKeys: String, CodingKey {

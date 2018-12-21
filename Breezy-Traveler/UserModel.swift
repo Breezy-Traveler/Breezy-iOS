@@ -78,6 +78,12 @@ struct User: Codable {
     // MARK: - METHODS
 }
 
+extension User: Equatable {
+    static func ==(_ lhs: User, _ rhs: User) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
 struct UserRegister: Codable {
     let username: String
     let password: String
