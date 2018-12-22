@@ -17,6 +17,8 @@ class TripDetailedNotesViewController: UIViewController {
     
     var notes: String!
     
+    var canModify: Bool = true
+    
     weak var delegate: TripDetailedNotesDelegate?
     
     private let keyboard = KeyboardStack()
@@ -44,6 +46,12 @@ class TripDetailedNotesViewController: UIViewController {
         super.viewDidLoad()
         
         keyboard.delegate = self
+        textviewNotes.isEditable = canModify
+        
+        if canModify == false {
+            navigationItem.setRightBarButton(nil, animated: false)
+            navigationItem.setLeftBarButton(nil, animated: false)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +59,9 @@ class TripDetailedNotesViewController: UIViewController {
         
         textviewNotes.text = self.notes
         
-        textviewNotes.becomeFirstResponder()
+        if canModify {
+            textviewNotes.becomeFirstResponder()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -27,18 +27,22 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
     
     private func updateUI() {
         
+        let tripBelongsToCurrentUser = trip.canModify
+        
         self.title = trip.place
         
         // layout cover image
-        let likesTitle = viewModel.likesText
-        coverImage.leftLebel.text = String(likesTitle)
+        let author = trip.author
+        coverImage.leftImageIcon.kf.setImage(with: author.profileUrl)
+        coverImage.leftLebel.text = author.username
+        
         let publishedTitle = viewModel.publishedText
         coverImage.rightLabel.text = publishedTitle
         coverImage.setCoverImage(with: trip.coverImageUrl)
         
         // layout dates
         buttonDates.subtitleLabel.text = viewModel.dateRangesSubtitle
-        
+        buttonDates.isSelectable = tripBelongsToCurrentUser
         
         // layout hotels and sites
         buttonHotels.subtitleLabel.text = viewModel.hotelSubtitle
@@ -47,6 +51,11 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         
         // layout notes
         buttonNotes.subtitleLabel.text = viewModel.notesSubtitle
+        
+        if tripBelongsToCurrentUser == false {
+            navigationItem.setRightBarButton(nil, animated: false)
+            toolbar.setItems(nil, animated: false)
+        }
     }
     
     func updateButtonImages() {
@@ -80,6 +89,8 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
                 guard let vc = segue.destination as? TripDetailedNotesViewController else {
                     fatalError("broken storyboard")
                 }
+                
+                vc.canModify = trip.canModify
                 vc.notes = trip.notes
                 vc.delegate = self
                 
@@ -87,6 +98,7 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
                 guard let vc = segue.destination as? ImagesViewController else {
                     fatalError("broken storyboard")
                 }
+                
                 vc.coverImagePickerDelegate = self
                 vc.searchTerm = trip.place
             default: break
@@ -145,6 +157,8 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
         self.performSegue(withIdentifier: UIStoryboardSegue.showNotes, sender: nil)
     }
 
+    @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var buttonEditPlace: UIBarButtonItem!
     @IBAction func pressRenamePlace(_ sender: Any) {
         let tripPlace = viewModel.tripPlace
         let alertPlace = UIAlertController(title: "Update Place", message: "enter a new place", preferredStyle: .alert)
@@ -163,36 +177,57 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
             .present(in: self)
     }
     
+    /** Top right button usually used to share or copy the trip */
+    @IBOutlet weak var buttonAction: UIBarButtonItem!
     @IBAction func pressShare(_ sender: Any) {
-        if self.trip.isPublic {
-            // would you like to unpublish this trip?
-            UIAlertController(title: nil, message: "This trip is already published.\nWould you like to make private?", preferredStyle: .actionSheet)
-                .addButton(title: "Make Private") { [unowned self] (action) in
-                    
-                    //pressed unpublish button
-                    self.viewModel.toggleIsPublished()
-                }
-                .addCancelButton()
-                .present(in: self)
-            
-        } else {
-            
-            // would you like to publish
-            UIAlertController(title: nil, message: "Would you like to publish this trip?", preferredStyle: .actionSheet)
-                .addButton(title: "Share") { [unowned self] (action) in
-                    
-                    //pressed publish button
-                    if self.trip.coverImageUrl == nil {
-                        UIAlertController(title: "Sharing", message: "You must select a cover image before sharing.", preferredStyle: .alert)
-                            .addDismissButton()
-                            .present(in: self)
-                    } else {
+        if trip.canModify {
+            if self.trip.isPublic {
+                // would you like to unpublish this trip?
+                UIAlertController(title: nil, message: "This trip is already published.\nWould you like to make private?", preferredStyle: .actionSheet)
+                    .addButton(title: "Make Private") { [unowned self] (action) in
+                        
+                        //pressed unpublish button
                         self.viewModel.toggleIsPublished()
                     }
-                }
-                .addCancelButton()
-                .present(in: self)
+                    .addCancelButton()
+                    .present(in: self)
+                
+            } else {
+                
+                // would you like to publish
+                UIAlertController(title: nil, message: "Would you like to publish this trip?", preferredStyle: .actionSheet)
+                    .addButton(title: "Share") { [unowned self] (action) in
+                        
+                        //pressed publish button
+                        if self.trip.coverImageUrl == nil {
+                            UIAlertController(title: "Sharing", message: "You must select a cover image before sharing.", preferredStyle: .alert)
+                                .addDismissButton()
+                                .present(in: self)
+                        } else {
+                            self.viewModel.toggleIsPublished()
+                        }
+                    }
+                    .addCancelButton()
+                    .present(in: self)
+                
+            }
+        } else {
             
+            //TODO: would you like to copy trip
+//            UIAlertController(title: nil, message: "Would you like to publish this trip?", preferredStyle: .actionSheet)
+//                .addButton(title: "Share") { [unowned self] (action) in
+//
+//                    //pressed publish button
+//                    if self.trip.coverImageUrl == nil {
+//                        UIAlertController(title: "Sharing", message: "You must select a cover image before sharing.", preferredStyle: .alert)
+//                            .addDismissButton()
+//                            .present(in: self)
+//                    } else {
+//                        self.viewModel.toggleIsPublished()
+//                    }
+//                }
+//                .addCancelButton()
+//                .present(in: self)
         }
     }
     
@@ -244,11 +279,12 @@ extension TripDetailedViewController: UICoverImageViewDelegate {
     }
     
     func coverImage(view: UICoverImageView, coverImageDidPressWith gesture: UITapGestureRecognizer) {
-        print("Cover image pressed")
+        guard trip.canModify else {
+            return
+        }
         
         self.performSegue(withIdentifier: "showCollectionViewSegue", sender: nil)
     }
-    
 }
 
 // MARK: - TripDatePickerViewControllerDelegate

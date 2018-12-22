@@ -11,6 +11,16 @@ import UIKit
 @IBDesignable
 class UIButtonCell: UIControl {
     
+    var isSelectable: Bool {
+        set {
+            imageViewDisclosureButton?.isHidden = newValue.inverse
+            isUserInteractionEnabled = newValue
+        }
+        get {
+            return imageViewDisclosureButton?.isHidden == false
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.layoutNib()
@@ -47,6 +57,7 @@ class UIButtonCell: UIControl {
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageViewDisclosureButton: UIImageView!
     
     // MARK: - LIFE CYCLE
 }

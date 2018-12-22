@@ -14,7 +14,7 @@
             <connections>
                 <outlet property="bottomBar" destination="zoN-1R-nZ2" id="lNj-R8-4oT"/>
                 <outlet property="coverImageView" destination="7i5-Ni-N5H" id="vmA-Vf-Kif"/>
-                <outlet property="leftButtonIcon" destination="wQu-vy-Tu7" id="Gy5-hZ-ie8"/>
+                <outlet property="leftImageIcon" destination="sP2-Lc-TVb" id="xbE-8f-YQF"/>
                 <outlet property="leftLebel" destination="omU-2j-2bP" id="Eh0-aZ-Fi3"/>
                 <outlet property="rightLabel" destination="x4T-qo-bNo" id="jwY-CG-6WF"/>
                 <outlet property="view" destination="iN0-l3-epB" id="YUh-pr-55f"/>
@@ -35,22 +35,16 @@
                     <rect key="frame" x="0.0" y="239" width="375" height="42"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Tat-1x-WUy">
-                            <rect key="frame" x="8" y="8" width="65.5" height="26"/>
+                            <rect key="frame" x="8" y="8" width="112.5" height="26"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQu-vy-Tu7">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sP2-Lc-TVb">
                                     <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="wQu-vy-Tu7" secondAttribute="height" multiplier="1:1" id="YMw-rF-hDi"/>
+                                        <constraint firstAttribute="width" secondItem="sP2-Lc-TVb" secondAttribute="height" id="eYP-I6-i00"/>
                                     </constraints>
-                                    <state key="normal" image="heartRed">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="pressLeftButton:" destination="-1" eventType="touchUpInside" id="UjL-Jg-Wxe"/>
-                                    </connections>
-                                </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omU-2j-2bP">
-                                    <rect key="frame" x="34" y="0.0" width="31.5" height="26"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omU-2j-2bP">
+                                    <rect key="frame" x="34" y="0.0" width="78.5" height="26"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -78,16 +72,6 @@
                         <constraint firstItem="Vbx-2O-DCn" firstAttribute="top" secondItem="p3Q-6e-aGV" secondAttribute="top" constant="8" id="kNu-jn-uld"/>
                         <constraint firstAttribute="bottom" secondItem="Vbx-2O-DCn" secondAttribute="bottom" constant="8" id="r2E-dT-23e"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="subviews">
-                            <exclude reference="Tat-1x-WUy"/>
-                        </mask>
-                        <mask key="constraints">
-                            <exclude reference="P4B-5n-tel"/>
-                            <exclude reference="PSl-9k-YB8"/>
-                            <exclude reference="V50-ib-mFe"/>
-                        </mask>
-                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -116,6 +100,5 @@
     </objects>
     <resources>
         <image name="MountainsDefault" width="400" height="300"/>
-        <image name="heartRed" width="50" height="50"/>
     </resources>
 </document>

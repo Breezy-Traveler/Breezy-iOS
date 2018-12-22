@@ -107,10 +107,14 @@ extension TripDetailedViewModel {
     }
     
     var publishedText: String {
-        if trip.isPublic {
-            return "Shared"
+        if trip.canModify {
+            if trip.isPublic {
+                return "Shared"
+            } else {
+                return "Private"
+            }
         } else {
-            return "Private"
+            return ""
         }
     }
     
@@ -127,7 +131,7 @@ extension TripDetailedViewModel {
                 return "\(startDateText)"
             }
         } else {
-            return "add dates"
+            return trip.canModify ? "add dates" : "no dates"
         }
     }
     
@@ -140,7 +144,7 @@ extension TripDetailedViewModel {
                 return firstHotelName
             }
         } else {
-            return "add hotels"
+            return trip.canModify ? "add hotels" : "no hotels"
         }
     }
     
@@ -153,11 +157,13 @@ extension TripDetailedViewModel {
                 return firstSiteName
             }
         } else {
-            return "add sites"
+            return trip.canModify ? "add sites" : "no sites"
         }
     }
     
     var notesSubtitle: String {
-        return trip.notes.ifEmpty(use: "add notes")
+        let notes = trip.canModify ? "add notes" : "no notes"
+        
+        return trip.notes.ifEmpty(use: notes)
     }
 }

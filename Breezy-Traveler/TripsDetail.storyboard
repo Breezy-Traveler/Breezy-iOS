@@ -32,7 +32,7 @@
                                 <items>
                                     <barButtonItem systemItem="edit" id="egG-8V-baY">
                                         <connections>
-                                            <action selector="pressRenamePlace:" destination="eqz-PU-wnb" id="bbP-8l-KaU"/>
+                                            <action selector="pressRenamePlace:" destination="eqz-PU-wnb" id="HsU-Rf-RJH"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -132,11 +132,14 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="buttonAction" destination="zmH-sN-sZz" id="KdR-cu-Dbf"/>
                         <outlet property="buttonDates" destination="ODw-1X-nKt" id="LH2-EI-8uw"/>
+                        <outlet property="buttonEditPlace" destination="egG-8V-baY" id="oZF-AH-EOR"/>
                         <outlet property="buttonHotels" destination="oej-io-fHL" id="mZX-El-PUk"/>
                         <outlet property="buttonNotes" destination="TB5-gA-0jh" id="L0R-b6-Zo9"/>
                         <outlet property="buttonStites" destination="FKG-ib-5ZQ" id="VAD-ad-Vrh"/>
                         <outlet property="coverImage" destination="xVd-pC-7wE" id="nMP-uI-yTi"/>
+                        <outlet property="toolbar" destination="bl2-Je-Pzs" id="aQI-5C-UEF"/>
                         <segue destination="ThX-hg-EJG" kind="unwind" identifier="unwind to my trips" unwindAction="unwindToMyTrips:" id="rhH-2V-dla"/>
                         <segue destination="6Pz-Wr-JFH" kind="show" identifier="show date picker" id="Bl1-Dx-ipQ"/>
                         <segue destination="mcp-Oi-jBT" kind="show" identifier="showCollectionViewSegue" id="6kW-ly-1tK"/>

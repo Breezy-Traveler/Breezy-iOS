@@ -11,7 +11,7 @@ import Foundation
 /**
  used for reading, updating and deleting a trip
  */
-struct Trip: Codable {
+class Trip: Codable {
     
     var id: String
     var place: String
@@ -22,6 +22,11 @@ struct Trip: Codable {
     var coverImageUrl: URL?
     var isPublic: Bool
     var notes: String
+    let author: User
+    
+    var canModify: Bool {
+        return author == UserPersistence.currentUser
+    }
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -33,6 +38,7 @@ struct Trip: Codable {
         case coverImageUrl
         case isPublic
         case notes
+        case author = "userId"
     }
     
     func encode(to encoder: Encoder) throws {
@@ -46,6 +52,7 @@ struct Trip: Codable {
         try container.encode(self.coverImageUrl, forKey: .coverImageUrl)
         try container.encode(self.isPublic, forKey: .isPublic)
         try container.encode(self.notes, forKey: .notes)
+        try container.encode(self.author, forKey: .author)
     }
 }
 

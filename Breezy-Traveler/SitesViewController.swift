@@ -13,6 +13,6 @@ class SitesViewController: ResourceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = SitesViewModel()
+        viewModel = SitesViewModel(trip: self.trip)
     }
 }

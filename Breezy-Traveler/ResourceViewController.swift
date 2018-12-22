@@ -16,7 +16,11 @@ protocol Resource {
 
 protocol ResourceViewModel {
     
-    var resource: [Resource] { get }
+    init(trip: Trip)
+    
+    var trip: Trip { get }
+    
+    var resource: [Resource] { get set }
     var resourceName: String { get }
     
     func fetchResource(for trip: Trip, completion: @escaping (Bool) -> Void)
@@ -40,9 +44,21 @@ class ResourceViewController: UIViewController {
         return viewModel.resource
     }
     
+    deinit {
+        reset(onceKey: "resourceVc - updateUI()")
+    }
+    
     // MARK: - RETURN VALUES
     
     // MARK: - METHODS
+    
+    private func updateUI() {
+        once("resourceVc - updateUI()") {
+            title = viewModel.resourceName.plural
+        }
+        
+        tableView.reloadData()
+    }
     
     private func deleteResource(at indexPath: IndexPath) {
         let resourceToDelete = resource[indexPath.row]
@@ -112,35 +128,44 @@ class ResourceViewController: UIViewController {
     
     // MARK: - LIFE CYCLE
     
+    /**
+     cannot reference viewModel, can reference trip here
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
        
         //setup view controller
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(self.pressAddResource(_:))
-        )
+        if trip.canModify {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(
+                barButtonSystemItem: .add,
+                target: self,
+                action: #selector(self.pressAddResource(_:))
+            )
+        }
     }
     
+    /**
+     it's safe to reference viewModel here and later lifecylce methods
+     */
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        title = viewModel.resourceName.plural
+        updateUI()
         
-        viewModel.fetchResource(for: self.trip) { [weak self] isSuccessful in
-            guard let unwrappedSelf = self else { return }
-            
-            if isSuccessful {
-                unwrappedSelf.tableView.reloadData()
-            } else {
-                unwrappedSelf.presentAlert(error: nil, title: "Loading \(unwrappedSelf.viewModel.resourceName)")
-            }
-        }
+//        viewModel.fetchResource(for: self.trip) { [weak self] isSuccessful in
+//            guard let unwrappedSelf = self else { return }
+//            
+//            if isSuccessful {
+//                unwrappedSelf.tableView.reloadData()
+//            } else {
+//                unwrappedSelf.presentAlert(error: nil, title: "Loading \(unwrappedSelf.viewModel.resourceName)")
+//            }
+//        }
     }
 }
 
 extension ResourceViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.resource.count
     }
@@ -153,7 +178,15 @@ extension ResourceViewController: UITableViewDataSource, UITableViewDelegate {
         return "\(viewModel.resourceName.plural) for \(self.trip.place)"
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return trip.canModify
+    }
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        guard trip.canModify else {
+            return nil
+        }
+        
         let editAction = UITableViewRowAction(style: .default, title: "Edit") { [weak self] (action, indexPath) in
             guard let unwrappedSelf = self else { return }
             
