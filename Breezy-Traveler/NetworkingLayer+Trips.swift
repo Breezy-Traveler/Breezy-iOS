@@ -20,6 +20,7 @@ extension NetworkStack {
             
             case .success(let response):
                 
+                //TODO: handle 401
                 switch response.statusCode {
                 case 200:
                     guard let trips = try? JSONDecoder.trips(from: response.data) else {
