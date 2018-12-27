@@ -292,29 +292,78 @@ func jsonResponse<T: Decodable>(
     expectedSuccessCode statusCode: Int = 200,
     decoder: JSONDecoder = JSONDecoder.init(),
     next: @escaping (Result<T, UserfacingErrors>) -> Void) -> Completion {
-    
     return { (result) in
-        switch result {
-        case .success(let response):
-            switch response.statusCode {
-            case statusCode:
-                guard let payload = try? decoder.decode(T.self, from: response.data) else {
-                    return next(.failure(UserfacingErrors.somethingWentWrong()))
-                }
-                
-                next(.success(payload))
-            case 400:
-                next(.failure(UserfacingErrors.somethingWentWrong(message: "Bad Request")))
-            case 401:
-                let user = LoginLayer.instance
-                user.needsLogin()
-            case 409:
-                next(.failure(UserfacingErrors.duplicateAccount()))
-            default:
-                next(.failure(UserfacingErrors.serverError(message: response.data)))
+        handleStatus(result, statusCode, { (response) in
+            guard let payload = try? decoder.decode(T.self, from: response.data) else {
+                return next(.failure(UserfacingErrors.somethingWentWrong()))
             }
-        case .failure(let error):
-            next(.failure(UserfacingErrors.somethingWentWrong(message: error.localizedDescription)))
-        }
+
+            next(.success(payload))
+        }, { (err) in
+            next(.failure(err))
+        })
     }
 }
+
+func jsonResponse(
+    expectedSuccessCode statusCode: Int = 200,
+    decoder: JSONDecoder = JSONDecoder.init(),
+    successfulResponse succHandler: @escaping (Response) -> Void,
+    failureResponse failHandler: @escaping (UserfacingErrors) -> Void) -> Completion {
+    return { (result) in
+        handleStatus(result, statusCode, succHandler, failHandler)
+    }
+}
+
+fileprivate func handleStatus(_ result: Result<Response, MoyaError>, _ statusCode: Int, _ success: @escaping (Response) -> Void, _ fail: @escaping (UserfacingErrors) -> Void) {
+    switch result {
+    case .success(let response):
+        switch response.statusCode {
+        case statusCode:
+            success(response)
+        case 400:
+            fail(UserfacingErrors.somethingWentWrong(message: "Bad Request"))
+        case 401:
+            let user = LoginLayer.instance
+            user.needsLogin()
+        case 409:
+            fail(UserfacingErrors.duplicateAccount())
+        default:
+            fail(UserfacingErrors.serverError(message: response.data))
+        }
+    case .failure(let error):
+        fail(UserfacingErrors.somethingWentWrong(message: error.localizedDescription))
+    }
+
+}
+
+//func jsonResponse<T: Decodable>(
+//    expectedSuccessCode statusCode: Int = 200,
+//    decoder: JSONDecoder = JSONDecoder.init(),
+//    next: @escaping (Result<T, UserfacingErrors>) -> Void) -> Completion {
+//
+//    return { (result) in
+//        switch result {
+//        case .success(let response):
+//            switch response.statusCode {
+//            case statusCode:
+//                guard let payload = try? decoder.decode(T.self, from: response.data) else {
+//                    return next(.failure(UserfacingErrors.somethingWentWrong()))
+//                }
+//
+//                next(.success(payload))
+//            case 400:
+//                next(.failure(UserfacingErrors.somethingWentWrong(message: "Bad Request")))
+//            case 401:
+//                let user = LoginLayer.instance
+//                user.needsLogin()
+//            case 409:
+//                next(.failure(UserfacingErrors.duplicateAccount()))
+//            default:
+//                next(.failure(UserfacingErrors.serverError(message: response.data)))
+//            }
+//        case .failure(let error):
+//            next(.failure(UserfacingErrors.somethingWentWrong(message: error.localizedDescription)))
+//        }
+//    }
+//}
