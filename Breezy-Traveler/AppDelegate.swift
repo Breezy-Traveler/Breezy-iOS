@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    let loginMiddleware = LoginLayer.instance
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -28,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearance.barTintColor = UIColor(r: 61, g: 91, b: 151)
                 
         self.setUpInital(&window)
+        
+        loginMiddleware.delegate = self
         
         return true
     }
@@ -77,5 +80,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
     }
 
+}
+
+extension AppDelegate: LoginLayerDelegate {
+    
+    func userNeedsToLogin(_ loginLayer: LoginLayer) {
+        guard let appWindow = self.window else {
+            fatalError("window not set up")
+        }
+        
+        throttle(for: 5) {
+            let loginVc = LoginController()
+            
+            appWindow.set(rootViewController: loginVc)
+            loginVc.presentAlert(error: "please login")
+        }
+    }
+}
+
+extension UIWindow {
+    
+    /// From https://stackoverflow.com/questions/26763020/leaking-views-when-changing-rootviewcontroller-inside-transitionwithview/27153956
+    /// Fix for http://stackoverflow.com/a/27153956/849645
+    func set(rootViewController newRootViewController: UIViewController, withTransition transition: CATransition? = nil) {
+        
+        let previousViewController = rootViewController
+        
+        if let transition = transition {
+            // Add the transition
+            layer.add(transition, forKey: kCATransition)
+        }
+        
+        rootViewController = newRootViewController
+        
+        // Update status bar appearance using the new view controllers appearance - animate if needed
+        if UIView.areAnimationsEnabled {
+            UIView.animate(withDuration: CATransaction.animationDuration()) {
+                newRootViewController.setNeedsStatusBarAppearanceUpdate()
+            }
+        } else {
+            newRootViewController.setNeedsStatusBarAppearanceUpdate()
+        }
+        
+        /// The presenting view controllers view doesn't get removed from the window as its currently transistioning and presenting a view controller
+        if let transitionViewClass = NSClassFromString("UITransitionView") {
+            for subview in subviews where subview.isKind(of: transitionViewClass) {
+                subview.removeFromSuperview()
+            }
+        }
+        if let previousViewController = previousViewController {
+            // Allow the view controller to be deallocated
+            previousViewController.dismiss(animated: false) {
+                // Remove the root view in case its still showing
+                previousViewController.view.removeFromSuperview()
+            }
+        }
+    }
 }
 

@@ -31,6 +31,10 @@ struct UserfacingErrors: Error {
         return UserfacingErrors(dataErrorMessage: message)
     }
     
+    static func duplicateAccount() -> UserfacingErrors {
+        return UserfacingErrors(errors: ["Account already exists"])
+    }
+    
     init(errors: [String]) {
         self.errors = errors
     }

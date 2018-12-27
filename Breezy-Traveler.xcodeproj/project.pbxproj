@@ -61,6 +61,8 @@
 		E996A4B920CCD48900A0038E /* TripDetailedNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996A4B820CCD48900A0038E /* TripDetailedNotesViewController.swift */; };
 		E996A4BB20CDFF5E00A0038E /* UserfacingErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996A4BA20CDFF5E00A0038E /* UserfacingErrors.swift */; };
 		E996A4BD20CE1CA300A0038E /* UserfacingErrors+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996A4BC20CE1CA300A0038E /* UserfacingErrors+User.swift */; };
+		E9A6B4B321D454EE00667FEB /* LoginLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A6B4B221D454EE00667FEB /* LoginLayer.swift */; };
+		E9A6B4B521D45EF800667FEB /* ThrottleGlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A6B4B421D45EF800667FEB /* ThrottleGlobalFunctions.swift */; };
 		E9A91C2821BA14A4007BBF6F /* ResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A91C2721BA14A4007BBF6F /* ResourceViewController.swift */; };
 		E9A91C2B21BADD87007BBF6F /* ResourceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A91C2921BADA94007BBF6F /* ResourceView.xib */; };
 		E9A91C2D21BAE4F8007BBF6F /* UtitlityExtensions+Pluralize.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A91C2C21BAE4F8007BBF6F /* UtitlityExtensions+Pluralize.swift */; };
@@ -145,6 +147,8 @@
 		E996A4B820CCD48900A0038E /* TripDetailedNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailedNotesViewController.swift; sourceTree = "<group>"; };
 		E996A4BA20CDFF5E00A0038E /* UserfacingErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserfacingErrors.swift; sourceTree = "<group>"; };
 		E996A4BC20CE1CA300A0038E /* UserfacingErrors+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserfacingErrors+User.swift"; sourceTree = "<group>"; };
+		E9A6B4B221D454EE00667FEB /* LoginLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginLayer.swift; sourceTree = "<group>"; };
+		E9A6B4B421D45EF800667FEB /* ThrottleGlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThrottleGlobalFunctions.swift; sourceTree = "<group>"; };
 		E9A91C2721BA14A4007BBF6F /* ResourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceViewController.swift; sourceTree = "<group>"; };
 		E9A91C2921BADA94007BBF6F /* ResourceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourceView.xib; sourceTree = "<group>"; };
 		E9A91C2C21BAE4F8007BBF6F /* UtitlityExtensions+Pluralize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtitlityExtensions+Pluralize.swift"; sourceTree = "<group>"; };
@@ -245,6 +249,8 @@
 				B9F9F17B20756B0700F0D24D /* PersistenceUser.swift */,
 				B9F9F17D20758E5F00F0D24D /* AlertVC.swift */,
 				E98036DD21C9BA8F002344C7 /* KeyboardHelper.swift */,
+				E9A6B4B221D454EE00667FEB /* LoginLayer.swift */,
+				E9A6B4B421D45EF800667FEB /* ThrottleGlobalFunctions.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -597,6 +603,7 @@
 				E934F2DE21B86EBD00553138 /* HotelsViewModel.swift in Sources */,
 				E9A91C2D21BAE4F8007BBF6F /* UtitlityExtensions+Pluralize.swift in Sources */,
 				E97B4E8520CB24AD0018036D /* PublishedTripsVc.swift in Sources */,
+				E9A6B4B321D454EE00667FEB /* LoginLayer.swift in Sources */,
 				E97ED75B2077EF140021B651 /* UIButtonCell.swift in Sources */,
 				E996A4B920CCD48900A0038E /* TripDetailedNotesViewController.swift in Sources */,
 				E91A196720840D0C00CEE74A /* TripDetailedViewController.swift in Sources */,
@@ -614,6 +621,7 @@
 				E9A91C3121BAE793007BBF6F /* SitesViewModel.swift in Sources */,
 				E9189FD421C330E500C4132A /* Once.swift in Sources */,
 				B940C850206EEB3100E7144D /* TripModel.swift in Sources */,
+				E9A6B4B521D45EF800667FEB /* ThrottleGlobalFunctions.swift in Sources */,
 				E98F034C2072B69C004D4074 /* Hotel.swift in Sources */,
 				E95E13842075651F00BF4276 /* BTSite.swift in Sources */,
 				E96BEF8620CCBC9600295ECD /* NetworkingLayer+QOD.swift in Sources */,
