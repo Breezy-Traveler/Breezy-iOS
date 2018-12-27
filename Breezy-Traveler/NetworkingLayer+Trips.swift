@@ -44,7 +44,7 @@ extension NetworkStack {
     func deleteTrip(trip: Trip, callback: @escaping (Result<Trip, UserfacingErrors>) -> ()) {
         apiService.request(
             .deleteTrip(trip),
-            completion: jsonResponse(expectedSuccessCode: 204, successfulResponse: { (response) in
+            completion: jsonResponse(expectedSuccessCode: 202, successfulResponse: { (response) in
                 callback(.success(trip))
             }, failureResponse: { (userError) in
                 callback(.failure(userError))
