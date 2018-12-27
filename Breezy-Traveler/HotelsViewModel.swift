@@ -107,12 +107,11 @@ class HotelsViewModel: ResourceViewModel {
             guard let unwrappedSelf = self else { return }
             
             switch result {
-            case .success(let message):
+            case .success:
                 if let indexToRemove = unwrappedSelf.resource.firstIndex(where: { $0.id == resource.id }) {
                     unwrappedSelf.resource.remove(at: indexToRemove)
                 }
                 
-                debugPrint(message)
                 completion(true)
             case .failure(let err):
                 assertionFailure(err.localizedDescription)
