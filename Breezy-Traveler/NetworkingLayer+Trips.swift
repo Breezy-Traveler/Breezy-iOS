@@ -14,36 +14,10 @@ import SwiftyJSON
 extension NetworkStack {
     
     func loadUserTrips(user: User, callback: @escaping (Result<[Trip], UserfacingErrors>) -> ()) {
-        /// handles the response data after the networkService has fired and come back with a result
-        apiService.request(.loadTrips(user)) { (result) in
-            switch result {
-            
-            case .success(let response):
-                
-                //TODO: handle 401
-                switch response.statusCode {
-                case 200:
-                    guard let trips = try? JSONDecoder.trips(from: response.data) else {
-                        assertionFailure("JSON data not decodable")
-                        
-                        let errors = UserfacingErrors.somethingWentWrong()
-                        return callback(.failure(errors))
-                    }
-                    
-                    callback(.success(trips))
-                case 401: //needs relogin
-                    let user = LoginLayer.instance
-                    user.needsLogin()
-                default:
-                    let errors = UserfacingErrors.serverError(message: response.data)
-                    callback(.failure(errors))
-                }
-                
-            case .failure(let err):
-                let errors = UserfacingErrors.somethingWentWrong(message: err.localizedDescription)
-                callback(.failure(errors))
-            }
-        }
+        apiService.request(
+            .loadTrips(user),
+            completion: jsonResponse(decoder: .tripsDecoder, next: callback)
+        )
     }
     
     func createTrip(trip: CreateTrip, callback: @escaping (Result<Trip, UserfacingErrors>) -> ()) {

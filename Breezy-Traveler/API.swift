@@ -8,6 +8,7 @@
 
 import Foundation
 import Moya
+import Result
 
 // 1: All the end points for HTTP request
 enum BTAPIEndPoints {
@@ -284,5 +285,36 @@ extension User {
         let request = BTAPIEndPoints.userProfileImage(self)
         
         return request.endpoint
+    }
+}
+
+func jsonResponse<T: Decodable>(
+    expectedSuccessCode statusCode: Int = 200,
+    decoder: JSONDecoder = JSONDecoder.init(),
+    next: @escaping (Result<T, UserfacingErrors>) -> Void) -> Completion {
+    
+    return { (result) in
+        switch result {
+        case .success(let response):
+            switch response.statusCode {
+            case statusCode:
+                guard let payload = try? decoder.decode(T.self, from: response.data) else {
+                    return next(.failure(UserfacingErrors.somethingWentWrong()))
+                }
+                
+                next(.success(payload))
+            case 400:
+                next(.failure(UserfacingErrors.somethingWentWrong(message: "Bad Request")))
+            case 401:
+                let user = LoginLayer.instance
+                user.needsLogin()
+            case 409:
+                next(.failure(UserfacingErrors.duplicateAccount()))
+            default:
+                next(.failure(UserfacingErrors.serverError(message: response.data)))
+            }
+        case .failure(let error):
+            next(.failure(UserfacingErrors.somethingWentWrong(message: error.localizedDescription)))
+        }
     }
 }
