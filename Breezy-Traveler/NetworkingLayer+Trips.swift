@@ -31,6 +31,9 @@ extension NetworkStack {
                     }
                     
                     callback(.success(trips))
+                case 401: //needs relogin
+                    let user = LoginLayer.instance
+                    user.needsLogin()
                 default:
                     let errors = UserfacingErrors.serverError(message: response.data)
                     callback(.failure(errors))
@@ -158,6 +161,10 @@ extension NetworkStack {
                     }
                     
                     callback(.success(trips))
+                case 401: //needs relogin
+                    let user = LoginLayer.instance
+                    user.needsLogin()
+                    
                 default:
                     let errors = UserfacingErrors.serverError(message: response.data)
                     callback(.failure(errors))
