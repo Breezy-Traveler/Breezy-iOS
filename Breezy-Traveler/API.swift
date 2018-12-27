@@ -326,8 +326,6 @@ fileprivate func handleStatus(_ result: Result<Response, MoyaError>, _ statusCod
         case 401:
             let user = LoginLayer.instance
             user.needsLogin()
-        case 409:
-            fail(UserfacingErrors.duplicateAccount())
         default:
             fail(UserfacingErrors.serverError(message: response.data))
         }
