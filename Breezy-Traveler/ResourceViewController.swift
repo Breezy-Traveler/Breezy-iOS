@@ -112,6 +112,11 @@ class ResourceViewController: UIViewController {
     @IBAction func pressAddResource(_ sender: Any) {
         
         let newResourceAlert = UIAlertController(editorTitle: viewModel.resourceName, trip: self.trip) { [unowned self] name, address in
+            guard name.isNotEmpty else {
+                self.presentAlert(error: "please enter a name", title: "Adding a \(self.viewModel.resourceName)")
+                
+                return
+            }
             
             self.viewModel.createResource(name: name, address: address, for: self.trip) { [weak self] isSuccessful in
                 guard let unwrappedSelf = self else { return }
