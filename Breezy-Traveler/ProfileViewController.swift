@@ -19,7 +19,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     lazy var userPersistence = UserPersistence()
     lazy var imagePicker: UIImagePickerController = {
         let picker = UIImagePickerController()
-        picker.allowsEditing = false
+        picker.allowsEditing = true
         picker.sourceType = .photoLibrary
         
         /** this blocks the main thread for about 1 second */
@@ -122,7 +122,7 @@ extension ProfileViewController {
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+        guard let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage else {
             fatalError("problem getting image")
         }
         
