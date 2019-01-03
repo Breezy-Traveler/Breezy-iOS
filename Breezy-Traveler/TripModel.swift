@@ -33,8 +33,8 @@ class Trip: Codable {
         case place
         case startDate
         case endDate
-        case hotels
-        case sites
+        case hotels = "hotel_ids"
+        case sites = "site_ids"
         case coverImageUrl
         case isPublic
         case notes
