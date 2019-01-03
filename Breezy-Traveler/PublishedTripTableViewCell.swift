@@ -18,7 +18,7 @@ class PublishedTripTableViewCell: UITableViewCell {
     func configure(_ trip: Trip) {
         
         // last published date
-        //TODO: display last publishe date
+        //TODO: display last published date
         let nHotels = trip.hotels.count
         let nSites = trip.sites.count
         self.lastDatePublished.text = "Hotels: \(nHotels) Sites: \(nSites)"

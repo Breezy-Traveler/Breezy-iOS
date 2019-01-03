@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Result //TODO: remove after writing implementation of networkStack.loadTrips(for searchTerm: .., ...)
 
 class PublishedTripsVc: UIViewController {
     

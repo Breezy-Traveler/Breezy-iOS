@@ -197,7 +197,7 @@ extension BTAPIEndPoints: TargetType {
     }
 
     // 6: Test the data in Swift
-    // MARK: Todo later
+    // TODO: Networking Tests
     var sampleData: Data {
         return Data()
     }

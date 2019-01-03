@@ -62,12 +62,7 @@ class MyTripsViewController: UIViewController {
                     unwrappedSelf.collectionView.reloadData()
                 }
             case .failure(let err):
-                
-                //TODO: present errors differently, perhaps
-                // prompt user of error
-                UIAlertController(title: "Fetching Published Trips", message: err.localizedDescription, preferredStyle: .alert)
-                    .addDismissButton()
-                    .present(in: unwrappedSelf)
+                unwrappedSelf.presentAlert(error: err.localizedDescription, title: "Fetching Published Trips")
             }
         }
     }
@@ -157,7 +152,6 @@ class MyTripsViewController: UIViewController {
         
         if userPersistence.checkIfUserIsLoggedIn() {
             updateUI()
-            //TODO: show loading indicator
         } else {
             let loginViewController = LoginController()
             present(loginViewController, animated: false, completion: nil)
