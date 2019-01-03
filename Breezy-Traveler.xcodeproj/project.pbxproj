@@ -48,6 +48,8 @@
 		E97A40CB219E42E2007B48DE /* UtilityExtensions+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A40CA219E42E2007B48DE /* UtilityExtensions+Codable.swift */; };
 		E97B4E8520CB24AD0018036D /* PublishedTripsVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B4E8420CB24AD0018036D /* PublishedTripsVc.swift */; };
 		E97B4E8720CB29E00018036D /* PublishedTripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B4E8620CB29E00018036D /* PublishedTripTableViewCell.swift */; };
+		E97DB5A621DDC0FE001E8FE1 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DB5A521DDC0FE001E8FE1 /* LoadingViewController.swift */; };
+		E97DB5A821DDC12D001E8FE1 /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E97DB5A721DDC12D001E8FE1 /* LoadingViewController.xib */; };
 		E97ED75B2077EF140021B651 /* UIButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97ED75A2077EF140021B651 /* UIButtonCell.swift */; };
 		E97ED75D2077EF190021B651 /* UIButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E97ED75C2077EF190021B651 /* UIButtonCell.xib */; };
 		E97ED75F207807FF0021B651 /* TripDetailedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97ED75E207807FF0021B651 /* TripDetailedViewModel.swift */; };
@@ -133,6 +135,8 @@
 		E97A40CA219E42E2007B48DE /* UtilityExtensions+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityExtensions+Codable.swift"; sourceTree = "<group>"; };
 		E97B4E8420CB24AD0018036D /* PublishedTripsVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishedTripsVc.swift; sourceTree = "<group>"; };
 		E97B4E8620CB29E00018036D /* PublishedTripTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishedTripTableViewCell.swift; sourceTree = "<group>"; };
+		E97DB5A521DDC0FE001E8FE1 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		E97DB5A721DDC12D001E8FE1 /* LoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
 		E97ED75A2077EF140021B651 /* UIButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonCell.swift; sourceTree = "<group>"; };
 		E97ED75C2077EF190021B651 /* UIButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIButtonCell.xib; sourceTree = "<group>"; };
 		E97ED75E207807FF0021B651 /* TripDetailedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailedViewModel.swift; sourceTree = "<group>"; };
@@ -403,6 +407,8 @@
 				E9FF77A9207FEAA90086D6D9 /* UIDatePickerViewController.swift */,
 				E9FF77AA207FEAA90086D6D9 /* UIDatePickerViewController.xib */,
 				E9A91C3221BAE9F0007BBF6F /* ResourceViewController */,
+				E97DB5A521DDC0FE001E8FE1 /* LoadingViewController.swift */,
+				E97DB5A721DDC12D001E8FE1 /* LoadingViewController.xib */,
 			);
 			name = UICustomViews;
 			sourceTree = "<group>";
@@ -503,6 +509,7 @@
 				E97ED76920784B600021B651 /* ImagesCollectionViewCell.xib in Resources */,
 				B96529552069A571007FAD4D /* LaunchScreen.storyboard in Resources */,
 				E9DC241C207E8FE4001691C2 /* UIDatePickerTableViewCell.xib in Resources */,
+				E97DB5A821DDC12D001E8FE1 /* LoadingViewController.xib in Resources */,
 				E9B1B9B8207D3AD800FCBC2E /* UICoverImageView.xib in Resources */,
 				E9DC2413207E88EC001691C2 /* TripsDetail.storyboard in Resources */,
 				E97ED75D2077EF190021B651 /* UIButtonCell.xib in Resources */,
@@ -589,6 +596,7 @@
 				E9FF77AB207FEAA90086D6D9 /* UIDatePickerViewController.swift in Sources */,
 				E97ED75F207807FF0021B651 /* TripDetailedViewModel.swift in Sources */,
 				B91449432069E54E0074F71B /* MyTripsViewController.swift in Sources */,
+				E97DB5A621DDC0FE001E8FE1 /* LoadingViewController.swift in Sources */,
 				B9F9F1822077F2FC00F0D24D /* LoginController+Handlers.swift in Sources */,
 				E9B1B9B9207D3AD800FCBC2E /* UICoverImageView.swift in Sources */,
 				B9F9F17E20758E5F00F0D24D /* AlertVC.swift in Sources */,

@@ -39,25 +39,30 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
         // Set the criteria to register the user, and to log in the user
         let userRegister = UserRegister(username: username, password: password, email: email)
         
+        let loading = LoadingViewController()
+        loading.present()
+        
         // Ask the API to register the user
         networkStack.register(a: userRegister) { [weak self] (result) in
-            
-            // Unwrap the ViewController because we are in a closure
-            guard let unwrappedSelf = self else { return }
-            
-            switch result {
+            loading.dismiss {
+                
+                // Unwrap the ViewController because we are in a closure
+                guard let unwrappedSelf = self else { return }
+                
+                switch result {
                     
-            // The user was registered into the database
-            case .success(let registeredUser):
-                unwrappedSelf.userPersistence.login(registeredUser)
-                
-                // successfully logged in user
-                unwrappedSelf.dismiss(animated: true, completion: nil)
-                        
-            case .failure(let err):
-                unwrappedSelf.present(AlertViewController.showErrorAlert(message: err.localizedDescription), animated: true, completion: nil)
-                
-                debugPrint(err)
+                // The user was registered into the database
+                case .success(let registeredUser):
+                    unwrappedSelf.userPersistence.login(registeredUser)
+                    
+                    // successfully logged in user
+                    unwrappedSelf.dismiss(animated: true, completion: nil)
+                    
+                case .failure(let err):
+                    unwrappedSelf.present(AlertViewController.showErrorAlert(message: err.localizedDescription), animated: true, completion: nil)
+                    
+                    debugPrint(err)
+                }
             }
         }
     }

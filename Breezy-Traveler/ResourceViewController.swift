@@ -118,13 +118,18 @@ class ResourceViewController: UIViewController {
                 return
             }
             
+            let loading = LoadingViewController()
+            loading.present()
+            
             self.viewModel.createResource(name: name, address: address, for: self.trip) { [weak self] isSuccessful in
                 guard let unwrappedSelf = self else { return }
                 
-                if isSuccessful {
-                    unwrappedSelf.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
-                } else {
-                    unwrappedSelf.presentAlert(error: nil, title: "Adding a \(unwrappedSelf.viewModel.resourceName)")
+                loading.dismiss {
+                    if isSuccessful {
+                        unwrappedSelf.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+                    } else {
+                        unwrappedSelf.presentAlert(error: nil, title: "Adding a \(unwrappedSelf.viewModel.resourceName)")
+                    }
                 }
             }
         }

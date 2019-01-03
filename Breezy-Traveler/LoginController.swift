@@ -141,30 +141,35 @@ class LoginController: UIViewController {
         
         let userLogin = UserLogin(username: username, password: password)
         
+        let loading = LoadingViewController()
+        loading.present()
+        
         networkStack.login(a: userLogin) { [weak self] (result) in
-            guard let unwrappedSelf = self else { return }
-            
-            switch result {
-            case .success(let loggedInUser):
-                unwrappedSelf.userPersistence.login(loggedInUser)
+            loading.dismiss {
+                guard let unwrappedSelf = self else { return }
                 
-                // Go back to Trips ViewController
-                // successfully logged in user
-                if let presentingVc = unwrappedSelf.presentingViewController {
-                    presentingVc.dismiss(animated: true)
-                } else {
-                    let tripsStoryboard = UIStoryboard(name: "Trips", bundle: nil)
-                    guard let tripsVc = tripsStoryboard.instantiateInitialViewController() else {
-                        fatalError("storyboard not set up with an initial view controller")
+                switch result {
+                case .success(let loggedInUser):
+                    unwrappedSelf.userPersistence.login(loggedInUser)
+                    
+                    // Go back to Trips ViewController
+                    // successfully logged in user
+                    if let presentingVc = unwrappedSelf.presentingViewController {
+                        presentingVc.dismiss(animated: true)
+                    } else {
+                        let tripsStoryboard = UIStoryboard(name: "Trips", bundle: nil)
+                        guard let tripsVc = tripsStoryboard.instantiateInitialViewController() else {
+                            fatalError("storyboard not set up with an initial view controller")
+                        }
+                        
+                        unwrappedSelf.present(tripsVc, animated: true)
                     }
                     
-                    unwrappedSelf.present(tripsVc, animated: true)
+                case .failure(let userErrors):
+                    unwrappedSelf.present(AlertViewController.showErrorAlert(message: userErrors.localizedDescription), animated: true, completion: nil)
+                    
+                    debugPrint(userErrors)
                 }
-                
-            case .failure(let userErrors):
-                unwrappedSelf.present(AlertViewController.showErrorAlert(message: userErrors.localizedDescription), animated: true, completion: nil)
-                
-                debugPrint(userErrors)
             }
         }
     }

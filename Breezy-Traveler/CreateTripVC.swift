@@ -30,26 +30,32 @@ class CreateTripVC: UIViewController {
         guard let place = placeTextField.text else { return }
         
         let newTrip = CreateTrip(place: place)
+        
+        let loading = LoadingViewController()
+        loading.present()
+        
         networkStack.createTrip(trip: newTrip) { [weak self] (result) in
-            guard let unwrappedSelf = self else { return }
-
-            switch result {
+            loading.dismiss {
+                guard let unwrappedSelf = self else { return }
                 
-            case .success(let trip):
-                print(trip)
-                
-                // Navigate to Trip Detail
-                let tripStoryboard : UIStoryboard = UIStoryboard(name: "Trips", bundle:nil)
-                let vc = tripStoryboard.instantiateViewController(withIdentifier: "TripDetailViewController") as! TripDetailedViewController
-                
-                // Bring back to the main thread before presenting the Trip Detail View
-                DispatchQueue.main.async {
-                    vc.trip = trip
-                    unwrappedSelf.navigationController?.pushViewController(vc, animated: true)
+                switch result {
+                    
+                case .success(let trip):
+                    print(trip)
+                    
+                    // Navigate to Trip Detail
+                    let tripStoryboard : UIStoryboard = UIStoryboard(name: "Trips", bundle:nil)
+                    let vc = tripStoryboard.instantiateViewController(withIdentifier: "TripDetailViewController") as! TripDetailedViewController
+                    
+                    // Bring back to the main thread before presenting the Trip Detail View
+                    DispatchQueue.main.async {
+                        vc.trip = trip
+                        unwrappedSelf.navigationController?.pushViewController(vc, animated: true)
+                    }
+                    
+                case .failure(let tripsErrors):
+                    unwrappedSelf.presentAlert(error: tripsErrors.localizedDescription)
                 }
-                
-            case .failure(let tripsErrors):
-                print(tripsErrors.errors)
             }
         }
     }

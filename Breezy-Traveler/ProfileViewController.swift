@@ -131,23 +131,22 @@ extension ProfileViewController {
         // dismis the image picker
         dismiss(animated: true, completion: nil)
         
-        //TODO: present loading spinner
-        view.isUserInteractionEnabled = false
+        let loading = LoadingViewController()
+        loading.present()
         
         userPersistence.updateUserProfileImage(rotatedImage) { [weak self] (isSuccessful) in
-            guard let unwrappedSelf = self else { return }
-            
-            if isSuccessful {
-                unwrappedSelf.imageView.contentMode = .scaleAspectFill
-                unwrappedSelf.imageView.image = rotatedImage
-            } else {
-                UIAlertController(title: "Updating Profile Image", message: "Something went wrong", preferredStyle: .alert)
-                    .addDismissButton()
-                    .present(in: unwrappedSelf)
+            loading.dismiss {
+                guard let unwrappedSelf = self else { return }
+                
+                if isSuccessful {
+                    unwrappedSelf.imageView.contentMode = .scaleAspectFill
+                    unwrappedSelf.imageView.image = rotatedImage
+                } else {
+                    UIAlertController(title: "Updating Profile Image", message: "Something went wrong", preferredStyle: .alert)
+                        .addDismissButton()
+                        .present(in: unwrappedSelf)
+                }
             }
-            
-            //TODO: dismiss loading spinner
-            unwrappedSelf.view.isUserInteractionEnabled = true
         }
     }
     

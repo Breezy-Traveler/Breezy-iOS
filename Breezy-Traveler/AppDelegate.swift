@@ -14,6 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     let loginMiddleware = LoginLayer.instance
+    
+    var alertWindow: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -80,6 +82,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
     }
 
+}
+
+extension UIWindow {
+    static var applicationAlertWindow: UIWindow {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("something is definantly wrong if app delegate is not AppDelegate")
+        }
+        
+        let alertWindow: UIWindow
+        if let window = appDelegate.alertWindow {
+            alertWindow = window
+        } else {
+            
+            guard let appDelegateWindow = appDelegate.window else {
+                fatalError("requires the app delegate to have a window")
+            }
+            
+            alertWindow = UIWindow(frame: appDelegateWindow.bounds)
+            appDelegate.alertWindow = alertWindow
+            alertWindow.windowLevel = UIWindowLevelAlert + 1
+        }
+        
+        return alertWindow
+    }
 }
 
 extension AppDelegate: LoginLayerDelegate {
