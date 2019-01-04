@@ -59,9 +59,10 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
                     unwrappedSelf.dismiss(animated: true, completion: nil)
                     
                 case .failure(let err):
-                    unwrappedSelf.present(AlertViewController.showErrorAlert(message: err.localizedDescription), animated: true, completion: nil)
-                    
-                    debugPrint(err)
+                    unwrappedSelf.presentAlert(
+                        error: err,
+                        title: "Registering"
+                    )
                 }
             }
         }

@@ -53,8 +53,11 @@ class CreateTripVC: UIViewController {
                         unwrappedSelf.navigationController?.pushViewController(vc, animated: true)
                     }
                     
-                case .failure(let tripsErrors):
-                    unwrappedSelf.presentAlert(error: tripsErrors.localizedDescription)
+                case .failure(let err):
+                    unwrappedSelf.presentAlert(
+                        error: err,
+                        title: "Creating a Trip"
+                    )
                 }
             }
         }

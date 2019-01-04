@@ -142,9 +142,10 @@ extension ProfileViewController {
                     unwrappedSelf.imageView.contentMode = .scaleAspectFill
                     unwrappedSelf.imageView.image = rotatedImage
                 } else {
-                    UIAlertController(title: "Updating Profile Image", message: "Something went wrong", preferredStyle: .alert)
-                        .addDismissButton()
-                        .present(in: unwrappedSelf)
+                    unwrappedSelf.presentAlert(
+                        error: nil,
+                        title: "Updating Profile Image"
+                    )
                 }
             }
         }

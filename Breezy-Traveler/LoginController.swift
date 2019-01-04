@@ -165,10 +165,11 @@ class LoginController: UIViewController {
                         unwrappedSelf.present(tripsVc, animated: true)
                     }
                     
-                case .failure(let userErrors):
-                    unwrappedSelf.present(AlertViewController.showErrorAlert(message: userErrors.localizedDescription), animated: true, completion: nil)
-                    
-                    debugPrint(userErrors)
+                case .failure(let err):
+                    unwrappedSelf.presentAlert(
+                        error: err,
+                        title: "Loggin In"
+                    )
                 }
             }
         }

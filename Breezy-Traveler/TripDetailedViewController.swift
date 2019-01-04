@@ -251,12 +251,8 @@ extension TripDetailedViewController: TripDetailedViewModelDelegate {
         self.updateUI()
     }
     
-    func viewModel(_ model: TripDetailedViewModel, didRecieve errors: [String]) {
-        let combinedErrorMessages = errors.reduce("errors: ") { "\($0) \($1). " }
-        print(combinedErrorMessages)
-        UIAlertController(title: "Something Went Wrong", message: "Unable to publish trip", preferredStyle: .alert)
-            .addDismissButton()
-            .present(in: self)
+    func viewModel(_ model: TripDetailedViewModel, didRecieve error: UserfacingErrors) {
+        presentAlert(error: error)
     }
 }
 

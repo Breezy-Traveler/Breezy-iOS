@@ -10,7 +10,7 @@ import Foundation
 
 protocol TripDetailedViewModelDelegate: class {
     func viewModel(_ model: TripDetailedViewModel, didUpdate trip: Trip)
-    func viewModel(_ model: TripDetailedViewModel, didRecieve errors: [String])
+    func viewModel(_ model: TripDetailedViewModel, didRecieve error: UserfacingErrors)
 }
 
 // if changed to a class, refactor closures to avoid retain cycles
@@ -43,7 +43,7 @@ class TripDetailedViewModel {
                 
             case .failure(let err):
                 assertionFailure("failed to push trip: \(err.localizedDescription)")
-                unwrappedSelf.delegate.viewModel(unwrappedSelf, didRecieve: err.errors)
+                unwrappedSelf.delegate.viewModel(unwrappedSelf, didRecieve: err)
             }
         }
     }
@@ -59,7 +59,7 @@ class TripDetailedViewModel {
                 unwrappedSelf.delegate.viewModel(unwrappedSelf, didUpdate: returnedTrip)
             case .failure(let err):
                 assertionFailure("failed to pull trip: \(err.localizedDescription)")
-                unwrappedSelf.delegate.viewModel(unwrappedSelf, didRecieve: err.errors)
+                unwrappedSelf.delegate.viewModel(unwrappedSelf, didRecieve: err)
             }
         }
     }

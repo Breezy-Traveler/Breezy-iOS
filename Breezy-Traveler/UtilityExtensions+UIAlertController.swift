@@ -114,10 +114,14 @@ extension UIAlertController {
 extension UIViewController {
     func presentAlert(error: String?, title: String = "", completion: (() -> Void)? = nil) {
         let alertTitle = title.ifEmpty(use: "Error")
-        let alertMessage = "Something went wrong".joinIfNotEmptyOrNil(error, by: ": ")
+        let alertMessage = error.ifEmptyOrNil(use: "something went wrong")
         
         UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
             .addDismissButton()
             .present(in: self, completion: completion)
+    }
+    
+    func presentAlert(error: UserfacingErrors, title: String = "", completion: (() -> Void)? = nil) {
+        self.presentAlert(error: error.localizedDescription, title: title, completion: completion)
     }
 }

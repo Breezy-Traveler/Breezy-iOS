@@ -65,9 +65,11 @@ class ImagesViewController: UIViewController {
                         .present(in: unwrappedSelf)
                 }
                 
-            case .failure(let userErrors):
-                let alert = AlertViewController.showErrorAlert(message: userErrors.localizedDescription)
-                unwrappedSelf.present(alert, animated: true)
+            case .failure(let err):
+                unwrappedSelf.presentAlert(
+                    error: err,
+                    title: "Fetching Images"
+                )
             }
         }
     }

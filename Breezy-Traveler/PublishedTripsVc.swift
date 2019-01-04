@@ -68,12 +68,10 @@ class PublishedTripsVc: UIViewController {
             case .success(let trips):
                 unwrappedSelf.reloadTable(for: trips)
             case .failure(let err):
-                UIAlertController(
-                    title: "Published Trips",
-                    message: "Failed to load published trips. Error: \(err.localizedDescription)",
-                    preferredStyle: .alert)
-                    .addDismissButton()
-                    .present(in: unwrappedSelf)
+                unwrappedSelf.presentAlert(
+                    error: err,
+                    title: "Fetching Published Trips"
+                )
             }
         }
     }
@@ -102,12 +100,10 @@ class PublishedTripsVc: UIViewController {
                 case .success(let trips):
                     unwrappedSelf.reloadTable(for: trips)
                 case .failure(let err):
-                    UIAlertController(
-                        title: "Published Trips",
-                        message: "Failed to load published trips. Error: \(err.localizedDescription)",
-                        preferredStyle: .alert)
-                        .addDismissButton()
-                        .present(in: unwrappedSelf)
+                    unwrappedSelf.presentAlert(
+                        error: err,
+                        title: "Fetching Published Trips"
+                    )
                 }
             }
         }

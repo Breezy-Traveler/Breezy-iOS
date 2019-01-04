@@ -45,8 +45,11 @@ class MyTripsViewController: UIViewController {
                     unwrappedSelf.tripsTableView.reloadData()
                 }
                 
-            case .failure(let tripsErrors):
-                print(tripsErrors.errors)
+            case .failure(let err):
+                unwrappedSelf.presentAlert(
+                    error: err,
+                    title: "Fetching Your Trips"
+                )
             }
         }
     }
@@ -62,7 +65,10 @@ class MyTripsViewController: UIViewController {
                     unwrappedSelf.collectionView.reloadData()
                 }
             case .failure(let err):
-                unwrappedSelf.presentAlert(error: err.localizedDescription, title: "Fetching Published Trips")
+                unwrappedSelf.presentAlert(
+                    error: err,
+                    title: "Fetching Published Trips"
+                )
             }
         }
     }
@@ -222,8 +228,11 @@ extension MyTripsViewController: UITableViewDataSource, UITableViewDelegate {
                         unwrappedSelf.tripsTableView.reloadData()
                     }
                     print(deleteTrip)
-                case .failure(let tripsErrors):
-                    print(tripsErrors.errors)
+                case .failure(let err):
+                    unwrappedSelf.presentAlert(
+                        error: err,
+                        title: "Deleting a Trip"
+                    )
                 }
             })
         default:
