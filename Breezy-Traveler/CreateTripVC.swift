@@ -27,7 +27,9 @@ class CreateTripVC: UIViewController {
     }
     
     @IBAction func pressedSave(_ sender: UIBarButtonItem) {
-        guard let place = placeTextField.text else { return }
+        guard let place = try? placeTextField.text.sanitizing(with: .trimmed, .notEmpty) else {
+            return presentAlert(error: "place cannot be empty")
+        }
         
         let newTrip = CreateTrip(place: place)
         

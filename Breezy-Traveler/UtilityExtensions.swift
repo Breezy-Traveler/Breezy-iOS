@@ -144,6 +144,83 @@ extension String {
     }
 }
 
+// MARK: Sanitizing Strings
+extension String {
+    
+    enum Sanitations {
+        case trimmed
+        case notNil
+        case notEmpty
+        case anEmail
+        case longerThanOrEqual(to: Int)
+        case shorterThanOrEqual(to: Int)
+    }
+    
+    struct SanitationError: Error {
+        var localizedDescription: String
+    }
+    
+    func sanitizing(with options: Sanitations...) throws -> String {
+        return try sanitizing(with: options)
+    }
+    
+    func sanitizing(with options: [Sanitations]) throws -> String {
+        var text = self
+        var failedSanitaions: [Sanitations] = []
+        
+        for anOption in options {
+            switch anOption {
+            case .notNil: break
+            case .trimmed:
+                text = text.trimmingCharacters(in: .whitespacesAndNewlines)
+            case .notEmpty:
+                if text.isEmpty {
+                    failedSanitaions.append(anOption)
+                }
+            case .anEmail:
+                if text.isValidEmail() == false {
+                    failedSanitaions.append(anOption)
+                }
+            case .longerThanOrEqual(let requiredLength):
+                if text.count < requiredLength {
+                    failedSanitaions.append(anOption)
+                }
+            case .shorterThanOrEqual(let requiredLength):
+                if text.count > requiredLength {
+                    failedSanitaions.append(anOption)
+                }
+            }
+        }
+        
+        if failedSanitaions.count != 0 {
+            let err = "Failed Validations: " + failedSanitaions.map({ String.init(describing: $0) }).joined(separator: ", ")
+            
+            throw SanitationError(localizedDescription: err)
+        }
+        
+        return text
+    }
+}
+
+extension Optional where Wrapped == String {
+    
+    /**
+     checks if wrapped is some otherwise, this throws with notNil as the error
+     
+     - parameter options: what to validate/sanitize. These options are executed/checked
+     in the order it's given
+     
+     - returns: if no check is thrown, the validated and/or sanitized string
+     */
+    func sanitizing(with options: String.Sanitations...) throws -> String {
+        guard let text = self else {
+            throw String.SanitationError(localizedDescription: String(describing: String.Sanitations.notNil))
+        }
+        
+        return try text.sanitizing(with: options)
+    }
+}
+
 extension Optional where Wrapped == String {
     
     /**

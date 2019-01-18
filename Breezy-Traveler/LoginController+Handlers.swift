@@ -16,21 +16,20 @@ extension LoginController: UIImagePickerControllerDelegate, UINavigationControll
     /// When a user registers successfully, they are logged into the app
     @objc func handleRegister() {
 
-        
         // Safely unwrap all input values from the user
-        guard let username = usernameTextField.text, username.count > 0 else {
+        guard let username = try? usernameTextField.text.sanitizing(with: .trimmed, .notEmpty) else {
             // popup an alert view that user name can't be blank
             self.present(AlertViewController.showUsernameAlert(), animated: true, completion: nil)
             return
         }
         
-        guard let email = emailTextField.text, email.count > 0, email.isValidEmail() else {
+        guard let email = try? emailTextField.text.sanitizing(with: .trimmed, .notEmpty, .anEmail) else {
             // popup an alert view that email is invalid
             self.present(AlertViewController.showEmailAlert(), animated: true, completion: nil)
             return
         }
         
-        guard let password = passwordTextField.text, password.isValidPassword() else {
+        guard let password = try? passwordTextField.text.sanitizing(with: .trimmed, .notEmpty, .longerThanOrEqual(to: 6)) else {
             // popup an alert view that password is less than 6 characters
             self.present(AlertViewController.showPasswordAlert(), animated: true, completion: nil)
             return
