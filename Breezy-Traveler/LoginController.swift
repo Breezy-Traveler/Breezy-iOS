@@ -13,7 +13,6 @@ import KeychainSwift
 class LoginController: UIViewController {
     
     // MARK: - VARS
-    
     let networkStack = NetworkStack()
     let userPersistence = UserPersistence()
     
@@ -63,6 +62,8 @@ class LoginController: UIViewController {
         let tf = UITextField()
         tf.placeholder = "Username"
         tf.translatesAutoresizingMaskIntoConstraints = false
+        //dissmiss keyboard with return key
+        tf.addTarget(self, action: #selector(done(_:)), for: UIControlEvents.primaryActionTriggered)
         return tf
     }()
     
@@ -77,6 +78,8 @@ class LoginController: UIViewController {
         let tf = UITextField()
         tf.placeholder = "Email address"
         tf.translatesAutoresizingMaskIntoConstraints = false
+        //dissmiss keyboard with return key
+        tf.addTarget(self, action: #selector(done(_:)), for: UIControlEvents.primaryActionTriggered)
         return tf
     }()
     
@@ -93,6 +96,8 @@ class LoginController: UIViewController {
         tf.translatesAutoresizingMaskIntoConstraints = false
         // mask the text when the user types
         tf.isSecureTextEntry = true
+        //dissmiss keyboard with return key
+        tf.addTarget(self, action: #selector(done(_:)), for: UIControlEvents.primaryActionTriggered)
         return tf
     }()
     
@@ -231,7 +236,8 @@ class LoginController: UIViewController {
     
     func setUpContainerView() {
         getScreenSizes()
-        self.inputContainerHeight = self.height / 4
+        // This will determine the sizes of all the views on the screen
+        self.inputContainerHeight = self.height / 5
         guard let height = self.inputContainerHeight else {
             fatalError("No input container height")
         }
