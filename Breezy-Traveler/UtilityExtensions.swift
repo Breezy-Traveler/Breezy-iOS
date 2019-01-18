@@ -39,6 +39,10 @@ extension UIViewController {
         
         view.addGestureRecognizer(tap)
     }
+
+    @objc func done(_ sender: UITextField) {
+        sender.resignFirstResponder()
+    }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
