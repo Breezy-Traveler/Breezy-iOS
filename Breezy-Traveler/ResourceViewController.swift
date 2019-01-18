@@ -82,8 +82,13 @@ class ResourceViewController: UIViewController {
             trip: self.trip,
             name: resourceToEdit.name,
             address: resourceToEdit.address) { [unowned self] name, address in
+                guard let sanitizedName = try? name.sanitizing(with: .trimmed, .notEmpty) else {
+                    self.presentAlert(error: "name cannot be blank", title: "Adding a \(self.viewModel.resourceName)")
+                    
+                    return
+                }
                 
-                resourceToEdit.name = name
+                resourceToEdit.name = sanitizedName
                 resourceToEdit.address = address
                 self.viewModel.updateResource(resourceToEdit, for: self.trip) { [weak self] isSuccessful in
                     guard let unwrappedSelf = self else { return }
@@ -112,7 +117,7 @@ class ResourceViewController: UIViewController {
     @IBAction func pressAddResource(_ sender: Any) {
         
         let newResourceAlert = UIAlertController(editorTitle: viewModel.resourceName, trip: self.trip) { [unowned self] name, address in
-            guard name.isNotEmpty else {
+            guard let sanitizedName = try? name.sanitizing(with: .trimmed, .notEmpty) else {
                 self.presentAlert(error: "please enter a name", title: "Adding a \(self.viewModel.resourceName)")
                 
                 return
@@ -121,7 +126,7 @@ class ResourceViewController: UIViewController {
             let loading = LoadingViewController()
             loading.present()
             
-            self.viewModel.createResource(name: name, address: address, for: self.trip) { [weak self] isSuccessful in
+            self.viewModel.createResource(name: sanitizedName, address: address, for: self.trip) { [weak self] isSuccessful in
                 guard let unwrappedSelf = self else { return }
                 
                 loading.dismiss {

@@ -129,14 +129,12 @@ class LoginController: UIViewController {
     }
     
     @objc func handleLogin() {
-        guard let username = usernameTextField.text, let password = passwordTextField.text else {
-            return assertionFailure("username or password textfeilds are nil")
+        guard let username = try? usernameTextField.text.sanitizing(with: .notEmpty, .trimmed) else {
+            return self.present(AlertViewController.showUsernameAlert(), animated: true, completion: nil)
         }
         
-        guard let name = usernameTextField.text, name.count > 0 else {
-            // popup an alert view that username can't be blank
-            self.present(AlertViewController.showUsernameAlert(), animated: true, completion: nil)
-            return
+        guard let password = try? passwordTextField.text.sanitizing(with: .trimmed, .notEmpty, .longerThanOrEqual(to: 6)) else {
+            return self.present(AlertViewController.showPasswordAlert(), animated: true, completion: nil)
         }
         
         let userLogin = UserLogin(username: username, password: password)

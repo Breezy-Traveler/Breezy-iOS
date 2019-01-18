@@ -159,8 +159,8 @@ class TripDetailedViewController: UIViewController, CoverImagePickerDelegate {
             .addConfirmationButton(title: "Rename") { [weak self] (action) in
                 guard let unwrappedSelf = self else { return }
 
-                guard let newPlace = alertPlace.inputField.text else {
-                    return debugPrint("no text was in the text field")
+                guard let newPlace = try? alertPlace.inputField.text.sanitizing(with: .trimmed, .notEmpty) else {
+                    return unwrappedSelf.presentAlert(error: "place cannot be blank")
                 }
                 
                 unwrappedSelf.viewModel.updatePlace(with: newPlace)
