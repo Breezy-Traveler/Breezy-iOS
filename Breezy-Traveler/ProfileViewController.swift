@@ -63,6 +63,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var fullnameLabel: UILabel!
     
+    @IBAction func pressGettingStarted(_ sender: Any) {
+        ApplicationService.openGettingStarted(presentor: self)
+    }
+    
     @IBAction func pressedLogout(_ sender: UIBarButtonItem) {
         userPersistence.logout()
         

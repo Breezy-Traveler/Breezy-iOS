@@ -37,6 +37,7 @@
 		E91A196620840D0C00CEE74A /* TripDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A196420840D0C00CEE74A /* TripDatePickerViewController.swift */; };
 		E91A196720840D0C00CEE74A /* TripDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A196520840D0C00CEE74A /* TripDetailedViewController.swift */; };
 		E91A196920840D6900CEE74A /* QuoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A196820840D6900CEE74A /* QuoteViewController.swift */; };
+		E9241CE621F2BD1E0033B5D9 /* ApplicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9241CE521F2BD1E0033B5D9 /* ApplicationService.swift */; };
 		E934F2D921B86C5B00553138 /* HotelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934F2D721B86C5B00553138 /* HotelsViewController.swift */; };
 		E934F2DE21B86EBD00553138 /* HotelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934F2DD21B86EBD00553138 /* HotelsViewModel.swift */; };
 		E934F2E021B8704800553138 /* ResourceTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934F2DF21B8704800553138 /* ResourceTVCell.swift */; };
@@ -122,6 +123,7 @@
 		E91A196420840D0C00CEE74A /* TripDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDatePickerViewController.swift; sourceTree = "<group>"; };
 		E91A196520840D0C00CEE74A /* TripDetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailedViewController.swift; sourceTree = "<group>"; };
 		E91A196820840D6900CEE74A /* QuoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteViewController.swift; sourceTree = "<group>"; };
+		E9241CE521F2BD1E0033B5D9 /* ApplicationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationService.swift; sourceTree = "<group>"; };
 		E934F2D721B86C5B00553138 /* HotelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelsViewController.swift; sourceTree = "<group>"; };
 		E934F2DD21B86EBD00553138 /* HotelsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelsViewModel.swift; sourceTree = "<group>"; };
 		E934F2DF21B8704800553138 /* ResourceTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceTVCell.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				E98036DD21C9BA8F002344C7 /* KeyboardHelper.swift */,
 				E9A6B4B221D454EE00667FEB /* LoginLayer.swift */,
 				E9A6B4B421D45EF800667FEB /* ThrottleGlobalFunctions.swift */,
+				E9241CE521F2BD1E0033B5D9 /* ApplicationService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				E9A6B4B521D45EF800667FEB /* ThrottleGlobalFunctions.swift in Sources */,
 				E98F034C2072B69C004D4074 /* Hotel.swift in Sources */,
 				E95E13842075651F00BF4276 /* BTSite.swift in Sources */,
+				E9241CE621F2BD1E0033B5D9 /* ApplicationService.swift in Sources */,
 				E96BEF8620CCBC9600295ECD /* NetworkingLayer+QOD.swift in Sources */,
 				E9A91C2F21BAE6D2007BBF6F /* SitesViewController.swift in Sources */,
 				E97ED761207809BF0021B651 /* UtilityExtensions+Date.swift in Sources */,

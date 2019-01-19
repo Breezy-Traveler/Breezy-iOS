@@ -181,10 +181,10 @@
             </objects>
             <point key="canvasLocation" x="3263" y="1012"/>
         </scene>
-        <!--Images View Controller-->
+        <!--Images-->
         <scene sceneID="qpX-a1-A6K">
             <objects>
-                <viewController storyboardIdentifier="imagesViewController" id="mcp-Oi-jBT" customClass="ImagesViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="imagesViewController" title="Images" id="mcp-Oi-jBT" customClass="ImagesViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D9H-Hp-9r2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

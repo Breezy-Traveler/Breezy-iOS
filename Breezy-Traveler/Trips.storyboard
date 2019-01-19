@@ -295,16 +295,16 @@
             </objects>
             <point key="canvasLocation" x="1780" y="293.70314842578711"/>
         </scene>
-        <!--Profile-->
+        <!--User Profile-->
         <scene sceneID="oKt-u7-OoC">
             <objects>
-                <viewController restorationIdentifier="ProfileViewController" storyboardIdentifier="ProfileViewController" title="Profile" id="4Uq-cJ-Xq7" customClass="ProfileViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="ProfileViewController" storyboardIdentifier="ProfileViewController" id="4Uq-cJ-Xq7" customClass="ProfileViewController" customModule="Breezy_Traveler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1ne-Qa-HT5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" clipsSubviews="YES" contentMode="center" axis="vertical" distribution="equalSpacing" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="wJy-IS-c6o" userLabel="ProfileStack">
-                                <rect key="frame" x="75" y="135" width="225" height="413"/>
+                                <rect key="frame" x="75" y="135" width="225" height="471"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete profile" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHL-Ph-yBH">
                                         <rect key="frame" x="34" y="0.0" width="157" height="27.333333333333332"/>
@@ -345,6 +345,15 @@
                                             <action selector="pressedUpdateProfileImage:" destination="4Uq-cJ-Xq7" eventType="touchUpInside" id="nn9-IX-GXm"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bj4-WE-Sjw">
+                                        <rect key="frame" x="41" y="441" width="143" height="30"/>
+                                        <state key="normal" title="View Getting Started">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pressGettingStarted:" destination="4Uq-cJ-Xq7" eventType="touchUpInside" id="zYE-RM-Xm3"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -355,7 +364,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9md-T5-5AB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="bok-OY-XU8">
+                    <navigationItem key="navigationItem" title="User Profile" id="bok-OY-XU8">
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="hrj-NH-6uC">
                             <connections>
                                 <action selector="pressedLogout:" destination="4Uq-cJ-Xq7" id="zU2-Yz-FMv"/>
