@@ -99,7 +99,7 @@ extension UIViewController {
     }
 }
 
-// Extension on String to check for valid email
+// MARK: Empty Strings
 extension String {
     func isValidEmail() -> Bool {
         // here, `try!` will always succeed because the pattern is valid
@@ -140,6 +140,26 @@ extension String {
             return self + joiner + other
         } else {
             return self
+        }
+    }
+}
+
+extension Optional where Wrapped == String {
+    
+    /**
+     unwraps and checks if the string is empty. If so, return the given default string.
+     
+     This is similar to using the nil-colicent but also checks `.isEmpty`
+     
+     - parameter defaultString: return this if self is empty or nil
+     
+     - returns: either return self if not nil and not an empty string or return the given default value
+     */
+    func ifEmptyOrNil(use defaultString: String) -> String {
+        if let unwrappedSelf = self, unwrappedSelf.isEmpty == false {
+            return unwrappedSelf
+        } else {
+            return defaultString
         }
     }
 }
@@ -218,26 +238,6 @@ extension Optional where Wrapped == String {
         }
         
         return try text.sanitizing(with: options)
-    }
-}
-
-extension Optional where Wrapped == String {
-    
-    /**
-     unwraps and checks if the string is empty. If so, return the given default string.
-     
-     This is similar to using the nil-colicent but also checks `.isEmpty`
-     
-     - parameter defaultString: return this if self is empty or nil
-     
-     - returns: either return self if not nil and not an empty string or return the given default value
-     */
-    func ifEmptyOrNil(use defaultString: String) -> String {
-        if let unwrappedSelf = self, unwrappedSelf.isEmpty == false {
-            return unwrappedSelf
-        } else {
-            return defaultString
-        }
     }
 }
 
