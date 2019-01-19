@@ -66,12 +66,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBAction func pressedLogout(_ sender: UIBarButtonItem) {
         userPersistence.logout()
         
-        if let presentingVc = self.navigationController?.presentingViewController {
-            presentingVc.dismiss(animated: true)
-        } else {
-            let loginVc = LoginController()
-            self.present(loginVc, animated: true)
-        }
+        let loginVc = LoginController()
+        self.present(loginVc, animated: true)
     }
     
     @IBAction func pressedUpdateProfileImage(_ sender: UIBarButtonItem) {

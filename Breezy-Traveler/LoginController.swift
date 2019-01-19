@@ -155,18 +155,8 @@ class LoginController: UIViewController {
                 case .success(let loggedInUser):
                     unwrappedSelf.userPersistence.login(loggedInUser)
                     
-                    // Go back to Trips ViewController
                     // successfully logged in user
-                    if let presentingVc = unwrappedSelf.presentingViewController {
-                        presentingVc.dismiss(animated: true)
-                    } else {
-                        let tripsStoryboard = UIStoryboard(name: "Trips", bundle: nil)
-                        guard let tripsVc = tripsStoryboard.instantiateInitialViewController() else {
-                            fatalError("storyboard not set up with an initial view controller")
-                        }
-                        
-                        unwrappedSelf.present(tripsVc, animated: true)
-                    }
+                    unwrappedSelf.presentingViewController!.dismiss(animated: true)
                     
                 case .failure(let err):
                     unwrappedSelf.presentAlert(

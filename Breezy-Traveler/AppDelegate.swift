@@ -29,8 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         navigationBarAppearance.tintColor = UIColor.white
         navigationBarAppearance.barTintColor = UIColor(r: 61, g: 91, b: 151)
-                
-        self.setUpInital(&window)
+        
+        let tripsStoryboard = UIStoryboard(name: "Trips", bundle: nil)
+        guard let tripsVc = tripsStoryboard.instantiateInitialViewController() else {
+            fatalError("storyboard not set up with an initial view controller")
+        }
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = tripsVc
+        window?.makeKeyAndVisible()
         
         loginMiddleware.delegate = self
         
@@ -59,28 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    private func setUpInital(_ window: inout UIWindow?) {
-        
-        let viewController: UIViewController
-        let userPersistence = UserPersistence()
-        
-        if userPersistence.checkIfUserIsLoggedIn() {
-            let tripsStoryboard = UIStoryboard(name: "Trips", bundle: nil)
-            guard let tripsVc = tripsStoryboard.instantiateInitialViewController() else {
-                fatalError("storyboard not set up with an initial view controller")
-            }
-            
-            viewController = tripsVc
-        } else {
-            let loginVc = LoginController()
-            
-            viewController = loginVc
-        }
-        
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = viewController
-        window?.makeKeyAndVisible()
-    }
 
 }
 

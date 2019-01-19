@@ -160,7 +160,7 @@ class MyTripsViewController: UIViewController {
             updateUI()
         } else {
             let loginViewController = LoginController()
-            present(loginViewController, animated: false, completion: nil)
+            self.navigationController!.present(loginViewController, animated: false, completion: nil)
         }
         
         if let selectedRow = tripsTableView.indexPathForSelectedRow {
